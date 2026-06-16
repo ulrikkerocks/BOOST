@@ -1,0 +1,21 @@
+# Node
+node_modules/
+dist/
+build/
+.cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# Secrets
+.env
+*.env.local
+
+# Temp
+*.tmp
+*.log
