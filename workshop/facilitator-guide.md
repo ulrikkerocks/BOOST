@@ -244,9 +244,15 @@ This SharePoint OData filter is still valid. ✅
 
 **Status:** Updated January 2026.
 
-**Verify before workshop:**
-- Step 11.2 says "Select Channel in the top navigation of the agent." In the new UI, Channels is a **section on the Overview page**, not a separate top-nav tab. The course screenshot is `channels-tab.png`. Check if there's still a "Channels" tab in agent navigation or if it redirects to Overview.
-- If it's now a section on Overview, update verbal instructions accordingly: "Scroll down on the Overview page to the Channels section."
+**✅ VERIFIED 2026-06-16 (live UI audit):**
+Channels is accessible via the **"+8" overflow menu in the top navigation**. It is NOT a section on the Overview page scrollable canvas. Participants must:
+1. Open their agent → Overview page
+2. Click **+8** in the top tab bar (next to "Overview")
+3. Select **Channels** from the dropdown
+
+Once selected, Channels becomes the active tab. The page shows: Published agent status, Share a preview (Demo website), Microsoft channels (M365+Teams, SharePoint, Teams Phone Agent), Other channels (Web app, Native app, etc.), and Customer engagement hub options.
+
+The course instruction "Select Channel in the top navigation" is essentially correct — add the verbal note: **"Click +8 in the top navigation, then choose Channels."**
 
 **Trial environment note (important):**
 Module 11 says: "There was a recent change to Copilot Studio Trial environments that prohibits the publishing of agents." This means:
@@ -281,7 +287,7 @@ Module 11 says: "There was a recent change to Copilot Studio Trial environments 
 The Overview page is the new standard. If someone sees an older UI, they may be in a different environment or accessing via an older direct URL. Have them navigate to https://copilotstudio.microsoft.com and sign in fresh.
 
 ### "Where is the Channels tab?"
-In the new UI, Channels is a section on the Overview page. Scroll down on the Overview page to find it.
+Channels is in the top navigation but hidden under the **+8 overflow menu**. From the agent Overview page, click **+8** (top right of the tab bar, next to "Overview") and select **Channels**. It is NOT a section on the Overview scrollable canvas — it opens as its own dedicated page.
 
 ### "I can't publish my agent"
 Two possible causes:
@@ -332,7 +338,7 @@ This is expected — participants must select "Allow" when the agent first tries
 - [ ] Verify SharePoint IT Help Desk template still exists
 - [ ] Add Overview page orientation slide/demo to your Module 02 materials
 - [ ] Test Module 06 lab end-to-end in your own environment
-- [ ] Verify Module 11 Channels navigation
+- [x] Verify Module 11 Channels navigation ✅ confirmed: click +8 → Channels
 - [ ] Prepare Workflows callout talking points for Module 09
 - [ ] Check module screenshots against current UI (screenshot audit checklist)
 
