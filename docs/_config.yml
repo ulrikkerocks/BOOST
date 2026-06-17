@@ -3,34 +3,18 @@ description: "Build production-ready AI agents with Microsoft Copilot Studio —
 baseurl: "/BOOST"
 url: "https://ulrikkerocks.github.io"
 
-# Theme
-remote_theme: just-the-docs/just-the-docs@v0.8.2
+# Use GitHub's built-in theme
+theme: minima
 
-# Color scheme
-color_scheme: dark
-
-# Navigation
-nav_enabled: true
-search_enabled: true
+# Minima supports dark mode via this setting
+minima:
+  skin: dark
 
 # Footer  
-footer_content: "Copyright &copy; 2026 Ulrikke Rocks. Updated from <a href=\"https://microsoft.github.io/agent-academy/recruit/\">microsoft/agent-academy</a>."
-
-# GitHub links
-gh_edit_link: true
-gh_edit_link_text: "Edit this page on GitHub"
-gh_edit_repository: "https://github.com/ulrikkerocks/BOOST"
-gh_edit_branch: "wip/rig/recruit-course-update"
-gh_edit_source: docs
-
-# Aux links
-aux_links:
-  "View on GitHub":
-    - "https://github.com/ulrikkerocks/BOOST"
-  "Original Course":
-    - "https://microsoft.github.io/agent-academy/recruit/"
+copyright: "Copyright © 2026 Ulrikke Rocks"
 
 # Exclude from processing
 exclude:
   - screenshot-audit-checklist.md
   - .copilot/
+  - assets/presentation/
