@@ -1,0 +1,59 @@
+# GitHub Pages Configuration for BOOST Agent Academy Course
+# Theme: Just the Docs (similar to Microsoft Learn style)
+# Build from: /docs directory
+
+title: "Agent Academy Recruit Course"
+description: "Build production-ready AI agents with Microsoft Copilot Studio — updated for June 2026 UI"
+baseurl: "/BOOST"
+url: "https://ulrikkerocks.github.io"
+
+# Theme
+remote_theme: just-the-docs/just-the-docs@v0.8.2
+
+# Navigation
+nav_enabled: true
+nav_sort: case_insensitive
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+
+# Footer
+footer_content: "Copyright &copy; 2026 Ulrikke Rocks. Updated from <a href=\"https://microsoft.github.io/agent-academy/recruit/\">microsoft/agent-academy</a>."
+
+# Color scheme
+color_scheme: light
+
+# GitHub links
+gh_edit_link: true
+gh_edit_link_text: "Edit this page on GitHub"
+gh_edit_repository: "https://github.com/ulrikkerocks/BOOST"
+gh_edit_branch: "wip/rig/recruit-course-update"
+gh_edit_source: docs
+
+# Aux links
+aux_links:
+  "View on GitHub":
+    - "https://github.com/ulrikkerocks/BOOST"
+  "Original Course":
+    - "https://microsoft.github.io/agent-academy/recruit/"
+
+# Kramdown
+kramdown:
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+# Collections
+collections_dir: modules
+collections:
+  modules:
+    output: true
+    permalink: /:collection/:name/
+
+# Exclude from build
+exclude:
+  - screenshot-audit-checklist.md
+  - .copilot/
