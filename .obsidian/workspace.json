@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "workshop/facilitator-guide.md",
+                "file": "research/new-ui-notes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "facilitator-guide"
+              "title": "new-ui-notes"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "workshop/facilitator-guide.md",
+                "file": "research/new-ui-notes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for facilitator-guide"
+              "title": "Backlinks for new-ui-notes"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "workshop/facilitator-guide.md",
+                "file": "research/new-ui-notes.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from facilitator-guide"
+              "title": "Outgoing links from new-ui-notes"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "workshop/facilitator-guide.md",
+                "file": "research/new-ui-notes.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of facilitator-guide"
+              "title": "Outline of new-ui-notes"
             }
           }
         ]
@@ -185,32 +185,41 @@
   },
   "active": "6afe30b11505ed54",
   "lastOpenFiles": [
+    "docs/assets/css",
+    "docs/assets",
+    "workshop/facilitator-guide.md",
+    "docs/modules/13-securing-recruit-badge/README.md",
+    "docs/modules/12-understanding-licensing/README.md",
+    "docs/modules/11-publish-your-agent/README.md",
+    "docs/modules/10-add-event-triggers/README.md",
+    "docs/modules/09-automate-with-agent-flows/README.md",
+    "docs/modules/08-enhance-with-adaptive-cards/README.md",
+    "docs/modules/04-creating-a-solution/README.md",
+    "docs/modules/07-add-topic-with-triggers/README.md",
+    "docs/modules/06-build-custom-agent/README.md",
+    "docs/modules/05-prebuilt-agents/README.md",
+    "docs/modules/03-declarative-agent-m365/README.md",
+    "docs/modules/02-copilot-studio-fundamentals/README.md",
+    "docs/modules/01-introduction-to-agents/README.md",
+    "docs/modules/00-course-setup/README.md",
+    "docs/modules/13-securing-recruit-badge",
+    "docs/modules/12-understanding-licensing",
+    "docs/modules/11-publish-your-agent",
+    "docs/modules/10-add-event-triggers",
+    "docs/modules/09-automate-with-agent-flows",
+    "docs/modules/08-enhance-with-adaptive-cards",
+    "docs/modules/07-add-topic-with-triggers",
+    "docs/modules/06-build-custom-agent",
+    "docs/modules/05-prebuilt-agents",
+    "docs/09-add-an-agent-flow/workflows-callout.md",
+    "docs/02-copilot-studio-fundamentals/overview-page-orientation.md",
+    "docs/screenshot-audit-checklist.md",
+    "docs/README.md",
+    "docs/participant-reference-card.md",
+    "docs/facilitator-guide.md",
     "workshop/README.md",
     "workshop/modules/13-securing-recruit-badge/README.md",
     "workshop/modules/12-understanding-licensing/README.md",
-    "workshop/modules/11-publish-your-agent/README.md",
-    "workshop/modules/10-add-event-triggers/README.md",
-    "workshop/modules/09-automate-with-agent-flows/README.md",
-    "workshop/modules/08-enhance-with-adaptive-cards/README.md",
-    "workshop/modules/07-add-topic-with-triggers/README.md",
-    "workshop/modules/06-build-custom-agent/README.md",
-    "workshop/modules/05-prebuilt-agents/README.md",
-    "workshop/modules/04-creating-a-solution/README.md",
-    "workshop/modules/03-declarative-agent-m365/README.md",
-    "workshop/modules/02-copilot-studio-fundamentals/README.md",
-    "workshop/modules/01-introduction-to-agents/README.md",
-    "workshop/modules/00-course-setup/README.md",
-    "workshop/modules/00-course-setup",
-    "workshop/modules/11-publish-your-agent",
-    "workshop/modules/13-securing-recruit-badge",
-    "workshop/modules/12-understanding-licensing",
-    "workshop/modules/10-add-event-triggers",
-    "workshop/modules/09-automate-with-agent-flows",
-    "workshop/modules/08-enhance-with-adaptive-cards",
-    "workshop/modules/07-add-topic-with-triggers",
-    "workshop/modules/06-build-custom-agent",
-    "workshop/modules/05-prebuilt-agents",
-    "research/new-ui-notes.md",
-    "research/old-course-notes.md"
+    "workshop/modules/11-publish-your-agent/README.md"
   ]
 }

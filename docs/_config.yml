@@ -1,5 +1,5 @@
 # GitHub Pages Configuration for BOOST Agent Academy Course
-# Theme: Just the Docs (similar to Microsoft Learn style)
+# Theme: Just the Docs (modern dark theme)
 # Build from: /docs directory
 
 title: "Agent Academy Recruit Course"
@@ -23,8 +23,26 @@ search:
 # Footer
 footer_content: "Copyright &copy; 2026 Ulrikke Rocks. Updated from <a href=\"https://microsoft.github.io/agent-academy/recruit/\">microsoft/agent-academy</a>."
 
-# Color scheme
-color_scheme: light
+# Color scheme - Dark mode for modern look
+color_scheme: dark
+
+# Callouts styling
+callouts_level: quiet
+callouts:
+  highlight:
+    color: yellow
+  important:
+    title: Important
+    color: blue
+  new:
+    title: New
+    color: green
+  note:
+    title: Note
+    color: purple
+  warning:
+    title: Warning
+    color: red
 
 # GitHub links
 gh_edit_link: true
@@ -39,6 +57,10 @@ aux_links:
     - "https://github.com/ulrikkerocks/BOOST"
   "Original Course":
     - "https://microsoft.github.io/agent-academy/recruit/"
+
+# Enable mermaid diagrams
+mermaid:
+  version: "10.6.0"
 
 # Kramdown
 kramdown:
