@@ -153,94 +153,159 @@ Then walk through the Overview page anatomy (see "Overview Page Anatomy" section
 
 ---
 
-### Module 06: Build a Custom Agent ✅ Run As-Is
+### Module 06: Build a Custom Agent
 
-**Status:** Updated February 2026; references new UI Overview page elements.
-
-**Key lab steps to watch:**
-- Natural language creation on the Home page → AI provisions agent
-- AI suggestions (name, description, knowledge, topics) appear after provisioning
-- "wheel cog" → is now a gear ⚙️ icon for Settings
-
-**If participants see a different suggestions UI:**
-- The suggestions pane has evolved; if dismissed, it's gone (not re-creatable in same session)
-- Main sections (Details, Knowledge) are still there on the Overview page
-
----
-
-### Module 07: Add a Topic with Triggers ✅ Run As-Is
-
-**Status:** Updated February 2026; lab steps reference new UI.
-
-**Key navigation:**
-- "Select the Topics tab near the name of the agent" ✅ (this still works)
-- "+ Add a topic" → From blank ✅
-- "Select the Overview tab and select Edit" (for Instructions) ✅
-
-**Power Fx filter expression:**
-```
-Concatenate("Status eq 'Available' and AssetType eq '", Topic.VarDeviceType, "'")
-```
-This SharePoint OData filter is still valid. ✅
-
-**Timing:** 60 min
-
----
-
-### Module 08: Enhance with Adaptive Cards ✅ Run As-Is
-
-**Status:** Updated February 2026.
+**Last edited:** Current  
+**Risk:** Low
 
 **Facilitator notes:**
-- Adaptive Card JSON editor is in the topic node
-- Power Fx for data binding is unchanged
-- Most time-consuming lab — allocate buffer time
+- **This is the heart of the course** — participants build the foundation agent used in all remaining modules
+- **Timing guidance:** Allow 75 minutes. Natural language creation is fast (~5 min), but configuring knowledge sources and testing thoroughly takes time
+- **Common pitfall:** SharePoint site permissions. If the agent can't access the Contoso IT site, participants need to verify:
+  - The SharePoint site was created in Module 00
+  - The site is in the same tenant as the Copilot Studio environment
+  - The user has access to the site (Owner or Member role)
+- **Setup requirements:** Verify before starting:
+  - Module 00 completed (SharePoint site + Devices list created)
+  - Guest WiFi document uploaded to Documents library
+  - Preferred solution set to "Contoso Helpdesk Agent" solution
+- **Troubleshooting:**
+  - **AI suggestions dismissed:** If participants accidentally dismiss the AI suggestions pane after agent creation, they can't get it back. Not a problem — they can still add knowledge/topics manually via Overview page sections
+  - **Knowledge source not working:** Test each source individually. SharePoint indexing can take 2-3 minutes. General web search should work immediately
+  - **Agent gives generic answers:** Check that knowledge sources show "Ready" status in the Knowledge section
+- **Testing checkpoint:** Have participants test at least one question from each knowledge source before moving on:
+  - SharePoint: "What devices are available?"
+  - Uploaded doc: "How do I connect to guest WiFi?"
+  - Microsoft Support: "How do I reset my password?"
+  - General web: "What's new with Windows 11?"
 
-**Timing:** Typically 60-90 min (more than the listed 30 min if participants are new to JSON)
+**Status:** Updated February 2026; references new UI Overview page elements. ✅ Current
+
+---
+
+### Module 07: Add a Topic with Triggers
+
+**Last edited:** Current  
+**Risk:** Medium
+
+**Facilitator notes:**
+- **Timing guidance:** Allow 60 minutes. Topic creation is visual and intuitive, but Power Fx expressions can slow down participants unfamiliar with formulas
+- **Common pitfall #1:** Power Fx filter syntax errors. The OData filter string must be perfectly formatted:
+  ```
+  Concatenate("Status eq 'Available' and AssetType eq '", Topic.VarDeviceType, "'")
+  ```
+  Watch for: missing quotes, wrong quote types, extra spaces, incorrect field names
+- **Common pitfall #2:** SharePoint connector authentication. First-time use requires signing in. If the connector shows "Not connected," participants must:
+  1. Click the connector card
+  2. Select "Sign in"
+  3. Authenticate with their M365 account
+- **Setup requirements:** Module 06 completed with Contoso Helpdesk Agent functional
+- **Troubleshooting:**
+  - **No devices returned:** Check the SharePoint Devices list has records with Status="Available" and AssetType matching what user typed (e.g., "Laptop" not "laptop" if case-sensitive)
+  - **Connector error:** Verify SharePoint connector is added to the solution and authenticated
+  - **Topic doesn't trigger:** Verify trigger phrases include variations like "I need a laptop," "request device," "show me laptops"
+- **Teaching moment:** This is the first structured topic. Emphasize the difference between generative responses (Module 06) and predictable flows (Module 07). Use the table from the module README to illustrate when to use each
+
+**Status:** Updated February 2026; lab steps reference new UI. ✅ Current
+
+---
+
+### Module 08: Enhance with Adaptive Cards
+
+**Last edited:** Current  
+**Risk:** Medium-High
+
+**Facilitator notes:**
+- **Timing guidance:** Allow **60-90 minutes** (not the 45 min listed in the module). This is consistently the longest lab for participants new to JSON or Power Fx data binding
+- **Common pitfall:** JSON syntax errors. Even one missing comma or bracket breaks the card. Recommend participants use the built-in Adaptive Card Designer visual editor if available, or copy/paste the provided JSON exactly
+- **Setup requirements:** Module 07 completed with working Device Request topic
+- **Troubleshooting:**
+  - **Card doesn't render:** Check JSON syntax in an online validator (adaptivecards.io/designer)
+  - **Data doesn't appear:** Verify Power Fx binding syntax: `${Topic.AvailableDevices.DeviceTitle}` — case-sensitive, must match variable names exactly
+  - **Image not showing:** Image URLs must be publicly accessible. If using SharePoint images, ensure guest access is enabled or use sample URLs
+  - **"Request" button doesn't work:** Verify the button `onCardAction` is mapped to the correct topic variable to capture the selection
+- **Teaching moment:** Show a before/after comparison (plain text list vs. Adaptive Card) to illustrate the value of rich UI
+- **Buffer time:** If the workshop is running behind, consider showing a completed Adaptive Card demo and letting participants implement it as homework
+
+**Status:** Updated February 2026. ✅ Current
 
 ---
 
 ### Module 09: Automate with Agent Flows ⚠️ ADD Workflows Callout
 
-**Status:** Updated February 2026; Agent Flows steps are current.
+**Last edited:** Current  
+**Risk:** Low
 
-**New thing to explain:** Since May 2026, there is a new "Workflows" experience in early-release environments. Standard environments still use Agent Flows. The lab uses Agent Flows throughout.
+**Facilitator notes:**
+- **NEW (June 2026):** Explain the difference between Agent Flows (GA) and Workflows (preview) before starting the lab. See `workshop/09-add-an-agent-flow/workflows-callout.md` for ready content
+- **Timing guidance:** Allow 50 minutes. Flow creation is straightforward, but connector authentication and testing add time
+- **Common pitfall:** Outlook connector permissions. Sending email requires delegated permissions. First-time use triggers a consent prompt. If participants see "Forbidden" or "Unauthorized":
+  1. Check the Outlook connector shows "Connected" status
+  2. Re-authenticate via Connections page
+  3. Verify the user has permission to send email from their mailbox
+- **Setup requirements:** Module 08 completed with Adaptive Card topic working
+- **Troubleshooting:**
+  - **Flow doesn't trigger:** Verify the flow is published and added to the topic as a tool node (not just created)
+  - **Email not received:** Check spam/junk folder. Check flow run history for errors
+  - **Input parameters not passing:** Verify parameter names match exactly between the topic variable and the flow input (case-sensitive)
+- **Teaching moment:** After the flow works, ask participants: "What else could we automate?" (e.g., create a Planner task, log to Dataverse, post to Teams channel)
+- **If participants see "Workflows" in the sidebar:** Reassure them both experiences work. For consistency with the lab, guide them to use **Flows** → **New Agent flow**
 
-**Where to add it:** Before the lab starts, mention:
-
-> "Since this course was written, Microsoft released a new experience called **Workflows** (currently in preview/early release). If you ever see a 'Workflows' option in the left sidebar, that's the new experience. For today, we'll use **Agent Flows** which is GA and available in all environments. The concepts are the same — the designer looks different."
-
-**Full callout block:** See `workshop/09-add-an-agent-flow/workflows-callout.md`
-
-**Agent Flows navigation:**
-- In the topic: "+ icon" → "Add a tool" → "New Agent flow" ✅
-- Agent Flows designer loads in a new view ✅
-- After publishing: add to topic via "Add a tool" ✅
-
-**Timing:** 30 min
+**Status:** Updated February 2026; Agent Flows steps are current. ✅ Current
 
 ---
 
-### Module 10: Add Event Triggers ✅ Run As-Is
+### Module 10: Add Event Triggers
 
-**Status:** Updated February 2026; all navigation references current UI.
-
-**Key navigation:**
-- "Navigate to the Overview tab and locate the Triggers section" ✅
-- "+ Add trigger" → search for SharePoint trigger ✅
-- "Test Trigger" icon on the trigger card ✅
-- "Tools tab in your agent" → add Outlook connector ✅
+**Last edited:** Current  
+**Risk:** Medium
 
 **Facilitator notes:**
-- Generative AI must be enabled (Settings > Orchestration). If already enabled by default, step 1 is a verify step.
-- The Power Automate cloud flow created automatically — participants won't see it explicitly; it happens behind the scenes.
-- "Test trigger" panel can take a few minutes to show the event.
+- **Timing guidance:** Allow 45 minutes (30 min listed in module is tight). Event trigger testing requires waiting for events to fire, which adds buffer time
+- **Common pitfall:** Dataverse table doesn't exist. Participants must create a Support Tickets table in Power Apps first (or use the provided SharePoint list alternative). If using Dataverse:
+  - Verify the table exists in the same environment as the agent
+  - Verify the table has the required columns: Title, Priority, Description, RequestedBy
+- **Setup requirements:** Module 09 completed with working Agent Flow
+- **Troubleshooting:**
+  - **Trigger doesn't fire:** 
+    1. Verify the trigger is published (triggers don't work in draft mode)
+    2. Check the trigger condition filter is correct (e.g., Priority = "High")
+    3. Create a test record in the Dataverse table that meets the condition
+    4. Wait 2-3 minutes for the background flow to poll
+  - **"Generative AI not enabled" error:** Go to Settings > Orchestration > Enable generative AI orchestration
+  - **Email not sent:** Verify the Outlook connector is still authenticated (check Connections page)
+- **Teaching moment:** Explain the difference between conversational (user-initiated) and autonomous (event-driven) agents. This is a preview of advanced agent capabilities
+- **Demo strategy:** If time is short, demonstrate the trigger working with a live test record rather than having each participant create their own Dataverse table
 
-**Timing:** 45 min
+**Status:** Updated February 2026; all navigation references current UI. ✅ Current
 
 ---
 
 ### Module 11: Publish Your Agent ⚠️ Verify Channels Navigation
+
+**Last edited:** Current  
+**Risk:** Low
+
+**Facilitator notes:**
+- **Timing guidance:** Allow 30 minutes. Publishing is fast, but Teams app installation and testing add time
+- **Common pitfall:** Copilot Studio Authors role not assigned. If the Publish button is grayed out:
+  1. Go to Power Platform Admin Center (admin.powerplatform.microsoft.com)
+  2. Select the environment
+  3. Settings > Users + permissions > Security roles
+  4. Assign "Copilot Studio Authors" role to the user
+  5. Wait 5 minutes, then refresh Copilot Studio
+- **Setup requirements:** Modules 06-10 completed with fully functional agent
+- **Troubleshooting:**
+  - **Publish fails:** Check for error indicators (red exclamation marks) in topics or flows. Fix errors before publishing
+  - **Teams channel not available:** Verify Microsoft Teams integration is enabled in the environment (Settings > Features)
+  - **Agent doesn't appear in Teams:** After publishing to Teams, participants must:
+    1. Go to the Channels section (via +8 overflow menu)
+    2. Select Teams channel
+    3. Copy the app install link or download the app package
+    4. In Teams: Apps > Manage your apps > Upload an app > Upload the .zip file
+  - **Agent gives old responses in Teams:** Remind participants that published version ≠ draft. They need to publish again after making changes
+- **Teaching moment:** Show the difference between Test pane (draft) and Teams (published). Make a change, don't publish, and show that Teams still has the old version
+- **Demo website:** Show participants the demo website link (available after publishing) for quick testing without Teams installation
 
 **Status:** Updated January 2026.
 
@@ -278,6 +343,39 @@ Module 11 says: "There was a recent change to Copilot Studio Trial environments 
 - "Since this module was written, Microsoft retired the Teams classic chatbot creation app (June 2026). You now create and manage Teams agents entirely from the Copilot Studio web interface."
 
 **Timing:** 15 min
+
+---
+
+### Module 13: Securing Your Recruit Badge
+
+**Last edited:** Current  
+**Risk:** Low
+
+**Facilitator notes:**
+- **This is the wrap-up module** — use it to celebrate completion and set expectations for next steps
+- **Timing guidance:** Allow 15 minutes. This is a checklist review + badge claim + community resources
+- **Common pitfall:** None — this is a celebration module, not a technical lab
+- **Setup requirements:** All prior modules completed
+- **Facilitator actions:**
+  1. Walk through the completion checklist as a group — use it as a retrospective
+  2. Share the badge claim link (if available) or explain the post-workshop process
+  3. Highlight 2-3 community resources participants should bookmark
+  4. Ask: "What will you build next?" — invite participants to share their agent ideas
+  5. Mention the Special Ops advanced course (if offering it) or other learning paths
+- **Teaching moment:** Emphasize the journey doesn't end here. Point to:
+  - Microsoft Learn modules for deeper dives
+  - Copilot Studio Community forums for peer support
+  - Power Platform User Groups for local meetups
+  - GitHub Copilot Studio samples repo for inspiration
+- **Badge claim process (adjust to your workshop delivery model):**
+  - If badging platform: provide claim link + completion code
+  - If certificate: share template or email certificate after event
+  - If internal tracking: explain how completion will be recorded
+- **Feedback collection:** Use this module to distribute post-workshop survey or feedback form
+
+**Status:** Current. ✅
+
+**Timing:** 15 min (can extend to 30 if doing group retrospective or Q&A)
 
 ---
 
