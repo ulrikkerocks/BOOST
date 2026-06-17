@@ -185,6 +185,7 @@
   },
   "active": "6afe30b11505ed54",
   "lastOpenFiles": [
+    "boost-tech-forward-theme.png",
     "docs/assets/css/style.scss",
     "docs/assets/css/style.scss.bak",
     "docs/assets/css",
@@ -210,7 +211,6 @@
     "docs/modules/10-add-event-triggers",
     "docs/modules/09-automate-with-agent-flows",
     "docs/modules/08-enhance-with-adaptive-cards",
-    "docs/modules/07-add-topic-with-triggers",
     "docs/09-add-an-agent-flow/workflows-callout.md",
     "docs/02-copilot-studio-fundamentals/overview-page-orientation.md",
     "docs/screenshot-audit-checklist.md",
