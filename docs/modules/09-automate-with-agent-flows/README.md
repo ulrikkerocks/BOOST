@@ -1,3 +1,8 @@
+---
+title: "09 · Automate with Agent Flows"
+parent: Course Modules
+nav_order: 9
+---
 # Module 09: Automate with Agent Flows
 
 **Time:** 50 minutes  

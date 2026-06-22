@@ -1,3 +1,8 @@
+---
+title: "08 · Enhance with Adaptive Cards"
+parent: Course Modules
+nav_order: 8
+---
 # Module 08: Enhance with Adaptive Cards
 
 **Time:** 45 minutes  

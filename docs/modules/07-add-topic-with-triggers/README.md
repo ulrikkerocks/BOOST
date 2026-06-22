@@ -1,3 +1,8 @@
+---
+title: "07 · Add a Topic with Triggers"
+parent: Course Modules
+nav_order: 7
+---
 # Module 07: Add a Topic with Triggers
 
 **Time:** 60 minutes  

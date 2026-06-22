@@ -1,3 +1,8 @@
+---
+title: "02 · Copilot Studio Fundamentals"
+parent: Course Modules
+nav_order: 2
+---
 # Module 02: Copilot Studio Fundamentals
 
 **Codename:** OPERATION CORE PROTOCOL  

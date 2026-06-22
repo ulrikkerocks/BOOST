@@ -1,3 +1,7 @@
+---
+title: Facilitator Guide
+nav_order: 3
+---
 # Facilitator Guide: Copilot Agent Academy — Recruit Course
 ### Updated for New Copilot Studio UI (June 2026)
 

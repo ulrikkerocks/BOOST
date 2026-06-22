@@ -1,3 +1,8 @@
+---
+title: "10 · Add Event Triggers"
+parent: Course Modules
+nav_order: 10
+---
 # Module 10: Add Event Triggers
 
 **Time:** 30 minutes  

@@ -1,3 +1,7 @@
+---
+title: "Supplemental: Workflows Callout"
+nav_exclude: true
+---
 # Module 09 Addition: Agent Flows vs. Workflows
 
 **Insert this as a callout section BEFORE Lab 09 in Module 09.**  

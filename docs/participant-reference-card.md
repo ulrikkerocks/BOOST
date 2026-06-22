@@ -1,3 +1,7 @@
+---
+title: Participant Reference Card
+nav_order: 4
+---
 # New Copilot Studio UI: Participant Reference Card
 
 **For participants in the Copilot Agent Academy Recruit workshop**

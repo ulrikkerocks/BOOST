@@ -1,3 +1,8 @@
+---
+title: "04 · Creating a Solution"
+parent: Course Modules
+nav_order: 4
+---
 # Module 04: Creating a Solution
 
 **Time:** 15 minutes  
