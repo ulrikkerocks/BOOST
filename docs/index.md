@@ -1,9 +1,64 @@
-# Agent Academy Recruit Course — Updated for New Copilot Studio UI
+---
+layout: home
+hero:
+  name: "Agent Academy"
+  text: "Recruit Course"
+  tagline: "Build your first AI agents with Microsoft Copilot Studio — hands-on, and updated for the 2026 UI."
+  image:
+    light: /boost-logo-light.png
+    dark: /boost-logo-dark.png
+    alt: "Power Platform BOOST"
+  actions:
+    - theme: brand
+      text: "Start the course →"
+      link: /modules/00-course-setup/
+    - theme: alt
+      text: "View the EPPC 2026 session"
+      link: https://espc.tech/conference/eppc-2026/programme/build-your-first-ai-agents-with-microsofts-agent-academy/
+features:
+  - icon: 🤖
+    title: "What this is"
+    details: "A hands-on, lab-by-lab take on Microsoft's Agent Academy Recruit course, rebuilt for the redesigned Copilot Studio (2026). You build the Contoso Helpdesk Agent end to end."
+  - icon: 🎯
+    title: "Who it's for"
+    details: "Makers, IT pros, and Power Platform enthusiasts. No coding required — it is all visual designers and natural-language agent creation."
+  - icon: 📍
+    title: "Where & when"
+    details: "Created for the EPPC 2026 workshop in Copenhagen on 29 June 2026 — but free to follow along any time."
+---
 
-**Last Updated:** June 2026  
-**Duration:** 1 day (~8 hours hands-on)  
-**Audience:** Makers, IT Pros, Power Platform enthusiasts  
-**Source:** [microsoft.github.io/agent-academy/recruit](https://microsoft.github.io/agent-academy/recruit/)
+## About this workshop
+
+This site is the companion for **“Build your first AI Agents with Microsoft's Agent Academy”** — a hands-on workshop at the **European Power Platform Conference (EPPC) 2026** in **Copenhagen on 29 June 2026** (Level 200 · _Copilot and Agentic Platforms_ track).
+
+Across the day you go from “what is an agent?” to a working, **published** agent in Copilot Studio — through guided labs, group exercises, and real-world patterns you can take home.
+
+[See the session on the EPPC programme →](https://espc.tech/conference/eppc-2026/programme/build-your-first-ai-agents-with-microsofts-agent-academy/)
+
+## Built by
+
+Made by **Ulrikke Akerbæk** and **Nick Doelman** — Microsoft MVPs and co-hosts of the **Power Platform BOOST!** podcast.
+
+<div class="facilitators">
+<div class="facilitator">
+
+![Ulrikke Akerbæk](/ulrikke.jpg)
+
+**[Ulrikke Akerbæk](https://www.linkedin.com/in/ulrikke/)**
+
+Microsoft MVP · Itera
+
+</div>
+<div class="facilitator">
+
+![Nick Doelman](/nick.jpg)
+
+**[Nick Doelman](https://www.linkedin.com/in/nickdoelman)**
+
+Microsoft MVP · ReadyBMS
+
+</div>
+</div>
 
 ---
 
