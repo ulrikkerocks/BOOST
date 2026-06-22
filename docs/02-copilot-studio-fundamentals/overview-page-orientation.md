@@ -1,7 +1,3 @@
----
-title: "Supplemental: Overview Page Orientation"
-nav_exclude: true
----
 # Module 02 Addition: The Copilot Studio Overview Page
 
 **Insert this section BEFORE the "Four Building Blocks" section in Module 02.**  

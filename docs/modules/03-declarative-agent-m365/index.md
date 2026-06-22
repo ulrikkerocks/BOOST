@@ -1,8 +1,3 @@
----
-title: "03 · Declarative Agent for M365 Copilot"
-parent: Course Modules
-nav_order: 3
----
 # Module 03: Create a Declarative Agent for M365 Copilot
 
 **Time:** 25 minutes  

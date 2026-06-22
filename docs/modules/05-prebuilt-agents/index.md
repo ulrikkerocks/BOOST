@@ -1,8 +1,3 @@
----
-title: "05 · Using Pre-Built Agents"
-parent: Course Modules
-nav_order: 5
----
 # Module 05: Using Pre-Built Agents
 
 **Time:** 20 minutes  

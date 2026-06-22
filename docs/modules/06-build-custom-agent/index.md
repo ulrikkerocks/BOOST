@@ -1,8 +1,3 @@
----
-title: "06 · Build a Custom Agent"
-parent: Course Modules
-nav_order: 6
----
 # Module 06: Build a Custom Agent
 
 **Codename:** OPERATION AGENT FORGE  

@@ -1,7 +1,3 @@
----
-title: Home
-nav_order: 1
----
 # Agent Academy Recruit Course — Updated for New Copilot Studio UI
 
 **Last Updated:** June 2026  

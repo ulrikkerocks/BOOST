@@ -1,8 +1,3 @@
----
-title: "12 · Understanding Licensing"
-parent: Course Modules
-nav_order: 12
----
 # Module 12: Understanding Licensing
 
 **Time:** 20 minutes  

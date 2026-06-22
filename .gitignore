@@ -4,6 +4,10 @@ dist/
 build/
 .cache/
 
+# VitePress
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+
 .playwright-mcp/
 .DS_Store
 Thumbs.db

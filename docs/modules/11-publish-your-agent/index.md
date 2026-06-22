@@ -1,8 +1,3 @@
----
-title: "11 · Publish Your Agent"
-parent: Course Modules
-nav_order: 11
----
 # Module 11: Publish Your Agent
 
 **Time:** 30 minutes  

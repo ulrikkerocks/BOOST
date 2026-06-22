@@ -1,8 +1,3 @@
----
-title: "13 · Securing Your Recruit Badge"
-parent: Course Modules
-nav_order: 13
----
 # Module 13: Securing Your Recruit Badge
 
 **Time:** 15 minutes  

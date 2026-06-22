@@ -1,8 +1,3 @@
----
-title: "01 · Introduction to Agents"
-parent: Course Modules
-nav_order: 1
----
 # Module 01: Introduction to Agents
 
 **Codename:** OPERATION FIRST CONTACT  

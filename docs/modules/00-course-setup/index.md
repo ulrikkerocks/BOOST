@@ -1,8 +1,3 @@
----
-title: "00 · Course Setup"
-parent: Course Modules
-nav_order: 0
----
 # Module 00: Course Setup
 
 **Codename:** OPERATION DEPLOYMENT READY  
