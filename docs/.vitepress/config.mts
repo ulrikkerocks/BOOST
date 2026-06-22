@@ -17,6 +17,9 @@ export default defineConfig({
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/BOOST/favicon.svg' }],
+    // Unlisted preview phase — keep the site out of search results.
+    // Remove this line to "go public" (make it indexable).
+    ['meta', { name: 'robots', content: 'noindex, nofollow' }],
   ],
 
   themeConfig: {
