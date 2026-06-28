@@ -1,581 +1,318 @@
-# Module 07: Add a Topic with Triggers
+# Module 07: Teach Bit Skills & Equip Tools
 
-**Time:** 60 minutes  
-**Scenario:** Device Request Topic with SharePoint Data
+**Codename:** OPERATION PLAYBOOK  
+**Time:** 70 minutes  
+**Scenario:** Skills, Tools, and Logging a Ticket
 
 ---
 
 ## Learning Objectives
 
 By the end of this module, you will be able to:
-- Create a custom topic in the Copilot Studio topic designer
-- Configure trigger phrases to activate a topic
-- Add question nodes to gather user input
-- Use Power Fx expressions to query SharePoint lists
-- Store and use variables in a conversation flow
-- Display dynamic data in message nodes
-- Add conditional branching based on user responses
+- Explain how **Skills** replace topics and triggers in the new experience
+- Author four reusable markdown **Skills** for Bit
+- Add the **Office 365 Outlook → Send an email** and **SharePoint → Create item** tools
+- Understand **AI-filled inputs** and the **user-vs-maker** execution context
+- Test a password reset (email) and log a support ticket end-to-end
+- Iterate a skill to also generate and attach a **PDF report**
 
 ## Overview
 
-In Module 06, you built a knowledge-based agent that answers questions generatively. Now you'll add a **structured topic** — a conversation flow you design node-by-node.
+In Module 06 you gave Bit knowledge and memory — he can *talk* and *know*. Now you'll give him **Skills** (what to do) and **Tools** (the muscle to do it).
 
-The **Device Request** topic will:
-1. Trigger when users say phrases like "I need a laptop"
-2. Ask what type of device they need
-3. Query the **Devices** SharePoint list for available items
-4. Display matching devices to the user
+**Skills are the headline of the new Copilot Studio.** A skill is a set of **reusable instructions in markdown** that defines a specific behavior — *when* it activates, the *guidelines* to follow, *examples*, and *notes*. The orchestrator loads the right skill at the right moment. **No topics. No trigger phrases.**
 
-This topic demonstrates the power of combining **generative AI** (knowledge grounding) with **structured flows** (predictable, step-by-step conversations).
+You'll author four skills, wire up two tools, and watch Bit log a real ticket to SharePoint and email a confirmation.
 
 ---
 
-## Topics vs. Generative Responses: When to Use Each
+## Prerequisites
 
-| Scenario | Use Generative | Use Topic |
-|---|---|---|
-| Open-ended Q&A | ✅ | |
-| Knowledge base search | ✅ | |
-| Multi-step form or wizard | | ✅ |
-| Data entry with validation | | ✅ |
-| Conditional logic (if/else) | | ✅ |
-| Guaranteed behavior | | ✅ |
+- **Bit** grounded with knowledge and memory from [Module 06](../06-build-custom-agent/).
+- The **Tickets** list **site URL + list name** from [Module 00](../00-course-setup/).
+- Connections available for **Office 365 Outlook** and **SharePoint** (your facilitator may have pre-authorized these).
 
-**For this module:** Device requests need a **topic** because we want to:
-- Ask specific questions in a specific order
-- Query structured data (SharePoint list)
-- Display results in a controlled format
+> 🏫 **In the facilitated workshop**, the SharePoint site, Tickets list, and connections are pre-provisioned. If you're at the office, complete [Module 00](../00-course-setup/) and [Module 06](../06-build-custom-agent/) first.
 
 ---
 
-## Lab 7.1: Create a New Topic
+## Anatomy of a Skill
 
-**Objective:** Create the Device Request topic and configure trigger phrases.
+When you **create a skill from blank**, you define:
 
-### Step 1: Navigate to the Topics Section
+- **Name** — all **lowercase, no spaces**; use **hyphens, not underscores**; don't start or end with a hyphen (e.g. `password-reset`)
+- **Description** — *what it does and when it should activate* (this is how the orchestrator picks it)
+- **Instructions** (markdown) — typically **when to activate**, **guidelines**, **examples**, and **notes**
 
-1. Go to [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com)
-2. In the left sidebar, select **Agents**
-3. Select your **Contoso Helpdesk Agent**
-4. You land on the **Overview page**
+> ⚠️ **Hyphens vs. underscores.** **Skill** names must use **hyphens** — underscores are invalid. (Later, in [Module 09](../09-automate-with-agent-flows/), you'll name a **Workflow** `manager_approval_for_software` *with* underscores — workflows follow different naming rules. Don't let that trip you up: skills = hyphens, workflows = underscores.)
 
-5. Scroll to the **Topics** section
-6. Select **See all** (or **+ Add a topic**)
-
-[SCREENSHOT: Overview page Topics section with "See all" link]
-
-7. You land on the **Topics** list page
-
-[SCREENSHOT: Topics list page showing system topics and any AI-suggested topics]
-
-### Step 2: Create a New Topic
-
-1. Select **+ New topic** (top toolbar)
-2. Select **From blank** (or just "+ New topic" if no template options appear)
-
-[SCREENSHOT: New topic creation dialog showing "From blank" option]
-
-3. The **Topic designer** opens — a visual canvas for building conversation flows
-
-[SCREENSHOT: Topic designer showing blank canvas with trigger and initial message nodes]
-
-### Step 3: Name the Topic
-
-1. At the top of the canvas, you'll see a **Topic name** field (default: "Untitled")
-2. Change the name to: `Device Request`
-
-[SCREENSHOT: Topic name field showing "Device Request"]
-
-3. Add a **Description** (optional but recommended):
-   ```
-   Helps users find and request available devices from the Devices SharePoint list
-   ```
-
-### Step 4: Configure Trigger Phrases
-
-Trigger phrases tell the agent when to activate this topic.
-
-1. In the **Trigger** node (top of the canvas), select **Edit** or **+ Add phrases**
-
-[SCREENSHOT: Trigger node with "Edit" or "+ Add phrases" option]
-
-2. Enter the following trigger phrases (one per line or one at a time):
-   ```
-   I need a device
-   I need a laptop
-   I need a monitor
-   I need a keyboard
-   I want to request a device
-   Can I get a laptop
-   Show me available devices
-   Request equipment
-   ```
-
-[SCREENSHOT: Trigger phrases list showing all 8 phrases]
-
-3. Select **Save** or **Done**
-
-**How triggers work:**
-- When a user says something similar to these phrases, the agent activates this topic
-- The LLM matches on **intent**, not exact wording (e.g., "I'd like a laptop please" will also trigger)
-- Once triggered, the topic flow takes over the conversation
-
-**✅ Checkpoint:** The Device Request topic has 8 trigger phrases configured.
+> 🔁 **Skills are reusable.** You can **upload** an existing skill file, **build one from blank**, or **download** any skill to reuse in another agent (you can even bring in GitHub Copilot / Claude Code skills).
+>
+> 🧰 Bit also has **built-in skills** out of the box — including ones that read **Word, PowerPoint, and PDF** files — which is why he could parse the FAQ document in Module 06.
 
 ---
 
-## Lab 7.2: Add a Question Node to Gather Device Type
+## Lab 7.1: Author Four Skills
 
-**Objective:** Ask the user what type of device they need.
+For each skill: **Build** page → **Skills** → **add a skill** → **Create from blank**, then fill in **Name**, **Description**, and **Instructions**, and **Save**.
 
-### Step 1: Add a Question Node
+### 7.1.1 `password-reset`
 
-1. Below the **Trigger** node, select **+ Add node** (or click the **+** button on the connection line)
-2. Select **Ask a question**
+- **Name:** `password-reset`
+- **Description:** `Use when a user asks to reset or recover their password, or says they are locked out.`
+- **Instructions:**
 
-[SCREENSHOT: Add node menu showing "Ask a question" option]
+```markdown
+# When to activate
+The user wants to reset their password or is locked out of their account.
 
-3. A **Question** node is added to the canvas
+# Guidelines
+1. Confirm the user's full name and work email, and verify their identity
+   (e.g., ask for their employee ID). Never ask for the current password.
+2. Once identity is verified, send a password reset link to their work email
+   using the Send-email tool.
+3. Tell the user the link has been sent and what to do next.
 
-[SCREENSHOT: Question node on the canvas]
+# Examples
+- "I forgot my password" → confirm name + email → verify ID → send reset link.
+- "I'm locked out" → same flow.
 
-### Step 2: Configure the Question
-
-1. In the **Question** node, locate the **Ask a question** field
-2. Enter the question:
-   ```
-   What type of device do you need?
-   ```
-
-[SCREENSHOT: Question node with question text entered]
-
-3. Below the question, configure the **Response type** (what kind of answer you expect):
-   - Select **Multiple choice options** (or **Choice** if that's the label)
-
-4. Add the following choices (one per line or via "+ Add option"):
-   ```
-   Laptop
-   Monitor
-   Keyboard
-   Mouse
-   Headset
-   ```
-
-[SCREENSHOT: Question node showing multiple choice options: Laptop, Monitor, Keyboard, Mouse, Headset]
-
-5. The user will see these as buttons or quick replies in the chat
-
-### Step 3: Save the User's Answer to a Variable
-
-1. In the **Question** node, locate the **Save response as** field (may be labeled "Save user response" or "Variable")
-2. Select **Create a new variable** (or "+ New variable")
-3. Variable name: `DeviceType`
-4. Select **Save** or **Done**
-
-[SCREENSHOT: Question node showing "Save response as: DeviceType"]
-
-**What this does:**
-- When the user selects "Laptop", the value `Laptop` is stored in the variable `DeviceType`
-- You can use this variable later in the flow (e.g., to filter the Devices list)
-
-**✅ Checkpoint:** The topic asks "What type of device do you need?" and stores the answer in the `DeviceType` variable.
-
----
-
-## Lab 7.3: Query the SharePoint Devices List with Power Fx
-
-**Objective:** Retrieve available devices from the SharePoint list, filtered by the user's choice.
-
-### Step 1: Add a Variable Management Node
-
-We'll use a **Set a variable value** node to run a Power Fx query against the SharePoint list.
-
-1. Below the **Question** node, select **+ Add node**
-2. Select **Variable management** → **Set a variable value**
-
-[SCREENSHOT: Add node menu showing "Variable management" > "Set a variable value"]
-
-3. A **Set variable** node is added
-
-[SCREENSHOT: Set variable node on the canvas]
-
-### Step 2: Create a Variable to Store Results
-
-1. In the **Set variable** node, locate the **Variable** field
-2. Select **Create a new variable**
-3. Variable name: `AvailableDevices`
-4. Select **Save**
-
-[SCREENSHOT: Set variable node with "AvailableDevices" variable created]
-
-### Step 3: Write the Power Fx Expression
-
-Now you'll write a Power Fx formula to query the SharePoint list.
-
-1. In the **Set variable** node, locate the **Value** field (or **To value**)
-2. Select the **fx** icon to open the formula editor
-
-[SCREENSHOT: Set variable node showing "Value" field with fx icon]
-
-3. Enter the following Power Fx formula:
-
-```powerFx
-Filter(
-    'Contoso IT'.Devices,
-    Category = Topic.DeviceType && Status = "Available"
-)
+# Notes
+Never ask for passwords or one-time codes. Do not bypass identity verification.
 ```
 
-**What this formula does:**
-- `'Contoso IT'.Devices` — References the **Devices** list on the **Contoso IT** SharePoint site
-- `Filter(...)` — Filters the list based on conditions
-- `Category = Topic.DeviceType` — Matches the Category column to the user's choice (e.g., "Laptop")
-- `Status = "Available"` — Only shows devices with Status = "Available"
+### 7.1.2 `vpn-troubleshooting`
 
-[SCREENSHOT: Power Fx formula editor showing the Filter expression]
+- **Name:** `vpn-troubleshooting`
+- **Description:** `Use when a user reports VPN connection problems (can't connect, keeps dropping, slow).`
+- **Instructions:**
 
-4. Select **Save** or **Done**
+```markdown
+# When to activate
+The user reports a VPN issue: cannot connect, frequent disconnects, or slow VPN.
 
-**✅ Checkpoint:** The `AvailableDevices` variable now contains a filtered list of devices matching the user's choice and availability status.
+# Guidelines
+1. Ask one focused question if needed (error message, client/app, on/off corporate network).
+2. Walk quick fixes first: sign out/in of the VPN client, switch network, restart client.
+3. Then ordered steps: check credentials, update the VPN client, try an alternate gateway.
+4. If still unresolved, offer to log a ticket (hand off to smart-triage).
 
-### Power Fx Tips
+# Examples
+- "My VPN keeps disconnecting and restarting didn't help" → quick fixes → steps → offer ticket.
 
-**Accessing SharePoint data:**
-- Syntax: `'SiteName'.ListName`
-- If the site name has spaces, wrap it in single quotes: `'Contoso IT'`
-
-**Common operators:**
-- `=` — Equals
-- `&&` — AND
-- `||` — OR
-- `>`, `<`, `>=`, `<=` — Comparison
-
-**Referencing variables:**
-- Topic-level variables: `Topic.VariableName`
-- Global variables: `Global.VariableName`
-
----
-
-## Lab 7.4: Display the Results to the User
-
-**Objective:** Show the user which devices are available.
-
-### Step 1: Add a Condition Node to Check Results
-
-Before displaying devices, check if any were found.
-
-1. Below the **Set variable** node, select **+ Add node**
-2. Select **Add a condition** (or **Condition**)
-
-[SCREENSHOT: Add node menu showing "Add a condition"]
-
-3. A **Condition** node is added with two branches: **True** and **False**
-
-[SCREENSHOT: Condition node showing two branches]
-
-### Step 2: Configure the Condition
-
-1. In the **Condition** node, locate the **Condition** field
-2. Select the **fx** icon to open the formula editor
-3. Enter:
-   ```powerFx
-   CountRows(Topic.AvailableDevices) > 0
-   ```
-
-**What this checks:**
-- `CountRows(...)` — Counts how many devices are in the `AvailableDevices` variable
-- `> 0` — If more than 0, condition is **True**; otherwise **False**
-
-[SCREENSHOT: Condition node showing the CountRows formula]
-
-4. Select **Save**
-
-**✅ Checkpoint:** The flow branches based on whether devices were found.
-
-### Step 3: Add a Message Node for "Devices Found" (True Branch)
-
-1. On the **True** branch, select **+ Add node**
-2. Select **Send a message**
-
-[SCREENSHOT: Add node menu on True branch showing "Send a message"]
-
-3. A **Message** node is added
-
-4. In the **Message** field, enter:
-   ```
-   Here are the available {Topic.DeviceType} devices:
-   ```
-
-5. Below the message, add a **dynamic list** of devices:
-   - Select **Add** → **Table** (or **List**)
-   - Configure the table to display device details:
-     - **Data source:** `Topic.AvailableDevices`
-     - **Columns to show:**
-       - `Title` (Device name)
-       - `Brand`
-       - `Model`
-       - `Location`
-
-[SCREENSHOT: Message node showing dynamic table configuration with AvailableDevices as data source]
-
-> **Note:** The exact UI for configuring tables/lists varies. You may need to use Power Fx to format the output. If a visual table isn't available, use a text-based format:
-
-**Alternative (text-based):**
-```
-Here are the available {Topic.DeviceType} devices:
-
-{ForAll(Topic.AvailableDevices, Title & " - " & Brand & " " & Model & " (Location: " & Location & ")")}
+# Notes
+Keep steps short and numbered. Don't request passwords.
 ```
 
-6. Select **Save**
+### 7.1.3 `smart-triage`
 
-**✅ Checkpoint:** If devices are found, the agent displays them in a list or table.
+This is the skill that turns an unresolved issue into a **ticket**. It tells Bit to read your SharePoint list's **schema** and create a record — using the tools you'll add in Lab 7.2.
 
-### Step 4: Add a Message Node for "No Devices Found" (False Branch)
+- **Name:** `smart-triage`
+- **Description:** `Use when an issue can't be resolved in chat or needs admin access and the user agrees to log a ticket.`
+- **Instructions:**
 
-1. On the **False** branch, select **+ Add node**
-2. Select **Send a message**
+```markdown
+# When to activate
+An issue cannot be resolved directly (or needs admin access) and the user agrees
+to log a ticket.
 
-[SCREENSHOT: Add node menu on False branch]
+# Guidelines
+1. Query the IT Help Desk SharePoint site and look up the Tickets list.
+2. Understand the schema of the Tickets list columns (Title, Description,
+   Status, Priority, Category, Requestor).
+3. Create a ticket in the Tickets list using the Create-item tool:
+   - Title  = one-line summary
+   - Description = symptoms + what was already tried
+   - Category = Hardware | Software | Network | Access | Other
+   - Priority = Low | Normal | High | Critical (Critical if user is fully blocked)
+   - Status = New
+4. Send the user a confirmation email (Send-email tool) including the ticket
+   number and priority.
 
-3. In the **Message** field, enter:
-   ```
-   Sorry, there are no available {Topic.DeviceType} devices at the moment. Please contact IT support at support@contoso.com to check availability.
-   ```
+# Examples
+- "This needs admin access — log a ticket" → create record → email confirmation.
 
-[SCREENSHOT: Message node on False branch showing "no devices" message]
-
-4. Select **Save**
-
-**✅ Checkpoint:** If no devices are found, the agent explains and suggests contacting IT.
-
----
-
-## Lab 7.5: Test the Device Request Topic
-
-**Objective:** Verify the topic works end-to-end.
-
-### Step 1: Save the Topic
-
-1. At the top of the topic designer, select **Save** (or **Save topic**)
-
-[SCREENSHOT: Topic designer toolbar with Save button]
-
-2. Wait for the save confirmation
-
-### Step 2: Open the Test Pane
-
-1. Select **Test** (top right) or navigate back to the Overview page
-2. The **Test pane** should appear on the right side
-
-[SCREENSHOT: Test pane next to topic designer or Overview page]
-
-3. Select **New test session** (circular arrows icon) to start fresh
-
-### Step 3: Trigger the Topic
-
-1. In the Test pane, type:
-   ```
-   I need a laptop
-   ```
-
-2. Press **Enter**
-
-**Expected flow:**
-1. Agent recognizes the trigger phrase and activates the **Device Request** topic
-2. Agent asks: **"What type of device do you need?"**
-3. You see buttons: Laptop, Monitor, Keyboard, Mouse, Headset
-
-[SCREENSHOT: Test pane showing question with multiple choice buttons]
-
-3. Select **Laptop**
-
-**Expected result:**
-- Agent queries the Devices SharePoint list
-- Filters for `Category = "Laptop"` and `Status = "Available"`
-- Displays matching devices (e.g., "Dell Latitude 7430 - Dell Latitude 7430 (Location: Warehouse A)")
-
-[SCREENSHOT: Test pane showing list of available laptops]
-
-**✅ Checkpoint:** The topic successfully queries SharePoint and displays results.
-
-### Step 4: Test the "No Devices" Path
-
-1. Start a **new test session**
-2. Type:
-   ```
-   I need a webcam
-   ```
-
-3. Press **Enter**
-4. Select **Headset** (or any category with no "Available" items in your Devices list)
-
-**Expected result:**
-- Agent searches for available headsets
-- Finds none (assuming you don't have any)
-- Displays: "Sorry, there are no available Headset devices at the moment. Please contact IT support..."
-
-[SCREENSHOT: Test pane showing "no devices" message]
-
-**✅ Checkpoint:** The topic handles the "no results" scenario gracefully.
-
----
-
-## Lab 7.6: Update Agent Instructions to Mention Topics
-
-**Objective:** Tell the agent to suggest the Device Request topic for device-related questions.
-
-### Step 1: Edit Instructions
-
-1. Navigate to the **Overview page**
-2. Scroll to the **Instructions** section
-3. Select **Edit**
-
-4. Add the following paragraph to the instructions (under the "Response Rules" section):
-
-```
-**When to use topics:**
-- If the user asks about requesting or finding devices, suggest using the Device Request topic: "I can help you find available devices. Just say 'I need a laptop' or 'request a device' and I'll show you what's available."
-- For general device questions (e.g., "What devices do you have?"), search the Devices list and provide a summary.
+# Notes
+Read the live list schema before creating the record so fields map correctly.
 ```
 
-[SCREENSHOT: Instructions editor showing the new "When to use topics" section]
+> 🧠 Notice Bit isn't told *how* to read the schema step-by-step — the enhanced orchestrator figures that out using the **Create item** tool. You describe intent; it plans the steps.
 
-5. Select **Save**
+### 7.1.4 `software-installation-request`
 
-**✅ Checkpoint:** The agent now knows to guide users toward the Device Request topic.
+- **Name:** `software-installation-request`
+- **Description:** `Use when a user asks to install or request software.`
+- **Instructions (v1 — knowledge only for now):**
 
-### Step 2: Test the Updated Instructions
+```markdown
+# When to activate
+The user asks to install or request a software application.
 
-1. In the Test pane, start a new session
-2. Type:
+# Guidelines
+1. Look up the requested app in the Contoso Approved Software List knowledge.
+2. If the app is self-service: tell the user no approval is needed and give the
+   install steps.
+3. If the app requires manager sign-off: tell the user approval is required.
+   (In Module 09 you'll update this skill to actually start the approval workflow.)
+
+# Examples
+- "Can I install Power BI Desktop?" → self-service → no approval, here are steps.
+- "I need Microsoft Visio" → requires manager sign-off → approval needed.
+
+# Notes
+Only reference apps from the approved list. If it's not listed, offer to log a ticket.
+```
+
+> ✏️ You'll **edit** this skill in [Module 09](../09-automate-with-agent-flows/) to call the manager-approval **workflow**. Editing a skill is how you iterate behavior — no rebuilding required.
+
+**✅ Checkpoint:** Bit's **Skills** list shows all four skills. Select any skill → note you can **download** it (proof that skills are portable, reusable units).
+
+> ⏳ Don't fully test the ticket/password flows yet — they need the **tools** below. A quick `vpn-troubleshooting` check (knowledge + reasoning only) is fine now.
+
+---
+
+## Lab 7.2: Equip Bit's Tools
+
+Skills tell Bit *what* to do; **Tools** let him actually *do* it. Add tools from the **Build** page → **Tools**. Types include **connectors**, **MCP servers**, **REST APIs**, **Workflows**, and **prompts**. The orchestrator decides when to call a tool based on the conversation, Bit's instructions, your skills, and each tool's **description**.
+
+> 🤖 **AI-filled inputs:** for connector actions, Copilot Studio can **let AI fill the inputs** from conversation context (the default). You can also fill a field manually or add context to guide the AI.
+>
+> 👤 **Execution context — reconciled with Module 06.** In Module 06 you set **Authenticate with Microsoft**, so tools can run **as the signed-in user**. Each tool can *also* be set to run **as the maker** (your account). For this workshop demo, running these two tools **as the maker** is simplest and most predictable; in production you'd typically run them **as the user**. Pick one approach and apply it consistently.
+
+### 7.2.1 Add the Send-email tool
+
+1. **Build** → **Tools** → **+ Add a tool** → **Connectors** → **Office 365 Outlook**.
+2. Choose the **Send an email (V2)** action.
+3. Set the **execution context** (as the maker for the demo — see the note above).
+4. Leave inputs (To, Subject, Body) set to **AI fills** (the default). **Save / Add.**
+
+[SCREENSHOT: Adding the Office 365 Outlook "Send an email (V2)" tool with AI-filled inputs]
+
+> The `password-reset` and `smart-triage` skills reference "send email" — this is the tool that makes that real.
+
+### 7.2.2 Add the Create-item tool
+
+1. **Tools** → **+ Add a tool** → **Connectors** → **SharePoint** → **Create item**.
+2. Add context so it targets the right list, for example:
+
+   ```text
+   The site address must be the IT Help Desk site and the list name must be Tickets.
    ```
-   Can you help me get a laptop?
+
+   (Paste your actual **site URL** and confirm the **list name** is `Tickets`.)
+3. **Save / Add.**
+
+[SCREENSHOT: Adding the SharePoint "Create item" tool targeting the IT Help Desk site and Tickets list]
+
+> 🧠 You don't pre-map every column. The `smart-triage` skill tells Bit to read the **list schema** at runtime, and the orchestrator maps fields when it calls **Create item**.
+
+**✅ Checkpoint:** Bit has two tools — **Send an email** and **Create item**.
+
+---
+
+## Lab 7.3: Test — Password Reset (Email)
+
+1. **Preview** → new chat:
+
+   ```text
+   I'm locked out and I forgot my password.
    ```
 
-3. Press **Enter**
+2. Following `password-reset`, Bit confirms your **name and email**, then asks to **verify identity** (employee ID). Provide it.
+3. On verification, Bit calls **Send an email** and tells you a reset link was sent. **Check your mailbox** for the email.
 
-**Expected behavior:**
-- The agent may trigger the Device Request topic directly (if the phrase matches)
-- OR the agent may respond generatively with: "I can help you find available devices. Just say 'I need a laptop'..."
+[SCREENSHOT: Preview pane showing Bit completing the password-reset flow and sending an email]
 
-Either response is correct — the agent is learning to guide users.
-
----
-
-## Understanding Topic Flow Execution
-
-When a topic is triggered, here's what happens:
-
-1. **User sends message** → "I need a laptop"
-2. **Agent checks topics** → Matches "I need a laptop" to Device Request topic trigger
-3. **Topic activates** → Topic flow takes control
-4. **Nodes execute sequentially:**
-   - Question node → Asks "What type of device?"
-   - User responds → "Laptop"
-   - Variable is set → `DeviceType = "Laptop"`
-   - Power Fx query runs → Filters SharePoint list
-   - Condition checks → Are there results?
-   - Message displays → Shows devices or "none found"
-5. **Topic ends** → Control returns to generative agent
-
-The user experiences this as a **seamless conversation**, not a rigid form.
+**✅ Checkpoint:** Bit verified identity and sent a reset email.
 
 ---
 
-## Advanced Topic Features (Preview)
+## Lab 7.4: Test — Log a Ticket (Triage → Create item + Email)
 
-You can extend topics with:
+1. New chat. Describe something needing admin access, e.g.:
 
-### Adaptive Cards (Module 08)
-- Instead of plain text lists, display devices in rich, interactive cards
-- Show device images, details, and action buttons
+   ```text
+   My account can't access the shared finance drive and I think it needs admin rights.
+   ```
 
-### Tool Calls (Module 09)
-- Add a node that triggers an **Agent Flow** (e.g., send email when device is requested)
+2. Bit searches knowledge, recognizes it needs admin access, and offers to log a ticket. Reply:
 
-### Validation
-- Add validation to question nodes (e.g., "Please select a valid category")
+   ```text
+   Yes, please log a ticket.
+   ```
 
-### Loops
-- Repeat sections of the flow (e.g., "Would you like to request another device?")
+3. `smart-triage` activates. Watch Bit:
+   - grab the **Tickets list metadata** and understand the **column schema**,
+   - call **Create item** to create the record, then
+   - call **Send an email** with the **ticket number and priority**.
+4. **Verify in SharePoint:** open the **Tickets** list — the new row is there. **Check your mailbox** for the confirmation email.
+
+[SCREENSHOT: The new ticket row in the SharePoint Tickets list + the confirmation email]
+
+> 🎉 That's an agent answering *and* acting: reading a list schema, writing a record, and emailing a confirmation — all driven by a markdown skill plus two connector tools.
+
+**✅ Checkpoint:** Bit logged a real ticket and emailed a confirmation.
 
 ---
 
-## Troubleshooting Common Issues
+## Lab 7.5: Iterate — Add a PDF Report to the Ticket
 
-### Issue 1: Topic Doesn't Trigger
+Skills are editable — let's level up `smart-triage` so it also produces a PDF.
 
-**Symptoms:** Type "I need a laptop" but the agent responds generatively instead of activating the topic.
+1. **Skills** → open **`smart-triage`** → **edit the instructions**. Keep the triage steps and add:
 
-**Solutions:**
-1. Verify trigger phrases are saved in the topic
-2. Check the topic is **published** (some environments require explicit publish)
-3. Rephrase the trigger more closely (e.g., exact match: "I need a device")
-4. Check if another topic with similar triggers is conflicting
+   ```markdown
+   # After creating the ticket
+   - Generate a one-page PDF report that summarizes the ticket (number, summary,
+     description, category, priority, requestor, date).
+   - When sending the confirmation email, attach the PDF report to the email.
+   ```
 
-### Issue 2: Power Fx Query Returns No Results
+2. **Save** the skill. Bit uses his **built-in PDF skill** to generate the document — no extra tool needed.
 
-**Symptoms:** Agent says "no devices found" even though devices exist.
+3. **Preview** → new chat → test a hardware issue:
 
-**Possible causes:**
-- SharePoint list name or column name is incorrect
-- SharePoint site isn't indexed yet
-- Permissions issue
+   ```text
+   I spilled coffee on my phone and now it won't turn on at all.
+   ```
 
-**Solutions:**
-1. Test the formula manually:
-   - In the Power Fx editor, select **Test formula** (if available)
-   - Or add a temporary message node that displays `Topic.AvailableDevices` to see raw results
-2. Verify SharePoint connection in the Knowledge section
-3. Check SharePoint column names match exactly (case-sensitive)
-4. Ensure the Devices list has items with `Status = "Available"`
+   Then **log a ticket**. Bit creates the **Tickets** row, **generates the PDF**, and **sends the confirmation email with the PDF attached**.
 
-### Issue 3: Variable Not Saving
+4. **Verify:** a new row in the Tickets list, and an email with the **PDF attachment**.
 
-**Symptoms:** The agent asks the question but doesn't filter results correctly.
+[SCREENSHOT: Confirmation email with the generated one-page PDF ticket report attached]
 
-**Solutions:**
-1. Verify the **Save response as** field in the Question node is set to `DeviceType`
-2. Check the Power Fx formula references `Topic.DeviceType`, not just `DeviceType`
-3. Add a debug message node that displays `Topic.DeviceType` to verify the value
+> ⚠️ **Facilitator note (preview behavior).** Built-in PDF *generation* is a preview capability and may not be lit up in every tenant. If Bit can't produce a PDF attachment, fall back to having the confirmation email include a **formatted text/HTML summary** of the ticket instead — the teaching point (iterating a skill to add a step) is identical. Confirm this works in your tenant before the workshop.
+
+**✅ Checkpoint:** Bit logs a ticket *and* attaches a one-page report (PDF, or a formatted summary as a fallback).
 
 ---
 
 ## Key Takeaways
 
-- **Topics** provide structured, predictable conversation flows
-- **Trigger phrases** activate topics when the user's intent matches
-- **Question nodes** gather input and save it to variables
-- **Power Fx** queries SharePoint lists and manipulates data
-- **Condition nodes** create branching logic (if/else)
-- **Message nodes** display static or dynamic content
-- **Combining generative + topics** = flexible, intelligent agents with structured workflows
+- **Skills replace topics** — reusable markdown behaviors selected by the orchestrator, no trigger phrases
+- **Skill names use hyphens** (workflows use underscores — different rules)
+- **Tools provide the muscle** — connectors the orchestrator calls; **AI fills** the inputs
+- **Execution context matters** — run a tool as the **user** or the **maker**; choose deliberately and consistently
+- **Schema-at-runtime** — `smart-triage` reads the Tickets list schema; you don't pre-map columns
+- **Skills are editable** — adding the PDF step is a quick instruction change, not a rebuild
 
 ---
 
 ## What You've Built
 
-You now have an agent with:
-- ✅ Generative knowledge base (from Module 06)
-- ✅ Structured Device Request topic with:
-  - 8 trigger phrases
-  - Question node to gather device type
-  - Power Fx query to filter SharePoint data
-  - Conditional branching for "found" vs "not found"
-  - Dynamic display of results
+Bit now takes real action:
+- ✅ Four reusable skills (`password-reset`, `vpn-troubleshooting`, `smart-triage`, `software-installation-request`)
+- ✅ Two tools (Outlook **Send an email**, SharePoint **Create item**)
+- ✅ Resets passwords by email, logs tickets to SharePoint, and emails confirmations — with a generated report
 
 ---
 
 ## Next Steps
 
-In **Module 08: Enhance with Adaptive Cards**, you'll replace the plain text device list with a rich, interactive **Adaptive Card** that displays:
-- Device images (using the `DeviceImage` column from Module 00)
-- Formatted device details
-- Action buttons (e.g., "Request this device")
-
-Adaptive Cards make your agent's responses visually engaging and user-friendly.
+In **Module 08: Enhance with Adaptive Cards**, you'll make Bit's responses richer — presenting the ticket he just logged (or a software request) as an interactive **Adaptive Card** instead of plain text.
 
 ---
 
-**Course Navigation:** [← Module 06](../06-build-custom-agent/README.md) | [Course Index](../README.md) | [Next: Module 08 →](../08-enhance-with-adaptive-cards/README.md)
+**Course Navigation:** [← Module 06](../06-build-custom-agent/) | [Course Index](../) | [Next: Module 08 →](../08-enhance-with-adaptive-cards/)
