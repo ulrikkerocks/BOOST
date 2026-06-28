@@ -1,0 +1,209 @@
+{
+  "workflow": "agent-academy-course-recreation",
+  "projectRoot": "c:\\Source\\BOOST",
+  "activeSessionId": "session-1",
+  "sessions": [
+    {
+      "id": "session-1",
+      "label": "Recreate Agent Academy Recruit Course for New Copilot Studio UI",
+      "status": "completed",
+      "startedAt": "2026-06-17T00:00:00Z",
+      "updatedAt": "2026-06-17T00:05:00Z",
+      "currentPhase": "Complete",
+      "originalRequest": "I would like you to recreate the whole Agent Academy Course for the new ui and put it in my repo",
+      "classification": {
+        "type": "documentation",
+        "buildPath": null,
+        "complexity": "complex",
+        "responseMode": "full"
+      },
+      "todos": [
+        {
+          "id": 1,
+          "title": "Initialize workshop module structure",
+          "status": "completed"
+        },
+        {
+          "id": 2,
+          "title": "Create Module 00: Course Setup",
+          "status": "not-started"
+        },
+        {
+          "id": 3,
+          "title": "Create Module 01: Introduction to Agents",
+          "status": "not-started"
+        },
+        {
+          "id": 4,
+          "title": "Create Module 02: Copilot Studio Fundamentals",
+          "status": "not-started"
+        },
+        {
+          "id": 5,
+          "title": "Create Module 03: Declarative Agent for M365 Copilot",
+          "status": "not-started"
+        },
+        {
+          "id": 6,
+          "title": "Create Module 04: Creating a Solution",
+          "status": "not-started"
+        },
+        {
+          "id": 7,
+          "title": "Create Module 05: Pre-Built Agents",
+          "status": "not-started"
+        },
+        {
+          "id": 8,
+          "title": "Create Module 06: Build a Custom Agent",
+          "status": "not-started"
+        },
+        {
+          "id": 9,
+          "title": "Create Module 07: Add a Topic with Triggers",
+          "status": "not-started"
+        },
+        {
+          "id": 10,
+          "title": "Create Module 08: Enhance with Adaptive Cards",
+          "status": "not-started"
+        },
+        {
+          "id": 11,
+          "title": "Create Module 09: Automate with Agent Flows",
+          "status": "not-started"
+        },
+        {
+          "id": 12,
+          "title": "Create Module 10: Add Event Triggers",
+          "status": "not-started"
+        },
+        {
+          "id": 13,
+          "title": "Create Module 11: Publish Your Agent",
+          "status": "not-started"
+        },
+        {
+          "id": 14,
+          "title": "Create Module 12: Understanding Licensing",
+          "status": "not-started"
+        },
+        {
+          "id": 15,
+          "title": "Create Module 13: Securing Your Recruit Badge",
+          "status": "not-started"
+        },
+        {
+          "id": 16,
+          "title": "Update facilitator guide with all modules",
+          "status": "not-started"
+        },
+        {
+          "id": 17,
+          "title": "Create master course index/navigation",
+          "status": "not-started"
+        }
+      ],
+      "directives": [
+        {
+          "directive": "Structure: Create workshop/modules/ with numbered folders (00-course-setup/, 01-introduction-to-agents/, etc.), each with README.md",
+          "capturedAt": "2026-06-17T00:00:00Z",
+          "source": "agent"
+        },
+        {
+          "directive": "Content: Adapt original microsoft/agent-academy content with UI updates based on research notes",
+          "capturedAt": "2026-06-17T00:00:00Z",
+          "source": "agent"
+        },
+        {
+          "directive": "Screenshots: Use descriptive placeholders like [SCREENSHOT: Overview page showing Instructions section] with references to screenshot-audit-checklist",
+          "capturedAt": "2026-06-17T00:00:00Z",
+          "source": "agent"
+        },
+        {
+          "directive": "Preserve the connected scenario: All modules build ONE agent (Contoso Helpdesk Agent) using Contoso IT SharePoint site",
+          "capturedAt": "2026-06-17T00:00:00Z",
+          "source": "agent"
+        }
+      ],
+      "decisions": [],
+      "delegations": [
+        {
+          "agent": "Technical Writer",
+          "task": "Create all 14 course modules (00-13) adapted for new Copilot Studio UI",
+          "status": "completed",
+          "result": "All 14 modules successfully created in workshop/modules/ with updated UI content, screenshot placeholders, and workshop-ready format. Connected scenario preserved throughout. Total: ~8 hours of hands-on content.",
+          "outputArtifacts": [
+            "workshop/modules/00-course-setup/README.md",
+            "workshop/modules/01-introduction-to-agents/README.md",
+            "workshop/modules/02-copilot-studio-fundamentals/README.md",
+            "workshop/modules/03-declarative-agent-m365/README.md",
+            "workshop/modules/04-creating-a-solution/README.md",
+            "workshop/modules/05-prebuilt-agents/README.md",
+            "workshop/modules/06-build-custom-agent/README.md",
+            "workshop/modules/07-add-topic-with-triggers/README.md",
+            "workshop/modules/08-enhance-with-adaptive-cards/README.md",
+            "workshop/modules/09-automate-with-agent-flows/README.md",
+            "workshop/modules/10-add-event-triggers/README.md",
+            "workshop/modules/11-publish-your-agent/README.md",
+            "workshop/modules/12-understanding-licensing/README.md",
+            "workshop/modules/13-securing-recruit-badge/README.md"
+          ]
+        },
+        {
+          "agent": "Technical Writer",
+          "task": "Complete facilitator guide with notes for modules 06-13 and create master course index",
+          "status": "completed",
+          "result": "Facilitator guide updated with detailed notes for modules 06-13 including timing, common pitfalls, and troubleshooting. Master course index (workshop/README.md) created with full navigation, prerequisites, learning path, and delivery formats.",
+          "outputArtifacts": [
+            "workshop/facilitator-guide.md",
+            "workshop/README.md"
+          ]
+        }
+      ],
+      "orchestrationLog": [],
+      "pendingGates": [],
+      "blockers": [],
+      "artifacts": {
+        "research": [
+          "research/new-ui-notes.md",
+          "research/old-course-notes.md",
+          "research/change-log.md"
+        ],
+        "existing": [
+          "workshop/facilitator-guide.md",
+          "workshop/participant-reference-card.md",
+          "workshop/screenshot-audit-checklist.md",
+          "workshop/02-copilot-studio-fundamentals/overview-page-orientation.md",
+          "workshop/09-add-an-agent-flow/workflows-callout.md"
+        ]
+      },
+      "notes": [
+        "The course consists of 14 modules (00-13) covering the full Agent Academy Recruit curriculum",
+        "Key UI changes: Overview page is now the main authoring surface, new Workflows experience, updated navigation",
+        "User has already completed research and created supplementary materials for modules 02 and 09",
+        "Original course URL: https://microsoft.github.io/agent-academy/recruit/",
+        "Original source: https://github.com/microsoft/agent-academy",
+        "All modules created by Technical Writer - workshop-ready with screenshot placeholders",
+        "Total course duration: ~8 hours of hands-on content",
+        "Connected scenario preserved: All modules build ONE agent (Contoso Helpdesk Agent)"
+      ],
+      "lessonsLearned": [
+        {
+          "category": "pattern-that-worked",
+          "summary": "Screenshot placeholders with clear descriptions enable asynchronous screenshot capture",
+          "detail": "Using detailed descriptions like [SCREENSHOT: Overview page with Publish button highlighted] allows the screenshot team to work independently without constant back-and-forth clarification.",
+          "appliesTo": ["technical-writing", "documentation"],
+          "severity": "medium"
+        },
+        {
+          "category": "platform-quirk",
+          "summary": "Copilot Studio UI is still stabilizing with frequent navigation changes",
+          "detail": "The new Overview page model launched in late 2025 but continues to evolve. Documentation should include version timestamps (e.g., 'Last updated: June 2026') to track freshness.",
+          "appliesTo": ["microsoft-copilot-studio", "documentation"],
+          "severity": "medium"
+        }
+      ]
+    }
+  ]
+}

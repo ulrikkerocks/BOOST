@@ -1,0 +1,225 @@
+{
+  "main": {
+    "id": "318c490128d62216",
+    "type": "split",
+    "children": [
+      {
+        "id": "9ef030f60127388d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6afe30b11505ed54",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "research/new-ui-notes.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "new-ui-notes"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "79201a899b7b60c7",
+    "type": "split",
+    "children": [
+      {
+        "id": "903cddb90f580f7e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "60c78bc75316cc1c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "59ffcb028bee7d20",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "a67b9d61ac2fce33",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "ab55ca86d133c448",
+    "type": "split",
+    "children": [
+      {
+        "id": "50d4ba2c98ea3efb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1480c8c024108cfa",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "research/new-ui-notes.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for new-ui-notes"
+            }
+          },
+          {
+            "id": "5d022ec8eaa7e75b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "research/new-ui-notes.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from new-ui-notes"
+            }
+          },
+          {
+            "id": "e8e94289f69b0a03",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "d0c82235a7ced942",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "761d290a2cc3d120",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "research/new-ui-notes.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of new-ui-notes"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "6afe30b11505ed54",
+  "lastOpenFiles": [
+    "boost-tech-forward-theme.png",
+    "docs/assets/css/style.scss",
+    "docs/assets/css/style.scss.bak",
+    "docs/assets/css",
+    "docs/assets",
+    "workshop/facilitator-guide.md",
+    "docs/modules/13-securing-recruit-badge/README.md",
+    "docs/modules/12-understanding-licensing/README.md",
+    "docs/modules/11-publish-your-agent/README.md",
+    "docs/modules/10-add-event-triggers/README.md",
+    "docs/modules/09-automate-with-agent-flows/README.md",
+    "docs/modules/08-enhance-with-adaptive-cards/README.md",
+    "docs/modules/04-creating-a-solution/README.md",
+    "docs/modules/07-add-topic-with-triggers/README.md",
+    "docs/modules/06-build-custom-agent/README.md",
+    "docs/modules/05-prebuilt-agents/README.md",
+    "docs/modules/03-declarative-agent-m365/README.md",
+    "docs/modules/02-copilot-studio-fundamentals/README.md",
+    "docs/modules/01-introduction-to-agents/README.md",
+    "docs/modules/00-course-setup/README.md",
+    "docs/modules/13-securing-recruit-badge",
+    "docs/modules/12-understanding-licensing",
+    "docs/modules/11-publish-your-agent",
+    "docs/modules/10-add-event-triggers",
+    "docs/modules/09-automate-with-agent-flows",
+    "docs/modules/08-enhance-with-adaptive-cards",
+    "docs/09-add-an-agent-flow/workflows-callout.md",
+    "docs/02-copilot-studio-fundamentals/overview-page-orientation.md",
+    "docs/screenshot-audit-checklist.md",
+    "docs/README.md",
+    "docs/participant-reference-card.md",
+    "docs/facilitator-guide.md",
+    "workshop/README.md",
+    "workshop/modules/13-securing-recruit-badge/README.md",
+    "workshop/modules/12-understanding-licensing/README.md",
+    "workshop/modules/11-publish-your-agent/README.md"
+  ]
+}

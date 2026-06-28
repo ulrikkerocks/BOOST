@@ -20,19 +20,19 @@ The core shift is from a **tab/menu navigation model** to an **Overview page mod
   - Suggestions are session-only (don't persist if dismissed).
 - **Overview page** = single-page authoring canvas after agent is created.
   - All sections visible at once (scroll down):
-    - **Details** (name, description) — Edit button inline
+    - **Details** (name, description, agent status preview) — Edit button inline
+    - **Select your agent's model** — AI model dropdown (options include GPT-5 Chat, GPT-4.1, etc.)
     - **Instructions** — Edit button inline (up to 8,000 chars)
-    - **Triggers** — Add/manage triggers
-    - **Knowledge** — Add knowledge sources (SharePoint, websites, files, Dataverse, Azure AI Search, connectors)
-    - **Tools** — Add tools (connectors, flows, Agent Flows, Workflows, MCP, custom APIs)
-    - **Connected Agents** — Multi-agent orchestration
-    - **Topics** — Add/manage topics
-    - **Channels** — Deployment targets
-    - **Suggested Prompts** — Up to 10 starter prompts for Teams/M365
+    - **Knowledge** — Add knowledge sources; includes "General web search" toggle (enabled by default)
+    - **Tools** — Add tools; includes "Work IQ" toggle (M365 personalization layer)
+    - **Triggers** — Add triggers (event-based activation)
+    - **Agents** — Sub-agents for multi-agent orchestration
+    - **Topics** — Shows first 3 topics + "See all" link
+    - **Suggested Prompts** — Starter prompts for Teams/M365 channels
+  - **Channels is NOT on the Overview canvas** — accessed via the "+8" overflow menu in top nav
   - **Test pane** always visible on the right (restart session button = "new test session" icon)
-  - **Settings** via gear ⚙️ in description box → language, solution, schema name, advanced
-  - **Publish** button at top of page
-  - **Three dots (…)** menu next to Publish → Go to demo website, Delete, etc.
+  - **Publish** button top right
+  - **+8 overflow menu** in the tab bar → expands to: Knowledge, Tools, Agents, Topics, Activity, Evaluation, Analytics, Channels
 
 ---
 
@@ -41,20 +41,27 @@ The core shift is from a **tab/menu navigation model** to an **Overview page mod
 ```
 Left Sidebar (global):
 ├── Home
-├── Agents (list)
-├── Flows (Agent Flows)
-├── Workflows (new - in early release)
-├── Connections
-└── Settings (environment-level)
+├── Agents (list)  ← currently active when inside an agent
+├── Flows
+├── Tools
+└── ... (more)
 
-Within an Agent:
-├── Overview  ← PRIMARY authoring surface
-├── Topics
-├── Actions (redirects to Tools on Overview)
-├── Knowledge (redirects to Knowledge on Overview)
-├── Analytics
-├── Activity
-└── Settings (agent-level)
+Within an Agent (top tab bar):
+├── Overview  ← PRIMARY authoring surface (always visible as tab)
+└── +8 (overflow menu):
+    ├── Knowledge
+    ├── Tools
+    ├── Agents
+    ├── Topics
+    ├── Activity
+    ├── Evaluation
+    ├── Analytics
+    └── Channels  ← publish/deploy targets
+
+Top action bar (top right within agent):
+├── Publish  (button)
+├── Test  (button)
+└── ...  (more options)
 ```
 
 ---
