@@ -1,4 +1,4 @@
-# Module 02: Copilot Studio Fundamentals
+# Module 02: New Copilot Studio Fundamentals
 
 **Codename:** OPERATION CORE PROTOCOL  
 **Time:** 35 minutes  
@@ -9,152 +9,151 @@
 ## Learning Objectives
 
 By the end of this module, you will be able to:
-- Navigate the Copilot Studio Overview page with confidence
-- Identify the four building blocks of every agent: Knowledge, Tools, Topics, Instructions
-- Understand how these building blocks work together in the agent orchestrator
-- Recognize where each building block lives in the Copilot Studio UI
-- Explain how agents use RAG to ground responses in real data
+- Navigate the new Copilot Studio **Build page** with confidence
+- Identify the building blocks of every agent: Instructions, Knowledge, Skills, Tools, Memory, Connected agents, and Model
+- Understand how these building blocks work together through the enhanced orchestrator
+- Recognize where each building block lives in the new interface
+- Explain how agents use RAG to ground responses, and how Skills replace topics
 
 ## Overview
 
-Every agent in Copilot Studio is built from the same four fundamental components. Understanding these building blocks — and where they live in the interface — is the key to becoming an effective agent builder.
+Every agent in the new Copilot Studio is built from the same set of building blocks, all visible on a single **Build page**. Understanding these blocks — and where they live in the interface — is the key to becoming an effective agent builder.
 
 In this module, you'll learn:
-1. **The new Copilot Studio UI** — specifically the Overview page model
-2. **The four building blocks** — what they are and how they work together
-3. **The orchestration flow** — how the agent decides what to do with each user message
+1. **The new Copilot Studio UI** — specifically the single Build page
+2. **The building blocks** — what they are and how they work together
+3. **The orchestration flow** — how the enhanced orchestrator decides what to do with each user message
 
 By the end, you'll have a mental map of both the concepts **and** the interface.
 
+> 🆕 **If you've used classic Copilot Studio:** the old "four building blocks" included **Topics** (visual conversation flows with trigger phrases). The new experience has **no topics and no trigger phrases**. Their job is now done by **Skills** (reusable markdown instructions) and the enhanced orchestrator. We'll call that out as we go.
+
 ---
 
-## The Copilot Studio Overview Page
+## The Copilot Studio Build Page
 
-Before we dive into the four building blocks, let's orient you in the new Copilot Studio interface. When you open any agent, you'll land on the **Overview page** — this is your main authoring surface.
+When you open an agent in the new experience, you land on the **Build page** — your main authoring surface. Everything about the agent lives here, in one place.
 
-> **Why this matters:** Everything you build in this course lives on the Overview page. Understanding this layout now will save you time in every lab.
+> **Why this matters:** Everything you build in this course lives on the Build page. Understanding this layout now will save you time in every lab.
 
-### What Is the Overview Page?
+### What Is the Build Page?
 
-The Overview page is a **single scrollable canvas** showing all your agent's components at once. You no longer navigate to separate tabs for each feature — it's all visible in one view.
+The Build page is a **single canvas** showing all your agent's components at once. You don't navigate to separate tabs for each feature — Instructions, Knowledge, Skills, Tools, Memory, Connected agents, and Model are all visible together, with a live **Test/Preview pane** beside them.
 
-**Old model (pre-2025):** Multiple tabs for Topics, Actions, Settings, etc.  
-**New model (current):** One Overview page with sections you scroll through.
+**Classic model:** Multiple tabs / an Overview page built around Topics and Actions.  
+**New model:** One **Build** page built around Instructions, Knowledge, **Skills**, Tools, **Memory**, **Connected agents**, and **Model**.
 
-[SCREENSHOT: Full Copilot Studio Overview page showing all sections from Details to Suggested Prompts, with Test pane on the right]
+[SCREENSHOT: Full Copilot Studio Build page showing the Instructions, Knowledge, Skills, Tools, Memory, Connected agents and Model blocks, with the Preview pane on the right]
 
-### Overview Page Layout
+### Build Page Layout
 
 ```
 ┌─────────────────────────────────────────┬─────────────────┐
-│ Left Sidebar          Top Bar            │                 │
-│ ─────────             ─────────          │                 │
-│ 🏠 Home               [Agent Name]       │                 │
-│ 🤖 Agents             [Publish] [⚙️]     │   TEST PANE     │
-│ 🔗 Connections        ─────────────────  │                 │
-│ ⚙️ Settings           📋 Details         │  [Type a        │
-│                       Name, description  │   message...]   │
-│                       ─────────────────  │                 │
-│                       🤖 Select Model    │                 │
-│                       GPT-4.1 [▾]        │                 │
-│                       ─────────────────  │                 │
-│                       📝 Instructions    │                 │
-│                       "You are..."       │                 │
-│                       [Edit]             │                 │
-│                       ─────────────────  │                 │
-│                       📚 Knowledge       │                 │
-│                       ● SharePoint site  │                 │
-│                       ● Document.pdf     │                 │
-│                       [+ Add]            │                 │
-│                       ─────────────────  │                 │
-│                       🔧 Tools           │                 │
-│                       [+ Add]            │                 │
-│                       ─────────────────  │                 │
-│                       💬 Topics          │                 │
-│                       (Shows first 3)    │                 │
-│                       [See all]          │                 │
-│                       ─────────────────  │                 │
-│                       📢 Channels        │                 │
-│                       [+ Add]            │                 │
+│ Top Bar                                  │                 │
+│ [Agent Name]            [Publish] [⚙️]   │                 │
+│ ───────────────────────────────────────  │                 │
+│ 📋 Details — name, icon, description     │   PREVIEW       │
+│ ───────────────────────────────────────  │   PANE          │
+│ 📝 Instructions — identity & rules       │                 │
+│ ───────────────────────────────────────  │  [greeting]     │
+│ 📚 Knowledge — docs, SharePoint, web     │  [suggested     │
+│ ───────────────────────────────────────  │   prompts]      │
+│ 🧠 Skills — reusable markdown behaviors  │                 │
+│ ───────────────────────────────────────  │  [Type a        │
+│ 🔧 Tools — connectors, workflows, MCP    │   message...]   │
+│ ───────────────────────────────────────  │                 │
+│ 💾 Memory — remember context             │  (maker vs.     │
+│ ───────────────────────────────────────  │   end-user      │
+│ 🤝 Connected agents — delegate to others │   toggle)       │
+│ ───────────────────────────────────────  │                 │
+│ 🤖 Model — the AI that powers reasoning  │                 │
 └─────────────────────────────────────────┴─────────────────┘
 ```
 
-On the **right side**, you always have the **Test pane** — a live chat window for testing your agent as you build it.
+On the **right side** you always have the **Preview pane** — a live chat window for testing your agent as you build it.
 
-### Sections on the Overview Page
+### Blocks on the Build Page
 
-Here's what each section does and which module covers it in detail:
+Here's what each block does and which module covers it in detail:
 
-| Section | What you do here | Corresponds to... |
+| Block | What you do here | Covered in... |
 |---|---|---|
-| **Details** | Edit agent name and description | Module 06: Build a Custom Agent |
-| **Select your agent's model** | Choose the AI model (GPT-4, GPT-5, Claude, etc.) | Module 06 |
-| **Instructions** | Write the system prompt (role, persona, guidelines) | Module 06, Module 07 |
-| **Knowledge** | Add SharePoint sites, documents, websites, Dataverse | Module 06 |
-| **Tools** | Add connectors, agent flows, workflows, APIs | Module 09 |
-| **Topics** | Create conversational flows with triggers | Module 07, Module 08 |
-| **Channels** | Publish to Teams, websites, etc. | Module 11: Publishing |
-| **Suggested Prompts** | Starter prompts shown to users in Teams/M365 | Module 11 |
+| **Instructions** | The agent's identity, tone, scope, and core rules | Module 06 |
+| **Knowledge** | Add documents, SharePoint, OneDrive, websites, Microsoft IQ | Module 06 |
+| **Skills** | Author reusable markdown behaviors (replaces topics) | Module 07 |
+| **Tools** | Add connectors, workflows, MCP servers, REST APIs | Module 07, Module 09 |
+| **Memory** | Let the agent remember context across turns and conversations | Module 06 |
+| **Connected agents** | Delegate to another agent (multi-agent) | (introduced here) |
+| **Model** | Choose the AI model that powers reasoning | Module 06 |
 
-> **💡 Tip:** You can do everything from the Overview page. You don't need to navigate away to add knowledge, create a topic, or test — it's all right here.
+> **💡 Tip:** You can do everything from the Build page — add knowledge, author a skill, equip a tool, and test — without navigating away.
 
-### Accessing Deep Views
+### The Preview Pane
 
-Some sections have expanded views for detailed work:
-- **Topics** → Select "See all" or select a topic name → opens the **Topic designer** (visual canvas for conversation flows)
-- **Tools** → Select "See all" or select a tool → opens the **Tool editor**
-- **Settings** (gear icon ⚙️ at top) → **Agent settings**: language, solution, schema, advanced options
-
-### The Test Pane
-
-The **Test pane** is always visible on the right side of the Overview page. Use it to:
+The **Preview pane** is always visible on the right side of the Build page. Use it to:
 - Send test messages to your agent
-- See how the agent responds in real-time
-- Verify knowledge sources are being searched
-- Test tool calls and topic triggers
+- See how the agent responds in real time
+- Watch the orchestrator **search knowledge, load skills, and call tools**
+- Toggle **maker vs. end-user** view — as the maker you see the agent's reasoning (search → skill load → answer); end-user view shows the clean, user-facing experience
 
-**New test session icon** (circular arrows): Click this to restart the conversation and clear context.
-
-[SCREENSHOT: Test pane showing a conversation with the agent, with "New test session" icon highlighted]
+[SCREENSHOT: Preview pane showing a conversation, with the maker-vs-end-user toggle highlighted]
 
 ### Top Action Bar
 
-At the top right of the Overview page:
-- **Publish** button — Deploy your agent to channels
-- **Settings** (⚙️) — Agent-level settings
-- **More options** (…) — Additional actions
+At the top right of the Build page:
+- **Publish** button — deploy your agent to channels
+- **Settings** (⚙️) — agent-level settings: language, solution, moderation, authentication
+- **More options** (…) — additional actions
 
 ---
 
-## The Four Building Blocks
+## The Building Blocks
 
-Now that you know **where** everything lives in the UI, let's learn **what** these building blocks do.
-
-Every agent in Copilot Studio is built from four core components:
-
-1. **Knowledge** — What the agent knows
-2. **Tools** — What the agent can do
-3. **Topics** — Conversational flows and triggers
-4. **Instructions** — How the agent should behave
-
-Let's explore each one.
+Now that you know **where** everything lives, let's learn **what** these blocks do. We'll go deep on the four you'll use most — **Instructions, Knowledge, Skills, Tools** — then cover **Memory, Connected agents, and Model**.
 
 ---
 
-## Building Block 1: Knowledge
+## Building Block 1: Instructions
+
+**Instructions** define your agent's identity, personality, role, and the rules that matter most. This is where you tell the agent **who it is** and **how it should act** — in plain language.
+
+### What Goes in Instructions?
+
+- **Role/persona** — "You are the IT support agent for Contoso employees..."
+- **Tone and style** — "Be friendly, concise, and practical."
+- **Core rules** — "If an issue needs admin access, log a ticket and hand it to the help desk."
+- **Guardrails** — "Never ask for passwords or one-time codes. Never help bypass security."
+
+[SCREENSHOT: Build page Instructions block showing the Contoso Helpdesk Agent instructions with the Save button]
+
+### Example Instructions
+
+Here's the instruction set for the **Contoso Helpdesk Agent** you'll build:
+
+```text
+You are the IT support agent for Contoso employees. Your job is to help
+employees solve common device, access, and software issues. Be friendly,
+concise, and practical. If an issue needs admin access, log a ticket and hand
+it to the help desk team. Never ask for passwords or one-time codes, and never
+help bypass security.
+```
+
+> **Keep instructions short.** In the new experience, the detailed playbooks (how to reset a password, how to triage a ticket) live in **Skills**, not in the instructions. Instructions set identity and guardrails; skills carry the step-by-step behavior.
+
+---
+
+## Building Block 2: Knowledge
 
 **Knowledge** is the information your agent can search to ground its responses. This is the foundation of RAG (Retrieval-Augmented Generation).
 
 ### What Counts as Knowledge?
 
-- **SharePoint sites** — Documents, pages, lists
-- **Uploaded files** — PDFs, Word docs, PowerPoint
-- **Websites** — Public URLs the agent can crawl
-- **Dataverse tables** — Structured data from the Power Platform
-- **Microsoft Support** (optional) — General IT troubleshooting articles
-- **General web search** (toggle) — Real-time web results
+- **Uploaded files** — Word, PDF, PowerPoint
+- **SharePoint sites** and **OneDrive** libraries
+- **Public websites** — URLs the agent can search
+- **Microsoft IQ** — organizational M365 data
 
-[SCREENSHOT: Overview page Knowledge section showing SharePoint site, uploaded document, and "General web search" toggle enabled]
+[SCREENSHOT: Build page Knowledge block showing two uploaded documents (Contoso IT FAQ and Approved Software List)]
 
 ### How Knowledge Works (RAG in Action)
 
@@ -162,278 +161,192 @@ When a user asks a question:
 1. The agent **searches** all connected knowledge sources
 2. Relevant content is **retrieved** (documents, pages, list items)
 3. The LLM **generates** a response grounded in that content
-4. The agent **cites sources** so users can verify the information
+4. The agent can **cite sources** so users can verify the information
 
 **Example:**
-- **User:** "What's the guest WiFi password?"
-- **Agent searches:** SharePoint site, uploaded documents
-- **Agent finds:** "Guest WiFi Connection Guide.docx" contains the password
-- **Agent responds:** "The guest WiFi password is GuestPass2026! (Source: Guest WiFi Connection Guide.docx)"
+- **User:** "What are the help desk hours?"
+- **Agent searches:** the uploaded knowledge documents
+- **Agent finds:** the **Contoso IT FAQ** contains the hours
+- **Agent responds:** "The help desk is open Mon–Fri, 7:00 AM–7:00 PM local; high-priority issues are monitored 24/7. (Source: Contoso IT FAQ)"
 
-### Why Knowledge Matters
-
-Without knowledge sources:
-- The agent can only respond based on the LLM's training data (which may be outdated or incorrect)
-- Responses may **hallucinate** (make up plausible-sounding but false information)
-- The agent can't answer domain-specific questions (e.g., your company's policies)
-
-With knowledge sources:
-- Responses are **grounded in real data**
-- The agent can **cite sources** for transparency
-- You control what the agent knows (and doesn't know)
-
-> **Best practice:** Always add at least one knowledge source before deploying an agent to production.
+> **Best practice:** Always add at least one knowledge source before deploying an agent to production. Without grounding, the agent can only rely on the model's training data — which may be outdated or hallucinated.
 
 ---
 
-## Building Block 2: Tools
+## Building Block 3: Skills
 
-**Tools** are the actions your agent can take. While knowledge is about **knowing**, tools are about **doing**.
+**Skills are the headline of the new Copilot Studio.** A **skill** is a set of **reusable instructions written in markdown** that defines a specific behavior — *when* it should activate, the *guidelines* to follow, *examples*, and *notes*. The orchestrator loads the right skill at the right moment.
+
+> 🔁 **Skills replace topics.** Where the classic product had visual topic flows with trigger phrases, the new experience has skills. You no longer draw a flow or list trigger phrases — you **describe** the behavior in markdown, and the orchestrator decides when to use it.
+
+### Anatomy of a Skill
+
+- **Name** — all lowercase, hyphens not underscores (e.g. `password-reset`)
+- **Description** — *what it does and when it should activate* (this is how the orchestrator picks it)
+- **Instructions** (markdown) — typically **when to activate**, **guidelines**, **examples**, and **notes**
+
+[SCREENSHOT: Build page Skills block showing four skills: password-reset, vpn-troubleshooting, smart-triage, software-installation-request]
+
+### Why Skills Are Powerful
+
+- **Reusable & portable** — upload a skill, build one from blank, or **download** a skill to reuse in another agent (you can even bring in GitHub Copilot / Claude Code skills)
+- **Readable** — they're just markdown, so they're easy to review, version, and share
+- **Composable** — one skill can hand off to another (e.g. `vpn-troubleshooting` → `smart-triage` to log a ticket)
+
+> 🧰 Agents also have **built-in skills** out of the box — including ones that read **Word, PowerPoint, and PDF** files. You'll build four custom skills for the Contoso Helpdesk Agent in **Module 07**.
+
+---
+
+## Building Block 4: Tools
+
+**Tools** are the actions your agent can take. While knowledge is about **knowing** and skills describe **what to do**, tools provide the **muscle** to actually do it.
 
 ### What Counts as a Tool?
 
 - **Connectors** — 1000+ prebuilt integrations (SharePoint, Outlook, Teams, Dynamics 365, etc.)
-- **Agent Flows** — Custom Power Automate-style workflows you build in Copilot Studio
-- **Workflows** (new) — Next-generation automation canvas (public preview)
-- **Custom APIs** — OpenAPI/Swagger specs for external systems
-- **MCP (Model Context Protocol)** — Advanced integration for frontier models
+- **Workflows** — the new automation designer (e.g. a manager-approval process)
+- **MCP servers** — Model Context Protocol integrations
+- **REST APIs** — OpenAPI/Swagger specs for external systems
+- **Prompts** — reusable prompt-based tools
 
-[SCREENSHOT: Overview page Tools section showing "+ Add" button and Work IQ toggle]
+[SCREENSHOT: Build page Tools block showing the "+ Add a tool" button and connector options]
 
 ### How Tools Work
 
-The agent uses **tool calling** (also called function calling). When the agent determines an action is needed:
-1. The LLM **decides** which tool to call and what parameters to pass
-2. The agent **executes** the tool (e.g., sends an email, creates a record)
+The orchestrator decides when to call a tool based on the conversation, the agent's instructions, your **skills**, and each tool's **description** — there are no manual triggers.
+
+1. The orchestrator **decides** which tool to call and what inputs to pass (it can **let AI fill the inputs** from context)
+2. The agent **executes** the tool (e.g., creates a SharePoint item, sends an email)
 3. The agent **receives** the result and continues the conversation
 
 **Example:**
-- **User:** "Send me a list of available laptops."
-- **Agent decides:** Call the "Get Devices from SharePoint" tool with filter: `Category = 'Laptop' AND Status = 'Available'`
-- **Tool executes:** Queries the SharePoint Devices list
-- **Agent responds:** "Here are the available laptops: Dell Latitude 7430, HP EliteBook 840..."
+- **User:** "My account can't access the finance drive — please log a ticket."
+- **Orchestrator decides:** use the `smart-triage` skill → call the **SharePoint → Create item** tool
+- **Tool executes:** creates a row in the **Tickets** list
+- **Agent responds:** "I've logged ticket #1234 (Access, High priority) and emailed you the details."
 
 ### Common Tool Use Cases
 
 | Scenario | Tool Type |
 |---|---|
-| Send an email notification | Outlook connector |
-| Create a support ticket | SharePoint connector (create list item) |
-| Look up customer info | Dataverse connector or custom API |
-| Approve a request | Agent Flow (multi-step workflow) |
-| Check weather | HTTP connector (call weather API) |
+| Send an email confirmation | Office 365 Outlook connector |
+| Create a support ticket | SharePoint connector (Create item) |
+| Look up a user's manager | Office 365 Users connector |
+| Run a manager approval | Workflow (new designer) |
 
-> **Note:** You'll build an Agent Flow in **Module 09** that sends an email when a device is requested.
-
----
-
-## Building Block 3: Topics
-
-**Topics** are conversational flows you design to handle specific scenarios. They combine triggers, questions, responses, and actions into a visual flow.
-
-### What Is a Topic?
-
-A topic is a **structured conversation path** that:
-- **Triggers** when the user says specific phrases (e.g., "I need a laptop")
-- **Asks questions** to gather information (e.g., "What type of device do you need?")
-- **Branches** based on answers (if laptop → show laptop options; if monitor → show monitor options)
-- **Takes actions** (calls tools, displays adaptive cards, saves data)
-- **Responds** with messages, images, or cards
-
-[SCREENSHOT: Topic designer showing a simple flow with Trigger → Question → Condition → Message nodes]
-
-### When to Use Topics
-
-Use topics when you want **precise control** over a conversation flow:
-- Multi-step processes (e.g., onboarding, troubleshooting wizards)
-- Forms with required fields (e.g., "Request a device" with questions: Category? Justification? Urgency?)
-- Conditional logic (e.g., if VIP user → escalate immediately)
-
-**Generative vs. Topic-driven:**
-- **Generative** (default): Agent uses LLM reasoning to respond — flexible, conversational, but less predictable
-- **Topic-driven**: You design the exact flow — predictable, structured, but less flexible
-
-> **Best practice:** Use topics for mission-critical flows where you need guaranteed behavior (e.g., password reset must follow exact steps). Use generative responses for open-ended Q&A.
-
-### Triggers
-
-Every topic has a **trigger** that tells the agent when to activate that topic. Common trigger types:
-- **Phrases** — User says "reset my password" → Password Reset topic activates
-- **Events** — A Dataverse record changes → Escalation topic activates
-- **Proactive** — Scheduled (e.g., daily summary report)
-
-> **Note:** In the new UI, **Triggers** also have a dedicated section on the Overview page (for event-based triggers). Phrase triggers are configured within each topic.
+> **Note:** You'll equip the Outlook and SharePoint tools in **Module 07**, and build an approval **Workflow** in **Module 09**.
 
 ---
 
-## Building Block 4: Instructions
+## The Remaining Blocks: Memory, Connected Agents, Model
 
-**Instructions** are the system prompt that defines your agent's personality, role, and behavior. This is where you tell the agent **who it is** and **how it should act**.
+### Memory
 
-### What Goes in Instructions?
+**Memory** lets the agent remember context across turns — and across conversations — for better follow-ups. Turn it on from the Memory block. You'll enable it in **Module 06**.
 
-Instructions typically include:
-- **Role/persona** — "You are a helpful IT support assistant..."
-- **Tone and style** — "Be polite, concise, and professional."
-- **Guidelines** — "Always cite sources. If you don't know, say so."
-- **Constraints** — "Do not discuss non-IT topics."
-- **Memory/context rules** — "Remember the user's name and previous requests."
+### Connected Agents
 
-[SCREENSHOT: Overview page Instructions section showing "You are a helpful IT assistant..." with Edit button]
+**Connected agents** is how one agent **delegates** to another — agent-to-agent hand-off. This is the new experience's answer to multi-agent orchestration: one agent calls another like a tool. (Introduced in Module 01; not deep-dived in this course — it's part of the Special Ops curriculum.)
 
-### Example Instructions
+### Model
 
-Here's the instruction set for the **Contoso Helpdesk Agent** you'll build:
-
-```
-You are an IT Help Desk assistant that helps Contoso employees resolve common IT issues 
-and find available devices. Be polite, concise, and helpful. 
-
-When answering questions:
-- Search the Contoso IT SharePoint site first
-- Cite sources when providing information
-- If you don't know the answer, say so and suggest contacting IT support
-
-When helping with device requests:
-- Search the Devices list for available options
-- Show device details (brand, model, location)
-- If requested, trigger the device request flow
-
-Do not:
-- Discuss topics outside of IT support
-- Make up information — always ground responses in knowledge sources
-- Share sensitive information like passwords in chat (link to documents instead)
-```
-
-### Why Instructions Matter
-
-Instructions shape the agent's behavior. Without clear instructions:
-- The agent may respond off-topic
-- Tone may be inconsistent (formal in one message, casual in another)
-- The agent may hallucinate instead of admitting "I don't know"
-
-With well-written instructions:
-- The agent stays on-brand and on-topic
-- Users get a consistent experience
-- The agent knows when to escalate or defer
-
-> **Best practice:** Test your instructions by asking edge-case questions. Does the agent stay in character? Does it gracefully handle questions outside its scope?
+The **Model** block lets you choose the AI model that powers the agent's reasoning. More on this below.
 
 ---
 
-## How the Four Building Blocks Work Together
+## How the Building Blocks Work Together
 
-Now let's see how all four components combine to create an intelligent conversation.
+Now let's see how these components combine into an intelligent conversation. The **enhanced orchestrator** is the brain that decides, for each message, whether to search knowledge, load a skill, or call a tool.
 
-### The Agent Orchestration Flow
+### Flow 1: A Grounded Answer (Knowledge)
 
-When a user sends a message, here's what happens inside the agent:
+When a user asks a question the agent can answer from its documents:
 
 ```mermaid
 sequenceDiagram
     participant User
-    participant Agent
     participant Orchestrator
     participant Knowledge
-    participant Topics
-    participant Tools
     participant LLM
-
-    User->>Agent: "What's the WiFi password?"
-    Agent->>Orchestrator: Process message
-    Orchestrator->>Topics: Check for topic triggers
-    Topics-->>Orchestrator: No matching topic
-    Orchestrator->>LLM: Apply Instructions + User message
-    LLM-->>Orchestrator: "Need to search knowledge"
-    Orchestrator->>Knowledge: Search "WiFi password"
-    Knowledge-->>Orchestrator: Found: Guest WiFi Guide.docx
-    Orchestrator->>LLM: Generate response using retrieved content
-    LLM-->>Agent: "The guest WiFi password is GuestPass2026!"
-    Agent->>User: Response + source citation
+    User->>Orchestrator: "What are the help desk hours?"
+    Orchestrator->>Knowledge: Search knowledge sources
+    Knowledge-->>Orchestrator: Found: Contoso IT FAQ
+    Orchestrator->>LLM: Generate response from retrieved content
+    LLM-->>Orchestrator: Hours + source citation
+    Orchestrator->>User: "Mon–Fri, 7 AM–7 PM… (Source: Contoso IT FAQ)"
 ```
 
 **Step-by-step:**
-1. **User sends message** → "What's the WiFi password?"
-2. **Orchestrator checks topics** → Are there any topics triggered by this phrase?
-   - If yes → Follow the topic flow
-   - If no → Continue to generative response
-3. **Orchestrator applies instructions** → "You are an IT assistant... search SharePoint first..."
-4. **LLM decides** → "I should search knowledge sources for 'WiFi password'"
-5. **Orchestrator searches knowledge** → Retrieves "Guest WiFi Connection Guide.docx"
-6. **LLM generates response** → Grounded in the retrieved document
-7. **Agent responds** → With answer + citation
+1. **User sends a message** → "What are the help desk hours?"
+2. **Orchestrator applies instructions** and decides knowledge is needed
+3. **Orchestrator searches knowledge** → retrieves the Contoso IT FAQ
+4. **LLM generates a response** grounded in the retrieved content
+5. **Agent responds** with the answer + citation
 
-### When Topics Take Over
+### Flow 2: A Skill Takes Action
 
-If the user says a **trigger phrase** (e.g., "I need a laptop"), the flow changes:
+When the request needs a defined behavior plus a real action:
 
 ```mermaid
 sequenceDiagram
     participant User
-    participant Agent
     participant Orchestrator
-    participant Topics
+    participant Skill as smart-triage skill
     participant Tools
-
-    User->>Agent: "I need a laptop"
-    Agent->>Orchestrator: Process message
-    Orchestrator->>Topics: Check for topic triggers
-    Topics-->>Orchestrator: Match: "Device Request" topic
-    Orchestrator->>Topics: Activate topic flow
-    Topics->>User: "What type of laptop? Gaming, business, or lightweight?"
-    User->>Topics: "Business"
-    Topics->>Tools: Call "Get Available Laptops" tool
-    Tools-->>Topics: Results (Dell Latitude, HP EliteBook)
-    Topics->>User: Show adaptive card with laptop options
+    User->>Orchestrator: "Can't access the finance drive — log a ticket"
+    Orchestrator->>Skill: Load skill (matches its description)
+    Skill-->>Orchestrator: Guidelines: read schema, create ticket, email
+    Orchestrator->>Tools: Create item in the Tickets list
+    Tools-->>Orchestrator: Ticket #1234 created
+    Orchestrator->>Tools: Send confirmation email
+    Orchestrator->>User: "Logged ticket #1234 and emailed you the details"
 ```
 
-**Key difference:** When a topic is triggered, the **topic flow** controls the conversation, not the LLM's generative reasoning. You get predictable, step-by-step behavior.
+**Key difference from classic:** there's no topic flow and no trigger phrase. The orchestrator **selects the skill by its description**, follows the skill's markdown guidelines, and calls the tools the skill references. You describe intent; the orchestrator plans the steps.
 
 ---
 
-## The New Terminology: Tools (Not Actions)
+## New Terminology (If You've Used Classic)
 
-If you've used Copilot Studio before, you may have seen **"Actions"** in the old UI. The new UI calls this section **"Tools"**.
+| Classic term | New experience |
+|---|---|
+| **Topics** (visual flows + trigger phrases) | **Skills** (reusable markdown behaviors) |
+| **Actions** | **Tools** |
+| **Agent Flows** | **Workflows** (new designer) |
+| Configurable orchestration toggle | **Enhanced orchestration** (always on) |
+| Overview page / multiple tabs | One **Build** page |
 
-**Why the change?**
-- **Tools** aligns with industry-standard LLM terminology (tool calling, function calling)
-- **Actions** was ambiguous (could mean UI actions, user actions, automation actions)
-
-The concept is the same — these are the things your agent can **do**.
+The concepts of *knowing* (Knowledge) and *doing* (Tools) carry over — but how you define behavior changed from drawing flows to writing skills.
 
 ---
 
-## Triggers: Now a First-Class Section
+## Autonomous Triggers
 
-In the new Overview page, **Triggers** has its own section (separate from Topics). This is for **event-based triggers** that make agents autonomous.
-
-**Phrase triggers** (conversational) are still configured inside each topic.  
-**Event triggers** (autonomous) are configured in the Triggers section.
+Conversational behavior comes from Skills + the orchestrator — there are no phrase triggers to configure. But agents can also act **autonomously**, driven by **event triggers** (a new row in a list, a schedule, a webhook) rather than a user message.
 
 **Example event triggers:**
-- **Dataverse row added** → When a new support ticket is created
-- **Schedule** → Every Monday at 9 AM
-- **Webhook** → External system sends a signal
+- **Row added** → a new high-priority ticket is created
+- **Schedule** → every Monday at 9 AM
+- **Webhook** → an external system sends a signal
 
-> **Note:** You'll explore event triggers in **Module 10: Add Event Triggers**.
+> **Note:** You'll add an autonomous event trigger in **Module 10: Autonomous Event Triggers**.
 
 ---
 
 ## AI Model Selection
 
-On the Overview page, you'll see **"Select your agent's model"** — a dropdown to choose the AI model that powers your agent's reasoning.
+The **Model** block lets you choose the AI model that powers your agent's reasoning.
 
 **Available models** (as of June 2026):
-- **GPT-4.1** (default) — Reliable, fast, cost-effective
-- **GPT-5** — Advanced reasoning, longer context
-- **Claude Sonnet 4.5 / 4.6** — Strong at structured tasks, citations
-- **Mistral Medium 3.5** — Multilingual, efficient
+- **GPT-4.1** (default) — reliable, fast, cost-effective
+- **GPT-5** — advanced reasoning, longer context
+- **Claude Sonnet 4.5 / 4.6** — strong at structured tasks and citations
+- **Mistral Medium 3.5** — multilingual, efficient
 
 **When to change the model:**
 - **Complex reasoning** → GPT-5 or Claude Sonnet 4.6
 - **Cost-sensitive** → GPT-4.1
 - **Multilingual** → Mistral Medium
-- **Long documents** → Models with large context windows
 
 > **Tip:** For this course, the default **GPT-4.1** is perfectly fine. You can experiment with other models later.
 
@@ -441,26 +354,27 @@ On the Overview page, you'll see **"Select your agent's model"** — a dropdown 
 
 ## Key Takeaways
 
-- **Overview page** = single scrollable canvas with all agent components visible at once
-- **Four building blocks:**
-  1. **Knowledge** — What the agent knows (SharePoint, docs, websites)
-  2. **Tools** — What the agent can do (connectors, flows, APIs)
-  3. **Topics** — Structured conversation flows with triggers
-  4. **Instructions** — System prompt defining role, tone, behavior
-- **Orchestrator** = the brain that decides when to search knowledge, call tools, or follow topics
+- **Build page** = single canvas with all agent components visible at once
+- **Building blocks:**
+  1. **Instructions** — identity, tone, and core rules
+  2. **Knowledge** — what the agent knows (docs, SharePoint, web, Microsoft IQ)
+  3. **Skills** — reusable markdown behaviors (the replacement for topics)
+  4. **Tools** — what the agent can do (connectors, workflows, MCP, APIs)
+  5. **Memory**, **Connected agents**, **Model** — remember context, delegate, and choose the brain
+- **Enhanced orchestrator** = the brain that decides when to search knowledge, load a skill, or call a tool
 - **RAG** = Retrieval-Augmented Generation — grounding responses in real data
-- **Test pane** = always visible on the right; use it constantly while building
-- **Triggers** = now a first-class section for event-based autonomous behaviors
+- **Preview pane** = always visible; use the maker view to watch the agent reason
+- **No topics, no trigger phrases** — you describe behavior and the orchestrator decides
 
 ---
 
 ## What You've Learned
 
 You now have a mental map of:
-- **Where** everything lives in Copilot Studio (the Overview page layout)
-- **What** the four building blocks are and how they work together
-- **How** the orchestrator decides what to do with each user message
-- **Why** RAG is essential for accurate, grounded responses
+- **Where** everything lives in the new Copilot Studio (the Build page layout)
+- **What** the building blocks are and how they work together
+- **How** the enhanced orchestrator decides what to do with each user message
+- **Why** RAG is essential, and how **Skills** replace topics
 
 ---
 
@@ -468,8 +382,8 @@ You now have a mental map of:
 
 In **Module 03: Create a Declarative Agent for M365 Copilot**, you'll build your first agent — a lightweight extension for Microsoft 365 Copilot users.
 
-Then in **Module 06**, you'll build the **Contoso Helpdesk Agent** from scratch, adding knowledge sources, topics, tools, and instructions step-by-step.
+Then in **Module 06**, you'll build the **Contoso Helpdesk Agent** from scratch — adding instructions, knowledge, skills, tools, and memory step by step.
 
 ---
 
-**Course Navigation:** [← Module 01](../01-introduction-to-agents/README.md) | [Course Index](../README.md) | [Next: Module 03 →](../03-declarative-agent-m365/README.md)
+**Course Navigation:** [← Module 01](../01-introduction-to-agents/) | [Course Index](../) | [Next: Module 03 →](../03-declarative-agent-m365/)
