@@ -1,7 +1,8 @@
 # Module 03: Create a Declarative Agent for M365 Copilot
 
+**Codename:** OPERATION SIDE CHANNEL  
 **Time:** 25 minutes  
-**Scenario:** Extending Microsoft 365 Copilot
+**Scenario:** Extending Microsoft 365 Copilot (a quick side-quest — not Bit)
 
 ---
 
@@ -10,17 +11,26 @@
 By the end of this module, you will be able to:
 - Explain what a declarative agent is and when to use one
 - Create a declarative agent that extends Microsoft 365 Copilot
-- Add knowledge sources using a grounded prompt approach
+- Add a knowledge source using a grounded prompt approach
 - Publish a declarative agent to the M365 Copilot interface
 - Invoke your agent from within M365 Copilot using `@mention`
 
 ## Overview
 
-Declarative agents are lightweight extensions for **Microsoft 365 Copilot**. They add domain-specific knowledge and capabilities to the M365 Copilot chat experience without requiring users to leave their workflow.
+Declarative agents are lightweight extensions for **Microsoft 365 Copilot**. They add domain-specific knowledge to the M365 Copilot chat experience without requiring users to leave their workflow.
 
-In this module, you'll create a simple declarative agent that M365 Copilot users can invoke with an `@mention` — for example, `@IT Support` — to get answers grounded in your organization's IT knowledge.
+In this module, you'll create a simple declarative agent that M365 Copilot users can invoke with an `@mention` — for example, `@IT Support Assistant` — to get answers grounded in your organization's IT knowledge.
 
-> **Note:** This module requires a **Microsoft 365 Copilot license**. If you don't have one, you can read through the steps to understand the concepts, then proceed to Module 04.
+> 🧭 **This is a side-quest, not Bit.** The agent you build here is a quick, throwaway demo of a *different* kind of agent (an M365 Copilot extension). You'll build **Bit, your Contoso IT help desk buddy** — the full custom agent this course centers on — starting in **Module 06**. This module is here so you understand the lightweight option before committing to the full build.
+
+---
+
+## Prerequisites
+
+- A **Microsoft 365 Copilot license** (for end users to invoke the agent). *If you don't have one, read through to understand the concepts, then continue to [Module 04](../04-creating-a-solution/).*
+- The **IT Help Desk** SharePoint site from [Module 00](../00-course-setup/), with the **Contoso IT FAQ** available in its **Documents** library (upload it there if it isn't already).
+
+> 🏫 **In the facilitated workshop**, your environment already has the SharePoint site and security set up. If you're following along **at the office**, complete [Module 00](../00-course-setup/) first.
 
 ---
 
@@ -28,27 +38,27 @@ In this module, you'll create a simple declarative agent that M365 Copilot users
 
 A **declarative agent** is a specialized agent that:
 - **Extends M365 Copilot** — appears as an `@mentionable` entity in the M365 Copilot chat
-- **Is defined declaratively** — uses a JSON manifest (no visual designer)
+- **Is defined declaratively** — uses a JSON manifest (no visual designer, no Build page)
 - **Adds custom knowledge** — grounds M365 Copilot in your organization's specific data
-- **Has limited capabilities** — can search knowledge and respond conversationally, but can't trigger workflows or use complex multi-step topics
+- **Has limited capabilities** — can search knowledge and respond conversationally, but can't run skills, call tools, or trigger workflows
 
 ### Declarative vs. Custom Agents
 
-| Feature | Declarative Agent | Custom Agent |
+| Feature | Declarative Agent | Custom Agent (Bit) |
 |---|---|---|
-| **Where it appears** | Inside M365 Copilot chat | Standalone (Teams, web, mobile) |
+| **Where it appears** | Inside M365 Copilot chat | Standalone (Teams, web, M365) |
 | **How users invoke it** | `@mention` (e.g., `@HR Policy`) | Direct chat in Teams or website |
-| **Capabilities** | Knowledge grounding + simple instructions | Full capabilities (topics, flows, tools, adaptive cards) |
-| **Authoring** | JSON manifest | Visual designer in Copilot Studio |
+| **Capabilities** | Knowledge grounding + instructions | Full: Skills, Tools, Workflows, Memory, Adaptive Cards |
+| **Authoring** | JSON manifest | The new **Build** page in Copilot Studio |
 | **License requirement** | M365 Copilot | Copilot Studio (or trial) |
-| **Best for** | Extending M365 Copilot with domain knowledge | Standalone agents with complex workflows |
+| **Best for** | Extending M365 Copilot with domain knowledge | Standalone agents with actions and workflows |
 
 ### When to Use Declarative Agents
 
 Use a declarative agent when:
 - Your users already have **M365 Copilot licenses**
 - You want to add domain-specific knowledge to M365 Copilot (e.g., HR policies, product docs, legal guidelines)
-- The use case is **simple Q&A** — no multi-step workflows or complex forms
+- The use case is **simple Q&A** — no actions, approvals, or multi-step processes
 - You want to minimize user context switching (stay inside M365 Copilot)
 
 **Example scenarios:**
@@ -76,14 +86,14 @@ Use a declarative agent when:
    - You may see options: **Custom agent** vs. **Declarative agent**
    - Select **Declarative agent**
 
-> **Note:** If you don't see a "Declarative agent" option, you may need to use the declarative agent creation flow directly from the M365 admin center or Teams admin center. The exact entry point may vary depending on your environment. If this option is not visible, skip to the "Alternative: Create via Teams Admin Center" section below.
+> **Note:** If you don't see a "Declarative agent" option, the entry point may be the M365 admin center or Teams admin center instead — see "Alternative: Create via Teams Admin Center" below.
 
 2. Enter a name for your agent: `IT Support Assistant`
 
 3. In the **Description** field, enter:
-   ```
-   An IT support agent that helps employees resolve common IT issues and find information 
-   from the Contoso IT SharePoint site.
+   ```text
+   An IT support agent that helps employees resolve common IT issues and find information
+   from the Contoso IT Help Desk SharePoint site.
    ```
 
 4. Select **Create**
@@ -98,16 +108,15 @@ Declarative agents use **instructions** (a system prompt) to define their behavi
 2. Locate the **Instructions** field (may be labeled "Grounded prompt" or "System message")
 3. Enter the following instructions:
 
-```
+```text
 You are an IT Support Assistant for Contoso. Your role is to help employees:
 - Find answers to common IT questions
-- Troubleshoot basic technical issues
 - Locate IT resources and documentation
 
 Guidelines:
 - Be polite, concise, and helpful
-- Search the Contoso IT SharePoint site for answers
-- If you don't know the answer, suggest contacting IT support at support@contoso.com
+- Search the Contoso IT Help Desk SharePoint site for answers
+- If you don't know the answer, suggest contacting IT support at helpdesk@contoso.com
 - Cite sources when providing information
 - Do not discuss topics outside of IT support
 ```
@@ -123,18 +132,17 @@ Declarative agents can be grounded in knowledge sources just like custom agents.
 1. Locate the **Knowledge** section (may be labeled "Data sources" or "Connections")
 2. Select **+ Add knowledge** (or similar)
 3. Choose **SharePoint**
-4. Enter the URL of the **Contoso IT** SharePoint site you created in Module 00:
-   ```
-   https://[yourtenant].sharepoint.com/sites/ContosoIT
+4. Enter the URL of the **IT Help Desk** SharePoint site from [Module 00](../00-course-setup/):
+   ```text
+   https://[yourtenant].sharepoint.com/sites/ITHelpDesk
    ```
 5. Select **Add** or **Connect**
 
 [SCREENSHOT: Add knowledge source dialog showing SharePoint URL entry]
 
-6. The SharePoint site is added as a knowledge source
-7. The agent will now be able to search documents, pages, and lists on that site
+6. The SharePoint site is added as a knowledge source — the agent can now search documents (including the **Contoso IT FAQ**), pages, and lists on that site.
 
-> **Note:** You can also add specific documents, websites, or other knowledge sources. For this lab, the SharePoint site is sufficient.
+> **Note:** You can also add specific documents or websites. For this lab, the SharePoint site is sufficient.
 
 ### Step 5: Publish the Declarative Agent
 
@@ -155,7 +163,7 @@ Declarative agents can be grounded in knowledge sources just like custom agents.
 
 ### Step 1: Open Microsoft 365 Copilot
 
-1. Go to [https://copilot.microsoft.com](https://copilot.microsoft.com) (M365 Copilot web interface)
+1. Go to [https://m365.cloud.microsoft](https://m365.cloud.microsoft) and open **Copilot**
 2. Or open **Microsoft Teams** → select **Copilot** from the left sidebar
 
 [SCREENSHOT: M365 Copilot interface with chat input box]
@@ -169,8 +177,8 @@ Declarative agents can be grounded in knowledge sources just like custom agents.
 [SCREENSHOT: M365 Copilot showing @mention dropdown with IT Support Assistant agent]
 
 4. Type a question after the `@mention`:
-   ```
-   @IT Support Assistant What's the guest WiFi password?
+   ```text
+   @IT Support Assistant What are the help desk hours?
    ```
 
 5. Press **Enter**
@@ -178,33 +186,33 @@ Declarative agents can be grounded in knowledge sources just like custom agents.
 ### Step 3: Review the Response
 
 The agent should:
-- Search the **Contoso IT** SharePoint site
-- Find the **Guest WiFi Connection Guide.docx** document
-- Return the password: `GuestPass2026!`
-- Cite the source document
+- Search the **IT Help Desk** SharePoint site
+- Find the **Contoso IT FAQ** document
+- Return the hours and cite the source
 
 [SCREENSHOT: M365 Copilot response showing the answer with source citation]
 
 **Example response:**
+```text
+The IT help desk is open Monday–Friday, 7:00 AM–7:00 PM local time. High-priority
+issues are monitored 24/7.
+
+Source: Contoso IT FAQ (IT Help Desk SharePoint site)
 ```
-The guest WiFi password is **GuestPass2026!**
 
-Source: Guest WiFi Connection Guide.docx (Contoso IT SharePoint site)
-```
+**✅ Checkpoint:** The declarative agent answered the question using the SharePoint knowledge source.
 
-**✅ Checkpoint:** The declarative agent successfully answered the question using the SharePoint knowledge source.
+### Step 4: Test with an Unknown Question
 
-### Step 4: Test with Another Question
-
-1. Ask a second question:
-   ```
-   @IT Support Assistant How do I connect to the VPN?
+1. Ask a question the knowledge base doesn't cover:
+   ```text
+   @IT Support Assistant What's the office printer's serial number?
    ```
 
-2. If you haven't created a VPN guide document, the agent should respond:
-   ```
-   I don't have specific information about VPN connection steps in the knowledge base. 
-   Please contact IT support at support@contoso.com for assistance.
+2. The agent should respond along the lines of:
+   ```text
+   I don't have that information in the knowledge base. Please contact IT support at
+   helpdesk@contoso.com for assistance.
    ```
 
 This demonstrates that the agent:
@@ -218,7 +226,7 @@ This demonstrates that the agent:
 
 ## Alternative: Create via Teams Admin Center
 
-If the declarative agent option is not visible in Copilot Studio, you can create it via the **Teams admin center**:
+If the declarative agent option isn't visible in Copilot Studio, you can create it via the **Teams admin center**:
 
 1. Go to [https://admin.teams.microsoft.com](https://admin.teams.microsoft.com)
 2. In the left navigation, select **Teams apps** → **Manage apps**
@@ -251,13 +259,13 @@ When a user invokes the agent:
 ## Limitations of Declarative Agents
 
 Declarative agents are intentionally simple. They **cannot**:
-- Use visual topic flows (no conversation designer)
-- Call tools or connectors (no workflows, no API calls)
-- Display adaptive cards
-- Have multi-step forms or conditional branching
+- Author **Skills** (no markdown behaviors)
+- Call **Tools** or connectors (no actions, no API calls)
+- Run **Workflows** (no approvals or multi-step automation)
+- Display Adaptive Cards
 - Be published to channels other than M365 Copilot
 
-**If you need these capabilities**, build a **custom agent** instead (which you'll do starting in Module 06).
+**If you need these capabilities**, build a **custom agent** instead — which is exactly what you'll do when you build **Bit** starting in Module 06.
 
 ---
 
@@ -265,11 +273,11 @@ Declarative agents are intentionally simple. They **cannot**:
 
 Use this decision tree:
 
-```
+```text
 Do your users have M365 Copilot licenses?
 ├─ Yes → Is the use case simple Q&A with knowledge grounding?
 │         ├─ Yes → Build a declarative agent
-│         └─ No (need workflows, forms, etc.) → Build a custom agent
+│         └─ No (need skills, tools, workflows) → Build a custom agent
 └─ No → Build a custom agent and publish to Teams or web
 ```
 
@@ -278,10 +286,10 @@ Do your users have M365 Copilot licenses?
 | Use Case | Agent Type |
 |---|---|
 | HR policy Q&A for M365 users | Declarative |
-| IT helpdesk with device request forms | Custom |
+| IT helpdesk that logs tickets and runs approvals (Bit) | Custom |
 | Product docs Q&A for M365 users | Declarative |
-| Customer support chatbot on public website | Custom |
-| Autonomous ticket escalation agent | Custom (event-triggered) |
+| Customer support chatbot on a public website | Custom |
+| Autonomous ticket-escalation agent | Custom (event-triggered) |
 
 ---
 
@@ -289,10 +297,10 @@ Do your users have M365 Copilot licenses?
 
 - **Declarative agents** extend M365 Copilot with custom knowledge and instructions
 - **Invoked via `@mention`** — users stay inside the M365 Copilot chat
-- **Simple Q&A use cases** — no multi-step workflows or complex forms
+- **Simple Q&A use cases** — no skills, tools, or workflows
 - **Grounded in knowledge** — SharePoint sites, documents, websites
-- **Requires M365 Copilot license** for end users
-- **JSON manifest-based** — no visual designer (unlike custom agents)
+- **Requires an M365 Copilot license** for end users
+- **JSON manifest-based** — no Build page (unlike the custom agent you'll build as Bit)
 
 ---
 
@@ -304,16 +312,16 @@ Organizations use declarative agents to:
 2. **Legal Compliance** — `@Legal` provides guidance on contracts, NDAs, data retention
 3. **Product Documentation** — `@Product Docs` helps engineers find API references, config guides
 4. **Sales Enablement** — `@Sales Playbook` surfaces competitive intel, pitch decks, objection handling
-5. **IT Troubleshooting** — `@IT Support` (what you just built!) helps with password resets, WiFi, VPN
+5. **IT Troubleshooting** — `@IT Support Assistant` (what you just built!) answers common IT questions
 
 ---
 
 ## Next Steps
 
-Now that you've created a declarative agent, you'll shift focus to **custom agents** — the powerful, full-featured agents that give you complete control over conversational flows, tools, and publishing channels.
+Now that you've seen the lightweight option, you'll shift focus to **custom agents** — the full-featured agents that give you Skills, Tools, Workflows, and multiple publishing channels.
 
 But first, in **Module 04: Creating a Solution**, you'll set up proper **solution packaging** so all your work is organized, version-controlled, and ready for ALM (Application Lifecycle Management).
 
 ---
 
-**Course Navigation:** [← Module 02](../02-copilot-studio-fundamentals/README.md) | [Course Index](../README.md) | [Next: Module 04 →](../04-creating-a-solution/README.md)
+**Course Navigation:** [← Module 02](../02-copilot-studio-fundamentals/) | [Course Index](../) | [Next: Module 04 →](../04-creating-a-solution/)
