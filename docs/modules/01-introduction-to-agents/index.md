@@ -151,7 +151,7 @@ Microsoft Copilot Studio lets you build three distinct types of agents, each sui
 - Users don't have M365 Copilot licenses (or you want a dedicated agent experience)
 - You need advanced capabilities: skills, workflows, tools, custom branding
 
-**Example:** The **Contoso Helpdesk Agent** you'll build in this course — a dedicated IT support agent deployed to Teams that resets passwords, troubleshoots VPN, logs tickets, and handles software requests.
+**Example:** **Bit** — the Contoso Helpdesk Agent you'll build in this course. A dedicated IT support buddy deployed to Teams that resets passwords, troubleshoots VPN, logs tickets, and handles software requests.
 
 **Key features:**
 - Built on a single **Build** page (Instructions, Knowledge, Skills, Tools, Memory, Connected agents, Model)
@@ -253,7 +253,7 @@ Before moving forward, make sure you understand these terms:
 
 To ground these concepts, here are common scenarios where organizations deploy AI agents:
 
-### IT Helpdesk Agent (This Course)
+### Bit — IT Helpdesk Agent (This Course)
 - **Knowledge:** IT FAQ, approved software list, troubleshooting guidance
 - **Actions:** Reset passwords, troubleshoot VPN, log support tickets, route software requests for approval
 - **Channel:** Microsoft Teams + Microsoft 365 Copilot

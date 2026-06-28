@@ -2,7 +2,7 @@
 
 **Codename:** OPERATION DEPLOYMENT READY  
 **Time:** 35 minutes  
-**Scenario:** Contoso Helpdesk Agent
+**Scenario:** Bit — the Contoso Helpdesk Agent
 
 ---
 
@@ -19,7 +19,7 @@ By the end of this module, you will be able to:
 
 Before you can build agents in Copilot Studio, you need the right environment, the right permissions, and some data to ground your agent. This module walks you through a complete setup that supports every lab in this course.
 
-You'll work with a single scenario throughout: **building the Contoso Helpdesk Agent** — an AI assistant that helps employees resolve common IT issues (password resets, VPN problems, software requests) and logs a support ticket whenever a human needs to step in.
+You'll work with a single scenario throughout: **building Bit — your Contoso IT help desk buddy.** Bit is an AI assistant (the Contoso Helpdesk Agent) that helps employees resolve common IT issues (password resets, VPN problems, software requests) and logs a support ticket whenever a human needs to step in.
 
 This course uses the **new Copilot Studio experience** — Microsoft's rebuilt agent designer with a new orchestrator and a single **Build** page. One of your first tasks is to switch into it.
 
@@ -241,7 +241,7 @@ Your agent's ticketing system is simply a **SharePoint list**. When an issue nee
 
 2. Select **Blank list**
 3. **Name:** `Tickets`
-4. **Description:** `Support tickets logged by the Contoso Helpdesk Agent`
+4. **Description:** `Support tickets logged by Bit, the Contoso Helpdesk Agent`
 5. Select **Create**
 
 The list is created with a default **Title** column.
