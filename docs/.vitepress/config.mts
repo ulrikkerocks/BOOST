@@ -60,6 +60,7 @@ export default withMermaid(defineConfig({
         text: 'For Facilitators',
         collapsed: false,
         items: [
+          { text: 'Workshop Agenda', link: '/workshop-agenda' },
           { text: 'Facilitator Guide', link: '/facilitator-guide' },
           { text: 'Participant Reference Card', link: '/participant-reference-card' },
         ],

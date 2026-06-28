@@ -52,6 +52,31 @@ Merges holding it at 14: Memory→06, Tools→07, Evaluate→11.
 3. **03 & 05 are concept side-quests** (kept as full modules) — they don't touch Bit; frame them as
    "alternatives before we build Bit from scratch" so the spine stays clear.
 
+## Two delivery modes (online vs workshop day)
+
+The course serves two audiences and must work for both:
+
+- **Online course material** = complete & **self-contained**. All 14 modules (00–13), numerical
+  order in the sidebar. Someone revisiting at the office (no pre-provisioned env) starts at Module 00,
+  does setup/security themselves, and the whole thing flows. **Nothing is removed online.**
+- **Facilitated workshop day** = a re-sequenced subset (the ColorCloud "Mission Briefing"). Module 00
+  (SharePoint + security) is **pre-provisioned**; 01–02 (intro/fundamentals) are **presentation, not
+  labs**. Labs start at **05 ("Your First Agent")** and follow the Mission order:
+  - **Mission #1 Your first agent:** 05
+  - **Mission #2 Build:** 03 → 04 → 06
+  - **Mission #3 Enhance:** 07 → 08 → 09
+  - **Mission #4 Deploy:** 10 → 11 → Free Play Challenge
+  - **Mission Complete:** 12 → 13 → Plan Your First Agent → Keep building
+
+**Implications for module authoring:**
+- Every module needs an **explicit, self-contained Prerequisites block** + a note: *"Workshop
+  environments come with Module 00 pre-provisioned; if you're following along at the office, complete
+  Module 00 first."* So the day can skip/re-sequence and the office revisit still flows.
+- Sidebar stays **flat numerical 00–13**. The Mission grouping lives only in `docs/workshop-agenda.md`.
+- Titles: **keep my descriptive titles** (05 = Using Pre-Built Agents, 06 = Build the Contoso Helpdesk
+  Agent (Bit), 07 = Skills + Tools, 09 = Workflows, 11 = Evaluate + Publish).
+- Branding nuance to reconcile later: README says EPPC 2026; the agenda slide is ColorCloud 2026.
+
 ## Conversion recipe (per module)
 
 Keep classic scaffolding → swap classic concepts (Topics→Skills, Agent Flows→Workflows, Overview
