@@ -1,32 +1,32 @@
-# Module 06: Build a Custom Agent
+# Module 06: Build the Contoso Helpdesk Agent
 
 **Codename:** OPERATION AGENT FORGE  
 **Time:** 75 minutes  
-**Scenario:** Contoso Helpdesk Agent — Build from Scratch
+**Scenario:** Build Bit — from a blank canvas
 
 ---
 
 ## Learning Objectives
 
 By the end of this module, you will be able to:
-- Create a custom agent using natural language description
-- Configure agent instructions to define role, tone, and behavior
-- Add multiple knowledge sources (SharePoint site, uploaded documents, websites)
-- Test an agent with questions across different knowledge sources
-- Verify knowledge source attribution in agent responses
-- Understand how the AI model selection affects agent performance
+- Create a custom agent in the new experience from a natural-language description
+- Give the agent an identity (name, icon, accent) and write its **Instructions**
+- Configure **Settings** (preferred solution, moderation, authentication)
+- Add a **greeting** and **suggested prompts**
+- Ground the agent with **Knowledge** (uploaded documents) and turn on **Memory**
+- Run a first test in **Preview** and watch the agent reason as the maker
 
 ## Overview
 
-This is the heart of the course. You'll build the **Contoso Helpdesk Agent** from scratch — a custom agent that helps employees find IT information and request devices.
+This is the heart of the course. You'll build **Bit — your Contoso IT help desk buddy** — from a blank canvas, entirely in the **new experience**. Bit lives on a single **Build page**: Instructions, Knowledge, Skills, Tools, Memory, Connected agents, and Model, all in one place.
 
-By the end of this module, your agent will be able to:
-- ✅ Answer questions by searching the **Contoso IT SharePoint site**
-- ✅ Provide WiFi connection help from an **uploaded document**
-- ✅ Look up troubleshooting info from **Microsoft Support articles**
-- ✅ Search the **general web** for recent tech news or solutions
+By the end of this module, Bit will:
+- ✅ Have an identity, guardrails, a greeting, and suggested prompts
+- ✅ Answer from the **Contoso IT FAQ** and **Approved Software List**
+- ✅ Remember context across turns (**Memory**)
+- ✅ Cite its sources and admit when it doesn't know
 
-This agent will serve as the foundation for all remaining modules, where you'll add topics, adaptive cards, workflows, and event triggers.
+You'll add the *doing* — skills, tools, tickets, workflows — in the modules that follow. This module builds the foundation everything else sits on.
 
 ---
 
@@ -34,636 +34,349 @@ This agent will serve as the foundation for all remaining modules, where you'll 
 
 Here's what you'll build across Modules 06–11:
 
-| Module | What You Add |
+| Module | What You Add to Bit |
 |---|---|
-| **Module 06** (this one) | Base agent + knowledge sources |
-| **Module 07** | Topic: Device request with SharePoint data |
-| **Module 08** | Adaptive Card displaying device info + images |
-| **Module 09** | Agent Flow: Send email when device is requested |
-| **Module 10** | Event Trigger: Auto-escalate high-priority tickets |
-| **Module 11** | Publish to Microsoft Teams |
+| **Module 06** (this one) | The base agent + knowledge + memory |
+| **Module 07** | **Skills** + **Tools**: reset passwords, troubleshoot VPN, log tickets |
+| **Module 08** | **Adaptive Cards** for richer responses |
+| **Module 09** | A **Workflow** for manager approvals |
+| **Module 10** | An **Event Trigger** to auto-escalate high-priority tickets |
+| **Module 11** | **Evaluate**, then **Publish** to Teams + M365 Copilot |
 
-Everything starts here in Module 06.
+Everything starts here.
 
 ---
 
-## Lab 6.1: Create the Contoso Helpdesk Agent
+## Prerequisites
 
-**Objective:** Use natural language creation to build a new agent.
+- You're in the **new experience** with the **Contoso Helpdesk Agent** solution set as your **preferred solution** ([Module 04](../04-creating-a-solution/)).
+- The two knowledge documents from [Module 00](../00-course-setup/): **Contoso IT FAQ** and **Contoso Approved Software List**.
 
-### Step 1: Navigate to the Copilot Studio Home Page
+> 🏫 **In the facilitated workshop**, your environment, SharePoint site, and security are pre-provisioned. If you're following along **at the office**, complete [Module 00](../00-course-setup/) and [Module 04](../04-creating-a-solution/) first.
+
+---
+
+## Lab 6.1: Create Bit
+
+**Objective:** Create a new agent in the new experience and give it an identity.
+
+### Step 1: Open the Copilot Studio Home Page
 
 1. Go to [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com)
-2. Sign in with your M365 account
-3. You land on the **Home page**
+2. Sign in and confirm you're in the **new experience** and the right environment
 
-[SCREENSHOT: Copilot Studio Home page showing the description box: "Describe what you want your agent to do"]
+[SCREENSHOT: Copilot Studio Home page showing the "Describe what you want your agent to do" box]
 
-### Step 2: Describe Your Agent
+### Step 2: Describe the Agent
 
-The new Copilot Studio interface lets you **create agents using natural language**. Just describe what you want the agent to do, and AI provisions it for you.
+The new experience lets you **create an agent from a natural-language description**.
 
-1. In the description box on the Home page, enter:
+1. In the description box, enter:
 
-```
-You are an IT Help Desk assistant that helps Contoso employees resolve common IT issues 
-and find available devices. Be polite, concise, and helpful. Use the Contoso IT SharePoint 
-site as the primary knowledge source. Also search Microsoft Support for troubleshooting 
-articles at https://support.microsoft.com.
+```text
+You are an IT support agent for Contoso employees. Help them solve common device,
+access, and software issues. Be friendly, concise, and practical. If an issue needs
+admin access, log a support ticket for the help desk team.
 ```
 
-[SCREENSHOT: Home page with the IT helpdesk description entered in the box]
+2. Press **Enter** or select **Create**, and wait while the agent is generated (~10 seconds)
 
-2. Press **Enter** or select **Create**
+[SCREENSHOT: Home page with the IT support description entered]
 
-3. Wait while the AI generates your agent (~10 seconds)
+### Step 3: Name and Brand Bit
 
-### Step 3: Review AI Suggestions
+1. When the **Build page** opens, set the **name**:
 
-The AI will suggest:
-- **Agent name** (e.g., "IT Help Desk Assistant" or "Contoso IT Agent")
-- **Description**
-- **Initial instructions** (based on your input)
-- **Suggested knowledge sources** (Microsoft Support may appear)
-- **Suggested topics** (e.g., "Password Reset," "Device Request")
-- **Suggested channels** (e.g., Microsoft Teams)
+   ```text
+   Bit
+   ```
 
-[SCREENSHOT: AI suggestions panel showing agent name, knowledge sources, and suggested topics]
+   (You can use a fuller display name like *"Bit — your Contoso IT help desk buddy"* if you prefer.)
+2. Choose an **agent icon** from the catalog (or upload your own PNG), pick a **color**, and set a **custom accent color** if you like.
 
-### Step 4: Accept or Customize Suggestions
+[SCREENSHOT: Build page showing the agent named Bit with an icon and accent color]
 
-1. Review the **Agent name**:
-   - If it's close to "Contoso Helpdesk Agent" or "IT Help Desk Assistant," accept it
-   - If not, select **Edit** and enter: `Contoso Helpdesk Agent`
-
-2. Review the **Description**:
-   - Should be something like: "Helps employees resolve IT issues and request devices"
-   - Edit if needed
-
-3. Review the **Knowledge sources**:
-   - The AI may have added Microsoft Support
-   - Don't add the SharePoint site yet (you'll do that manually in Lab 6.2)
-
-4. Review **Suggested topics**:
-   - The AI may suggest topics like "Password Reset" or "Device Request"
-   - You can accept these or dismiss them (you'll build custom topics in Module 07)
-   - For this lab, **dismiss the topic suggestions** (we'll build topics from scratch later)
-
-5. Review **Suggested channels**:
-   - You may see "Microsoft Teams" suggested
-   - Don't configure channels yet (you'll do that in Module 11)
-
-6. Select **Create agent** (or **Continue**)
-
-[SCREENSHOT: Final agent creation screen with accepted suggestions]
-
-### Step 5: Land on the Overview Page
-
-After creation, you land on the **Overview page** for the **Contoso Helpdesk Agent**.
-
-[SCREENSHOT: Contoso Helpdesk Agent Overview page showing Details, Instructions, Knowledge, and Test pane]
-
-**✅ Checkpoint:** You've created the Contoso Helpdesk Agent and landed on the Overview page.
+**✅ Checkpoint:** Bit exists and you're on the Build page.
 
 ---
 
-## Lab 6.2: Configure Agent Instructions
+## Lab 6.2: Write Bit's Instructions
 
-**Objective:** Write clear, comprehensive instructions that define the agent's role, tone, and behavior.
+**Objective:** Define Bit's identity, tone, and guardrails. Keep it short — the detailed playbooks come as **Skills** in Module 07.
 
-### Step 1: Open the Instructions Editor
+1. On the **Build page**, open the **Instructions** block
+2. Replace the AI-generated text with:
 
-1. On the **Overview page**, scroll to the **Instructions** section
-2. You'll see the AI-generated instructions based on your initial description
-3. Select **Edit**
-
-[SCREENSHOT: Instructions section with Edit button]
-
-### Step 2: Review and Refine Instructions
-
-The AI may have generated something like:
-
-```
-You are an IT Help Desk assistant that helps employees resolve common IT issues 
-and find available devices. Be polite, concise, and helpful.
-```
-
-This is a good start, but let's make it more comprehensive.
-
-### Step 3: Write the Final Instructions
-
-Replace the AI-generated instructions with the following:
-
-```
-You are an IT Help Desk assistant for Contoso. Your role is to help employees:
-- Resolve common IT issues (password resets, software problems, connectivity)
-- Find information about available devices
-- Get step-by-step troubleshooting help
+```text
+You are Bit, the IT support agent for Contoso employees. Your job is to help
+employees solve common device, access, and software issues. Be friendly, concise,
+and practical.
 
 ## Guidelines
+- Search the Contoso knowledge (IT FAQ, Approved Software List) before answering.
+- Cite the source when you use knowledge.
+- If an issue needs admin access, log a ticket and hand it to the help desk team.
+- If you don't know, say so and point the user to helpdesk@contoso.com (ext. 4357 "HELP").
 
-**Tone and Style:**
-- Be polite, concise, and professional
-- Use simple, non-technical language when possible
-- Provide step-by-step instructions for complex tasks
-
-**Knowledge Sources (search in this order):**
-1. Contoso IT SharePoint site (primary source for company-specific info)
-2. Uploaded documents (WiFi guides, policy docs)
-3. Microsoft Support (for general troubleshooting)
-4. General web search (for recent tech news or solutions)
-
-**Response Rules:**
-- Always cite the source when providing information
-- If you find multiple relevant sources, prioritize the Contoso IT site
-- If you don't know the answer, admit it and suggest contacting IT support at support@contoso.com
-- Do NOT make up information — always ground responses in knowledge sources
-
-**Out of Scope:**
-- Do not discuss non-IT topics (HR, finance, etc.)
-- Do not share sensitive information like passwords directly in chat — link to documents instead
-- Do not approve or deny requests — only provide information and guidance
-
-## Examples of Good Responses
-
-**User:** "What's the WiFi password?"
-**Agent:** "The guest WiFi password is GuestPass2026! You can find full connection instructions in the Guest WiFi Connection Guide. [Source: Guest WiFi Connection Guide.docx]"
-
-**User:** "My laptop won't turn on."
-**Agent:** "Let's troubleshoot this step by step:
-1. Check if the power adapter is firmly connected
-2. Try a different power outlet
-3. Press and hold the power button for 10 seconds
-If it still doesn't turn on, contact IT support. [Source: Microsoft Support - Laptop troubleshooting]"
+## Guardrails
+- Never ask for passwords or one-time codes.
+- Never help bypass security.
+- Don't make up information — ground every answer in a knowledge source.
 ```
 
-[SCREENSHOT: Instructions editor showing the full instructions above]
+3. Select **Save** (💾)
 
-### Step 4: Save Instructions
+[SCREENSHOT: Instructions block showing Bit's instructions]
 
-1. Select **Save** (or **Apply**)
-2. The instructions are updated
+> You'll add the *how* — password resets, VPN steps, triage, software requests — as **Skills** in [Module 07](../07-add-topic-with-triggers/). Instructions set identity and guardrails; skills carry the detailed playbooks.
 
-**✅ Checkpoint:** The agent now has comprehensive instructions defining its role, tone, knowledge source priority, and response guidelines.
-
-### Why These Instructions Matter
-
-These instructions:
-- **Define the agent's personality** — polite, professional, helpful
-- **Establish knowledge source priority** — Contoso IT site first, then fallback sources
-- **Set boundaries** — what the agent will and won't do
-- **Provide examples** — teach the LLM what "good" looks like
-- **Prevent hallucinations** — explicit rule to admit "I don't know" instead of making things up
+**✅ Checkpoint:** Bit has clear instructions and guardrails.
 
 ---
 
-## Lab 6.3: Add Knowledge Sources
+## Lab 6.3: Configure Settings
 
-**Objective:** Connect the agent to multiple knowledge sources so it can answer a wide range of questions.
+**Objective:** Confirm Bit's solution, moderation, and authentication.
 
-You'll add three knowledge sources:
-1. **Contoso IT SharePoint site** — Company-specific IT information
-2. **Guest WiFi Connection Guide (uploaded document)** — Step-by-step WiFi instructions
-3. **Microsoft Support website** — General troubleshooting articles
+1. Open **Settings** (top right).
+2. **Solution / language** — confirm Bit is in your **Contoso Helpdesk Agent** solution (it uses your preferred solution by default; you can change it here). Note the agent **schema name** and **primary language**.
+3. **Moderation level** — choose how strictly responses are filtered for unsafe content. Leave the default for the workshop.
+4. **Authentication** — for the demo, **Authenticate with Microsoft** so SharePoint/Outlook tools later run as the signed-in user. (Your facilitator may prefer **No authentication** — follow their guidance.)
+5. **Save** and exit Settings.
 
-### Step 1: Add the Contoso IT SharePoint Site
+[SCREENSHOT: Settings panel showing Solution = Contoso Helpdesk Agent, moderation, and authentication]
 
-1. On the **Overview page**, scroll to the **Knowledge** section
-2. Select **+ Add knowledge**
+> 🔐 **Auth note:** "Authenticate with Microsoft" means tools can act **as the signed-in user**. In [Module 07](../07-add-topic-with-triggers/) you'll also choose, per tool, whether an action runs as the user or as the maker — keep that distinction in mind.
 
-[SCREENSHOT: Knowledge section with "+ Add knowledge" button]
-
-3. Select **SharePoint**
-4. In the SharePoint connection dialog:
-   - **Site URL:** Enter the URL of your Contoso IT site (from Module 00):
-     ```
-     https://[yourtenant].sharepoint.com/sites/ContosoIT
-     ```
-   - **Description (optional):** `Contoso IT site with devices list and help documents`
-
-[SCREENSHOT: Add SharePoint knowledge source dialog showing URL entry]
-
-5. Select **Add** (or **Connect**)
-
-6. Wait while Copilot Studio indexes the SharePoint site (~30 seconds)
-
-7. The SharePoint site appears in the **Knowledge** section
-
-[SCREENSHOT: Knowledge section showing Contoso IT SharePoint site with green checkmark indicating successful connection]
-
-**✅ Checkpoint:** The agent can now search the Contoso IT SharePoint site (including the Devices list and uploaded documents).
-
-### Step 2: Add the Guest WiFi Guide (Uploaded Document)
-
-Even though the Guest WiFi Guide is stored in the SharePoint site's Documents library, you can **also** upload it directly as a standalone knowledge source. This ensures higher priority and faster retrieval.
-
-1. In the **Knowledge** section, select **+ Add knowledge**
-2. Select **Upload files** (or **Files**)
-3. Select **Browse** and choose the **Guest WiFi Connection Guide.docx** file (from Module 00)
-   - If you didn't save the file locally, download it from SharePoint first:
-     1. Go to the Contoso IT site
-     2. Open **Documents** library
-     3. Download **Guest WiFi Connection Guide.docx**
-
-[SCREENSHOT: Upload files dialog showing file browser]
-
-4. After selecting the file, select **Upload** (or **Add**)
-
-5. Wait while Copilot Studio processes the document (~10 seconds)
-
-6. The document appears in the **Knowledge** section
-
-[SCREENSHOT: Knowledge section showing SharePoint site + Guest WiFi Connection Guide.docx]
-
-**✅ Checkpoint:** The agent can now search the uploaded Guest WiFi guide.
-
-### Step 3: Add Microsoft Support as a Web Knowledge Source
-
-1. In the **Knowledge** section, select **+ Add knowledge**
-2. Select **Public websites** (or **Websites**)
-3. In the URL field, enter:
-   ```
-   https://support.microsoft.com
-   ```
-4. **Description (optional):** `Microsoft Support articles for general troubleshooting`
-
-[SCREENSHOT: Add website knowledge source dialog showing Microsoft Support URL]
-
-5. Select **Add**
-
-6. Copilot Studio will index publicly accessible pages on Microsoft Support
-
-> **Note:** The agent can only access **public pages** on the website. Pages requiring authentication won't be indexed.
-
-**✅ Checkpoint:** The agent can now search Microsoft Support articles.
-
-### Step 4: Enable General Web Search (Optional)
-
-General web search allows the agent to search the public internet for real-time information.
-
-1. In the **Knowledge** section, locate the **General web search** toggle
-2. Verify it's **enabled** (toggle should be on/blue)
-3. If it's disabled, select the toggle to enable it
-
-[SCREENSHOT: Knowledge section showing "General web search" toggle enabled]
-
-**When to enable web search:**
-- ✅ Agent needs recent information (e.g., "What's the latest Windows 11 update?")
-- ✅ Agent helps with tech news or product releases
-- ❌ Agent handles sensitive/internal topics only (disable web search)
-- ❌ You want complete control over sources (disable web search)
-
-**For this course, keep web search enabled.** It allows the agent to answer questions like "What's new in Microsoft Teams?" even if you don't have that info in your knowledge base.
-
-**✅ Checkpoint:** General web search is enabled.
-
-### Summary of Knowledge Sources
-
-Your agent now has **four knowledge sources**:
-
-| Knowledge Source | Type | What It Contains |
-|---|---|---|
-| **Contoso IT SharePoint site** | SharePoint | Devices list, pages, site documents |
-| **Guest WiFi Connection Guide.docx** | Uploaded file | WiFi connection instructions |
-| **Microsoft Support** | Website | General troubleshooting articles |
-| **General web search** | Internet | Real-time public web results |
+**✅ Checkpoint:** Bit is in the right solution with moderation and authentication set.
 
 ---
 
-## Lab 6.4: Test the Agent with Multiple Knowledge Sources
+## Lab 6.4: Add a Greeting and Suggested Prompts
 
-**Objective:** Verify the agent can answer questions from each knowledge source and correctly cites sources.
+**Objective:** Give users an on-ramp.
 
-### Test 1: SharePoint Site (Devices List)
+1. Set a **greeting message**, e.g.:
 
-1. In the **Test pane** (right side), select the **New test session** icon (circular arrows) to start fresh
-2. Type the following question:
-   ```
-   Do you have any Dell laptops available?
+   ```text
+   Hi, I'm Bit — your IT help desk buddy. How can I help today?
    ```
 
-3. Press **Enter**
+2. Add **four suggested prompts**:
 
-**Expected response:**
-- The agent searches the **Devices** list on the Contoso IT SharePoint site
-- Returns available Dell laptops (e.g., "Dell Latitude 7430")
-- Cites the source: **[Source: Devices list, Contoso IT SharePoint site]**
-
-[SCREENSHOT: Test pane showing response about Dell laptops with source citation]
-
-**✅ Checkpoint:** The agent can search SharePoint list data.
-
-### Test 2: Uploaded Document (WiFi Guide)
-
-1. In the Test pane, type:
-   ```
-   What's the guest WiFi password?
+   ```text
+   - Help desk hours
+   - Can I install Power BI Desktop?
+   - I'm locked out and forgot my password
+   - My VPN keeps disconnecting
    ```
 
-2. Press **Enter**
+3. **Save.**
 
-**Expected response:**
-- The agent retrieves the password from the **Guest WiFi Connection Guide.docx**
-- Returns: `GuestPass2026!`
-- Cites the source: **[Source: Guest WiFi Connection Guide.docx]**
+[SCREENSHOT: Greeting and four suggested prompts configured]
 
-[SCREENSHOT: Test pane showing WiFi password response with document source citation]
+> These four map directly to scenarios you'll test and build: knowledge (hours), the software list (Power BI), the password-reset skill, and the VPN skill.
 
-**✅ Checkpoint:** The agent can search uploaded documents.
+**✅ Checkpoint:** Bit greets users and offers four starter prompts.
 
-### Test 3: Website (Microsoft Support)
+---
 
-1. In the Test pane, type:
+## Lab 6.5: Add Knowledge
+
+**Objective:** Ground Bit in the two Contoso documents so he can answer real questions.
+
+In the new experience you add knowledge right on the **Build page**, and the orchestrator decides which sources to search per question. For this workshop we **upload** the two documents so everyone's data is identical.
+
+### Step 1: Upload the Contoso IT FAQ
+
+1. On the **Build page**, open the **Knowledge** block → choose to **upload** documents.
+2. Upload **`Contoso_IT_FAQ.docx`** (help desk email, helpline number, hours, basic Q&A).
+
+[SCREENSHOT: Knowledge block with the upload dialog]
+
+### Step 2: Upload the Approved Software List
+
+1. Upload **`Contoso_Approved_Software_List.docx`** (apps + self-service vs. manager sign-off).
+2. Wait until both documents show as added/ready.
+
+[SCREENSHOT: Knowledge block showing both documents added]
+
+> 💡 **Other options:** you could also point Knowledge at the **IT Help Desk SharePoint site**, public **websites**, or **Microsoft IQ**, and enable **general web search** for recent info. For this course, the two uploads are enough — the orchestrator chooses which to search automatically.
+
+**✅ Checkpoint:** Bit can search the Contoso IT FAQ and Approved Software List.
+
+---
+
+## Lab 6.6: Turn On Memory
+
+**Objective:** Let Bit carry context across turns and conversations.
+
+1. In the **Memory** block, toggle **Memory on** and **Save**.
+2. This lets Bit remember earlier messages (and prior conversations) for better follow-ups — e.g., remembering a user's name or the issue they described a few turns ago.
+
+[SCREENSHOT: Memory block toggled on]
+
+**✅ Checkpoint:** Memory is enabled.
+
+---
+
+## Lab 6.7: First Test in Preview
+
+**Objective:** Verify Bit answers from knowledge and watch him reason.
+
+### Test 1: Help desk hours (knowledge)
+
+1. Open the **Preview** pane and select the suggested prompt **Help desk hours** (or type it).
+2. Watch what Bit does — as the **maker**, the preview shows his reasoning:
+   - searches the **knowledge base**, then
+   - **loads skills** (including the built-in skills that read Word/PDF), then
+   - answers with the hours, sourced from the **Contoso IT FAQ**.
+
+[SCREENSHOT: Preview pane showing Bit answering help desk hours with the reasoning visible]
+
+> 👀 That maker view (search → skill load → answer) is your main debugging tool throughout the course.
+
+### Test 2: A software question (knowledge)
+
+1. Ask:
+
+   ```text
+   Can I install Power BI Desktop?
    ```
-   How do I reset my Windows password?
-   ```
 
-2. Press **Enter**
+2. Bit explores the **Approved Software List**, sees Power BI Desktop is **self-service**, and replies that no manager approval is needed (plus install guidance).
+3. Flip the **end-user** preview toggle on to see the cleaner, user-facing version — then back off to keep the detailed maker view.
 
-**Expected response:**
-- The agent searches **Microsoft Support**
-- Returns step-by-step instructions from a Microsoft Support article
-- Cites the source: **[Source: support.microsoft.com/...]**
+[SCREENSHOT: Preview pane showing the Power BI self-service answer, with the maker/end-user toggle]
 
-[SCREENSHOT: Test pane showing Windows password reset instructions with Microsoft Support citation]
+### Test 3: A graceful "I don't know"
 
-**✅ Checkpoint:** The agent can search public websites.
+1. Ask something outside the knowledge base, e.g.:
 
-### Test 4: General Web Search
-
-1. In the Test pane, type:
-   ```
-   What's new in Windows 11 version 24H2?
-   ```
-
-2. Press **Enter**
-
-**Expected response:**
-- The agent searches the **general web**
-- Returns recent information about Windows 11 updates
-- May cite sources like microsoft.com, tech news sites, etc.
-
-[SCREENSHOT: Test pane showing Windows 11 news with web search source citations]
-
-**✅ Checkpoint:** The agent can use general web search for recent information.
-
-### Test 5: Graceful "I Don't Know"
-
-1. In the Test pane, type:
-   ```
+   ```text
    What's the employee parking policy?
    ```
 
-2. Press **Enter**
+2. Bit should admit he doesn't have that information and point to `helpdesk@contoso.com` rather than making something up — exactly as the instructions require.
 
-**Expected response (since parking policy isn't in any knowledge source):**
-```
-I don't have information about the employee parking policy in the Contoso IT knowledge base. 
-This may be an HR topic — I recommend contacting IT support at support@contoso.com or 
-checking with HR for parking information.
-```
-
-**✅ Checkpoint:** The agent admits when it doesn't know and suggests alternatives (following the instructions).
+**✅ Checkpoint:** Bit answers from knowledge, shows his reasoning to the maker, and declines gracefully when he can't help.
 
 ---
 
-## Lab 6.5: Explore the Activity Map
+## Lab 6.8: Watch Bit Reason (Maker Preview)
 
-**Objective:** Understand which knowledge sources the agent is searching for each question.
+**Objective:** Understand which sources Bit searches for each question.
 
-### Step 1: Open the Activity Map
+As the **maker**, the Preview pane shows Bit's reasoning for every turn:
+- which **knowledge** sources he searched,
+- which **skills** he loaded,
+- and which source(s) he used in the final answer.
 
-1. In the **Test pane**, after asking a question, look for the **Activity** or **Details** link (may appear as an expandable section below the response or as a separate panel)
+Ask the same questions from Lab 6.7 and expand the reasoning/details for each turn. This is how you debug behavior later — if Bit answers from the wrong source or skips a skill, the maker view tells you why.
 
-2. If available, select **Activity** or **Show details**
+[SCREENSHOT: Preview pane reasoning expanded — knowledge searched, skill loaded, answer]
 
-3. The **Activity map** displays:
-   - Which knowledge sources were searched
-   - How many results were retrieved from each source
-   - Which source(s) were used in the final response
-
-[SCREENSHOT: Activity map showing knowledge sources searched: Contoso IT SharePoint (3 results), Guest WiFi Guide (1 result)]
-
-### Step 2: Interpret the Activity Map
-
-**Example for "What's the WiFi password?":**
-```
-Knowledge Sources Searched:
-  ✅ Guest WiFi Connection Guide.docx — 1 result (used)
-  ✅ Contoso IT SharePoint site — 0 results
-  ⏭️ Microsoft Support — skipped (answer found)
-```
-
-**What this tells you:**
-- The agent searched the uploaded document first
-- Found the answer immediately
-- Didn't need to search other sources
-
-**Example for "Do you have Dell laptops?":**
-```
-Knowledge Sources Searched:
-  ✅ Contoso IT SharePoint site (Devices list) — 2 results (used)
-  ⏭️ Other sources — skipped (answer found)
-```
-
-**Why the Activity map matters:**
-- **Debugging** — see why the agent chose a particular source
-- **Performance** — identify slow or unresponsive knowledge sources
-- **Quality assurance** — verify the agent is searching the right sources
+> 🧠 In classic Copilot Studio this was a separate "activity map." In the new experience, the reasoning is right in the maker preview — no separate screen.
 
 ---
 
-## Lab 6.6: Select the AI Model (Optional)
+## Lab 6.9: Select the AI Model (Optional)
 
-**Objective:** Understand how to change the AI model that powers your agent's reasoning.
+**Objective:** Know how to change the model that powers Bit's reasoning.
 
-### Step 1: View the Current Model
+1. On the **Build page**, open the **Model** block — you'll see the current model (likely **GPT-4.1**).
 
-1. On the **Overview page**, locate the **Select your agent's model** section (near the top, below Details)
-2. You'll see a dropdown showing the current model (likely **GPT-4.1**)
+[SCREENSHOT: Model block showing GPT-4.1 selected]
 
-[SCREENSHOT: "Select your agent's model" dropdown showing GPT-4.1 selected]
+2. Available models (as of June 2026):
 
-### Step 2: Review Available Models
-
-As of June 2026, available models include:
-- **GPT-4.1** (default) — Fast, cost-effective, reliable
-- **GPT-5** — Advanced reasoning, longer context windows
-- **Claude Sonnet 4.5 / 4.6** — Strong citation accuracy, structured tasks
-- **Mistral Medium 3.5** — Multilingual, efficient
-
-### Step 3: When to Change the Model
-
-| Scenario | Recommended Model |
+| Model | Best for |
 |---|---|
-| **General use, cost-conscious** | GPT-4.1 (default) |
-| **Complex reasoning, multi-step tasks** | GPT-5 or Claude Sonnet 4.6 |
-| **Large documents, long context** | GPT-5 (larger context window) |
-| **Multilingual support** | Mistral Medium 3.5 |
-| **Citation accuracy is critical** | Claude Sonnet 4.5/4.6 |
+| **GPT-4.1** (default) | General use, fast, cost-effective |
+| **GPT-5** | Complex reasoning, long context |
+| **Claude Sonnet 4.5 / 4.6** | Structured tasks, citation accuracy |
+| **Mistral Medium 3.5** | Multilingual, efficient |
 
-### Step 4: Experiment (Optional)
+3. To experiment: pick a different model, **Save**, start a **new** preview session, and re-ask the Lab 6.7 questions. Compare clarity, detail, and citations.
 
-If you want to see the difference:
-
-1. Select the **AI model dropdown**
-2. Choose a different model (e.g., **GPT-5** or **Claude Sonnet 4.6**)
-3. Select **Save** or **Apply**
-4. In the **Test pane**, start a **new test session**
-5. Ask the same questions you tested in Lab 6.4
-6. Compare the responses:
-   - Are citations clearer?
-   - Are responses more detailed or concise?
-   - Is reasoning more step-by-step?
-
-[SCREENSHOT: Test pane showing comparison between GPT-4.1 and GPT-5 responses]
-
-**For this course, GPT-4.1 is recommended.** It's the most cost-effective and performs well for standard IT helpdesk scenarios.
+> **For this course, GPT-4.1 is recommended** — cost-effective and well-suited to IT helpdesk scenarios.
 
 ---
 
-## Understanding Agent Settings
+## Verify Bit Is in the Solution
 
-Let's explore the agent settings briefly.
+Confirm Bit was automatically added to the **Contoso Helpdesk Agent** solution (because you set the preferred solution in Module 04).
 
-### Step 1: Open Agent Settings
+1. Go to [https://make.powerapps.com](https://make.powerapps.com) → your **developer environment**
+2. Select **Solutions** → **Contoso Helpdesk Agent**
+3. In **Objects**, you should see **Copilot → Bit** (and any connection references)
 
-1. On the **Overview page**, select the **Settings** icon (gear ⚙️) at the top right
-2. Select **Agent settings** (or just **Settings**)
+[SCREENSHOT: Contoso Helpdesk Agent solution showing Bit listed under Objects]
 
-[SCREENSHOT: Settings dropdown showing "Agent settings" option]
-
-### Step 2: Review Settings Categories
-
-**General:**
-- **Language** — Set the agent's primary language
-- **Time zone** — For scheduling and timestamps
-
-**Advanced:**
-- **Schema name** — The technical identifier for this agent (auto-generated, read-only)
-- **Solution** — Which solution this agent belongs to (should show **Contoso Helpdesk Agent**)
-
-**Security:**
-- **Authentication** — Who can access this agent (if published to web)
-- **Data policies** — Compliance and data residency settings
-
-> **For this course**, you don't need to change any settings. Just be aware of where they are.
-
----
-
-## Verifying the Agent Is in the Solution
-
-Let's confirm the agent was automatically added to the **Contoso Helpdesk Agent** solution (because you set the preferred solution in Module 04).
-
-### Step 1: Open Power Apps Maker Portal
-
-1. Go to [https://make.powerapps.com](https://make.powerapps.com)
-2. Sign in with your M365 account
-3. Ensure you're in your **developer environment** (top right environment picker)
-
-### Step 2: Navigate to Solutions
-
-1. In the left navigation, select **Solutions**
-2. Select **Contoso Helpdesk Agent** from the list
-
-[SCREENSHOT: Solutions list showing Contoso Helpdesk Agent solution]
-
-### Step 3: Verify the Agent Is Listed
-
-1. In the solution, you'll see a list of **Objects**
-2. Look for:
-   - **Copilot** (or **Chatbot**) → **Contoso Helpdesk Agent**
-   - **Connection references** → SharePoint, if applicable
-
-[SCREENSHOT: Contoso Helpdesk Agent solution showing the agent listed under Objects]
-
-**✅ Checkpoint:** The agent is properly packaged in the solution.
+**✅ Checkpoint:** Bit is packaged in the solution.
 
 ---
 
 ## Troubleshooting Common Issues
 
-### Issue 1: SharePoint Site Won't Connect
+### Issue 1: A document won't index
 
-**Symptoms:** Error when adding the SharePoint site as a knowledge source.
-
-**Possible causes:**
-- **Permissions** — You don't have access to the site
-- **URL typo** — Double-check the URL
-- **Site privacy** — Site is private and you're not a member
+**Symptoms:** an uploaded document stays "processing" or Bit can't find its content.
 
 **Solutions:**
-1. Open the SharePoint site in a browser and verify you can access it
-2. Add yourself as a site owner/member (via SharePoint site settings)
-3. Retry adding the knowledge source
+1. Wait a minute or two and refresh — indexing isn't always instant.
+2. Re-upload the file; confirm it's a supported type (Word/PDF).
+3. Ask a question you *know* is answered in the document (e.g., "help desk hours").
 
-### Issue 2: Agent Doesn't Find Devices List Data
+### Issue 2: Bit answers without citing a source
 
-**Symptoms:** Agent says "I don't have information about devices" even though the Devices list exists.
-
-**Possible causes:**
-- **Indexing delay** — SharePoint site is still being indexed
-- **List permissions** — Devices list is not accessible to the agent
-- **Empty list** — No items in the Devices list
+**Symptoms:** Bit gives information but no citation, or seems to guess.
 
 **Solutions:**
-1. Wait 5–10 minutes for indexing to complete
-2. Verify the Devices list has at least 5 sample items (from Module 00)
-3. In SharePoint, check list permissions (should be inherited from site)
-4. In Copilot Studio, remove and re-add the SharePoint knowledge source
+1. Confirm the "cite the source" and "don't make up information" lines are in the **Instructions**.
+2. Test with a question whose answer is definitely in a knowledge document.
+3. Check the maker preview to see whether knowledge was searched at all.
 
-### Issue 3: Agent Hallucinates Instead of Citing Sources
+### Issue 3: Bit can't see the SharePoint site (if you added one)
 
-**Symptoms:** Agent provides information without citing a source, or makes up information.
-
-**Possible causes:**
-- **Instructions are too permissive** — No explicit rule to cite sources
-- **General web search is disabled** — Agent can't find an answer and guesses
-- **Knowledge sources not indexed yet**
+**Symptoms:** error connecting, or no results from the site.
 
 **Solutions:**
-1. Review instructions — ensure "Always cite sources" rule is present
-2. Test with a question you **know** the answer is in a knowledge source
-3. Check the Activity map to see if knowledge sources were searched
-4. Add a stronger instruction: "If no source is found, say 'I don't have this information' — never make up an answer."
+1. Open the site in a browser and confirm you have access.
+2. Verify the site URL and that you're a member/owner.
+3. Remove and re-add the SharePoint knowledge source.
 
 ---
 
 ## Key Takeaways
 
-- **Natural language creation** — Describe what you want; AI provisions the agent
-- **Instructions define behavior** — Clear instructions prevent hallucinations and set tone
-- **Knowledge sources are prioritized** — Agent searches in the order you specify (or LLM decides)
-- **RAG grounds responses** — Every answer should cite a source
-- **Activity map shows what happened** — Essential for debugging and quality assurance
-- **AI model selection matters** — Choose based on reasoning complexity, cost, and language needs
-- **Solutions keep you organized** — All components in one package for easy management
+- **Natural-language creation** — describe what you want; the new experience provisions the agent
+- **Instructions define behavior** — short identity + guardrails; detailed playbooks live in Skills
+- **Knowledge grounds answers** — uploaded docs let the orchestrator search and cite
+- **Memory** — Bit remembers context across turns and conversations
+- **The maker preview shows reasoning** — your main debugging tool
+- **Model choice matters** — pick based on reasoning complexity, cost, and language
+- **Preferred solution keeps you organized** — Bit lands in the Contoso Helpdesk Agent solution automatically
 
 ---
 
 ## What You've Built
 
-You now have a **production-ready knowledge base agent** that:
-- ✅ Searches the Contoso IT SharePoint site (lists, documents, pages)
-- ✅ Provides WiFi help from an uploaded guide
-- ✅ Searches Microsoft Support for troubleshooting
-- ✅ Uses general web search for recent information
-- ✅ Cites sources for every answer
-- ✅ Admits "I don't know" when appropriate
-- ✅ Is packaged in the Contoso Helpdesk Agent solution
+Bit now:
+- ✅ Has an identity, guardrails, a greeting, and four suggested prompts
+- ✅ Answers from the **Contoso IT FAQ** and **Approved Software List**, with citations
+- ✅ Remembers context (**Memory**)
+- ✅ Admits when he doesn't know
+- ✅ Is packaged in the **Contoso Helpdesk Agent** solution
+
+He can *talk* and *know* — but he can't *do* anything yet (reset a password, log a ticket). That needs **Skills** and **Tools**, which are next.
 
 ---
 
 ## Next Steps
 
-In **Module 07: Add a Topic with Triggers**, you'll add a **conversational topic** that lets users request devices from the Devices list. This topic will use:
-- Trigger phrases (e.g., "I need a laptop")
-- Question nodes to gather requirements
-- Power Fx to query the SharePoint Devices list
-- Adaptive Cards to display results (Module 08)
-
-The agent you built in Module 06 is the foundation. Now you'll add structured conversation flows on top of the generative knowledge base.
+In **Module 07: Teach Bit Skills (and Equip His Tools)**, you'll author four reusable markdown **Skills** — `password-reset`, `vpn-troubleshooting`, `smart-triage`, and `software-installation-request` — and wire up the **Tools** (Outlook **Send an email**, SharePoint **Create item**) so Bit can log a ticket end-to-end and email a confirmation.
 
 ---
 
-**Course Navigation:** [← Module 05](../05-prebuilt-agents/README.md) | [Course Index](../README.md) | [Next: Module 07 →](../07-add-topic-with-triggers/README.md)
+**Course Navigation:** [← Module 05](../05-prebuilt-agents/) | [Course Index](../) | [Next: Module 07 →](../07-add-topic-with-triggers/)
