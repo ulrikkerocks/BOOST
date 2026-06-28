@@ -1,7 +1,8 @@
 # Module 08: Enhance with Adaptive Cards
 
-**Time:** 45 minutes  
-**Scenario:** Display Devices in Rich, Interactive Cards
+**Codename:** OPERATION SHOWCASE  
+**Time:** 40 minutes  
+**Scenario:** Present a Logged Ticket as a Rich Card
 
 ---
 
@@ -9,155 +10,65 @@
 
 By the end of this module, you will be able to:
 - Explain what Adaptive Cards are and when to use them
-- Add an Adaptive Card node to a topic flow
-- Use Power Fx to bind data to Adaptive Card elements
-- Display images, text, and buttons in a structured card layout
-- Capture user input from Adaptive Card actions
-- Test Adaptive Cards in the Test pane
+- Design an Adaptive Card with the JSON schema
+- Have Bit present a logged ticket as a rich card instead of plain text
+- Bind live values (ticket number, priority, etc.) into the card
+- Test the card in the Preview pane
 
 ## Overview
 
-In Module 07, you displayed device results as plain text or a basic list. That works, but it's not visually engaging.
+In Module 07, when Bit logs a ticket he confirms it as **plain text**. That works, but a **rich card** is clearer and more professional — especially once Bit is published to Microsoft Teams.
 
-In this module, you'll replace the text-based device display with **Adaptive Cards** — rich, interactive UI components that can include:
-- Images (device photos)
-- Formatted text (title, subtitle, details)
-- Buttons (e.g., "Request this device")
-- Input fields (for later expansion)
+In this module you'll give Bit an **Adaptive Card** so that, after `smart-triage` logs a ticket, he presents a tidy confirmation card: ticket number, summary, category, priority, status, requestor — and a button to open the ticket in SharePoint.
 
-Adaptive Cards make your agent feel polished and professional, especially in channels like Microsoft Teams.
+> 🧭 **Where this fits Bit's story.** This module makes an *existing* capability (the ticket from Module 07) look better. If you'd rather practice on the software flow, the same technique applies to a **software-request card** — see the alternative at the end.
+
+---
+
+## Prerequisites
+
+- **Bit** with the `smart-triage` skill and the **Create item** / **Send email** tools from [Module 07](../07-add-topic-with-triggers/).
+
+> 🏫 **In the facilitated workshop**, you'll already have logged a ticket in Module 07. If you're at the office, complete [Module 07](../07-add-topic-with-triggers/) first.
 
 ---
 
 ## What Are Adaptive Cards?
 
-**Adaptive Cards** are a platform-agnostic schema for UI cards. Originally developed by Microsoft, they're now an open standard supported across:
-- Microsoft Teams
-- Outlook
-- Copilot Studio agents
-- Windows notifications
-- And more
+**Adaptive Cards** are a platform-agnostic schema for UI cards. Originally developed by Microsoft, they're now an open standard supported across **Microsoft Teams**, **Outlook**, **Copilot Studio agents**, Windows notifications, and more.
 
 ### Why Use Adaptive Cards?
 
-| Plain Text / List | Adaptive Card |
+| Plain Text | Adaptive Card |
 |---|---|
-| Simple, fast to implement | Rich, visual, branded |
-| Limited formatting | Full control over layout, images, buttons |
+| Simple, fast | Rich, visual, branded |
+| Limited formatting | Full control over layout and buttons |
 | Plain data dump | Structured, scannable |
 | No interactivity | Buttons, input fields, actions |
 
 **Example use cases:**
-- **Device catalog** (this module) — Show device images, specs, location
-- **Approval requests** — Show request details + Approve/Reject buttons
-- **Order confirmation** — Show order summary, total, tracking link
-- **Survey or feedback** — Inline rating or comment form
+- **Ticket confirmation** (this module) — number, priority, status, and a link
+- **Approval requests** — request details + Approve/Reject buttons
+- **Order confirmation** — summary, total, tracking link
+- **Survey / feedback** — inline rating or comment form
 
-[SCREENSHOT: Example Adaptive Card showing a device with image, title, specs, and "Request" button]
-
----
-
-## Lab 8.1: Add an Adaptive Card Node to the Device Request Topic
-
-**Objective:** Replace the plain text device list with an Adaptive Card.
-
-### Step 1: Open the Device Request Topic
-
-1. Go to [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com)
-2. Navigate to **Agents** → **Contoso Helpdesk Agent**
-3. On the Overview page, scroll to **Topics** → select **See all**
-4. Select the **Device Request** topic
-
-[SCREENSHOT: Topics list with Device Request topic highlighted]
-
-5. The topic designer opens
-
-### Step 2: Locate the "Devices Found" Message Node
-
-Recall from Module 07:
-- **Condition node** checks if `CountRows(Topic.AvailableDevices) > 0`
-- **True branch** → Message node displays devices
-- **False branch** → Message node says "no devices found"
-
-We'll replace the **True branch** message node with an Adaptive Card.
-
-[SCREENSHOT: Topic flow showing Condition node with True/False branches]
-
-### Step 3: Delete the Old Message Node (True Branch)
-
-1. On the **True** branch, select the **Message** node
-2. Select the **Delete** icon (trash can) or right-click → **Delete**
-
-[SCREENSHOT: Message node on True branch with Delete icon highlighted]
-
-3. The node is removed
-
-### Step 4: Add an Adaptive Card Node
-
-1. On the **True** branch, select **+ Add node**
-2. Select **Send a message** (same as before)
-3. In the message node, locate the **Add** menu (or format options)
-4. Select **Adaptive Card**
-
-[SCREENSHOT: Message node menu showing "Adaptive Card" option]
-
-5. An Adaptive Card editor appears
-
-[SCREENSHOT: Adaptive Card editor with blank canvas or default template]
-
-**✅ Checkpoint:** You've added an Adaptive Card node to the True branch.
+[SCREENSHOT: Example Adaptive Card showing a ticket confirmation with fields and a "View in SharePoint" button]
 
 ---
 
-## Lab 8.2: Design the Adaptive Card Layout
+## Adaptive Cards in the New Experience
 
-**Objective:** Create a card that displays device information (image, title, brand, model, location).
+In classic Copilot Studio you added an Adaptive Card **node** inside a topic flow and bound it with Power Fx. There are **no topics** in the new experience — so instead you give Bit a **card template** and instruct the relevant **skill** to present its result as that card. The orchestrator fills the card's placeholders from the values the skill just produced (the ticket it created).
 
-### Understanding Adaptive Card JSON
+> ⚠️ **Preview note.** The exact way to attach an Adaptive Card in the new experience is evolving (it may appear as a card capability, a prompt/tool, or a card block referenced from a skill). The transferable skills here — **designing the card JSON** and **deciding what data binds into it** — are identical regardless of where the button lives. Confirm the current authoring path in your tenant before the workshop; the facilitator notes cover fallbacks.
 
-Adaptive Cards are defined using **JSON**. Copilot Studio provides a visual editor, but under the hood, it's all JSON.
+---
 
-**Basic structure:**
-```json
-{
-  "type": "AdaptiveCard",
-  "version": "1.5",
-  "body": [
-    {
-      "type": "TextBlock",
-      "text": "Device Name"
-    }
-  ]
-}
-```
+## Lab 8.1: Design the Ticket Confirmation Card
 
-### Step 1: Use the Adaptive Card Designer (Visual Editor)
+**Objective:** Author the Adaptive Card JSON for a logged ticket.
 
-If Copilot Studio provides a **visual Adaptive Card designer**:
-
-1. In the Adaptive Card editor, use the toolbar to add elements:
-   - **Image** — For device photo
-   - **Text Block** — For device title, brand, model
-   - **Column Set** — To arrange elements side-by-side
-
-[SCREENSHOT: Adaptive Card visual designer showing toolbar with Image, TextBlock, ColumnSet options]
-
-2. Drag and drop elements onto the canvas
-
-### Step 2: Switch to Code Editor (Recommended for Precision)
-
-For full control, use the **JSON code editor**:
-
-1. In the Adaptive Card editor, locate the **Code** or **JSON** toggle
-2. Select **Code** to view the raw JSON
-
-[SCREENSHOT: Adaptive Card editor showing Code/JSON toggle]
-
-3. You'll see a default card template (or blank card JSON)
-
-### Step 3: Replace with Device Card Template
-
-Delete the existing JSON and replace it with the following:
+Adaptive Cards are defined with **JSON**. Here's the ticket confirmation card — a header, the summary, a **FactSet** of ticket details, and an **open-in-SharePoint** button:
 
 ```json
 {
@@ -166,325 +77,184 @@ Delete the existing JSON and replace it with the following:
   "version": "1.5",
   "body": [
     {
-      "type": "ColumnSet",
-      "columns": [
-        {
-          "type": "Column",
-          "width": "auto",
-          "items": [
-            {
-              "type": "Image",
-              "url": "${DeviceImage}",
-              "size": "Medium",
-              "style": "Default",
-              "altText": "Device image"
-            }
-          ]
-        },
-        {
-          "type": "Column",
-          "width": "stretch",
-          "items": [
-            {
-              "type": "TextBlock",
-              "text": "${Title}",
-              "weight": "Bolder",
-              "size": "Large"
-            },
-            {
-              "type": "TextBlock",
-              "text": "${Brand} ${Model}",
-              "spacing": "None",
-              "isSubtle": true
-            },
-            {
-              "type": "TextBlock",
-              "text": "Status: ${Status}",
-              "spacing": "Small"
-            },
-            {
-              "type": "TextBlock",
-              "text": "Location: ${Location}",
-              "spacing": "None"
-            }
-          ]
-        }
+      "type": "TextBlock",
+      "text": "🎫 Ticket logged",
+      "weight": "Bolder",
+      "size": "Large"
+    },
+    {
+      "type": "TextBlock",
+      "text": "${title}",
+      "wrap": true,
+      "spacing": "None",
+      "isSubtle": true
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        { "title": "Ticket #", "value": "${ticketNumber}" },
+        { "title": "Category", "value": "${category}" },
+        { "title": "Priority", "value": "${priority}" },
+        { "title": "Status", "value": "${status}" },
+        { "title": "Requestor", "value": "${requestor}" }
       ]
     }
   ],
   "actions": [
     {
-      "type": "Action.Submit",
-      "title": "Request this device",
-      "data": {
-        "action": "request",
-        "deviceTitle": "${Title}"
-      }
+      "type": "Action.OpenUrl",
+      "title": "View in SharePoint",
+      "url": "${ticketUrl}"
     }
   ]
 }
 ```
 
-[SCREENSHOT: Adaptive Card code editor showing the JSON template above]
+[SCREENSHOT: Adaptive Card editor showing the ticket confirmation JSON]
 
 **What this card includes:**
-- **ColumnSet** — Two-column layout (image on left, details on right)
-- **Image** — Displays the device image (from `DeviceImage` column)
-- **TextBlocks** — Title, Brand/Model, Status, Location
-- **Action button** — "Request this device" (will be wired in Module 09)
+- A **header** and the ticket **summary** (`${title}`)
+- A **FactSet** — ticket number, category, priority, status, requestor
+- An **Action.OpenUrl** button to view the item in SharePoint
 
-**Data binding:** Notice `${Title}`, `${Brand}`, etc. — these are **placeholders** that will be replaced with actual data using Power Fx.
+**Data binding:** the `${...}` placeholders are filled at runtime with the values from the ticket `smart-triage` just created.
 
-**✅ Checkpoint:** The Adaptive Card JSON is configured.
+> 💡 **Tip:** Validate any card JSON in the [Adaptive Cards Designer](https://adaptivecards.io/designer/) — paste it, add sample data, and preview before wiring it into Bit.
 
----
-
-## Lab 8.3: Bind Data to the Adaptive Card with Power Fx
-
-**Objective:** Connect the card to the `AvailableDevices` variable so it displays real data.
-
-### Step 1: Locate the Data Binding Section
-
-1. In the Adaptive Card node, look for a section labeled:
-   - **Data source** or
-   - **Bind data** or
-   - **For each** (if displaying multiple cards)
-
-[SCREENSHOT: Adaptive Card node showing "Data source" or "Bind data" field]
-
-### Step 2: Configure Data Source
-
-1. In the **Data source** field, select **Power Fx** or **fx** icon
-2. Enter the following expression:
-   ```powerFx
-   Topic.AvailableDevices
-   ```
-
-[SCREENSHOT: Data source field showing "Topic.AvailableDevices"]
-
-**What this does:**
-- For each item in the `AvailableDevices` variable (the filtered SharePoint list results), display one Adaptive Card
-- The card template (`${Title}`, `${Brand}`, etc.) is populated with values from each item
-
-### Step 3: Test Data Binding (Preview)
-
-Some Adaptive Card editors provide a **Preview** or **Sample data** view:
-
-1. Locate the **Preview** button (if available)
-2. Enter sample data to see how the card will look:
-   ```json
-   {
-     "Title": "Dell Latitude 7430",
-     "Brand": "Dell",
-     "Model": "Latitude 7430",
-     "Status": "Available",
-     "Location": "Warehouse A",
-     "DeviceImage": "https://via.placeholder.com/150?text=Laptop"
-   }
-   ```
-
-3. The preview renders the card with the sample data
-
-[SCREENSHOT: Adaptive Card preview showing populated card with device info and image]
-
-**✅ Checkpoint:** The Adaptive Card is bound to the `AvailableDevices` data source.
+**✅ Checkpoint:** You have a valid ticket confirmation card.
 
 ---
 
-## Lab 8.4: Handle the Action Button (Optional Preview)
+## Lab 8.2: Have Bit Present the Card
 
-In Module 09, you'll wire the "Request this device" button to an Agent Flow that sends an email. For now, we'll just acknowledge the action.
+**Objective:** Wire the card so Bit shows it after logging a ticket.
 
-### Step 1: Add a Message Node After the Adaptive Card
+1. Add the card to Bit using your tenant's current Adaptive Card authoring path (a card capability/tool, or a card referenced from the skill).
+2. Edit the **`smart-triage`** skill to present the confirmation as the card. Replace the plain-text confirmation step with:
 
-1. Below the Adaptive Card node, select **+ Add node**
-2. Select **Send a message**
-
-3. In the **Message** field, enter:
+   ```markdown
+   # Confirm with a card
+   After creating the ticket, present the confirmation as the Ticket Confirmation
+   Adaptive Card, filling: ticketNumber, title, category, priority, status,
+   requestor, and ticketUrl (the SharePoint item link). Still send the
+   confirmation email as before.
    ```
-   Great! Your device request has been noted. An IT team member will follow up soon.
-   ```
 
-[SCREENSHOT: Message node with acknowledgment text]
+3. **Save** the skill.
 
-> **Note:** This is a placeholder message. In Module 09, you'll replace this with an Agent Flow that sends an email and creates a record.
+[SCREENSHOT: smart-triage skill updated to present the ticket as an Adaptive Card]
 
-4. Select **Save**
-
-**✅ Checkpoint:** The topic flow now includes an Adaptive Card node and a placeholder acknowledgment.
+**✅ Checkpoint:** `smart-triage` now confirms tickets with the card.
 
 ---
 
-## Lab 8.5: Test the Adaptive Card
+## Lab 8.3: Test the Card
 
-**Objective:** Verify the Adaptive Card displays correctly with real SharePoint data.
+1. **Preview** → new chat → log a ticket (as in Module 07):
 
-### Step 1: Save the Topic
-
-1. At the top of the topic designer, select **Save**
-
-[SCREENSHOT: Topic designer toolbar with Save button]
-
-2. Wait for the save confirmation
-
-### Step 2: Open the Test Pane
-
-1. Navigate back to the **Overview page** (or stay in the topic designer if the Test pane is visible)
-2. In the Test pane, select **New test session** (circular arrows icon)
-
-### Step 3: Trigger the Topic
-
-1. Type:
-   ```
-   I need a laptop
+   ```text
+   My laptop won't connect to any monitor and I've tried two cables. Please log a ticket.
    ```
 
-2. Press **Enter**
+2. After `smart-triage` creates the row, Bit presents the **ticket confirmation card** — number, category, priority, status, requestor, and the **View in SharePoint** button.
 
-**Expected flow:**
-1. Agent asks: "What type of device do you need?"
-2. Select **Laptop**
-3. Agent displays **Adaptive Cards** for each available laptop
-
-[SCREENSHOT: Test pane showing Adaptive Card with device image, title "Dell Latitude 7430", brand/model, status, location, and "Request this device" button]
+[SCREENSHOT: Preview pane showing the rendered ticket confirmation card]
 
 **Verify:**
-- ✅ Device image displays (if you added images in Module 00)
-- ✅ Title, brand, model, status, location are correct
-- ✅ Card layout is clean and readable
-- ✅ "Request this device" button appears
+- ✅ The fields show the real ticket values
+- ✅ The button opens the SharePoint item
+- ✅ The confirmation email still sends
 
-### Step 4: Test with a Category That Has No Devices
-
-1. Start a new test session
-2. Type: `I need a webcam`
-3. Select a category with no "Available" items
-
-**Expected result:**
-- Agent follows the **False** branch
-- Displays: "Sorry, there are no available [category] devices at the moment..."
-
-[SCREENSHOT: Test pane showing "no devices" message for category with no results]
-
-**✅ Checkpoint:** The Adaptive Card displays correctly for available devices, and the "no devices" path still works.
+**✅ Checkpoint:** Bit confirms tickets with a rich, interactive card.
 
 ---
 
-## Troubleshooting Adaptive Cards
+## Alternative: A Software-Request Card
 
-### Issue 1: Card Doesn't Render (Blank or Error)
+The same technique fits the software flow. Instead of a ticket, present a **software-request card** from `software-installation-request`:
 
-**Possible causes:**
-- JSON syntax error (missing comma, bracket, etc.)
-- Invalid Adaptive Card schema version
-- Data binding field name mismatch
+```json
+{
+  "type": "AdaptiveCard",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.5",
+  "body": [
+    { "type": "TextBlock", "text": "💿 Software request", "weight": "Bolder", "size": "Large" },
+    {
+      "type": "FactSet",
+      "facts": [
+        { "title": "Application", "value": "${application}" },
+        { "title": "Distribution", "value": "${distribution}" },
+        { "title": "Approval needed", "value": "${approvalNeeded}" }
+      ]
+    }
+  ]
+}
+```
 
-**Solutions:**
-1. Validate JSON using the [Adaptive Cards Designer](https://adaptivecards.io/designer/)
-   - Copy your JSON, paste into the designer, check for errors
-2. Verify field names match SharePoint column names exactly: `Title`, `Brand`, `Model`, `Status`, `Location`, `DeviceImage`
-3. Check the Adaptive Card version is `1.5` (or lower if your environment doesn't support 1.5)
-
-### Issue 2: Image Doesn't Display
-
-**Possible causes:**
-- `DeviceImage` column is empty for that device
-- Image URL is broken or private
-- Image URL is a SharePoint internal URL (not publicly accessible)
-
-**Solutions:**
-1. In SharePoint, verify the `DeviceImage` column has valid URLs or uploaded images
-2. Use placeholder images for testing:
-   - `https://via.placeholder.com/150?text=Laptop`
-   - `https://via.placeholder.com/150?text=Monitor`
-3. If using SharePoint-hosted images, ensure they're set to "Anyone with the link" permissions
-
-### Issue 3: Multiple Cards Display When Only One Device Exists
-
-**Symptoms:** You see duplicate cards or more cards than expected.
-
-**Possible causes:**
-- Data binding is set to loop through `AvailableDevices`, which is correct
-- SharePoint list has duplicate items
-
-**Solution:**
-1. Check the SharePoint Devices list — ensure there are no duplicate entries
-2. Verify the Power Fx filter is correct (Module 07, Lab 7.3)
+This is a great place to practice once you've automated approvals in Module 09 — the card can show whether a request is **self-service** or **awaiting manager sign-off**.
 
 ---
 
 ## Advanced Adaptive Card Features
 
-You can extend Adaptive Cards with:
-
 ### Input Fields
-Add input fields to collect data directly in the card:
+Collect data directly in the card:
 ```json
-{
-  "type": "Input.Text",
-  "id": "justification",
-  "placeholder": "Why do you need this device?"
-}
+{ "type": "Input.Text", "id": "note", "placeholder": "Add a note for the help desk" }
 ```
 
 ### Action.OpenUrl
-Open a link when a button is clicked:
-```json
-{
-  "type": "Action.OpenUrl",
-  "title": "View in SharePoint",
-  "url": "https://contoso.sharepoint.com/sites/ContosoIT/Lists/Devices"
-}
-```
+Open a link when a button is clicked (used above for the SharePoint item).
 
 ### Conditional Formatting
-Use `$when` expressions to show/hide elements based on data:
+Show/hide elements based on data with `$when`:
 ```json
-{
-  "type": "TextBlock",
-  "text": "⚠️ Last one available!",
-  "$when": "${Quantity} == 1"
-}
+{ "type": "TextBlock", "text": "⚠️ Critical — fully blocked", "$when": "${priority == 'Critical'}" }
 ```
 
 ### Accessibility
-Always include `altText` for images and clear button labels for screen readers.
+Always include `altText` for images and clear, descriptive button labels for screen readers.
+
+---
+
+## Troubleshooting Adaptive Cards
+
+### Issue 1: Card doesn't render (blank or error)
+- **JSON syntax** — validate in the [Adaptive Cards Designer](https://adaptivecards.io/designer/)
+- **Schema version** — try `1.5` (or lower if your channel doesn't support it)
+- **Placeholder names** — make sure the skill fills the exact `${...}` names used in the card
+
+### Issue 2: Fields are blank
+- The skill didn't pass a value for that placeholder — check the `smart-triage` instructions list every field
+- Test with the question you know produces a complete ticket
+
+### Issue 3: The button doesn't open the item
+- `${ticketUrl}` wasn't populated — have the skill include the SharePoint item link when it creates the ticket
 
 ---
 
 ## Key Takeaways
 
 - **Adaptive Cards** provide rich, interactive UI for agent responses
-- **JSON-based** — defined using the Adaptive Card schema
-- **Data binding with Power Fx** — populate cards with dynamic data from variables
-- **Platform-agnostic** — cards render beautifully in Teams, Outlook, and web
-- **Actions** — buttons can trigger flows, open URLs, or submit data
-- **Visual + Code editors** — use the visual designer for quick layouts, code editor for precision
+- **JSON-based** — defined with the Adaptive Card schema; validate in the designer
+- **New experience** — give Bit the card template and let a **skill** present its result as the card (no topic nodes)
+- **Data binding** — `${...}` placeholders are filled from the skill's values
+- **Platform-agnostic** — cards render in Teams, Outlook, and web
+- **Actions** — buttons can open URLs, submit data, or collect input
 
 ---
 
 ## What You've Built
 
-You now have a Device Request topic with:
-- ✅ Trigger phrases
-- ✅ Question node to gather device type
-- ✅ Power Fx query to filter SharePoint data
-- ✅ **Adaptive Card** displaying:
-  - Device image
-  - Title, brand, model, status, location
-  - "Request this device" button (wired in Module 09)
+Bit now confirms a logged ticket with a **rich Adaptive Card** — number, category, priority, status, requestor, and a link to the SharePoint item — instead of plain text.
 
 ---
 
 ## Next Steps
 
-In **Module 09: Automate with Agent Flows**, you'll wire the "Request this device" button to an **Agent Flow** that:
-- Sends an email to IT with the device request details
-- Logs the request in a SharePoint list or Dataverse table
-- Confirms the action to the user
-
-You'll also learn about the new **Workflows** experience and how it differs from Agent Flows.
+In **Module 09: Automate Approvals with Workflows**, you'll handle the trickier case — software that needs a **manager's approval** — using the new **Workflows** designer, and call it from the `software-installation-request` skill.
 
 ---
 
-**Course Navigation:** [← Module 07](../07-add-topic-with-triggers/README.md) | [Course Index](../README.md) | [Next: Module 09 →](../09-automate-with-agent-flows/README.md)
+**Course Navigation:** [← Module 07](../07-add-topic-with-triggers/) | [Course Index](../) | [Next: Module 09 →](../09-automate-with-agent-flows/)
