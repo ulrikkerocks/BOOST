@@ -1,5 +1,6 @@
 # Module 12: Understanding Licensing
 
+**Codename:** OPERATION WAR CHEST  
 **Time:** 20 minutes  
 **Scenario:** Licensing Models and Cost Planning
 
@@ -16,15 +17,9 @@ By the end of this module, you will be able to:
 
 ## Overview
 
-You've built and published the Contoso Helpdesk Agent — it's functional and production-ready. Before deploying to hundreds or thousands of users, you need to understand the **licensing and cost model**.
+You've built and published **Bit** — he's functional and production-ready. Before deploying to hundreds or thousands of users, you need to understand the **licensing and cost model**.
 
-In this module, you'll learn:
-- What's included in the Copilot Studio trial
-- How production licensing works (pay-per-message vs. capacity packs)
-- How M365 Copilot licenses affect Copilot Studio costs
-- How to estimate monthly costs based on usage
-
-This knowledge is essential for planning deployments, budgeting, and making informed decisions about agent architecture.
+In this module, you'll learn what's included in the trial, how production licensing works (pay-per-message vs. capacity packs), how M365 Copilot licenses affect costs, and how to estimate monthly spend. This is essential for planning deployments and budgeting.
 
 ---
 
@@ -52,102 +47,80 @@ You have three main licensing paths:
 
 **What you get:**
 - **30 days** free (extendable to 90 days)
-- **Full capabilities** — all features available (knowledge, topics, flows, triggers, channels)
+- **Full capabilities** — knowledge, skills, tools, workflows, triggers, channels
 - **Unlimited messages** (for trial users)
-- **Publishing requires Authors role** (configured in Module 00)
+- **Publishing requires the Authors role** (configured in Module 00)
 
 **Limitations:**
 - **Trial environment only** — not for production use
 - **Limited users** — only trial participants can access the agent
 - **No SLA** — Microsoft can disable the trial at any time
 
-**Who should use this:**
-- Learning and training (like this course)
-- Proof-of-concept projects
-- Evaluating Copilot Studio before committing to production
+**Who should use this:** learning/training (like this course), proof-of-concept, evaluating before committing.
 
 **How to extend the trial:**
 1. Go to [https://admin.powerplatform.microsoft.com](https://admin.powerplatform.microsoft.com)
 2. Select **Environments** → select your trial environment
-3. If eligible, select **Extend trial** (option appears near trial expiration)
+3. If eligible, select **Extend trial** (appears near trial expiration)
 
 [SCREENSHOT: Power Platform Admin Center showing "Extend trial" option]
 
 ### Option 2: Copilot Studio Standalone Subscription
 
-**What you get:**
-- **Production environment** with SLA
-- **Pay-per-message** or **capacity packs**
-- **All features** — same capabilities as trial
+**What you get:** a **production environment** with SLA, **pay-per-message** or **capacity packs**, and all features.
 
 **Pricing (as of June 2026):**
 - **Pay-per-message:** ~$0.01–$0.03 per message (varies by region and volume)
 - **Capacity pack:** $200/month for 25,000 messages (~$0.008 per message)
 
-**Who should use this:**
-- Organizations deploying standalone agents (not using M365 Copilot)
-- Custom agents for external users (customers, partners)
-- High-volume scenarios where capacity packs offer cost savings
+**Who should use this:** organizations deploying standalone agents, custom agents for external users, high-volume scenarios.
 
 **How to purchase:**
 1. Go to [Microsoft 365 Admin Center](https://admin.microsoft.com)
 2. **Billing** → **Purchase services**
-3. Search for **"Copilot Studio"**
-4. Select a plan and complete purchase
+3. Search for **"Copilot Studio"**, select a plan, and complete the purchase
 
 [SCREENSHOT: M365 Admin Center showing Copilot Studio purchase options]
 
 ### Option 3: Microsoft 365 Copilot License (Includes Copilot Studio)
 
-**What you get:**
-- **M365 Copilot** ($30/user/month) **includes** Copilot Studio message entitlement
-- **Per-user allocation:** Each M365 Copilot user gets a certain number of Copilot Studio messages per month (exact allocation varies; check current Microsoft documentation)
-- **Pooled usage:** Messages are shared across all agents in the tenant
+**What you get:** M365 Copilot ($30/user/month) **includes** a Copilot Studio message entitlement, with a per-user allocation pooled across all agents in the tenant.
 
-**Who should use this:**
-- Organizations already deploying M365 Copilot
-- Building declarative agents for M365 Copilot users (Module 03)
-- Internal agents for employees with M365 Copilot licenses
+**Who should use this:** organizations already deploying M365 Copilot, declarative agents (Module 03), internal agents for M365 Copilot users.
 
-**Example:**
-- Your company has 500 M365 Copilot licenses
-- Each user gets ~100 Copilot Studio messages/month (hypothetical allocation)
-- **Total:** 50,000 messages/month included across all agents
+**Example:** 500 M365 Copilot licenses × ~100 Copilot Studio messages/user/month (hypothetical) = **50,000 messages/month** included across all agents.
 
-**Important:** M365 Copilot licenses **do not** cover:
-- Users without M365 Copilot licenses accessing agents
-- External users (customers, partners)
-- High-volume scenarios exceeding the included allocation (you'll need to purchase additional capacity)
+**Important:** M365 Copilot licenses **do not** cover users without M365 Copilot licenses, external users, or usage beyond the included allocation (purchase additional capacity).
 
 ---
 
 ## What Counts as a "Message"?
 
-Understanding what counts as a billable message is critical for cost estimation.
+Understanding billable messages is critical for cost estimation.
 
 **Billable messages:**
-- ✅ User sends a message → agent responds with knowledge search → **1 message**
-- ✅ User triggers a topic → agent asks a question → **1 message**
-- ✅ User clicks an Adaptive Card button → agent calls a flow → **1 message**
-- ✅ Event trigger fires → autonomous topic runs → **1 message**
+- ✅ User sends a message → agent responds with a knowledge search → **1 message**
+- ✅ User asks Bit to log a ticket → Bit triages and creates the row → **1 message**
+- ✅ User clicks an Adaptive Card button → agent acts → **1 message**
+- ✅ An event trigger fires → autonomous escalation runs → **1 message**
 
 **NOT billable (free):**
-- ❌ Test pane in Copilot Studio (development/testing) → **0 messages**
-- ❌ Agent Flow executes → **0 messages** (flows are billed separately via Power Automate, but often included in Copilot Studio subscription)
+- ❌ The Preview/test pane in Copilot Studio → **0 messages**
+- ❌ A workflow executing → generally included in the Copilot Studio subscription
 
 **Example session:**
 ```
-User: "What's the WiFi password?"  → 1 message
-Agent: "[Response with password]"
+User: "What are the help desk hours?"       → 1 message
+Bit:  "[hours from the FAQ]"
 
-User: "I need a laptop"            → 1 message
-Agent: "What type of device?"
+User: "I'm locked out — reset my password"  → 1 message
+Bit:  "Confirm your name and employee ID…"
 
-User: Selects "Laptop"             → 1 message
-Agent: [Displays Adaptive Card]
+User: "[provides details]"                   → 1 message
+Bit:  "Reset link sent to your work email."
 
-User: Clicks "Request this device" → 1 message
-Agent: "Your request has been noted."
+User: "Also, our finance drive is down — log a ticket" → 1 message
+Bit:  "Logged ticket #1234 (Access, High). Emailed you the details."
 
 Total: 4 messages
 ```
@@ -158,147 +131,98 @@ Total: 4 messages
 
 ## Estimating Monthly Costs
 
-Let's estimate costs for a production deployment of the Contoso Helpdesk Agent.
+Let's estimate costs for a production deployment of **Bit**.
 
-### Scenario: 1,000 Employees Using the Agent
+### Scenario: 1,000 Employees
 
-**Assumptions:**
-- 1,000 employees have access to the agent in Teams
-- **20% active usage** — 200 employees use the agent each month
-- **Average session length:** 5 messages per session
-- **Sessions per user per month:** 2
+**Assumptions:** 1,000 employees have access; **20% active** (200/month); **5 messages/session**; **2 sessions/user/month**.
 
-**Calculation:**
 ```
 Total messages/month = Users × Sessions/user × Messages/session
                      = 200 × 2 × 5
                      = 2,000 messages/month
 ```
 
-**Cost options:**
-
 | Licensing Model | Cost |
 |---|---|
 | **Pay-per-message** ($0.02/message) | 2,000 × $0.02 = **$40/month** |
-| **Capacity pack** ($200 for 25,000 messages) | **$200/month** (overpaying, not cost-effective) |
-| **M365 Copilot licenses** (500 users) | **Included** (if within allocation) |
+| **Capacity pack** ($200 for 25,000 messages) | **$200/month** (overpaying at this volume) |
+| **M365 Copilot licenses** | **Included** (if within allocation) |
 
-**Recommendation:** For this scenario, **pay-per-message** is most cost-effective. If usage grows to 10,000+ messages/month, capacity packs become cheaper.
+**Recommendation:** for this scenario, **pay-per-message** is most cost-effective. Above ~10,000 messages/month, capacity packs get cheaper.
 
 ---
 
 ## Power Apps Developer Plan (Free for Developers)
 
-You've been using the **Power Apps Developer Plan** throughout this course (configured in Module 00). Here's what it includes:
+You've used the **Power Apps Developer Plan** throughout this course (Module 00):
 
-**What you get:**
-- **Free developer environment** (separate from production)
-- **Copilot Studio trial** (extendable to 90 days)
-- **Power Apps, Power Automate, Dataverse** for development
-- **No user limits** in dev environment
-- **Full feature parity** with production (for testing)
+**What you get:** a free developer environment, the Copilot Studio trial (extendable to 90 days), Power Apps/Automate/Dataverse, no user limits in dev, full feature parity for testing.
 
-**Limitations:**
-- **Development/testing only** — not for production use
-- **No SLA**
-- **Single user** (you can't add team members to a dev plan environment)
+**Limitations:** development/testing only, no SLA, single user.
 
-**Who should use this:**
-- Developers learning Power Platform
-- Building proof-of-concept agents
-- Testing before deploying to production
-
-**How to keep it active:**
-- Sign in to [https://make.powerapps.com](https://make.powerapps.com) at least once every 90 days
-- Developer environments that are inactive for 90+ days may be disabled
+**Keep it active:** sign in to [make.powerapps.com](https://make.powerapps.com) at least once every 90 days — inactive dev environments may be disabled.
 
 ---
 
-## Licensing After June 2026: Teams Classic Chatbot Deprecation
+## Licensing Note: Teams Classic Chatbot Deprecation
 
-**Important change:**
-- **Before June 2026:** You could create "classic chatbots" directly in Teams
-- **After June 2026:** Teams classic chatbot creation is **disabled**; all new agents must be created in Copilot Studio
-
-**What this means:**
-- If you have existing Teams chatbots (created before June 2026), they'll redirect to the web app experience
-- **No impact on this course** — you're already using Copilot Studio (the current platform)
-
-**Migration path:**
-- Existing Teams classic chatbots can be exported and imported into Copilot Studio
-- Microsoft provides migration tools and documentation
+- **After June 2026**, Teams classic chatbot creation is **disabled**; all new agents are created in Copilot Studio.
+- **No impact on this course** — you're already using Copilot Studio (the new experience).
+- Existing Teams classic chatbots can be exported/migrated into Copilot Studio.
 
 ---
 
 ## Billing and Cost Management Tips
 
 ### 1. Monitor Usage
+Use the **Monitor** tab (Module 11) to track message volume — sessions/day × 30, and average messages/session.
 
-Use **Analytics** (Module 11) to track message volume:
-- **Sessions per day** → Multiply by 30 for monthly estimate
-- **Average messages per session** → Multiply to get total messages/month
-
-[SCREENSHOT: Analytics page showing session metrics]
+[SCREENSHOT: Monitor tab showing session metrics]
 
 ### 2. Set Up Billing Alerts
-
-In **Azure Cost Management** (if using Azure-based billing):
-- Set up budget alerts at 50%, 80%, and 100% of your monthly limit
-- Receive email notifications when thresholds are exceeded
+In Azure Cost Management (if using Azure-based billing), set budget alerts at 50%, 80%, and 100%.
 
 ### 3. Optimize for Cost
-
-**Strategies to reduce message consumption:**
-- **Use knowledge sources effectively** — reduce back-and-forth by providing comprehensive answers upfront
-- **Add suggested prompts** — guide users to ask the right questions (fewer clarifying messages)
-- **Use topics for forms** — structured flows reduce ambiguity and retry messages
-- **Cache frequent queries** — (advanced) use agent flows to cache common responses
+- **Use knowledge effectively** — comprehensive answers reduce back-and-forth
+- **Add suggested prompts** — guide users to the right questions
+- **Lean on skills** — clear behaviors reduce ambiguity and retries
+- **Filter autonomous triggers** — only fire on what matters (e.g., High/Critical tickets, Module 10)
 
 ### 4. Right-Size Your Licensing
-
-- **Start with pay-per-message** (no upfront commitment)
-- **Switch to capacity packs** when volume justifies it (>10,000 messages/month)
-- **Leverage M365 Copilot entitlements** if your organization already has those licenses
+- Start with **pay-per-message** (no commitment)
+- Switch to **capacity packs** above ~10,000 messages/month
+- Leverage **M365 Copilot entitlements** if you already have those licenses
 
 ---
 
 ## FAQ: Licensing Questions
 
-### Q1: Do I need a Power Automate license for Agent Flows?
+**Q1: Do I need a Power Automate license for Workflows?**
+Generally no — **Workflows** built in Copilot Studio are included. A separate Power Automate license applies if you use standalone Power Automate cloud flows triggered by the agent.
 
-**Answer:** No. **Agent Flows** are included in the Copilot Studio license. You only need a separate Power Automate license if you're using **Power Automate Cloud Flows** (created outside Copilot Studio) that are triggered by the agent.
+**Q2: Can I use the free trial forever?**
+No — trials are 30–90 days for evaluation. After that, purchase a license or move to a paid environment.
 
-### Q2: Can I use the free trial forever?
+**Q3: What if I exceed my M365 Copilot message allocation?**
+Purchase additional Copilot Studio capacity; overage is billed separately.
 
-**Answer:** No. Trials are limited to 30–90 days and are intended for evaluation, not production. After the trial, you must purchase a license or migrate to a paid environment.
+**Q4: Do autonomous triggers consume messages?**
+Yes — each time an event trigger fires and runs, it counts. **Filter** to high-value events (e.g., Priority = High/Critical in Module 10) to control cost.
 
-### Q3: What happens if I exceed my message allocation (M365 Copilot users)?
-
-**Answer:** You can purchase additional Copilot Studio capacity packs to cover overage. Usage beyond the included allocation is billed separately.
-
-### Q4: Do autonomous agents (event triggers) consume messages?
-
-**Answer:** Yes. Each time an event trigger fires and the topic executes, it counts as a **message**. For high-frequency triggers (e.g., monitoring thousands of rows), this can add up quickly.
-
-**Cost optimization:** Use filters to trigger only on high-priority events (e.g., Priority = "High" in Module 10).
-
-### Q5: Can I deploy agents to external users (customers) with Copilot Studio?
-
-**Answer:** Yes. Copilot Studio supports external user scenarios (e.g., customer support chatbots on public websites). You'll need to:
-- Purchase Copilot Studio standalone licenses (pay-per-message or capacity packs)
-- Configure **authentication** (anonymous access or external identity providers)
-- Ensure compliance with data residency and privacy requirements
+**Q5: Can I deploy agents to external users?**
+Yes — buy Copilot Studio standalone licenses, configure authentication, and ensure compliance with data residency/privacy.
 
 ---
 
 ## Key Takeaways
 
 - **Trial:** 30–90 days, full features, free — great for learning and POCs
-- **Production:** Pay-per-message or capacity packs — choose based on volume
-- **M365 Copilot:** Includes Copilot Studio message entitlement — leverage if you have these licenses
-- **Power Apps Developer Plan:** Free forever for development/testing (not production)
-- **Messages = cost unit:** Every user turn (message, button click, topic trigger, event trigger) counts
-- **Monitor usage** with Analytics to estimate and control costs
+- **Production:** pay-per-message or capacity packs — choose by volume
+- **M365 Copilot:** includes a Copilot Studio entitlement — leverage it if you have the licenses
+- **Power Apps Developer Plan:** free for development/testing (not production)
+- **Messages = the cost unit:** every user turn, button click, or autonomous trigger counts
+- **Monitor usage** to estimate and control costs
 
 ---
 
@@ -307,7 +231,7 @@ In **Azure Cost Management** (if using Azure-based billing):
 You now understand:
 - ✅ How Copilot Studio licensing works (trial, standalone, M365 Copilot)
 - ✅ What counts as a billable message
-- ✅ How to estimate monthly costs for a production agent
+- ✅ How to estimate monthly costs for Bit in production
 - ✅ When to use pay-per-message vs. capacity packs
 - ✅ The Power Apps Developer Plan benefits and limitations
 
@@ -315,14 +239,8 @@ You now understand:
 
 ## Next Steps
 
-In **Module 13: Securing Your Recruit Badge**, you'll:
-- Complete the course checklist
-- Claim your **Copilot Agent Academy Recruit Badge**
-- Explore next steps for advanced agent development (Special Ops curriculum)
-- Join the Copilot Studio community
-
-You're almost done — one more module to go!
+In **Module 13: Securing Your Recruit Badge**, you'll complete the course checklist, recap everything Bit can do, export your solution, and claim your **Recruit Badge** — plus where to go next.
 
 ---
 
-**Course Navigation:** [← Module 11](../11-publish-your-agent/README.md) | [Course Index](../README.md) | [Next: Module 13 →](../13-securing-recruit-badge/README.md)
+**Course Navigation:** [← Module 11](../11-publish-your-agent/) | [Course Index](../) | [Next: Module 13 →](../13-securing-recruit-badge/)
