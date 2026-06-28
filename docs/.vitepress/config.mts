@@ -1,8 +1,9 @@
 import { defineConfig } from 'vitepress'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 
 // BOOST — Agent Academy Recruit Course
 // Rebuilt with VitePress to mirror the original Microsoft Agent Academy site.
-export default defineConfig({
+export default withMermaid(defineConfig({
   title: 'Agent Academy Recruit',
   description:
     'Build production-ready AI agents with Microsoft Copilot Studio — updated for the 2026 UI.',
@@ -82,4 +83,4 @@ export default defineConfig({
       copyright: 'Copyright © 2026 Ulrikke Rocks',
     },
   },
-})
+}))

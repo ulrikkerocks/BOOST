@@ -21,6 +21,8 @@ The term "agent" is everywhere in AI conversations today, but what does it actua
 
 By the end, you'll understand why agents represent a fundamental shift in how we build software — from apps that wait for instructions to intelligent systems that can reason, plan, and act.
 
+> 🆕 **New experience note:** Microsoft rebuilt Copilot Studio around an **enhanced, deep-reasoning orchestrator**. The concepts in this module are universal, but where the classic product used *topics and trigger phrases*, the new experience uses **Skills** (reusable markdown instructions) and lets the orchestrator decide what to do. Keep that in mind as you read.
+
 ---
 
 ## What Is an AI Agent?
@@ -30,7 +32,7 @@ An **AI agent** is an intelligent system that can:
 - **Reason and plan** — break down complex requests into steps
 - **Access knowledge** — ground responses in real data from documents, databases, and websites
 - **Take actions** — call APIs, update records, send emails, and trigger workflows
-- **Learn from context** — adapt responses based on conversation history and user intent
+- **Learn from context** — adapt responses based on conversation history and memory
 
 ### Agents vs. Traditional Chatbots
 
@@ -52,13 +54,20 @@ Modern AI agents are built on three foundational technologies:
 
 ### 1. Large Language Models (LLMs)
 
-LLMs like GPT-4, GPT-5, and Claude Sonnet provide the "brain" of the agent. They enable:
+LLMs like GPT-4.1, GPT-5, and Claude Sonnet provide the "brain" of the agent. They enable:
 - Natural language understanding
 - Response generation
 - Reasoning and planning
 - Intent classification
 
-[SCREENSHOT: Diagram showing LLM at the center of an agent architecture, with inputs (user message, context) and outputs (response, tool calls)]
+```mermaid
+flowchart LR
+  U[User message] --> LLM
+  C[Context & memory] --> LLM
+  K[Knowledge / RAG] --> LLM
+  LLM(("LLM<br/>reason & plan")) --> R[Response]
+  LLM --> T[Tool / API calls]
+```
 
 ### 2. Retrieval-Augmented Generation (RAG)
 
@@ -74,23 +83,39 @@ RAG connects LLMs to **real data** — documents, databases, websites — so age
 3. Relevant content is retrieved
 4. LLM generates a response grounded in that content
 
-**Example:** An IT helpdesk agent searches a SharePoint site for "guest WiFi password" and returns the exact password from a document, rather than guessing.
+**Example:** The IT helpdesk agent searches the **Contoso IT FAQ** for "help desk hours" and returns the exact hours from the document, rather than guessing.
 
 ### 3. Orchestration and Tool Calling
 
-Agents don't just talk — they **act**. Orchestration allows agents to:
-- Call APIs (e.g., weather data, stock prices, CRM systems)
+Agents don't just talk — they **act**. In the new experience, the **enhanced orchestrator** plans and decides which knowledge, skills, and tools to use for each request. Orchestration allows agents to:
+- Call APIs and connectors (1000+ prebuilt connectors in Power Platform)
 - Trigger workflows (e.g., send approval emails, create records)
 - Chain multiple actions together (multi-step plans)
-- Integrate with connectors (1000+ prebuilt connectors in Power Platform)
+- Read a data source's schema and write to it at runtime
 
-**Example:** A user asks, "Request a new laptop." The agent:
-1. Searches the Devices list for available laptops
-2. Shows options to the user
-3. Creates a request record in SharePoint
-4. Sends an email notification to IT
+**Example:** A user says, "My VPN keeps dropping and restarting didn't help — please log a ticket." The agent:
+1. Recognizes the issue needs a ticket (its `smart-triage` skill)
+2. Reads the **Tickets** SharePoint list schema
+3. Creates a ticket record with the right category and priority
+4. Sends the user a confirmation email with the ticket number
 
-[SCREENSHOT: Mermaid sequence diagram showing: User → Agent → Knowledge Source → LLM → Tool/API → Response back to user]
+```mermaid
+sequenceDiagram
+  participant U as User
+  participant A as Agent (orchestrator)
+  participant K as Knowledge
+  participant L as LLM
+  participant T as Tool / API
+  U->>A: "Log a ticket — my VPN keeps dropping"
+  A->>K: Search knowledge sources
+  K-->>A: Relevant content
+  A->>L: Reason & plan
+  L-->>A: Plan (use the smart-triage skill)
+  A->>T: Create item in the Tickets list
+  T-->>A: Ticket #1234 created
+  A->>T: Send confirmation email
+  A-->>U: "Logged ticket #1234 and emailed you the details"
+```
 
 ---
 
@@ -122,19 +147,19 @@ Microsoft Copilot Studio lets you build three distinct types of agents, each sui
 **What they do:** Standalone agents you build and deploy to channels like Microsoft Teams, websites, or mobile apps.
 
 **When to use:**
-- You want full control over the agent's behavior, topics, and UI
+- You want full control over the agent's behavior, knowledge, skills, and tools
 - Users don't have M365 Copilot licenses (or you want a dedicated agent experience)
-- You need advanced capabilities: adaptive cards, multi-step flows, custom branding
+- You need advanced capabilities: skills, workflows, tools, custom branding
 
-**Example:** The **Contoso Helpdesk Agent** you'll build in this course — a dedicated IT support agent deployed to Teams with custom topics, knowledge sources, and workflows.
+**Example:** The **Contoso Helpdesk Agent** you'll build in this course — a dedicated IT support agent deployed to Teams that resets passwords, troubleshoots VPN, logs tickets, and handles software requests.
 
 **Key features:**
-- Visual topic designer (conversational flows)
-- Full customization: instructions, knowledge, tools, triggers
-- Deploy to multiple channels (Teams, web, mobile)
+- Built on a single **Build** page (Instructions, Knowledge, Skills, Tools, Memory, Connected agents, Model)
+- Behavior defined with natural-language **Instructions** and reusable **Skills** (markdown)
+- Deploy to multiple channels (Teams, web, M365 Copilot)
 - Works with or without M365 Copilot licenses
 
-> **Note:** Most of this course focuses on building custom conversational agents.
+> **Note:** Most of this course focuses on building this custom conversational agent.
 
 ### Type 3: Autonomous Agents (Event-Driven)
 
@@ -145,15 +170,15 @@ Microsoft Copilot Studio lets you build three distinct types of agents, each sui
 - Scenarios: send alerts, process incoming data, run scheduled checks
 - Background automation with intelligent decision-making
 
-**Example:** A monitoring agent that watches a Dataverse table for high-priority support tickets and automatically escalates them to a manager if unresolved after 2 hours.
+**Example:** A monitoring agent that watches the **Tickets** list for high-priority tickets and automatically escalates them to a manager if they remain unresolved.
 
 **Key features:**
-- Event-triggered (Dataverse changes, schedules, webhooks)
+- Event-triggered (Dataverse/SharePoint changes, schedules, webhooks)
 - No conversational UI required
 - Can send notifications, create records, call workflows
 - Combines automation + AI reasoning
 
-> **Note:** We'll introduce autonomous agents in **Module 10: Add Event Triggers**.
+> **Note:** We'll add an autonomous event trigger in **Module 10: Autonomous Event Triggers**.
 
 ---
 
@@ -174,9 +199,9 @@ Chatbot          Assistant          Agent
 - **Autonomous agent:** Monitors, plans, and acts without prompting (e.g., auto-escalates tickets, sends reminders)
 
 **In this course, you'll build across the spectrum:**
-- Start with conversational agents (Modules 06–09)
-- Add autonomous triggers (Module 10)
-- Publish to production channels (Module 11)
+- Start with a conversational agent (Modules 06–09)
+- Add an autonomous trigger (Module 10)
+- Evaluate and publish to production channels (Module 11)
 
 ---
 
@@ -189,14 +214,19 @@ As you gain experience, you'll discover that **some problems are best solved by 
 - **Hotel Agent** — finds accommodations
 - **Orchestrator Agent** — coordinates the other two and presents a unified itinerary
 
-In Copilot Studio, you can build **multi-agent solutions** where:
+In the new experience, the **Connected agents** block on the Build page makes this concrete: one agent can **delegate** to another, calling it like a tool. You can build multi-agent solutions where:
 - Each agent is an expert in one domain
-- Agents call each other as tools
+- Agents call each other through **Connected agents**
 - An orchestrator agent routes user requests to the right specialist
 
-[SCREENSHOT: Diagram showing Orchestrator Agent at the center connected to Flight Agent, Hotel Agent, and Payment Agent]
+```mermaid
+flowchart TD
+  O(("Orchestrator Agent")) --> F[Flight Agent]
+  O --> H[Hotel Agent]
+  O --> P[Payment Agent]
+```
 
-> **Note:** Multi-agent orchestration is an advanced topic. We'll mention it in **Module 02** but won't build it in this course. It's part of the Special Ops curriculum.
+> **Note:** Multi-agent orchestration is an advanced topic. We'll point out where it lives in **Module 02** but won't build it in this course. It's part of the Special Ops curriculum.
 
 ---
 
@@ -208,13 +238,14 @@ Before moving forward, make sure you understand these terms:
 |---|---|
 | **LLM** | Large Language Model — the AI that powers reasoning and language understanding |
 | **RAG** | Retrieval-Augmented Generation — grounding agent responses in real data |
-| **Orchestration** | The agent's ability to plan, call tools, and chain actions |
+| **Orchestration** | The agent's ability to plan, call skills/tools, and chain actions |
 | **Declarative Agent** | An agent that extends M365 Copilot using a JSON manifest |
 | **Custom Agent** | A standalone agent built in Copilot Studio with full customization |
 | **Autonomous Agent** | An event-driven agent that acts proactively without user input |
-| **Topics** | Conversational flows with triggers, questions, and responses |
+| **Skills** | Reusable instructions in markdown that define a specific behavior (the new experience's replacement for topics) |
 | **Tools** | APIs, connectors, and workflows the agent can call |
 | **Knowledge** | Data sources the agent searches (SharePoint, websites, files, etc.) |
+| **Memory** | The agent's ability to remember context across turns and conversations |
 
 ---
 
@@ -223,9 +254,9 @@ Before moving forward, make sure you understand these terms:
 To ground these concepts, here are common scenarios where organizations deploy AI agents:
 
 ### IT Helpdesk Agent (This Course)
-- **Knowledge:** IT policies, device inventory, troubleshooting guides
-- **Actions:** Look up available devices, create support tickets, reset passwords
-- **Channel:** Microsoft Teams
+- **Knowledge:** IT FAQ, approved software list, troubleshooting guidance
+- **Actions:** Reset passwords, troubleshoot VPN, log support tickets, route software requests for approval
+- **Channel:** Microsoft Teams + Microsoft 365 Copilot
 
 ### HR Policy Agent
 - **Knowledge:** Employee handbook, benefits docs, leave policies
@@ -267,8 +298,9 @@ AI agents:
 - **AI agents** combine LLMs, RAG, and orchestration to understand, reason, and act
 - **Three types of agents:** Declarative (M365 extensions), Custom (standalone), Autonomous (event-driven)
 - **RAG is essential:** Grounding agents in real data prevents hallucinations and ensures accuracy
-- **Agents can act:** They don't just respond — they call APIs, trigger workflows, and update systems
+- **Agents can act:** They don't just respond — they call skills, tools, and workflows, and update systems
 - **Autonomy is a spectrum:** From rule-based chatbots to fully autonomous monitoring agents
+- **The new experience uses Skills, not topics:** You describe behavior; the enhanced orchestrator decides what to do
 
 ---
 
@@ -276,8 +308,8 @@ AI agents:
 
 Now that you understand what agents are, it's time to learn how to build them.
 
-In **Module 02: Copilot Studio Fundamentals**, you'll explore the four building blocks every agent is made of — and see exactly where they live in the new Copilot Studio interface.
+In **Module 02: New Copilot Studio Fundamentals**, you'll explore the building blocks every agent is made of — and see exactly where they live on the new single **Build** page.
 
 ---
 
-**Course Navigation:** [← Module 00](../00-course-setup/README.md) | [Course Index](../README.md) | [Next: Module 02 →](../02-copilot-studio-fundamentals/README.md)
+**Course Navigation:** [← Module 00](../00-course-setup/) | [Course Index](../) | [Next: Module 02 →](../02-copilot-studio-fundamentals/)
