@@ -1,0 +1,316 @@
+# Module 04: Creating a Solution
+
+**Time:** 15 minutes  
+**Scenario:** Solution Packaging and ALM
+
+---
+
+## Learning Objectives
+
+By the end of this module, you will be able to:
+- Explain what a Power Platform solution is and why it matters
+- Create a solution publisher with proper naming conventions
+- Create a new solution in the Power Platform Admin Center
+- Set a preferred solution in Copilot Studio
+- Understand how solutions support Application Lifecycle Management (ALM)
+
+## Overview
+
+Before you build the Contoso Helpdesk Agent, you need to set up a **solution** — a container that organizes all your agent components (agents, flows, connections, etc.) for proper lifecycle management.
+
+Think of a solution as a "project folder" for Power Platform components. Without a solution, your agents and flows exist as loose, unmanaged components. With a solution, you get:
+- ✅ **Organization** — all related components in one place
+- ✅ **Version control** — track changes over time
+- ✅ **Environment promotion** — move from dev → test → production
+- ✅ **Team collaboration** — multiple builders working on the same solution
+- ✅ **Backup and restore** — export solutions as portable packages
+
+In this module, you'll create a solution called **Contoso Helpdesk Agent** that will hold all the work you do in the rest of the course.
+
+---
+
+## What Is a Solution?
+
+A **solution** is a container for Power Platform components. It acts as a packaging and deployment mechanism for:
+- Copilot Studio agents
+- Agent Flows (cloud flows)
+- Connectors and connection references
+- Dataverse tables (if you create custom data structures)
+- Environment variables
+
+### Managed vs. Unmanaged Solutions
+
+| Solution Type | When to Use | Can Edit? |
+|---|---|---|
+| **Unmanaged** | Development environment | ✅ Yes — active workspace |
+| **Managed** | Test, production environments | ❌ No — read-only, deployed package |
+
+**Workflow:**
+1. Build in an **unmanaged solution** (dev environment)
+2. Export as a **managed solution** (packaged .zip file)
+3. Import to test/production as a **managed solution** (locked, production-ready)
+
+> **For this course**, you'll work in an unmanaged solution. Exporting and deploying to production is covered in advanced ALM training.
+
+---
+
+## Why Solutions Matter
+
+Imagine you build 10 agents over the next year without solutions. Here's what happens:
+- ❌ **No organization** — agents and flows are scattered across the environment
+- ❌ **No backup** — if you accidentally delete an agent, it's gone
+- ❌ **No promotion** — you can't easily move agents from dev to production
+- ❌ **No collaboration** — teammates can't tell which components belong together
+
+With solutions:
+- ✅ **Everything is packaged** — export the solution, import it elsewhere
+- ✅ **Clear ownership** — you know which components belong to which project
+- ✅ **ALM-ready** — move to CI/CD pipelines (Azure DevOps, GitHub Actions) when you're ready
+
+---
+
+## Lab 4.1: Create a Solution Publisher
+
+Every solution has a **publisher** — a namespace that identifies who created the solution. Think of it like a company or team name.
+
+### Step 1: Go to the Power Platform Admin Center
+
+1. Open a new browser tab
+2. Go to [https://admin.powerplatform.microsoft.com](https://admin.powerplatform.microsoft.com)
+3. Sign in with your M365 account
+
+[SCREENSHOT: Power Platform Admin Center home page]
+
+### Step 2: Navigate to Solutions
+
+1. In the left navigation, expand **Resources**
+2. Select **Solutions**
+3. You may see a list of existing solutions (if any)
+
+> **Note:** If you don't see solutions yet, that's okay. You're about to create one.
+
+### Step 3: Navigate to Your Environment
+
+1. In the **Environments** section (top filter or left nav), ensure you're viewing your **developer environment** (e.g., "[Your Name]'s Environment")
+2. If you're in the wrong environment, switch to your developer environment
+
+> **Tip:** You can also navigate to solutions via the **Power Apps** maker portal: [https://make.powerapps.com](https://make.powerapps.com) → Select your environment → **Solutions** in the left nav.
+
+**For this lab, use the Power Apps maker portal:**
+
+1. Go to [https://make.powerapps.com](https://make.powerapps.com)
+2. Select your **developer environment** from the environment picker (top right)
+3. In the left navigation, select **Solutions**
+
+[SCREENSHOT: Power Apps maker portal showing Solutions section]
+
+### Step 4: Create a New Publisher
+
+1. In the **Solutions** page, select the **Publishers** filter or link (top toolbar or sidebar)
+   - If you don't see "Publishers," select **Settings** (gear icon ⚙️) → **Advanced settings** → **Customizations** → **Customize the System** → **Publishers**
+   - Alternatively, in the Solutions list, select **New solution** → you'll see a **Publisher** dropdown → select **+ New Publisher**
+
+[SCREENSHOT: Solutions page with "New Publisher" option visible]
+
+2. In the **New Publisher** dialog, enter the following:
+
+| Field | Value |
+|---|---|
+| **Display Name** | `Contoso` |
+| **Name** | `contoso` (auto-generated from Display Name) |
+| **Prefix** | `contoso` |
+| **Choice Value Prefix** | `10000` (or leave default) |
+| **Description** | `Publisher for Contoso training solutions` |
+
+> **Why the prefix matters:** The prefix (e.g., `contoso`) is prepended to all solution components. For example, if you create a Dataverse table, it becomes `contoso_tablename`. This prevents naming conflicts across solutions.
+
+3. Select **Save** (or **Save and Close**)
+
+[SCREENSHOT: New Publisher dialog showing Contoso publisher configuration]
+
+**✅ Checkpoint:** You now have a publisher called **Contoso** with the prefix `contoso`.
+
+---
+
+## Lab 4.2: Create a New Solution
+
+Now that you have a publisher, create the solution for this course.
+
+### Step 1: Create the Solution
+
+1. In the **Solutions** page, select **+ New solution**
+
+[SCREENSHOT: Solutions page with "+ New solution" button highlighted]
+
+2. In the **New solution** dialog, enter:
+
+| Field | Value |
+|---|---|
+| **Display Name** | `Contoso Helpdesk Agent` |
+| **Name** | `ContosoHelpdeskAgent` (auto-generated) |
+| **Publisher** | Select **Contoso** from the dropdown |
+| **Version** | `1.0.0.0` (default is fine) |
+| **Description** | `Solution for the Contoso IT Helpdesk Agent and related components` |
+
+[SCREENSHOT: New solution dialog showing Contoso Helpdesk Agent solution configuration]
+
+3. Select **Create**
+
+4. The solution is created and you land on the solution details page
+
+**✅ Checkpoint:** You have a solution called **Contoso Helpdesk Agent** owned by the **Contoso** publisher.
+
+### Step 2: Explore the Solution
+
+On the solution details page, you'll see:
+- **Overview** — summary of the solution
+- **Objects** — lists all components inside this solution (currently empty)
+- **History** — tracks changes and versions
+
+[SCREENSHOT: Solution details page showing empty Objects list]
+
+Right now, the solution is empty. As you build agents, flows, and other components, they'll appear here.
+
+---
+
+## Lab 4.3: Set the Preferred Solution in Copilot Studio
+
+To ensure all your future agents are automatically added to the **Contoso Helpdesk Agent** solution, you need to set it as the **preferred solution** in Copilot Studio.
+
+### Step 1: Open Copilot Studio
+
+1. Go to [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com)
+2. Sign in with your M365 account
+
+### Step 2: Access Settings
+
+1. In the left sidebar, select **Settings** (gear icon ⚙️ at the bottom)
+2. In the Settings menu, locate **Advanced** or **Environment settings**
+
+> **Note:** The exact location of "Preferred solution" may vary. Look for:
+> - **Settings** → **Advanced**
+> - **Settings** → **Environment** → **Advanced**
+> - A search box in Settings where you can type "Preferred solution"
+
+[SCREENSHOT: Copilot Studio Settings menu with Advanced or Environment section highlighted]
+
+### Step 3: Set the Preferred Solution
+
+1. In the Advanced settings, locate **Preferred solution**
+2. Select the dropdown
+3. Select **Contoso Helpdesk Agent** from the list
+
+[SCREENSHOT: Preferred solution dropdown showing "Contoso Helpdesk Agent" selected]
+
+4. Select **Save** or **Apply**
+
+**✅ Checkpoint:** The **Contoso Helpdesk Agent** solution is now the preferred solution.
+
+### What This Means
+
+From now on, when you create an agent, flow, or other component in Copilot Studio:
+- It will automatically be added to the **Contoso Helpdesk Agent** solution
+- You don't need to manually assign it to the solution later
+- All related components stay organized in one place
+
+> **Best practice:** Always set a preferred solution at the start of a project. This prevents "orphaned" components scattered across the environment.
+
+---
+
+## How to Verify Components Are in the Solution
+
+After you create the Contoso Helpdesk Agent in Module 06, come back to the Power Apps maker portal to verify it's in the solution:
+
+1. Go to [https://make.powerapps.com](https://make.powerapps.com)
+2. Select **Solutions**
+3. Select **Contoso Helpdesk Agent**
+4. In the **Objects** list, you should see:
+   - **Copilot** → Your agent
+   - **Cloud flows** → Any Agent Flows you create
+   - **Connection references** → Connectors you use
+
+[SCREENSHOT: Solution Objects page showing Copilot agent and related components]
+
+---
+
+## Understanding Solution Layers
+
+When you edit a solution component (e.g., update an agent's instructions), Power Platform creates a **layer**. Layers track who changed what and when.
+
+**Why this matters:**
+- Multiple people can work on the same solution
+- You can see the history of changes
+- If something breaks, you can identify which layer introduced the issue
+
+You can view layers:
+1. In the solution, select a component (e.g., your agent)
+2. Select **Advanced** → **See solution layers**
+3. You'll see a list of changes (active layer, base layer, etc.)
+
+> **For this course**, you don't need to manage layers — just know they exist for collaboration and troubleshooting.
+
+---
+
+## Exporting and Importing Solutions
+
+Although you won't do this in the course, here's the high-level process for moving solutions between environments:
+
+### Export (from Dev)
+1. Go to **Solutions** in Power Apps
+2. Select the solution
+3. Select **Export**
+4. Choose **Managed** or **Unmanaged**
+5. Download the .zip file
+
+### Import (to Test/Prod)
+1. In the target environment, go to **Solutions**
+2. Select **Import**
+3. Upload the .zip file
+4. Follow the prompts to map connections and environment variables
+5. Select **Import**
+
+This is the foundation of **Application Lifecycle Management (ALM)** for Power Platform.
+
+---
+
+## Solution Best Practices
+
+1. **One solution per project** — Don't mix unrelated agents into one solution
+2. **Set a preferred solution** — Always configure this before building
+3. **Use descriptive names** — `Contoso Helpdesk Agent` is better than `Solution1`
+4. **Version your solutions** — Increment the version number with each release (1.0.0.0 → 1.1.0.0)
+5. **Export regularly** — Back up your work by exporting the solution as a .zip file
+6. **Use a custom publisher** — Avoid the default publisher (it's shared across all solutions)
+
+---
+
+## Key Takeaways
+
+- **Solutions** are containers for Power Platform components (agents, flows, etc.)
+- **Publishers** provide a namespace (prefix) for solution components
+- **Preferred solution** ensures new components are automatically added to your solution
+- **Managed solutions** are for production; **unmanaged solutions** are for development
+- **ALM-ready** — solutions enable environment promotion, version control, and team collaboration
+
+---
+
+## What You've Built
+
+You now have:
+- ✅ A **publisher** called **Contoso** with prefix `contoso`
+- ✅ A **solution** called **Contoso Helpdesk Agent**
+- ✅ **Preferred solution** set in Copilot Studio so all future work goes into this solution
+
+From this point forward, every agent, flow, and component you create will be neatly organized in the **Contoso Helpdesk Agent** solution.
+
+---
+
+## Next Steps
+
+In **Module 05: Using Pre-Built Agents**, you'll explore agent templates that give you a head start on common scenarios.
+
+Then in **Module 06: Build a Custom Agent**, you'll create the **Contoso Helpdesk Agent** from scratch — and it will automatically be added to your solution.
+
+---
+
+**Course Navigation:** [← Module 03](../03-declarative-agent-m365/README.md) | [Course Index](../README.md) | [Next: Module 05 →](../05-prebuilt-agents/README.md)
