@@ -1,7 +1,7 @@
 # Module 00: Course Setup
 
 **Codename:** OPERATION DEPLOYMENT READY  
-**Time:** 30 minutes  
+**Time:** 35 minutes  
 **Scenario:** Contoso Helpdesk Agent
 
 ---
@@ -10,21 +10,23 @@
 
 By the end of this module, you will be able to:
 - Set up a Microsoft 365 account for Copilot Studio
-- Activate a Copilot Studio trial environment
+- Activate a Copilot Studio trial and switch into the **new** agent-building experience
 - Create a Power Apps Developer environment for testing
 - Configure publishing permissions via the Power Platform Admin Center
-- Create a SharePoint site with sample data for the hands-on labs
+- Prepare the SharePoint **Tickets** list and the two knowledge documents your agent will use
 
 ## Overview
 
-Before you can build agents in Copilot Studio, you need the right environment and data. This module walks you through a complete setup process that will support all the labs in this course.
+Before you can build agents in Copilot Studio, you need the right environment, the right permissions, and some data to ground your agent. This module walks you through a complete setup that supports every lab in this course.
 
-You'll be working with a single scenario throughout the course: **building the Contoso Helpdesk Agent** — an AI assistant that helps employees resolve common IT issues and request devices.
+You'll work with a single scenario throughout: **building the Contoso Helpdesk Agent** — an AI assistant that helps employees resolve common IT issues (password resets, VPN problems, software requests) and logs a support ticket whenever a human needs to step in.
+
+This course uses the **new Copilot Studio experience** — Microsoft's rebuilt agent designer with a new orchestrator and a single **Build** page. One of your first tasks is to switch into it.
 
 By the end of this setup, you'll have:
-- ✅ A Copilot Studio environment ready to build in
+- ✅ A Copilot Studio environment ready to build in, switched to the **new experience**
 - ✅ Publishing permissions configured
-- ✅ A SharePoint site with real data to ground your agent
+- ✅ A **Tickets** SharePoint list and two knowledge documents to ground and action your agent
 
 ---
 
@@ -89,11 +91,40 @@ Now that you have an M365 account, you can activate Copilot Studio.
 
 ---
 
-## Step 3: Create a Power Apps Developer Environment
+## Step 3: Switch to the New Experience
+
+Microsoft **rebuilt** Copilot Studio. This isn't a UI refresh — it's a new **agentic orchestrator** and a new agent-building interface, with a new headline concept: **Skills** (reusable instructions written in markdown). This course uses the **new experience only**.
+
+1. On the Copilot Studio **Home page**, look in the **top-right** for **Try it now** and select it — this switches you into the new experience.
+
+[SCREENSHOT: Copilot Studio Home page with the "Try it now" toggle highlighted in the top-right]
+
+2. Confirm the environment selector (top-right) points at your **developer / sandbox** environment, not production.
+
+> 🔁 You can switch back to classic anytime with the same toggle. Existing **classic** agents still open in the classic designer; agents you create in the **new** experience always open in the new designer.
+
+**✅ Checkpoint:** You are in the new experience — the agent you create later will open on a single **Build** page (Instructions, Knowledge, Skills, Tools, Memory, Connected agents, and Model all in one place).
+
+### What actually changed
+
+Say this out loud before you build — it resets any classic-era muscle memory:
+
+- **No topics, no trigger phrases.** The new experience uses **Skills** and **Workflows** instead. You describe behavior; the orchestrator decides what to do.
+- **Enhanced orchestration by design.** In classic, orchestration was a toggle. In the new experience, every agent uses the improved deep-reasoning orchestrator — there's no setting to flip.
+- **No migration path.** You can't move agents between classic and new (either direction). You build net-new here.
+- **Everything on one Build page.** Instructions, Knowledge, Skills, Tools, Memory, Connected agents, and Model live together.
+
+> 📚 Microsoft publishes a *Classic vs. new agent experience* comparison if you want the full list of differences.
+
+**Time:** ~3 minutes
+
+---
+
+## Step 4: Create a Power Apps Developer Environment
 
 For full testing and publishing capabilities, you'll create a dedicated developer environment. This is free and gives you isolated resources for learning.
 
-### 3.1: Sign Up for the Power Apps Developer Plan
+### 4.1: Sign Up for the Power Apps Developer Plan
 
 1. Go to [https://powerapps.microsoft.com/developerplan/](https://powerapps.microsoft.com/developerplan/)
 2. Select **Get started free**
@@ -104,7 +135,7 @@ For full testing and publishing capabilities, you'll create a dedicated develope
 
 5. A new developer environment will be created (this takes ~2 minutes)
 
-### 3.2: Verify Your Environment
+### 4.2: Verify Your Environment
 
 1. Go to [https://admin.powerplatform.microsoft.com](https://admin.powerplatform.microsoft.com)
 2. Sign in if prompted
@@ -121,17 +152,17 @@ For full testing and publishing capabilities, you'll create a dedicated develope
 
 ---
 
-## Step 4: Enable Publishing Permissions
+## Step 5: Enable Publishing Permissions
 
 To publish agents to Microsoft Teams or other channels, you need the **Copilot Studio Authors** role. This is configured in the Power Platform Admin Center using a security group.
 
 > **Why this matters:** Without this role, the **Publish** button will be disabled. This is a common blocker for trial users.
 
-### 4.1: Create a Security Group
+### 5.1: Create a Security Group
 
 1. Go to [https://admin.microsoft.com](https://admin.microsoft.com) (Microsoft 365 Admin Center)
 2. In the left navigation, expand **Teams & groups** → select **Active teams & groups**
-3. Select **Security groups** tab
+3. Select the **Security groups** tab
 4. Select **+ Add a security group**
 
 [SCREENSHOT: M365 Admin Center showing Security groups tab with "Add a security group" button]
@@ -144,7 +175,7 @@ To publish agents to Microsoft Teams or other channels, you need the **Copilot S
 8. In the **Review** step, select **Create group**
 9. Select **Close** after the group is created
 
-### 4.2: Add Yourself to the Security Group
+### 5.2: Add Yourself to the Security Group
 
 1. In the **Security groups** list, select the **Copilot Studio Authors** group you just created
 2. Select the **Members** tab
@@ -157,14 +188,14 @@ To publish agents to Microsoft Teams or other channels, you need the **Copilot S
 
 **✅ Checkpoint:** You are listed as a member of the **Copilot Studio Authors** group.
 
-### 4.3: Assign the Role in Power Platform Admin Center
+### 5.3: Assign the Role in Power Platform Admin Center
 
 1. Go back to [https://admin.powerplatform.microsoft.com](https://admin.powerplatform.microsoft.com)
 2. In the left navigation, select **Environments**
 3. Select your **developer environment** (e.g., "[Your Name]'s Environment")
 4. Select **Settings** in the top toolbar
 5. Expand **Users + permissions** → select **Security roles**
-6. Select **Copilot Studio Authors** role in the list
+6. Select the **Copilot Studio Authors** role in the list
 7. Select **+ Add people** (or **Edit members**)
 8. In the search box, search for the **Copilot Studio Authors** security group
 9. Select the group and select **Add**
@@ -181,192 +212,119 @@ To publish agents to Microsoft Teams or other channels, you need the **Copilot S
 
 ---
 
-## Step 5: Create the Contoso IT SharePoint Site
+## Step 6: Create the Tickets SharePoint List
 
-Throughout this course, you'll build an agent that helps employees find IT information and request devices. The agent will use a SharePoint site as its knowledge source.
+Your agent's ticketing system is simply a **SharePoint list**. When an issue needs admin help, the agent will log a ticket here. Let's create the list and add a couple of sample rows.
 
-Let's create that site now.
-
-### 5.1: Create the SharePoint Site
+### 6.1: Create the IT Help Desk Site
 
 1. Go to [https://www.office.com](https://www.office.com) and sign in
 2. Select the **App launcher** (nine dots) in the top-left corner
 3. Select **SharePoint**
-4. Select **+ Create site**
-5. Select **Team site**
+4. Select **+ Create site** → **Team site**
 
 [SCREENSHOT: SharePoint home showing "Create site" button and Team site option]
 
-6. In the site creation wizard:
-   - **Site name:** `Contoso IT`
-   - **Site description:** `Internal IT help desk resources and device inventory`
+5. In the site creation wizard:
+   - **Site name:** `IT Help Desk`
+   - **Site description:** `Internal IT help desk — ticketing and resources`
    - **Privacy settings:** Private (only members can access)
-7. Select **Next**
-8. Add yourself as a member (you should be listed as owner by default)
-9. Select **Finish**
+6. Select **Next**, confirm you're listed as owner, and select **Finish**
 
-[SCREENSHOT: SharePoint site creation wizard showing site name and description fields]
+**✅ Checkpoint:** You have a SharePoint site called **IT Help Desk**.
 
-10. The site is created and you land on the home page
+### 6.2: Create the Tickets List
 
-**✅ Checkpoint:** You have a SharePoint site called **Contoso IT**.
-
-### 5.2: Create the Devices List
-
-The agent will help employees find available devices using a SharePoint list. Let's create that list and populate it with sample data.
-
-1. On the **Contoso IT** site home page, select **+ New** → **List**
+1. On the **IT Help Desk** site home page, select **+ New** → **List**
 
 [SCREENSHOT: SharePoint site showing "+ New" menu with "List" option]
 
 2. Select **Blank list**
-3. **Name:** `Devices`
-4. **Description:** `Available IT devices for employee requests`
+3. **Name:** `Tickets`
+4. **Description:** `Support tickets logged by the Contoso Helpdesk Agent`
 5. Select **Create**
 
 The list is created with a default **Title** column.
 
-### 5.3: Add Columns to the Devices List
+### 6.3: Add Columns to the Tickets List
 
-Now add columns to track device details.
+The agent reads this list's **schema** at runtime to decide what to fill in, so the column names and choice values matter. Add the following columns:
 
-1. In the **Devices** list, select **+ Add column** (top toolbar)
-2. Select **Choice** from the dropdown
-3. **Name:** `Category`
-4. **Choices:** (add these options, one per line)
-   ```
-   Laptop
-   Monitor
-   Keyboard
-   Mouse
-   Headset
-   Webcam
-   Docking Station
-   ```
-5. **Default value:** Leave blank
-6. Select **Save**
-
-[SCREENSHOT: Add Choice column dialog showing Category column setup with device types]
-
-7. Repeat to add the following columns:
+1. In the **Tickets** list, select **+ Add column** for each row below:
 
 | Column Name | Type | Configuration |
 |---|---|---|
-| **Brand** | Single line of text | - |
-| **Model** | Single line of text | - |
-| **Status** | Choice | Choices: `Available`, `Reserved`, `Out of Stock` |
-| **Location** | Single line of text | E.g., "Warehouse A" |
-| **Notes** | Multiple lines of text | - |
+| **Description** | Multiple lines of text | Symptoms and details |
+| **Status** | Choice | Choices: `New`, `In progress`, `Resolved`, `Closed` (default `New`) |
+| **Priority** | Choice | Choices: `Low`, `Normal`, `High`, `Critical` |
+| **Category** | Choice | Choices: `Hardware`, `Software`, `Network`, `Access`, `Other` |
+| **Requestor** | Single line of text | Who raised the ticket |
 
-**✅ Checkpoint:** Your **Devices** list has columns: Title, Category, Brand, Model, Status, Location, Notes.
+> The default **Title** column is reused as the one-line summary of the issue.
 
-### 5.4: Add Sample Data
+[SCREENSHOT: Add Choice column dialog showing the Priority column setup]
 
-Add at least 5 sample devices so the agent has data to search.
+**✅ Checkpoint:** Your **Tickets** list has columns: Title, Description, Status, Priority, Category, Requestor.
 
-1. In the **Devices** list, select **+ New** to add a new item
-2. Fill in the fields. Example:
+### 6.4: Add a Couple of Sample Rows
 
-| Title | Category | Brand | Model | Status | Location | Notes |
-|---|---|---|---|---|---|---|
-| Dell Latitude 7430 | Laptop | Dell | Latitude 7430 | Available | Warehouse A | 16GB RAM, 512GB SSD |
-| HP 27-inch Monitor | Monitor | HP | E273 | Available | Warehouse A | Full HD, HDMI |
-| Logitech Wireless Keyboard | Keyboard | Logitech | K380 | Available | Warehouse B | Bluetooth, multi-device |
-| Apple Magic Mouse | Mouse | Apple | Magic Mouse 2 | Reserved | Warehouse A | Rechargeable |
-| Jabra Evolve2 65 | Headset | Jabra | Evolve2 65 | Available | Warehouse B | Active noise cancellation |
+Add 2–3 example tickets so the list isn't empty when you first test.
 
-3. Select **Save** after each item
+| Title | Description | Status | Priority | Category | Requestor |
+|---|---|---|---|---|---|
+| Cannot access finance drive | User reports no access to the shared finance folder | New | High | Access | jordan@contoso.com |
+| Outlook crashing on launch | Outlook closes immediately after opening | In progress | Normal | Software | priya@contoso.com |
 
-[SCREENSHOT: SharePoint Devices list showing sample items in grid view]
+[SCREENSHOT: SharePoint Tickets list showing sample rows in grid view]
 
-**✅ Checkpoint:** Your **Devices** list contains at least 5 items with varied data.
+**✅ Checkpoint:** Your **Tickets** list contains at least two sample rows.
 
-### 5.5: Add an Image Column (for Module 08)
+### 6.5: Copy the Site URL and List Name
 
-In Module 08, you'll display device images in an Adaptive Card. Let's prepare the column now.
+1. On the **IT Help Desk** site, copy the URL from the browser address bar. It should look like:  
+   `https://[yourtenant].sharepoint.com/sites/ITHelpDesk`
+2. Save both the **site URL** and the **list name** (`Tickets`) — you'll point the **Create item** tool at them in Module 07.
 
-1. In the **Devices** list, select **+ Add column** → **Image**
-2. **Name:** `DeviceImage`
-3. Select **Save**
+> 🔎 **Confirm before class (facilitators):** open **List settings** and note the exact **display + internal** column names and choice values. In the new experience the agent reads the list schema itself, so the **site URL + list name** are what matter most.
 
-4. (Optional) Add sample images:
-   - Edit each device item
-   - In the **DeviceImage** field, paste a public image URL or upload a local file
-   - Example URLs:
-     - Laptop: `https://via.placeholder.com/150?text=Laptop`
-     - Monitor: `https://via.placeholder.com/150?text=Monitor`
-   - Select **Save**
-
-> **Note:** Images are optional for now. You can add real device images later or use placeholders.
-
-**✅ Checkpoint:** Your **Devices** list has a **DeviceImage** column.
-
-**Time:** ~15 minutes
+**Time:** ~10 minutes
 
 ---
 
-## Step 6: Upload the Guest WiFi Document
+## Step 7: Prepare the Two Knowledge Documents
 
-In Module 06, you'll add a document as a knowledge source. Let's create that document now.
+Your agent grounds its answers in two documents you'll upload in Module 06. **Ready-made copies are provided with the course materials** (`Contoso_IT_FAQ.docx` and `Contoso_Approved_Software_List.docx`) — use them as-is, or recreate your own from the outlines below.
 
-### 6.1: Create the Document
+### 7.1: Contoso IT FAQ
 
-1. Open **Microsoft Word** (or any text editor)
-2. Create a new document
-3. Add the following content:
+A short FAQ the agent uses to answer everyday questions. Include:
 
-```
-Guest WiFi Connection Guide
+- **Help desk hours** — Mon–Fri, 7:00 AM–7:00 PM local; high-priority issues monitored 24/7
+- **How to reach the help desk** — `helpdesk@contoso.com`, extension **4357** ("HELP")
+- **Ticket response times**, **device enrollment**, **password policy**, **Wi-Fi**, and **software/data basics**
 
-Welcome! Here's how to connect to the Contoso Guest WiFi network.
+### 7.2: Contoso Approved Software List
 
-Network Name (SSID): Contoso-Guest
+Explains the three distribution types — **Self-service**, **Manager sign-off**, and **Not listed** — and lists the approved apps:
 
-Steps:
-1. Open your device's WiFi settings
-2. Select "Contoso-Guest" from the list of networks
-3. When prompted, enter the password: GuestPass2026!
-4. Accept the terms of use
-5. You're connected!
+| Application | Category | Distribution |
+|---|---|---|
+| Microsoft Power BI Desktop | Analytics & reporting | Self-service |
+| Microsoft Visual Studio Code | Development | Self-service |
+| Microsoft PowerToys | Utilities | Self-service |
+| Microsoft Power Automate Desktop | Automation | Self-service |
+| Microsoft Visio | Diagramming | Manager sign-off |
+| Microsoft Project | Project management | Manager sign-off |
+| Microsoft 365 Copilot | Productivity (AI) | Manager sign-off |
+| Visual Studio Professional | Development | Manager sign-off |
 
-Troubleshooting:
-- If the network doesn't appear, make sure WiFi is enabled on your device
-- If you can't connect, restart your device and try again
-- For further assistance, contact IT Support at support@contoso.com
+> These two documents drive several later scenarios: help-desk hours (Module 06), "Can I install **Power BI Desktop**?" → self-service (Module 06), and the manager-approval workflow for **Microsoft Visio** (Module 09). Keep the app names consistent with this table.
 
-Note: Guest WiFi has limited access. For full network access, please use your employee credentials.
-```
+[SCREENSHOT: The two knowledge documents open side by side — IT FAQ and Approved Software List]
 
-4. Save the file as **Guest WiFi Connection Guide.docx**
-
-[SCREENSHOT: Word document showing Guest WiFi guide content]
-
-### 6.2: Upload to SharePoint
-
-1. Go back to your **Contoso IT** SharePoint site
-2. In the left navigation, select **Documents**
-3. Select **Upload** → **Files**
-4. Select the **Guest WiFi Connection Guide.docx** file
-5. Select **Open**
-
-[SCREENSHOT: SharePoint Documents library with uploaded Guest WiFi guide]
-
-**✅ Checkpoint:** The **Guest WiFi Connection Guide.docx** file is uploaded to the **Documents** library on the Contoso IT site.
+**✅ Checkpoint:** You have both documents ready to upload (`Contoso_IT_FAQ.docx` and `Contoso_Approved_Software_List.docx`).
 
 **Time:** ~5 minutes
-
----
-
-## Step 7: Bookmark the SharePoint Site URL
-
-You'll need the SharePoint site URL several times during the course. Let's save it now.
-
-1. On the **Contoso IT** site, copy the URL from the browser address bar
-2. The URL should look like:  
-   `https://[yourtenant].sharepoint.com/sites/ContosoIT`
-3. Save this URL in a text file or bookmark it
-
-> **Tip:** You'll use this URL in Module 06 when adding the SharePoint site as a knowledge source.
 
 ---
 
@@ -375,12 +333,11 @@ You'll need the SharePoint site URL several times during the course. Let's save 
 Congratulations! You've completed the course setup. You now have:
 
 - ✅ **Microsoft 365 account** with admin access
-- ✅ **Copilot Studio trial** activated
+- ✅ **Copilot Studio trial** activated and switched to the **new experience**
 - ✅ **Power Apps Developer environment** created
 - ✅ **Publishing permissions** configured via security group and PPAC
-- ✅ **Contoso IT SharePoint site** with:
-  - Devices list (5+ sample items with columns: Title, Category, Brand, Model, Status, Location, Notes, DeviceImage)
-  - Guest WiFi Connection Guide document uploaded
+- ✅ **IT Help Desk SharePoint site** with a **Tickets** list (Title, Description, Status, Priority, Category, Requestor) and sample rows
+- ✅ **Two knowledge documents** ready to upload (Contoso IT FAQ, Contoso Approved Software List)
 
 You're ready to start building agents!
 
@@ -388,10 +345,10 @@ You're ready to start building agents!
 
 ## Key Takeaways
 
-- **Copilot Studio trial:** 30 days (extendable to 90 days) with full capabilities
-- **Publishing requires permissions:** Copilot Studio Authors role via security group
-- **SharePoint as a knowledge source:** Agents can search SharePoint sites, lists, and documents
-- **Developer environments are free:** Power Apps Developer Plan gives you a safe sandbox
+- **The new experience is a toggle away:** **Try it now** switches you into the rebuilt designer — no topics, no triggers, enhanced orchestration by design.
+- **Publishing requires permissions:** the Copilot Studio Authors role, assigned via a security group in PPAC.
+- **A SharePoint list is a ticketing system:** the agent reads the list schema at runtime, so the site URL + list name matter most.
+- **Knowledge grounds the agent:** the IT FAQ and Approved Software List drive the answers and actions you'll build next.
 
 ---
 
@@ -401,4 +358,4 @@ In **Module 01: Introduction to Agents**, you'll learn what agents are, how they
 
 ---
 
-**Course Navigation:** [Course Index](../README.md) | [Next: Module 01 →](../01-introduction-to-agents/README.md)
+**Course Navigation:** [Course Index](../) | [Next: Module 01 →](../01-introduction-to-agents/)
