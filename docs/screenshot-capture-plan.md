@@ -1,331 +1,209 @@
 # Screenshot Capture Plan
 
-**Purpose:** The rewritten course modules contain **193 `[SCREENSHOT: …]` placeholders** and **zero captured images**. This is the worklist for capturing them. It groups the work by *where* each screenshot is taken (so you log into each surface once) and tracks progress per module.
+**Purpose:** The rebuilt course (Bit, new experience) contains **91 `[SCREENSHOT: …]` placeholders** and **zero captured images**. This is the worklist for capturing them, grouped by *where* each is taken (so you sign into each surface once) and tracked per module.
 
-> **How this differs from [screenshot-audit-checklist.md](screenshot-audit-checklist.md):** the audit checklist was written to *verify the original Microsoft course's* screenshots against the new UI. This plan is the *capture worklist for this rewrite's* placeholders. Once capture is done, the audit checklist becomes the final QA pass.
-
----
-
-## Prerequisite: you have to build the agent first
-
-These screenshots can't be captured cold. The course is a progressive build of the **Contoso Helpdesk Agent**, and most screenshots show that agent in a specific state. To capture them you need:
-
-- A live M365 tenant + Copilot Studio trial (Module 00)
-- The Contoso IT SharePoint site, **Devices** list with sample data, and Guest WiFi doc (Module 00)
-- The agent built up through each module's steps
-
-**The efficient path:** actually run the course end-to-end on a clean tenant, capturing as you go. The agent state at each step *is* the screenshot. Budget this as a guided build session, not a separate "screenshot day."
+> ♻️ **Rewritten for the new course (Bit).** The previous version of this plan listed 193 shots for the *old* modules (Devices list, Topics, Power Fx, Agent Flows, Dataverse table). Every placeholder changed in the rewrite — this plan reflects the **current** 91.
 
 ---
 
-## Scope at a glance
+## Prerequisite: you have to build Bit first
 
-**193 screenshots across 14 modules.** By capture surface:
+These can't be captured cold. The course is a progressive build of **Bit**, and most shots show Bit (or the supporting setup) in a specific state. To capture them you need a live M365 tenant + Copilot Studio (new experience), the IT Help Desk site + Tickets list + the two knowledge docs (Module 00), and Bit built up through each module's steps.
+
+**The efficient path:** run the course end-to-end on a clean tenant, capturing as you go. The state at each step *is* the screenshot. Budget it as a guided build session, not a separate "screenshot day."
+
+---
+
+## Scope at a glance — 91 shots by capture surface
 
 | Capture surface | ~Count | Where | Notes |
 |---|---:|---|---|
-| **Copilot Studio** (authoring, topic designer, agent flows, channels, analytics) | ~140 | Modules 02–12 | The dominant bucket — one long build session covers most |
-| **Power Apps maker / Dataverse** | ~19 | 04, 06, 10, 13 | Solutions, publisher, the Support Ticket table |
-| **Microsoft Teams** | ~8 | 11 | Upload custom app + chat with the published agent |
-| **SharePoint** | ~6 | 00 | Site, Devices list, document library |
-| **PPAC (Power Platform Admin Center)** | ~4 | 00, 04, 12 | Environments, security roles, trial |
-| **Microsoft 365 Admin Center** | ~3 | 00, 12 | Security groups, purchase options |
-| **M365 Copilot (chat)** | ~3 | 03 | Declarative agent @mention + response |
-| **Outlook inbox** | ~2 | 09, 10 | Received automation email |
-| **M365 trial signup** | ~1 | 00 | |
-| **Word** | ~1 | 00 | Guest WiFi guide doc |
-| **Microsoft Learn** | ~1 | 13 | Badge on profile |
-| **Downloaded file / desktop** | ~1 | 11 | Teams app .zip |
-| **Diagrams — NOT screenshots** | 3 | 01 | Create with Mermaid / a diagram tool, don't capture |
+| **Copilot Studio** (Build page, Preview, Skills, Tools, Settings, Model, Triggers, Workflow designer, Adaptive Card editor, Evaluate, Publish, Monitor, templates, declarative) | ~55 | 00, 02, 03, 05–12 | The dominant bucket — one long build session covers most |
+| **Power Apps maker / Solutions** | ~12 | 04, 06, 13 | Publisher, solution, Objects, export |
+| **SharePoint** | ~5 | 00, 07 | Site, Tickets list, sample rows, ticket row |
+| **Microsoft 365 Copilot (chat)** | ~4 | 03, 11 | @mention + response; Bit in M365 Copilot |
+| **PPAC (Power Platform Admin Center)** | ~3 | 00, 12 | Environments, security roles, extend trial |
+| **M365 Admin Center** | ~3 | 00, 12 | Security groups, members, purchase options |
+| **Public signup pages** (no tenant needed) | ~3 | 00 | M365 trial, CS trial activation, Power Apps Dev Plan |
+| **Outlook inbox** | ~2 | 07, 10 | PDF confirmation email, escalation email |
+| **Word / docs** | ~1 | 00 | The two knowledge docs side by side |
 
-Per-module exact counts:
-
-| Module | Count | Module | Count |
-|---|---:|---|---:|
-| 00 Course Setup | 15 | 07 Topics & Triggers | 30 |
-| 01 Introduction *(diagrams)* | 3 | 08 Adaptive Cards | 16 |
-| 02 Fundamentals | 6 | 09 Agent Flows | 18 |
-| 03 Declarative Agent | 8 | 10 Event Triggers | 23 |
-| 04 Solution | 10 | 11 Publish | 26 |
-| 05 Pre-built Agents | 8 | 12 Licensing | 3 |
-| 06 Custom Agent | 24 | 13 Badge | 3 |
+### Per-module counts
+| Module | # | Module | # |
+|---|--:|---|--:|
+| 00 Course Setup | 14 | 07 Skills + Tools | 5 |
+| 01 Introduction | 0 *(Mermaid diagrams — done)* | 08 Adaptive Cards | 4 |
+| 02 Fundamentals | 6 | 09 Workflows | 8 |
+| 03 Declarative | 8 | 10 Event Triggers | 5 |
+| 04 Solution | 9 | 11 Evaluate/Publish | 6 |
+| 05 Pre-built | 7 | 12 Licensing | 3 |
+| 06 Build Bit | 14 | 13 Badge | 2 |
 
 ---
 
 ## Suggested capture order
 
-1. **Module 00 satellite surfaces first** — M365 signup, PPAC, M365 Admin, SharePoint, Word. These set up the environment the rest depends on.
-2. **One Copilot Studio build session, Modules 02 → 11 in order** — this is ~140 of the 193. Build the agent step by step; capture each screen as you reach it. Modules 06–08 (knowledge → topic → Adaptive Card) and the topic-designer shots in 07/09/10 must be done in sequence because each builds on the last.
-3. **Power Apps / Dataverse** — Module 04 (solution) and Module 10 (Support Ticket table) interleave with the CS session.
-4. **Teams + Outlook + Learn** — Module 11 (publish to Teams, chat) and the automation emails (09, 10) come last, after the agent is published.
-5. **Module 01 diagrams** — produce separately (see below).
+1. **Module 00 satellite surfaces first** — public signup pages, PPAC, M365 Admin, SharePoint, Word. These set up the environment everything else depends on. *(In the facilitated workshop these are pre-provisioned — capture them once on a clean tenant for the online course.)*
+2. **One Copilot Studio build session, Modules 02 → 11 in order** — ~55 of 91. Build Bit step by step; capture each screen as you reach it. Modules 06 → 10 must be in sequence (each builds on the last).
+3. **Power Apps / Solutions** — Module 04 (solution) and the verify/export shots (06, 13) interleave with the CS session.
+4. **M365 Copilot, Outlook, M365 Admin** — channel + email shots come after Bit is published/acting.
 
 ---
 
 ## Conventions
 
-**Storage:** `docs/assets/screenshots/<module-number>/` — e.g. `docs/assets/screenshots/06/`. Must live under `docs/` so Jekyll publishes them. (`docs/assets/` is not excluded in `_config.yml`.)
+**Storage:** `docs/public/screenshots/<module-number>/` — e.g. `docs/public/screenshots/06/`. (VitePress serves `docs/public/` at the site root; with `base: '/BOOST/'` the served path is `/BOOST/screenshots/...`.)
 
-**Naming:** `NN_descriptive-name.png`, numbered in the order they appear in the module — e.g. `06/03_ai-suggestions-panel.png`. (The audit checklist's `XX.Y_NN_Name.png` scheme mirrors the *original* course's filenames; for new captures the simpler per-module form is enough.)
+**Naming:** `NN_descriptive-name.png`, numbered in the order they appear in the module — e.g. `06/03_bit-named-with-icon.png`.
 
 **Wiring into the module:** replace each placeholder line, e.g.
 
 ```markdown
-[SCREENSHOT: AI suggestions panel showing agent name, knowledge sources, and suggested topics]
+[SCREENSHOT: Build page showing the agent named Bit with an icon and accent color]
 ```
 
-with a Jekyll-safe image reference (works with the `/BOOST` baseurl):
+with a VitePress image reference (absolute path includes the base):
 
 ```markdown
-![AI suggestions panel showing agent name, knowledge sources, and suggested topics]({{ '/assets/screenshots/06/03_ai-suggestions-panel.png' | relative_url }})
+![Build page showing the agent named Bit with an icon and accent color](/screenshots/06/03_bit-named-with-icon.png)
 ```
 
 Keep the placeholder text as the alt text — it's already descriptive and accessible.
 
-**Redaction:** scrub real tenant names, emails, and GUIDs before publishing. Use the Contoso naming the course assumes.
-
----
-
-## Module 01 — diagrams, not screenshots
-
-These three are conceptual and should be authored (Mermaid renders natively on GitHub Pages), not captured from a UI:
-
-- [ ] `01` L61 — LLM at the center of an agent architecture (inputs: user message, context → outputs: response, tool calls)
-- [ ] `01` L93 — Sequence diagram: User → Agent → Knowledge → LLM → Tool/API → Response *(already described as Mermaid in the source — convert to a real ` ```mermaid ` block)*
-- [ ] `01` L197 — Orchestrator agent connected to Flight / Hotel / Payment agents
+**Redaction:** scrub real tenant names, emails, and GUIDs before publishing. Use the Contoso naming the course assumes (helpdesk@contoso.com, IT Help Desk site, etc.).
 
 ---
 
 ## Worklist by module
 
-Line numbers point to the placeholder in each module's `README.md`.
+Line numbers point to the placeholder in each module's `index.md` (will drift as images are wired in — re-grep `\[SCREENSHOT:` if unsure).
 
-### Module 00 — Course Setup (15)
-- [ ] L60 — M365 trial signup ("Try for free") *(M365 signup)*
-- [ ] L79 — Copilot Studio trial activation page *(Copilot Studio)*
-- [ ] L84 — Copilot Studio Home, description box *(Copilot Studio)*
-- [ ] L103 — Power Apps Developer Plan signup *(Power Apps)*
-- [ ] L116 — PPAC Environments list *(PPAC)*
-- [ ] L137 — M365 Admin Center, security groups *(M365 Admin)*
-- [ ] L156 — Security group members flow *(M365 Admin)*
-- [ ] L172 — PPAC → Security roles → Copilot Studio Authors *(PPAC)*
-- [ ] L198 — SharePoint home, "Create site" *(SharePoint)*
-- [ ] L208 — SharePoint site creation wizard *(SharePoint)*
-- [ ] L220 — SharePoint "+ New" → List *(SharePoint)*
-- [ ] L249 — Add Choice column (Category) *(SharePoint)*
-- [ ] L280 — Devices list with sample items *(SharePoint)*
-- [ ] L342 — Guest WiFi guide Word doc *(Word)*
-- [ ] L352 — SharePoint Documents library with guide uploaded *(SharePoint)*
+### Module 00 — Course Setup (14)
+- [ ] L62 — M365 trial signup ("Try for free") *(public)*
+- [ ] L81 — Copilot Studio trial activation page *(public)*
+- [ ] L86 — Copilot Studio Home, description box *(Copilot Studio)*
+- [ ] L100 — Home with the **Try it now** toggle highlighted *(Copilot Studio)*
+- [ ] L134 — Power Apps Developer Plan signup *(public)*
+- [ ] L147 — PPAC Environments list *(PPAC)*
+- [ ] L168 — M365 Admin, Security groups *(M365 Admin)*
+- [ ] L187 — Security group members flow *(M365 Admin)*
+- [ ] L203 — PPAC → Security roles → Copilot Studio Authors *(PPAC)*
+- [ ] L226 — SharePoint home, "Create site" *(SharePoint)*
+- [ ] L240 — SharePoint "+ New" → List *(SharePoint)*
+- [ ] L265 — Add Choice column (Priority) *(SharePoint)*
+- [ ] L278 — Tickets list with sample rows *(SharePoint)*
+- [ ] L323 — The two knowledge docs side by side *(Word)*
 
-### Module 01 — Introduction (3) — see "diagrams" section above
+### Module 01 — Introduction (0)
+Three diagrams — **done** as Mermaid (no screenshots).
 
-### Module 02 — Fundamentals (6)
-- [ ] L44 — Full Overview page (Details → Suggested Prompts + Test pane)
-- [ ] L118 — Test pane conversation, "New test session" icon
-- [ ] L157 — Knowledge section (SharePoint + doc + web search toggle)
-- [ ] L201 — Tools section ("+ Add", Work IQ toggle)
-- [ ] L243 — Topic designer: Trigger → Question → Condition → Message
-- [ ] L282 — Instructions section with Edit button
+### Module 02 — New Fundamentals (6)
+- [ ] L46 — Full Build page (all blocks + Preview) *(CS)*
+- [ ] L99 — Preview pane, maker-vs-end-user toggle *(CS)*
+- [ ] L127 — Instructions block *(CS)*
+- [ ] L156 — Knowledge block (two docs) *(CS)*
+- [ ] L188 — Skills block (four skills) *(CS)*
+- [ ] L212 — Tools block ("+ Add a tool") *(CS)*
 
 ### Module 03 — Declarative Agent (8)
-- [ ] L71 — Copilot Studio Home, description box *(Copilot Studio)*
-- [ ] L91 — Declarative agent creation dialog *(Copilot Studio)*
-- [ ] L115 — Instructions field *(Copilot Studio)*
-- [ ] L132 — Add knowledge source (SharePoint URL) *(Copilot Studio)*
-- [ ] L146 — Publish confirmation *(Copilot Studio)*
-- [ ] L161 — M365 Copilot chat input *(M365 Copilot)*
-- [ ] L169 — M365 Copilot @mention dropdown *(M365 Copilot)*
-- [ ] L186 — M365 Copilot response with citation *(M365 Copilot)*
+- [ ] L81 — CS Home description box *(CS)*
+- [ ] L101 — Declarative agent creation dialog *(CS)*
+- [ ] L124 — Instructions field *(CS)*
+- [ ] L141 — Add knowledge (SharePoint URL) *(CS)*
+- [ ] L154 — Publish confirmation *(CS)*
+- [ ] L169 — M365 Copilot chat input *(M365 Copilot)*
+- [ ] L177 — M365 Copilot @mention dropdown *(M365 Copilot)*
+- [ ] L193 — M365 Copilot response + citation *(M365 Copilot)*
 
-### Module 04 — Solution (10)
-- [ ] L82 — PPAC home *(PPAC)*
-- [ ] L105 — Power Apps maker, Solutions *(Power Apps)*
-- [ ] L113 — Solutions, "New Publisher" *(Power Apps)*
-- [ ] L129 — New Publisher dialog (Contoso) *(Power Apps)*
-- [ ] L143 — "+ New solution" *(Power Apps)*
-- [ ] L155 — New solution dialog *(Power Apps)*
-- [ ] L170 — Solution details, empty Objects *(Power Apps)*
-- [ ] L195 — Copilot Studio Settings → Advanced/Environment *(Copilot Studio)*
-- [ ] L203 — Preferred solution dropdown *(Copilot Studio)*
-- [ ] L232 — Solution Objects with agent components *(Power Apps)*
+### Module 04 — Solution (9)
+- [ ] L92 — Maker portal, dev environment selected *(Power Apps)*
+- [ ] L99 — Solutions section *(Power Apps)*
+- [ ] L108 — New solution dialog, "New publisher" *(Power Apps)*
+- [ ] L124 — New publisher dialog (Contoso) *(Power Apps)*
+- [ ] L138 — "+ New solution" *(Power Apps)*
+- [ ] L150 — New solution dialog (Contoso Helpdesk Agent) *(Power Apps)*
+- [ ] L164 — Solution details, empty Objects *(Power Apps)*
+- [ ] L186 — Preferred solution dropdown *(CS)*
+- [ ] L217 — Solution Objects with components *(Power Apps)*
 
-### Module 05 — Pre-built Agents (8)
-- [ ] L73 — Home, "Start from a template"
-- [ ] L85 — IT Help Desk template preview
-- [ ] L115 — Template preview, "Create agent"
-- [ ] L129 — Overview page for template-created agent
-- [ ] L173 — Topics list (Password Reset, Device Request, Software Install)
-- [ ] L182 — Password Reset topic flow
-- [ ] L219 — Add knowledge (SharePoint URL)
-- [ ] L239 — Test pane: WiFi password + citation
+### Module 05 — Pre-built (7)
+- [ ] L81 — Home, "Start from a template" *(CS)*
+- [ ] L89 — IT Help Desk template preview *(CS)*
+- [ ] L116 — Template preview, "Create agent" *(CS)*
+- [ ] L127 — Build page for the template agent *(CS)*
+- [ ] L148 — Skills block + starter prompts *(CS)*
+- [ ] L176 — Add knowledge (SharePoint URL) *(CS)*
+- [ ] L189 — Preview: help desk hours + citation *(CS)*
 
-### Module 06 — Custom Agent (24)
-- [ ] L60 — Home, description box
-- [ ] L75 — Home with IT helpdesk description entered
-- [ ] L91 — AI suggestions panel
-- [ ] L118 — Final agent creation screen
-- [ ] L124 — Overview page (Details, Instructions, Knowledge, Test)
-- [ ] L140 — Instructions section, Edit
-- [ ] L200 — Instructions editor (full text)
-- [ ] L234 — Knowledge section, "+ Add knowledge"
-- [ ] L244 — Add SharePoint knowledge dialog
-- [ ] L252 — Knowledge: SharePoint connected (green check)
-- [ ] L268 — Upload files dialog
-- [ ] L276 — Knowledge: SharePoint + WiFi doc
-- [ ] L290 — Add website knowledge (Microsoft Support URL)
-- [ ] L308 — Knowledge: "General web search" enabled
-- [ ] L352 — Test pane: Dell laptops + citation
-- [ ] L370 — Test pane: WiFi password + doc citation
-- [ ] L388 — Test pane: password reset + Support citation
-- [ ] L406 — Test pane: Windows 11 news + web citations
-- [ ] L445 — Activity map: knowledge sources searched
-- [ ] L485 — Model dropdown, GPT-4.1 selected
-- [ ] L519 — Test pane: GPT-4.1 vs GPT-5 comparison
-- [ ] L534 — Settings dropdown, "Agent settings"
-- [ ] L569 — Solutions list with the agent solution *(Power Apps)*
-- [ ] L578 — Solution showing agent under Objects *(Power Apps)*
+### Module 06 — Build Bit (14)
+- [ ] L68 — Home description box *(CS)*
+- [ ] L84 — Home with the IT support description *(CS)*
+- [ ] L97 — Build page, agent named Bit + icon *(CS)*
+- [ ] L129 — Instructions block (Bit) *(CS)*
+- [ ] L147 — Settings (solution/moderation/auth) *(CS)*
+- [ ] L176 — Greeting + four suggested prompts *(CS)*
+- [ ] L195 — Knowledge upload dialog *(CS)*
+- [ ] L202 — Knowledge: both docs added *(CS)*
+- [ ] L217 — Memory toggled on *(CS)*
+- [ ] L235 — Preview: help desk hours + reasoning *(CS)*
+- [ ] L250 — Preview: Power BI self-service + toggle *(CS)*
+- [ ] L277 — Preview reasoning expanded *(CS)*
+- [ ] L289 — Model block (GPT-4.1) *(CS)*
+- [ ] L314 — Solution showing Bit under Objects *(Power Apps)*
 
-### Module 07 — Topics & Triggers (30)
-- [ ] L65 — Overview Topics section, "See all"
-- [ ] L69 — Topics list (system + suggested)
-- [ ] L76 — New topic, "From blank"
-- [ ] L80 — Topic designer blank canvas
-- [ ] L87 — Topic name "Device Request"
-- [ ] L100 — Trigger node, "+ Add phrases"
-- [ ] L114 — Trigger phrases list (8)
-- [ ] L136 — Add node menu, "Ask a question"
-- [ ] L140 — Question node on canvas
-- [ ] L150 — Question node with text
-- [ ] L164 — Question node, multiple-choice options
-- [ ] L175 — Question node, "Save response as: DeviceType"
-- [ ] L196 — Add node → "Set a variable value"
-- [ ] L200 — Set variable node on canvas
-- [ ] L209 — Set variable "AvailableDevices"
-- [ ] L218 — Set variable Value field, fx icon
-- [ ] L235 — Power Fx editor: Filter expression
-- [ ] L270 — Add node → "Add a condition"
-- [ ] L274 — Condition node, two branches
-- [ ] L289 — Condition node, CountRows formula
-- [ ] L300 — True branch → "Send a message"
-- [ ] L319 — Message node, dynamic table (AvailableDevices)
-- [ ] L339 — False branch add-node menu
-- [ ] L346 — False branch "no devices" message
-- [ ] L362 — Topic designer Save
-- [ ] L371 — Test pane next to designer
-- [ ] L389 — Test pane: multiple-choice buttons
-- [ ] L398 — Test pane: available laptops list
-- [ ] L418 — Test pane: "no devices" message
-- [ ] L442 — Instructions editor, "When to use topics"
+### Module 07 — Skills + Tools (5)
+- [ ] L190 — Add Outlook "Send an email (V2)" tool *(CS)*
+- [ ] L206 — Add SharePoint "Create item" tool *(CS)*
+- [ ] L225 — Preview: password-reset flow + email *(CS)*
+- [ ] L251 — New ticket row + confirmation email *(SharePoint + Outlook)*
+- [ ] L284 — Email with the PDF report attached *(Outlook)*
 
-### Module 08 — Adaptive Cards (16)
-- [ ] L56 — Example Adaptive Card (device, specs, Request button)
-- [ ] L71 — Topics list, Device Request highlighted
-- [ ] L84 — Topic flow, Condition node True/False
-- [ ] L91 — Message node on True branch, Delete icon
-- [ ] L102 — Message node menu, "Adaptive Card"
-- [ ] L106 — Adaptive Card editor, blank/default
-- [ ] L143 — Adaptive Card designer toolbar
-- [ ] L154 — Adaptive Card editor, Code/JSON toggle
-- [ ] L228 — Adaptive Card code editor (JSON template)
-- [ ] L253 — Adaptive Card node, "Data source" field
-- [ ] L263 — Data source: "Topic.AvailableDevices"
-- [ ] L288 — Adaptive Card preview, populated
-- [ ] L308 — Message node, acknowledgment text
-- [ ] L326 — Topic designer toolbar, Save
-- [ ] L349 — Test pane: populated card (Dell Latitude 7430)
-- [ ] L367 — Test pane: "no devices" for empty category
+### Module 08 — Adaptive Cards (4)
+- [ ] L55 — Example ticket confirmation card *(CS / designer)*
+- [ ] L113 — Card editor showing the JSON *(CS)*
+- [ ] L145 — smart-triage updated to present the card *(CS)*
+- [ ] L161 — Preview: rendered ticket card *(CS)*
 
-### Module 09 — Agent Flows (18)
-- [ ] L87 — Topic designer, Device Request flow
-- [ ] L102 — Add node, "Call a tool"
-- [ ] L106 — Tool node on canvas
-- [ ] L113 — Tool node, "Create a flow"
-- [ ] L117 — Agent Flow designer, blank canvas
-- [ ] L128 — Flow trigger "When Copilot Studio calls a flow"
-- [ ] L139 — Trigger node, DeviceTitle input
-- [ ] L154 — Action search, Outlook "Send an email (V2)"
-- [ ] L158 — Send an email action on canvas
-- [ ] L188 — Send email with dynamic content
-- [ ] L201 — Flow name "Send Device Request Email"
-- [ ] L221 — Tool node, flow selected
-- [ ] L247 — Tool node, fields with Power Fx
-- [ ] L277 — Topic designer Save
-- [ ] L300 — Test pane: card with "Request this device"
-- [ ] L311 — Test pane: confirmation after click
-- [ ] L320 — Outlook inbox: device request email *(Outlook)*
-- [ ] L347 — Flow run history, successful runs
+### Module 09 — Workflows (8)
+- [ ] L57 — New workflow designer (named) *(CS)*
+- [ ] L71 — Input parameters *(CS)*
+- [ ] L80 — Get manager (V2) *(CS)*
+- [ ] L92 — Start and wait for an approval *(CS)*
+- [ ] L103 — If/else on outcome *(CS)*
+- [ ] L120 — Parallel branches (approval + respond) *(CS)*
+- [ ] L146 — software-installation-request calls the workflow *(CS)*
+- [ ] L162 — Preview: approval started + manager's Approvals card *(CS / Approvals)*
 
-### Module 10 — Event Triggers (23)
-- [ ] L75 — Power Apps maker home *(Power Apps)*
-- [ ] L83 — Tables, "+ New table" *(Power Apps)*
-- [ ] L91 — New table dialog (Support Ticket) *(Power Apps)*
-- [ ] L97 — Support Ticket table designer *(Power Apps)*
-- [ ] L126 — New column (Priority choice) *(Power Apps)*
-- [ ] L142 — Support Tickets table sample data *(Power Apps)*
-- [ ] L160 — Overview Triggers section, "+ Add trigger"
-- [ ] L169 — Add trigger menu, "When a row is added or modified"
-- [ ] L173 — Trigger configuration dialog
-- [ ] L182 — Trigger config, "When a row is added"
-- [ ] L191 — Trigger filter, "Priority equals High"
-- [ ] L209 — Topics, "+ New topic"
-- [ ] L218 — Topic "Escalate High Priority Ticket"
-- [ ] L228 — Trigger node, Event type selected
-- [ ] L258 — Tool node, "Create a flow"
-- [ ] L274 — Flow trigger, four text inputs
-- [ ] L305 — Send email action, dynamic content
-- [ ] L322 — Tool node, mapped Trigger variables
-- [ ] L337 — Message node, escalation confirmation
-- [ ] L351 — Topic designer Save
-- [ ] L366 — New Support Ticket form (high priority) *(Power Apps)*
-- [ ] L383 — Outlook inbox: escalation email *(Outlook)*
-- [ ] L393 — Activity log: topic execution
+### Module 10 — Event Triggers (5)
+- [ ] L82 — Triggers area, "+ Add trigger" *(CS)*
+- [ ] L89 — SharePoint "item created" trigger on Tickets *(CS)*
+- [ ] L99 — Trigger filter: Priority High/Critical *(CS)*
+- [ ] L138 — Escalation email step mapping fields *(CS / workflow)*
+- [ ] L171 — Inbox: auto-escalation email *(Outlook)*
 
-### Module 11 — Publish (26)
-- [ ] L75 — Agent Overview page
-- [ ] L90 — Overview, no errors, sources connected
-- [ ] L98 — Overview, Publish button highlighted
-- [ ] L104 — Publish confirmation dialog
-- [ ] L112 — Publish success message
-- [ ] L128 — Channels option
-- [ ] L138 — Channels page (Teams, Demo website, etc.)
-- [ ] L145 — Teams channel card, "Turn on"
-- [ ] L155 — Teams channel config dialog
-- [ ] L167 — Teams channel card, "Get manifest"
-- [ ] L177 — Downloaded Teams app .zip *(file/desktop)*
-- [ ] L186 — Teams sidebar, Apps icon *(Teams)*
-- [ ] L193 — Teams Apps, "Upload a custom app" *(Teams)*
-- [ ] L204 — Teams app details, "Add" *(Teams)*
-- [ ] L211 — Teams chat window *(Teams)*
-- [ ] L233 — Teams chat, agent greeting *(Teams)*
-- [ ] L249 — Teams chat, WiFi password + citation *(Teams)*
-- [ ] L266 — Teams chat, Device Request Adaptive Card *(Teams)*
-- [ ] L274 — Teams chat, confirmation after request *(Teams)*
-- [ ] L290 — Channels, Demo website card
-- [ ] L298 — Demo website card, "Go to demo website"
-- [ ] L302 — Demo website with chat widget
-- [ ] L345 — Channels, M365 Copilot card
-- [ ] L357 — Custom website channel, embed code
-- [ ] L378 — Analytics, usage charts
-- [ ] L390 — Analytics dashboard (sessions, engagement, topics)
+### Module 11 — Evaluate / Publish (6)
+- [ ] L44 — Evaluate area, "Quick conversation set" *(CS)*
+- [ ] L66 — Evaluation results + scores *(CS)*
+- [ ] L80 — Publish dialog, channels *(CS)*
+- [ ] L91 — Bit inside M365 Copilot *(M365 Copilot)*
+- [ ] L100 — Share dialog *(CS)*
+- [ ] L108 — Monitor tab *(CS)*
 
 ### Module 12 — Licensing (3)
-- [ ] L74 — PPAC, "Extend trial" *(PPAC)*
-- [ ] L98 — M365 Admin, Copilot Studio purchase options *(M365 Admin)*
-- [ ] L241 — Analytics, session metrics *(Copilot Studio)*
+- [ ] L66 — PPAC, "Extend trial" *(PPAC)*
+- [ ] L83 — M365 Admin, Copilot Studio purchase options *(M365 Admin)*
+- [ ] L181 — Monitor tab, session metrics *(CS)*
 
-### Module 13 — Badge (3)
-- [ ] L151 — Solution showing all components *(Power Apps)*
-- [ ] L166 — Export solution dialog *(Power Apps)*
-- [ ] L187 — Microsoft Learn profile, Recruit badge *(Microsoft Learn)*
+### Module 13 — Badge (2)
+- [ ] L95 — Solution showing Bit and components *(Power Apps)*
+- [ ] L105 — Export solution dialog *(Power Apps)*
 
 ---
 
-## Effort estimate
+## Capture methods
 
-- **Module 00 satellite surfaces:** ~30–45 min (signup/admin/SharePoint screens are quick once you're logged in).
-- **Main Copilot Studio build session (02–11):** this is essentially delivering the workshop yourself once — budget **half a day to a full day**, since you're building the working agent, not just clicking around.
-- **Teams + Outlook + Learn tail:** ~30 min after publish.
-- **Module 01 diagrams:** ~1 hour to author 3 Mermaid diagrams.
-- **Wiring + redaction:** ~1–2 hours to drop 193 images in and replace placeholders.
+- **You capture, I wire (recommended).** During a tenant run-through, you/Nick screenshot each step (you're building Bit anyway). Save them per the naming convention; I replace the placeholders and help redact. Best fit because several steps mutate your tenant.
+- **I drive your Chrome.** Install/connect the **Claude in Chrome** extension and sign into your tenant; I navigate read-only screens you've already built and capture them. I won't perform tenant-mutating steps (site/group/agent creation) on your account — you do those, I capture.
+- **Public pages now.** The three signup pages (M365 trial, CS trial activation, Power Apps Dev Plan) need no tenant and can be captured anytime.
 
-Realistic total: **~1.5–2 days** of focused work, gated on a clean tenant with the Module 00 environment built.
+After capture, this file's checkboxes become the QA pass — see [screenshot-audit-checklist.md](screenshot-audit-checklist.md).
