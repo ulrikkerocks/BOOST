@@ -193,7 +193,7 @@ Skills tell Bit *what* to do; **Tools** let him actually *do* it. Add tools from
 3. Set the **execution context** (as the maker for the demo — see the note above).
 4. Leave inputs (To, Subject, Body) set to **AI fills** (the default). **Save / Add.**
 
-[SCREENSHOT: Adding the Office 365 Outlook "Send an email (V2)" tool with AI-filled inputs]
+![Add a tool dialog with Featured/MCP/Connectors/Workflows tabs, showing Office 365 Outlook and SharePoint connectors](/screenshots/07/03_add-tool.png)
 
 > The `password-reset` and `smart-triage` skills reference "send email" — this is the tool that makes that real.
 

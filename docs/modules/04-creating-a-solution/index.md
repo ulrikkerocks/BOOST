@@ -96,7 +96,7 @@ Every solution has a **publisher** — a namespace that identifies who created t
 1. In the left navigation, select **Solutions**
 2. You may see a list of existing solutions (if any)
 
-[SCREENSHOT: Power Apps maker portal showing the Solutions section]
+![Power Apps Solutions page showing the Contoso Helpdesk Agent solution (publisher Contoso) as the preferred solution](/screenshots/04/01_solutions.png)
 
 > **Note:** If you don't see any solutions yet, that's okay — you're about to create one.
 

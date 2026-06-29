@@ -41,7 +41,7 @@ You've been testing Bit by hand in **Preview**. **Evaluations** make that repeat
    - **Quick conversation set** — generates ~10 conversations automatically from Bit's description, instructions, and skills.
 3. Use **Quick conversation set** to generate the starter cases.
 
-[SCREENSHOT: Evaluate area with the "Quick conversation set" option]
+![Evaluate area showing CSV upload and the "Quick conversation set" option to generate 10 conversations](/screenshots/11/01_evaluate.png)
 
 > ⚠️ The set is **AI-generated** — review it. It's an excellent starting point, not a finished test plan. Add or edit cases to cover the scenarios you care about:
 >
@@ -77,7 +77,7 @@ You've been testing Bit by hand in **Preview**. **Evaluations** make that repeat
 
 1. Select **Publish**. Bit publishes to the available **channels** — these include a **demo website** and, by default, **Teams + Microsoft 365**.
 
-[SCREENSHOT: Publish dialog showing available channels]
+![Save and publish confirmation dialog for the agent](/screenshots/11/02_publish.png)
 
 > Each publish creates a new version. **Publish for yourself**, validate, then widen access.
 
