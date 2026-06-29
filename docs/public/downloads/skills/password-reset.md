@@ -1,9 +1,7 @@
-<!--
-Skill name: password-reset
-Description: Use when a user asks to reset or recover their password, or says they are locked out.
-For the Contoso Helpdesk Agent (Bit) — Agent Academy course, Module 07.
--->
-
+---
+name: password-reset
+description: Use when a user asks to reset or recover their password, or says they are locked out.
+---
 # When to activate
 The user wants to reset their password or is locked out of their account.
 

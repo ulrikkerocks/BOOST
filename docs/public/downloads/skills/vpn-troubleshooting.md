@@ -1,9 +1,7 @@
-<!--
-Skill name: vpn-troubleshooting
-Description: Use when a user reports VPN connection problems (can't connect, keeps dropping, slow).
-For the Contoso Helpdesk Agent (Bit) — Agent Academy course, Module 07.
--->
-
+---
+name: vpn-troubleshooting
+description: Use when a user reports VPN connection problems (can't connect, keeps dropping, slow).
+---
 # When to activate
 The user reports a VPN issue: cannot connect, frequent disconnects, or slow VPN.
 

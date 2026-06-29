@@ -1,10 +1,7 @@
-<!--
-Skill name: software-installation-request
-Description: Use when a user asks to install or request software.
-For the Contoso Helpdesk Agent (Bit) — Agent Academy course, Module 07.
-(In Module 09 you extend this skill to call the manager_approval_for_software workflow.)
--->
-
+---
+name: software-installation-request
+description: Use when a user asks to install or request software.
+---
 # When to activate
 The user asks to install or request a software application.
 

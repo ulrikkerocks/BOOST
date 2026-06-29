@@ -1,10 +1,7 @@
-<!--
-Skill name: smart-triage
-Description: Use when an issue can't be resolved in chat or needs admin access and the user agrees to log a ticket.
-For the Contoso Helpdesk Agent (Bit) — Agent Academy course, Module 07.
-(In Module 07 Lab 7.5 you extend this skill to also generate + attach a PDF report.)
--->
-
+---
+name: smart-triage
+description: Use when an issue can't be resolved in chat or needs admin access and the user agrees to log a ticket.
+---
 # When to activate
 An issue cannot be resolved directly (or needs admin access) and the user agrees
 to log a ticket.
