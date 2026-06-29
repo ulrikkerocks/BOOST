@@ -89,19 +89,24 @@ Codename/Time/Scenario, `[SCREENSHOT: …]` placeholders, no YAML frontmatter, n
 | # | Concern | Status |
 |---|---------|--------|
 | 1 | Lab 00 truncated | ✅ resolved |
-| 2 | Built-in skill *generates* a PDF | ⚠️ verify before Module 07 (storyline beat) |
+| 2 | Built-in skill *generates* a PDF | ✅ flagged as preview in 07 with a text/HTML fallback |
 | 3 | Tickets list from template | ✅ resolved (00 creates it explicitly) |
 | 4 | Site-name mismatch | ✅ addressed + facilitator note |
-| 5 | Underscores (skills) vs hyphens (workflow) | 📌 note in 07/09 |
-| 6 | Auth context (user vs maker) | 📌 reconcile in 06/07 |
-| 7 | The two .docx match the outlines | ⚠️ quick verify |
+| 5 | Underscores (skills) vs hyphens (workflow) | ✅ noted in 07 + 09 |
+| 6 | Auth context (user vs maker) | ✅ reconciled in 06 + 07 |
+| 7 | The two .docx match the outlines | ✅ verified — they match |
 | 8 | Labs orphaned from site | ✅ resolved |
 | 9 | Reza/Rex dependency | ✅ resolving (Bit) |
 | 10 | Visuals | 🔄 diagrams inline; tenant screenshots → guided capture |
 
 ## Progress
 
-- ✅ 00, 01, 02 published — **retrofit to introduce Bit** (pending)
-- ⏳ 03–13 remaining
+- ✅ **All 14 modules (00–13) rebuilt and published.** Bit introduced throughout; Workshop Agenda live;
+  Mermaid diagrams in 01–02.
+- Remaining polish (optional): tenant screenshots (193 placeholders → guided capture); refresh
+  `docs/screenshot-capture-plan.md` (stale vs the rewrite); rewrite `docs/facilitator-guide.md` for the
+  new experience; reconcile EPPC vs ColorCloud branding; remove stale aux files
+  (`docs/02-*/overview-page-orientation.md`, `docs/09-*/workflows-callout.md`); bump deploy workflow off
+  Node 20. Two uncommitted local files remain (`.obsidian/workspace.json`, `boost-tech-forward-final.png`).
 - Publish: push `agent-academy-labs` → `wip/rig/vitepress-rebuild` (deploy branch); preview at
   https://ulrikkerocks.github.io/BOOST/ (unlisted, noindex). CI uses `npm ci`.
