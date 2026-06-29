@@ -11,8 +11,8 @@
 By the end of this module, you will be able to:
 - Create a **Workflow** from the **Tools** block using the new workflow designer
 - Define **input parameters** and a **Respond to the agent** action (mind the **100-second** limit)
-- Build an approval: **Get manager** → **Start and wait for an approval** → **If/else**
-- Run the approval and the "respond to agent" step **in parallel**
+- Build an approval gate: **Get manager** → **Human review (Request for information)** → **If/else**
+- Run the human-review step and the "respond to agent" step **in parallel**
 - Call the workflow from the `software-installation-request` skill and test a Visio request
 
 ## 🧭 Overview
@@ -38,10 +38,10 @@ A **Workflow** is the new flows format in Copilot Studio, with a revamped visual
 ## 🧰 Prerequisites
 
 - **Bit** with the `software-installation-request` skill from [Module 07](../07-add-topic-with-triggers/).
-- **Approvals** available, and the **Office 365 Users** connector (to look up the manager).
+- The **Office 365 Users** connector (to look up the manager) and an **Outlook / Office 365** connection (the Human review step sends its request by email).
 - A test user whose **manager** is set in the directory.
 
-> 🏫 **In the facilitated workshop**, Approvals, the connectors, and a test user with a manager are pre-provisioned. If you're at the office, ensure your test account has a **manager** populated in Microsoft Entra ID, and that **Approvals** is available.
+> 🏫 **In the facilitated workshop**, the connectors and a test user with a manager are pre-provisioned. If you're at the office, ensure your test account has a **manager** populated in Microsoft Entra ID.
 
 ---
 
@@ -81,43 +81,47 @@ Add these **input parameters**:
 
 ---
 
-## 🧪 Lab 9.4: Start and Wait for an Approval
+## 🧪 Lab 9.4: Add the Approval Gate (Human Review)
 
-1. Add **Approvals → Start and wait for an approval**.
-2. **Approval type:** *First to respond*.
-3. **Title:** `Approval needed for [applicationName]`
-4. **Details:** include `requesterEmail`, `businessReason`, and `applicationName`.
-5. **Assigned to:** the **Mail** property from the **Get manager** step.
+In the new Workflows designer, a human approval is a **Human review** step — not the classic "Approvals" connector. Add a step → search **Human review** → choose **Request for information**. *(Workflows prompt you to pick a **connection** the first time — set one up if asked.)*
 
-<!-- SCREENSHOT: Start and wait for an approval configured with the manager's mail as the assignee -->
+Configure it:
+1. **Title:** `Approval needed for [applicationName]`
+2. **Message:** include `requesterEmail`, `businessReason`, and `applicationName` so the manager has the context to decide.
+3. **Assigned to:** the manager's **Mail** from the **Get manager** step. *(First person to respond decides.)*
+4. **Add an input** → type **Yes/No**, named **`Approved`**. This captures the manager's decision and comes back as a parameter you'll branch on next.
+
+> 🧩 **Why "Request for information"?** The new Workflows designer puts human-in-the-loop steps under **Human review**. *Request for information* pauses the workflow, emails the assignee via Outlook, and returns their answer — a **Yes/No** input turns it into a clean approve/reject gate. *(The richer multi-stage **approval** action is currently **agent-flow only** — see the fallback at the end if you need it.)*
+
+<!-- SCREENSHOT: Request for information step (under Human review) assigned to the manager, with a Yes/No "Approved" input -->
 
 ---
 
-## 🧪 Lab 9.5: Branch on the Outcome
+## 🧪 Lab 9.5: Branch on the Decision
 
-After the approval completes, add an **If/else (Condition)** on the approval **outcome**:
+After the **Request for information** step, add an **If/else (Condition)** on the **`Approved`** value it returned:
 
-- **If** outcome **= Approve** → your approved path. For the demo, add a **Compose** action with the static value `approve` (in production: notify the team / provision the license / write to your system of record).
+- **If `Approved` is true** → your approved path. For the demo, add a **Compose** action with the static value `approved` (in production: notify the team / provision the license / write to your system of record).
 - **Else** (rejected) → add a **Compose** with `rejected`.
 
-<!-- SCREENSHOT: If/else condition branching on the approval outcome -->
+<!-- SCREENSHOT: If/else condition branching on the Approved (Yes/No) value -->
 
 ---
 
 ## 🧪 Lab 9.6: Respond to the Agent — in Parallel
 
-Because the approval will **wait**, you must still respond to Bit within ~100 seconds:
+The **Request for information** step **waits** for the manager (maybe minutes or hours), but Bit needs an answer within **~100 seconds**. So run them side by side:
 
-1. Create a **parallel branch** alongside the approval branch.
+1. Create a **parallel branch** alongside the **Human review** branch.
 2. In the parallel branch, add **Respond to the agent** with a message like:
 
    ```text
    Manager approval process has started. You will be notified once it completes.
    ```
 
-So the workflow **simultaneously**: (a) starts the approval and waits for the manager, and (b) tells Bit the process kicked off.
+So the workflow **simultaneously**: (a) sends the human-review request and waits for the manager, and (b) tells Bit the process kicked off.
 
-<!-- SCREENSHOT: Parallel branches — approval+wait on one side, Respond to the agent on the other -->
+<!-- SCREENSHOT: Parallel branches — Human review (Request for information) on one side, Respond to the agent on the other -->
 
 ---
 
@@ -157,9 +161,9 @@ So the workflow **simultaneously**: (a) starts the approval and waits for the ma
 
 2. Bit uses `software-installation-request`, checks the **Approved Software List**, sees Visio **requires manager approval**, and calls **`manager_approval_for_software`**. He replies that the approval request was sent.
 3. **Watch the workflow run:** it triggers, **gets the manager**, and **responds back to Bit**.
-4. **As the manager:** open the manager's mailbox/Approvals, **approve or reject** with comments, and submit. The workflow then continues into your **If/else** branch.
+4. **As the manager:** open the **Request for information email** in the manager's mailbox (sent via Outlook), set **`Approved`** to **Yes** or **No**, and submit. The workflow then continues into your **If/else** branch.
 
-<!-- SCREENSHOT: Preview showing Bit starting the approval, and the manager's Approvals card -->
+<!-- SCREENSHOT: Preview showing Bit starting the request, and the manager's Request for information email -->
 
 > In production the approved branch would notify the team to provision the license; here the **Compose** values prove the branch logic works.
 
@@ -167,9 +171,9 @@ So the workflow **simultaneously**: (a) starts the approval and waits for the ma
 
 ---
 
-## 🪂 Fallback: No New Workflow Designer?
+## 🪂 Fallback: Prefer a Classic Agent Flow?
 
-> ⚠️ **Facilitator note.** If the **new** workflow designer isn't present in your tenant, the same logic builds as an **agent flow**: **Get manager → Start and wait for an approval → If/else**, with the **Respond to the agent** running in a **parallel** branch. The **100-second** constraint still applies. Confirm which is available before the workshop.
+> ⚠️ **Facilitator note.** This lab uses the **new Workflows** designer with a **Human review → Request for information** gate. If your tenant doesn't have it (or you want the GA path), build the same logic as a **classic agent flow** instead: **Get manager → Approvals: Start and wait for an approval → If/else** on the approval **Response**, with **Respond to the agent** in a **parallel** branch. The **100-second** constraint applies either way. Confirm which is available before the workshop.
 
 ---
 
@@ -177,7 +181,7 @@ So the workflow **simultaneously**: (a) starts the approval and waits for the ma
 
 - **Workflows** are the new flows format — attach them to Bit as **tools**
 - **The 100-second rule** — respond to the agent fast; run long work (approvals) in **parallel**
-- **Get manager → approval → if/else** — a real, multi-step business process
+- **Get manager → human review → if/else** — a real, multi-step business process
 - **Skills call workflows** — `software-installation-request` triggers the approval; you describe intent, the orchestrator passes the inputs
 - **Workflows use underscores; skills use hyphens** — different naming rules
 
@@ -186,7 +190,7 @@ So the workflow **simultaneously**: (a) starts the approval and waits for the ma
 ## 🏗️ What You've Built
 
 Bit can now run a **manager-approval process** for software that needs sign-off:
-- ✅ A `manager_approval_for_software` workflow (get manager → approval → branch, with a parallel respond)
+- ✅ A `manager_approval_for_software` workflow (get manager → human review → branch, with a parallel respond)
 - ✅ The `software-installation-request` skill calls it
 - ✅ Self-service apps install immediately; manager-sign-off apps route to the manager
 
