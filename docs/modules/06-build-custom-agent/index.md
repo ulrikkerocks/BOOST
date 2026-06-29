@@ -1,4 +1,4 @@
-# Module 06: Build the Contoso Helpdesk Agent
+# 🤖 Module 06: Build the Contoso Helpdesk Agent
 
 **Codename:** OPERATION AGENT FORGE  
 **Time:** 75 minutes  
@@ -6,7 +6,7 @@
 
 ---
 
-## Learning Objectives
+## 🎯 Learning Objectives
 
 By the end of this module, you will be able to:
 - Create a custom agent in the new experience from a natural-language description
@@ -16,7 +16,7 @@ By the end of this module, you will be able to:
 - Ground the agent with **Knowledge** (uploaded documents) and turn on **Memory**
 - Run a first test in **Preview** and watch the agent reason as the maker
 
-## Overview
+## 🧭 Overview
 
 This is the heart of the course. You'll build **Bit — your Contoso IT help desk buddy** — from a blank canvas, entirely in the **new experience**. Bit lives on a single **Build page**: Instructions, Knowledge, Skills, Tools, Memory, Connected agents, and Model, all in one place.
 
@@ -30,7 +30,7 @@ You'll add the *doing* — skills, tools, tickets, workflows — in the modules 
 
 ---
 
-## The Big Picture
+## 🗺️ The Big Picture
 
 Here's what you'll build across Modules 06–11:
 
@@ -47,7 +47,7 @@ Everything starts here.
 
 ---
 
-## Prerequisites
+## 🧰 Prerequisites
 
 - You're in the **new experience** with the **Contoso Helpdesk Agent** solution set as your **preferred solution** ([Module 04](../04-creating-a-solution/)).
 - The two knowledge documents from [Module 00](../00-course-setup/): **Contoso IT FAQ** and **Contoso Approved Software List**.
@@ -56,7 +56,7 @@ Everything starts here.
 
 ---
 
-## Lab 6.1: Create Bit
+## 🧪 Lab 6.1: Create Bit
 
 **Objective:** Create a new agent in the new experience and give it an identity.
 
@@ -100,7 +100,7 @@ admin access, log a support ticket for the help desk team.
 
 ---
 
-## Lab 6.2: Write Bit's Instructions
+## 🧪 Lab 6.2: Write Bit's Instructions
 
 **Objective:** Define Bit's identity, tone, and guardrails. Keep it short — the detailed playbooks come as **Skills** in Module 07.
 
@@ -134,7 +134,7 @@ and practical.
 
 ---
 
-## Lab 6.3: Configure Settings
+## 🧪 Lab 6.3: Configure Settings
 
 **Objective:** Confirm Bit's solution, moderation, and authentication.
 
@@ -152,7 +152,7 @@ and practical.
 
 ---
 
-## Lab 6.4: Add a Greeting and Suggested Prompts
+## 🧪 Lab 6.4: Add a Greeting and Suggested Prompts
 
 **Objective:** Give users an on-ramp.
 
@@ -181,7 +181,7 @@ and practical.
 
 ---
 
-## Lab 6.5: Add Knowledge
+## 🧪 Lab 6.5: Add Knowledge
 
 **Objective:** Ground Bit in the two Contoso documents so he can answer real questions.
 
@@ -209,7 +209,7 @@ In the new experience you add knowledge right on the **Build page**, and the orc
 
 ---
 
-## Lab 6.6: Turn On Memory
+## 🧪 Lab 6.6: Turn On Memory
 
 **Objective:** Let Bit carry context across turns and conversations.
 
@@ -222,7 +222,7 @@ In the new experience you add knowledge right on the **Build page**, and the orc
 
 ---
 
-## Lab 6.7: First Test in Preview
+## 🧪 Lab 6.7: First Test in Preview
 
 **Objective:** Verify Bit answers from knowledge and watch him reason.
 
@@ -265,7 +265,7 @@ In the new experience you add knowledge right on the **Build page**, and the orc
 
 ---
 
-## Lab 6.8: Watch Bit Reason (Maker Preview)
+## 🧪 Lab 6.8: Watch Bit Reason (Maker Preview)
 
 **Objective:** Understand which sources Bit searches for each question.
 
@@ -282,7 +282,7 @@ Ask the same questions from Lab 6.7 and expand the reasoning/details for each tu
 
 ---
 
-## Lab 6.9: Select the AI Model (Optional)
+## 🧪 Lab 6.9: Select the AI Model (Optional)
 
 **Objective:** Know how to change the model that powers Bit's reasoning.
 
@@ -305,7 +305,7 @@ Ask the same questions from Lab 6.7 and expand the reasoning/details for each tu
 
 ---
 
-## Verify Bit Is in the Solution
+## ✅ Verify Bit Is in the Solution
 
 Confirm Bit was automatically added to the **Contoso Helpdesk Agent** solution (because you set the preferred solution in Module 04).
 
@@ -319,7 +319,7 @@ Confirm Bit was automatically added to the **Contoso Helpdesk Agent** solution (
 
 ---
 
-## Troubleshooting Common Issues
+## 🛠️ Troubleshooting Common Issues
 
 ### Issue 1: A document won't index
 
@@ -350,7 +350,7 @@ Confirm Bit was automatically added to the **Contoso Helpdesk Agent** solution (
 
 ---
 
-## Key Takeaways
+## 🧠 Key Takeaways
 
 - **Natural-language creation** — describe what you want; the new experience provisions the agent
 - **Instructions define behavior** — short identity + guardrails; detailed playbooks live in Skills
@@ -362,7 +362,7 @@ Confirm Bit was automatically added to the **Contoso Helpdesk Agent** solution (
 
 ---
 
-## What You've Built
+## 🏗️ What You've Built
 
 Bit now:
 - ✅ Has an identity, guardrails, a greeting, and four suggested prompts
@@ -375,7 +375,7 @@ He can *talk* and *know* — but he can't *do* anything yet (reset a password, l
 
 ---
 
-## Next Steps
+## ⏭️ Next Steps
 
 In **Module 07: Teach Bit Skills (and Equip His Tools)**, you'll author four reusable markdown **Skills** — `password-reset`, `vpn-troubleshooting`, `smart-triage`, and `software-installation-request` — and wire up the **Tools** (Outlook **Send an email**, SharePoint **Create item**) so Bit can log a ticket end-to-end and email a confirmation.
 
