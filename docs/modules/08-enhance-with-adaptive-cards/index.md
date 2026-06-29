@@ -52,7 +52,7 @@ In this module you'll give Bit an **Adaptive Card** so that, after `smart-triage
 - **Order confirmation** — summary, total, tracking link
 - **Survey / feedback** — inline rating or comment form
 
-[SCREENSHOT: Example Adaptive Card showing a ticket confirmation with fields and a "View in SharePoint" button]
+![Example Adaptive Card showing a ticket confirmation with fields and a "View in SharePoint" button](/screenshots/08/01_ticket-card.png)
 
 ---
 
