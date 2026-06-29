@@ -94,7 +94,7 @@ admin access, log a support ticket for the help desk team.
    (You can use a fuller display name like *"Bit — your Contoso IT help desk buddy"* if you prefer.)
 2. Choose an **agent icon** from the catalog (or upload your own PNG), pick a **color**, and set a **custom accent color** if you like.
 
-[SCREENSHOT: Build page showing the agent named Bit with an icon and accent color]
+![Build page showing the agent named Bit, its instructions, and the Model, Skills, Tools, Knowledge, Connected agents, and Memory blocks](/screenshots/06/01_build-page-bit.png)
 
 **✅ Checkpoint:** Bit exists and you're on the Build page.
 
@@ -234,7 +234,7 @@ In the new experience you add knowledge right on the **Build page**, and the orc
    - **loads skills** (including the built-in skills that read Word/PDF), then
    - answers with the hours, sourced from the **Contoso IT FAQ**.
 
-[SCREENSHOT: Preview pane showing Bit answering help desk hours with the reasoning visible]
+![Preview pane showing Bit reasoning about the request, then answering with password-reset steps](/screenshots/06/02_preview-reasoning.png)
 
 > 👀 That maker view (search → skill load → answer) is your main debugging tool throughout the course.
 
@@ -286,22 +286,20 @@ Ask the same questions from Lab 6.7 and expand the reasoning/details for each tu
 
 **Objective:** Know how to change the model that powers Bit's reasoning.
 
-1. On the **Build page**, open the **Model** block — you'll see the current model (likely **GPT-4.1**).
-
-[SCREENSHOT: Model block showing GPT-4.1 selected]
+1. On the **Build page**, the **Model** block (top of the right-hand panel) shows the current model. In this workshop environment the default is **Claude Sonnet 4.6** — your tenant's default may differ. (You can see the Model block in the Build-page screenshot above.)
 
 2. Available models (as of June 2026):
 
 | Model | Best for |
 |---|---|
-| **GPT-4.1** (default) | General use, fast, cost-effective |
+| **Claude Sonnet 4.5 / 4.6** | Structured tasks, citation accuracy (default in this environment) |
+| **GPT-4.1** | General use, fast, cost-effective |
 | **GPT-5** | Complex reasoning, long context |
-| **Claude Sonnet 4.5 / 4.6** | Structured tasks, citation accuracy |
 | **Mistral Medium 3.5** | Multilingual, efficient |
 
 3. To experiment: pick a different model, **Save**, start a **new** preview session, and re-ask the Lab 6.7 questions. Compare clarity, detail, and citations.
 
-> **For this course, GPT-4.1 is recommended** — cost-effective and well-suited to IT helpdesk scenarios.
+> **For this course, the default model is fine** — you don't need to change it.
 
 ---
 
