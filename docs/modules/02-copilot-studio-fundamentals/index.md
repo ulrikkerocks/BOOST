@@ -185,7 +185,7 @@ When a user asks a question:
 - **Description** — *what it does and when it should activate* (this is how the orchestrator picks it)
 - **Instructions** (markdown) — typically **when to activate**, **guidelines**, **examples**, and **notes**
 
-[SCREENSHOT: Build page Skills block showing four skills: password-reset, vpn-troubleshooting, smart-triage, software-installation-request]
+![Build page Skills block on the right-hand panel, showing the password-reset skill added to Bit](/screenshots/06/01_build-page-bit.png)
 
 ### Why Skills Are Powerful
 

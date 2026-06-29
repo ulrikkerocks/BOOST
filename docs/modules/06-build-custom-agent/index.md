@@ -194,7 +194,7 @@ In the new experience you add knowledge right on the **Build page**, and the orc
 1. On the **Build page**, open the **Knowledge** block → choose to **upload** documents.
 2. Upload **`Contoso_IT_FAQ.docx`** (help desk email, helpline number, hours, basic Q&A).
 
-[SCREENSHOT: Knowledge block with the upload dialog]
+![Add knowledge dialog showing file upload, Public websites, SharePoint, and OneDrive options](/screenshots/06/03_add-knowledge.png)
 
 ### Step 2: Upload the Approved Software List
 

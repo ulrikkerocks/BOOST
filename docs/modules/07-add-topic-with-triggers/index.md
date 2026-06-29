@@ -54,7 +54,11 @@ When you **create a skill from blank**, you define:
 
 ## 🧪 Lab 7.1: Author Four Skills
 
-For each skill: **Build** page → **Skills** → **add a skill** → **Create from blank**, then fill in **Name**, **Description**, and **Instructions**, and **Save**.
+For each skill: **Build** page → **Skills** (right-hand panel) → **add a skill** → **Create from blank**, then fill in **Name**, **Description**, and **Instructions** (markdown), and **Create**.
+
+![Create from blank skill form showing Name (password-reset), Description, and markdown Instructions](/screenshots/07/01_create-skill.png)
+
+> 📄 **Upload format.** The other tab, **Upload a skill**, expects a **`SKILL.md`** file whose **name and description are in YAML** at the top. That's the format to use for the downloadable skills below — and what you'd get if you **download** a skill to reuse elsewhere.
 
 > 📥 **Prefer to upload?** Skills are portable files. Download the four ready-made skills and **upload** them instead of copy-pasting: <a href="/BOOST/downloads/skills/password-reset.md" download>password-reset</a> · <a href="/BOOST/downloads/skills/vpn-troubleshooting.md" download>vpn-troubleshooting</a> · <a href="/BOOST/downloads/skills/smart-triage.md" download>smart-triage</a> · <a href="/BOOST/downloads/skills/software-installation-request.md" download>software-installation-request</a>. (Copy-paste from below works just as well.)
 
