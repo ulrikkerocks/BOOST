@@ -56,7 +56,7 @@ When you **create a skill from blank**, you define:
 
 For each skill: **Build** page → **Skills** → **add a skill** → **Create from blank**, then fill in **Name**, **Description**, and **Instructions**, and **Save**.
 
-> 📥 **Prefer to upload?** Skills are portable files. Download the four ready-made skills and **upload** them instead of copy-pasting: [password-reset](/downloads/skills/password-reset.md) · [vpn-troubleshooting](/downloads/skills/vpn-troubleshooting.md) · [smart-triage](/downloads/skills/smart-triage.md) · [software-installation-request](/downloads/skills/software-installation-request.md). (Copy-paste from below works just as well.)
+> 📥 **Prefer to upload?** Skills are portable files. Download the four ready-made skills and **upload** them instead of copy-pasting: <a href="/BOOST/downloads/skills/password-reset.md" download>password-reset</a> · <a href="/BOOST/downloads/skills/vpn-troubleshooting.md" download>vpn-troubleshooting</a> · <a href="/BOOST/downloads/skills/smart-triage.md" download>smart-triage</a> · <a href="/BOOST/downloads/skills/software-installation-request.md" download>software-installation-request</a>. (Copy-paste from below works just as well.)
 
 ### 7.1.1 `password-reset`
 
