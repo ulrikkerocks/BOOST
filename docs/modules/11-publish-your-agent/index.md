@@ -1,4 +1,4 @@
-# Module 11: Evaluate, Publish, Share & Monitor
+# 📢 Module 11: Evaluate, Publish, Share & Monitor
 
 **Codename:** OPERATION GO LIVE  
 **Time:** 40 minutes  
@@ -6,7 +6,7 @@
 
 ---
 
-## Learning Objectives
+## 🎯 Learning Objectives
 
 By the end of this module, you will be able to:
 - Generate an evaluation set and run it against Bit
@@ -15,13 +15,13 @@ By the end of this module, you will be able to:
 - Open Bit in **Microsoft 365 Copilot** and **share** him with colleagues
 - Use the **Monitor** tab to track interactions and value
 
-## Overview
+## 🧭 Overview
 
 Bit answers, acts, logs tickets, runs approvals, and escalates on his own. Before real users meet him, you'll **evaluate** him (repeatable testing), then **publish**, **share**, and **monitor**.
 
 ---
 
-## Prerequisites
+## 🧰 Prerequisites
 
 - A feature-complete **Bit** from [Module 10](../10-add-event-triggers/).
 
@@ -29,11 +29,11 @@ Bit answers, acts, logs tickets, runs approvals, and escalates on his own. Befor
 
 ---
 
-# Part 1 — Evaluate
+# 🧪 Part 1 — Evaluate
 
 You've been testing Bit by hand in **Preview**. **Evaluations** make that repeatable: a set of **test cases** that validate Bit produces the outcome you want, so after you tweak an instruction, skill, or knowledge source you can re-check quality fast.
 
-## Lab 11.1: Build a Test Set
+## 🧪 Lab 11.1: Build a Test Set
 
 1. Open the **Evaluate** area for Bit.
 2. Choose how to create your test set:
@@ -54,7 +54,7 @@ You've been testing Bit by hand in **Preview**. **Evaluations** make that repeat
 > | "I need Microsoft Visio" | Detects manager sign-off; starts the approval workflow |
 > | "What's my password?" | Refuses; never asks for or handles passwords |
 
-## Lab 11.2: Run and Interpret
+## 🧪 Lab 11.2: Run and Interpret
 
 1. **Run** the evaluation (it runs under your account): it prepares the test cases, runs them, and reports the **quality of the output**.
 2. Read the results case by case. Where Bit underperforms, the fix is usually one of:
@@ -71,9 +71,9 @@ You've been testing Bit by hand in **Preview**. **Evaluations** make that repeat
 
 ---
 
-# Part 2 — Publish, Share & Monitor
+# 📢 Part 2 — Publish, Share & Monitor
 
-## Lab 11.3: Publish
+## 📢 Lab 11.3: Publish
 
 1. Select **Publish**. Bit publishes to the available **channels** — these include a **demo website** and, by default, **Teams + Microsoft 365**.
 
@@ -83,7 +83,7 @@ You've been testing Bit by hand in **Preview**. **Evaluations** make that repeat
 
 **✅ Checkpoint:** Bit is published.
 
-## Lab 11.4: Open in Microsoft 365 Copilot
+## 🧪 Lab 11.4: Open in Microsoft 365 Copilot
 
 1. Use the provided **link** to add Bit to **Microsoft 365 Copilot**.
 2. Add it, then **interact with Bit directly in M365 Copilot** — try "Help desk hours" or "I need Microsoft Visio" to confirm the full experience works in the channel.
@@ -92,14 +92,14 @@ You've been testing Bit by hand in **Preview**. **Evaluations** make that repeat
 
 **✅ Checkpoint:** Bit works in M365 Copilot.
 
-## Lab 11.5: Share
+## 🧪 Lab 11.5: Share
 
 1. From here you can **share the agent with other users** so your colleagues can use Bit.
 2. For broader stakeholder testing without a full rollout, the **demo website** link is handy (internal stakeholders only — not for customers).
 
 [SCREENSHOT: Share dialog for the agent]
 
-## Lab 11.6: Monitor
+## 🧪 Lab 11.6: Monitor
 
 1. Open the **Monitor** tab.
 2. As users interact with Bit, **traffic appears** here. You get **full interaction details** and can quantify the **savings/value** the agent generates.
@@ -111,7 +111,7 @@ You've been testing Bit by hand in **Preview**. **Evaluations** make that repeat
 
 ---
 
-## Key Takeaways
+## 🧠 Key Takeaways
 
 - **Evaluations** make testing repeatable — generate a quick set, edit it, run after every change
 - **Fixes are targeted** — instructions, a skill's guidelines, or a knowledge source
@@ -121,7 +121,7 @@ You've been testing Bit by hand in **Preview**. **Evaluations** make that repeat
 
 ---
 
-## What You've Built
+## 🏗️ What You've Built
 
 - ✅ A repeatable **evaluation** that proves Bit behaves
 - ✅ Bit **published** to Teams + Microsoft 365 Copilot
@@ -130,7 +130,7 @@ You've been testing Bit by hand in **Preview**. **Evaluations** make that repeat
 
 ---
 
-## Next Steps
+## ⏭️ Next Steps
 
 In **Module 12: Understanding Licensing**, you'll learn what it costs to run Bit in production — message-based billing, capacity packs vs. pay-as-you-go, and how M365 Copilot licensing fits in.
 

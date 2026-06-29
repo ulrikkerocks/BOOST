@@ -1,4 +1,4 @@
-# Module 10: Autonomous Event Triggers
+# ⚡ Module 10: Autonomous Event Triggers
 
 **Codename:** OPERATION NIGHT WATCH  
 **Time:** 30 minutes  
@@ -6,7 +6,7 @@
 
 ---
 
-## Learning Objectives
+## 🎯 Learning Objectives
 
 By the end of this module, you will be able to:
 - Explain what event triggers are and when to use them
@@ -15,7 +15,7 @@ By the end of this module, you will be able to:
 - Have Bit send an escalation **automatically**, with no user interaction
 - Understand the difference between conversational and autonomous agents
 
-## Overview
+## 🧭 Overview
 
 Until now, Bit has been **reactive** — he waits for a user. In this module you'll make him **autonomous**: the moment a **High** or **Critical** ticket lands in the **Tickets** list, Bit escalates it to the IT lead — no one has to ask.
 
@@ -23,7 +23,7 @@ Crucially, this watches the **same Tickets list** Bit already writes to in `smar
 
 ---
 
-## What Are Event Triggers?
+## 🧩 What Are Event Triggers?
 
 **Event triggers** activate the agent based on **events**, not user input:
 
@@ -47,7 +47,7 @@ After this module, Bit is **both** conversational *and* autonomous.
 
 ---
 
-## The Scenario: Auto-Escalate High-Priority Tickets
+## 🎬 The Scenario: Auto-Escalate High-Priority Tickets
 
 The autonomous flow:
 
@@ -60,7 +60,7 @@ All of it happens **automatically**.
 
 ---
 
-## Prerequisites
+## 🧰 Prerequisites
 
 - The **Tickets** SharePoint list from [Module 00](../00-course-setup/) (the same one `smart-triage` writes to in [Module 07](../07-add-topic-with-triggers/)).
 - The **Office 365 Outlook** connection from [Module 07](../07-add-topic-with-triggers/).
@@ -70,7 +70,7 @@ All of it happens **automatically**.
 
 ---
 
-## Lab 10.1: Add an Event Trigger on the Tickets List
+## 🧪 Lab 10.1: Add an Event Trigger on the Tickets List
 
 **Objective:** Configure Bit to watch the Tickets list for new high-priority items.
 
@@ -104,7 +104,7 @@ All of it happens **automatically**.
 
 ---
 
-## Lab 10.2: Define the Escalation
+## 🧪 Lab 10.2: Define the Escalation
 
 **Objective:** When the trigger fires, email the IT lead with the ticket details.
 
@@ -141,7 +141,7 @@ Auto-escalated by Bit, the Contoso Helpdesk Agent.
 
 ---
 
-## Lab 10.3: Test the Trigger
+## 🧪 Lab 10.3: Test the Trigger
 
 **Objective:** Create a high-priority ticket and confirm the escalation fires.
 
@@ -174,7 +174,7 @@ Auto-escalated by Bit, the Contoso Helpdesk Agent.
 
 ---
 
-## Fallback and Notes
+## 🪂 Fallback and Notes
 
 > ⚠️ **Facilitator note.** Autonomous triggers and their connectors are evolving in the new experience. If a **SharePoint item-created** trigger isn't available for autonomous agents in your tenant, use one of these instead:
 > - a **Scheduled** trigger that scans the Tickets list for new High/Critical items every few minutes, or
@@ -186,7 +186,7 @@ Auto-escalated by Bit, the Contoso Helpdesk Agent.
 
 ---
 
-## Advanced Event Trigger Scenarios
+## 🚀 Advanced Event Trigger Scenarios
 
 - **Scheduled triggers** — every morning at 9 AM, summarize the previous day's tickets and email the IT lead.
 - **Webhook triggers** — react to an external system (e.g., a monitoring tool posts an alert).
@@ -194,7 +194,7 @@ Auto-escalated by Bit, the Contoso Helpdesk Agent.
 
 ---
 
-## Key Takeaways
+## 🧠 Key Takeaways
 
 - **Event triggers** make agents autonomous — they act without user input
 - **One ticket store** — Bit watches the same Tickets list he writes to (no separate table)
@@ -204,7 +204,7 @@ Auto-escalated by Bit, the Contoso Helpdesk Agent.
 
 ---
 
-## What You've Built
+## 🏗️ What You've Built
 
 Bit is now:
 - ✅ **Conversational** — answers, resets passwords, logs tickets, runs approvals (Modules 06–09)
@@ -212,7 +212,7 @@ Bit is now:
 
 ---
 
-## Next Steps
+## ⏭️ Next Steps
 
 In **Module 11: Evaluate, Publish, Share & Monitor**, you'll prove Bit is reliable with an evaluation set, then publish him to **Microsoft Teams** and **Microsoft 365 Copilot**, share him, and watch usage on the **Monitor** tab.
 

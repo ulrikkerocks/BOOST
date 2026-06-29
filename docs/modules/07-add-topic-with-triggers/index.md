@@ -1,4 +1,4 @@
-# Module 07: Teach Bit Skills & Equip Tools
+# 🔧 Module 07: Teach Bit Skills & Equip Tools
 
 **Codename:** OPERATION PLAYBOOK  
 **Time:** 70 minutes  
@@ -6,7 +6,7 @@
 
 ---
 
-## Learning Objectives
+## 🎯 Learning Objectives
 
 By the end of this module, you will be able to:
 - Explain how **Skills** replace topics and triggers in the new experience
@@ -16,7 +16,7 @@ By the end of this module, you will be able to:
 - Test a password reset (email) and log a support ticket end-to-end
 - Iterate a skill to also generate and attach a **PDF report**
 
-## Overview
+## 🧭 Overview
 
 In Module 06 you gave Bit knowledge and memory — he can *talk* and *know*. Now you'll give him **Skills** (what to do) and **Tools** (the muscle to do it).
 
@@ -26,7 +26,7 @@ You'll author four skills, wire up two tools, and watch Bit log a real ticket to
 
 ---
 
-## Prerequisites
+## 🧰 Prerequisites
 
 - **Bit** grounded with knowledge and memory from [Module 06](../06-build-custom-agent/).
 - The **Tickets** list **site URL + list name** from [Module 00](../00-course-setup/).
@@ -36,7 +36,7 @@ You'll author four skills, wire up two tools, and watch Bit log a real ticket to
 
 ---
 
-## Anatomy of a Skill
+## 🧬 Anatomy of a Skill
 
 When you **create a skill from blank**, you define:
 
@@ -52,7 +52,7 @@ When you **create a skill from blank**, you define:
 
 ---
 
-## Lab 7.1: Author Four Skills
+## 🧪 Lab 7.1: Author Four Skills
 
 For each skill: **Build** page → **Skills** → **add a skill** → **Create from blank**, then fill in **Name**, **Description**, and **Instructions**, and **Save**.
 
@@ -174,7 +174,7 @@ Only reference apps from the approved list. If it's not listed, offer to log a t
 
 ---
 
-## Lab 7.2: Equip Bit's Tools
+## 🧪 Lab 7.2: Equip Bit's Tools
 
 Skills tell Bit *what* to do; **Tools** let him actually *do* it. Add tools from the **Build** page → **Tools**. Types include **connectors**, **MCP servers**, **REST APIs**, **Workflows**, and **prompts**. The orchestrator decides when to call a tool based on the conversation, Bit's instructions, your skills, and each tool's **description**.
 
@@ -213,7 +213,7 @@ Skills tell Bit *what* to do; **Tools** let him actually *do* it. Add tools from
 
 ---
 
-## Lab 7.3: Test — Password Reset (Email)
+## 🧪 Lab 7.3: Test — Password Reset (Email)
 
 1. **Preview** → new chat:
 
@@ -230,7 +230,7 @@ Skills tell Bit *what* to do; **Tools** let him actually *do* it. Add tools from
 
 ---
 
-## Lab 7.4: Test — Log a Ticket (Triage → Create item + Email)
+## 🧪 Lab 7.4: Test — Log a Ticket (Triage → Create item + Email)
 
 1. New chat. Describe something needing admin access, e.g.:
 
@@ -258,7 +258,7 @@ Skills tell Bit *what* to do; **Tools** let him actually *do* it. Add tools from
 
 ---
 
-## Lab 7.5: Iterate — Add a PDF Report to the Ticket
+## 🧪 Lab 7.5: Iterate — Add a PDF Report to the Ticket
 
 Skills are editable — let's level up `smart-triage` so it also produces a PDF.
 
@@ -291,7 +291,7 @@ Skills are editable — let's level up `smart-triage` so it also produces a PDF.
 
 ---
 
-## Key Takeaways
+## 🧠 Key Takeaways
 
 - **Skills replace topics** — reusable markdown behaviors selected by the orchestrator, no trigger phrases
 - **Skill names use hyphens** (workflows use underscores — different rules)
@@ -302,7 +302,7 @@ Skills are editable — let's level up `smart-triage` so it also produces a PDF.
 
 ---
 
-## What You've Built
+## 🏗️ What You've Built
 
 Bit now takes real action:
 - ✅ Four reusable skills (`password-reset`, `vpn-troubleshooting`, `smart-triage`, `software-installation-request`)
@@ -311,7 +311,7 @@ Bit now takes real action:
 
 ---
 
-## Next Steps
+## ⏭️ Next Steps
 
 In **Module 08: Enhance with Adaptive Cards**, you'll make Bit's responses richer — presenting the ticket he just logged (or a software request) as an interactive **Adaptive Card** instead of plain text.
 

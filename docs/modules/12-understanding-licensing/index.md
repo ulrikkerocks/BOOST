@@ -1,4 +1,4 @@
-# Module 12: Understanding Licensing
+# 💳 Module 12: Understanding Licensing
 
 **Codename:** OPERATION WAR CHEST  
 **Time:** 20 minutes  
@@ -6,7 +6,7 @@
 
 ---
 
-## Learning Objectives
+## 🎯 Learning Objectives
 
 By the end of this module, you will be able to:
 - Explain the Copilot Studio licensing model (messages vs. capacity)
@@ -15,7 +15,7 @@ By the end of this module, you will be able to:
 - Estimate costs for a production agent deployment
 - Understand Power Apps Developer Plan benefits
 
-## Overview
+## 🧭 Overview
 
 You've built and published **Bit** — he's functional and production-ready. Before deploying to hundreds or thousands of users, you need to understand the **licensing and cost model**.
 
@@ -23,7 +23,7 @@ In this module, you'll learn what's included in the trial, how production licens
 
 ---
 
-## The Copilot Studio Licensing Model (June 2026)
+## 💳 The Copilot Studio Licensing Model (June 2026)
 
 As of June 2026, Copilot Studio uses a **message-based** licensing model. You pay for the number of **sessions** or **messages** your agents process.
 
@@ -39,7 +39,7 @@ As of June 2026, Copilot Studio uses a **message-based** licensing model. You pa
 
 ---
 
-## Licensing Options
+## 💳 Licensing Options
 
 You have three main licensing paths:
 
@@ -94,7 +94,7 @@ You have three main licensing paths:
 
 ---
 
-## What Counts as a "Message"?
+## 🧩 What Counts as a "Message"?
 
 Understanding billable messages is critical for cost estimation.
 
@@ -129,7 +129,7 @@ Total: 4 messages
 
 ---
 
-## Estimating Monthly Costs
+## 💰 Estimating Monthly Costs
 
 Let's estimate costs for a production deployment of **Bit**.
 
@@ -153,7 +153,7 @@ Total messages/month = Users × Sessions/user × Messages/session
 
 ---
 
-## Power Apps Developer Plan (Free for Developers)
+## 💻 Power Apps Developer Plan (Free for Developers)
 
 You've used the **Power Apps Developer Plan** throughout this course (Module 00):
 
@@ -165,7 +165,7 @@ You've used the **Power Apps Developer Plan** throughout this course (Module 00)
 
 ---
 
-## Licensing Note: Teams Classic Chatbot Deprecation
+## 💳 Licensing Note: Teams Classic Chatbot Deprecation
 
 - **After June 2026**, Teams classic chatbot creation is **disabled**; all new agents are created in Copilot Studio.
 - **No impact on this course** — you're already using Copilot Studio (the new experience).
@@ -173,7 +173,7 @@ You've used the **Power Apps Developer Plan** throughout this course (Module 00)
 
 ---
 
-## Billing and Cost Management Tips
+## 💳 Billing and Cost Management Tips
 
 ### 1. Monitor Usage
 Use the **Monitor** tab (Module 11) to track message volume — sessions/day × 30, and average messages/session.
@@ -196,7 +196,7 @@ In Azure Cost Management (if using Azure-based billing), set budget alerts at 50
 
 ---
 
-## FAQ: Licensing Questions
+## 💳 FAQ: Licensing Questions
 
 **Q1: Do I need a Power Automate license for Workflows?**
 Generally no — **Workflows** built in Copilot Studio are included. A separate Power Automate license applies if you use standalone Power Automate cloud flows triggered by the agent.
@@ -215,7 +215,7 @@ Yes — buy Copilot Studio standalone licenses, configure authentication, and en
 
 ---
 
-## Key Takeaways
+## 🧠 Key Takeaways
 
 - **Trial:** 30–90 days, full features, free — great for learning and POCs
 - **Production:** pay-per-message or capacity packs — choose by volume
@@ -226,7 +226,7 @@ Yes — buy Copilot Studio standalone licenses, configure authentication, and en
 
 ---
 
-## What You've Learned
+## 🎓 What You've Learned
 
 You now understand:
 - ✅ How Copilot Studio licensing works (trial, standalone, M365 Copilot)
@@ -237,7 +237,7 @@ You now understand:
 
 ---
 
-## Next Steps
+## ⏭️ Next Steps
 
 In **Module 13: Securing Your Recruit Badge**, you'll complete the course checklist, recap everything Bit can do, export your solution, and claim your **Recruit Badge** — plus where to go next.
 

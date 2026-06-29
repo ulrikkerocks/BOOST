@@ -1,4 +1,4 @@
-# Module 00: Course Setup
+# 🧰 Module 00: Course Setup
 
 **Codename:** OPERATION DEPLOYMENT READY  
 **Time:** 35 minutes  
@@ -6,7 +6,7 @@
 
 ---
 
-## Learning Objectives
+## 🎯 Learning Objectives
 
 By the end of this module, you will be able to:
 - Set up a Microsoft 365 account for Copilot Studio
@@ -15,7 +15,7 @@ By the end of this module, you will be able to:
 - Configure publishing permissions via the Power Platform Admin Center
 - Prepare the SharePoint **Tickets** list and the two knowledge documents your agent will use
 
-## Overview
+## 🧭 Overview
 
 Before you can build agents in Copilot Studio, you need the right environment, the right permissions, and some data to ground your agent. This module walks you through a complete setup that supports every lab in this course.
 
@@ -30,7 +30,7 @@ By the end of this setup, you'll have:
 
 ---
 
-## Prerequisites
+## 🧰 Prerequisites
 
 - **A Microsoft 365 account** with admin permissions  
   (Business Basic trial is sufficient — we'll guide you through signup)
@@ -39,7 +39,7 @@ By the end of this setup, you'll have:
 
 ---
 
-## Step 1: Get a Microsoft 365 Account
+## 🧪 Step 1: Get a Microsoft 365 Account
 
 If you already have an M365 account (work, school, or personal), you can use it for this course. If not, you'll need to sign up for a trial.
 
@@ -68,7 +68,7 @@ If you have an existing M365 account with **admin permissions**, you can skip to
 
 ---
 
-## Step 2: Start Your Copilot Studio Trial
+## 🧪 Step 2: Start Your Copilot Studio Trial
 
 Now that you have an M365 account, you can activate Copilot Studio.
 
@@ -91,7 +91,7 @@ Now that you have an M365 account, you can activate Copilot Studio.
 
 ---
 
-## Step 3: Switch to the New Experience
+## 🧪 Step 3: Switch to the New Experience
 
 Microsoft **rebuilt** Copilot Studio. This isn't a UI refresh — it's a new **agentic orchestrator** and a new agent-building interface, with a new headline concept: **Skills** (reusable instructions written in markdown). This course uses the **new experience only**.
 
@@ -120,7 +120,7 @@ Say this out loud before you build — it resets any classic-era muscle memory:
 
 ---
 
-## Step 4: Create a Power Apps Developer Environment
+## 🧪 Step 4: Create a Power Apps Developer Environment
 
 For full testing and publishing capabilities, you'll create a dedicated developer environment. This is free and gives you isolated resources for learning.
 
@@ -152,7 +152,7 @@ For full testing and publishing capabilities, you'll create a dedicated develope
 
 ---
 
-## Step 5: Enable Publishing Permissions
+## 📢 Step 5: Enable Publishing Permissions
 
 To publish agents to Microsoft Teams or other channels, you need the **Copilot Studio Authors** role. This is configured in the Power Platform Admin Center using a security group.
 
@@ -212,7 +212,7 @@ To publish agents to Microsoft Teams or other channels, you need the **Copilot S
 
 ---
 
-## Step 6: Create the Tickets SharePoint List
+## 🧪 Step 6: Create the Tickets SharePoint List
 
 Your agent's ticketing system is simply a **SharePoint list**. When an issue needs admin help, the agent will log a ticket here. Let's create the list and add a couple of sample rows.
 
@@ -291,7 +291,7 @@ Add 2–3 example tickets so the list isn't empty when you first test.
 
 ---
 
-## Step 7: Prepare the Two Knowledge Documents
+## 🧪 Step 7: Prepare the Two Knowledge Documents
 
 Your agent grounds its answers in two documents you'll upload in Module 06. **Download the ready-made copies** — [📄 Contoso_IT_FAQ.docx](/downloads/Contoso_IT_FAQ.docx) and [📄 Contoso_Approved_Software_List.docx](/downloads/Contoso_Approved_Software_List.docx) — and use them as-is, or recreate your own from the outlines below.
 
@@ -328,7 +328,7 @@ Explains the three distribution types — **Self-service**, **Manager sign-off**
 
 ---
 
-## Summary
+## 📋 Summary
 
 Congratulations! You've completed the course setup. You now have:
 
@@ -343,7 +343,7 @@ You're ready to start building agents!
 
 ---
 
-## Key Takeaways
+## 🧠 Key Takeaways
 
 - **The new experience is a toggle away:** **Try it now** switches you into the rebuilt designer — no topics, no triggers, enhanced orchestration by design.
 - **Publishing requires permissions:** the Copilot Studio Authors role, assigned via a security group in PPAC.
@@ -352,7 +352,7 @@ You're ready to start building agents!
 
 ---
 
-## Next Steps
+## ⏭️ Next Steps
 
 In **Module 01: Introduction to Agents**, you'll learn what agents are, how they work, and the different types of agents you can build in Copilot Studio.
 

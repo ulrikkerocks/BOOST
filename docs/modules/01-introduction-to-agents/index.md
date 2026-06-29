@@ -1,4 +1,4 @@
-# Module 01: Introduction to Agents
+# 🎓 Module 01: Introduction to Agents
 
 **Codename:** OPERATION FIRST CONTACT  
 **Time:** 20 minutes  
@@ -6,7 +6,7 @@
 
 ---
 
-## Learning Objectives
+## 🎯 Learning Objectives
 
 By the end of this module, you will understand:
 - What an AI agent is and how it differs from traditional chatbots
@@ -15,7 +15,7 @@ By the end of this module, you will understand:
 - When to use each type of agent
 - The spectrum from rule-based to autonomous agents
 
-## Overview
+## 🧭 Overview
 
 The term "agent" is everywhere in AI conversations today, but what does it actually mean? In this module, you'll learn the fundamental concepts behind AI agents and discover the range of agents you can build.
 
@@ -25,7 +25,7 @@ By the end, you'll understand why agents represent a fundamental shift in how we
 
 ---
 
-## What Is an AI Agent?
+## 🧩 What Is an AI Agent?
 
 An **AI agent** is an intelligent system that can:
 - **Understand natural language** — users communicate in plain language, not rigid commands
@@ -48,7 +48,7 @@ An **AI agent** is an intelligent system that can:
 
 ---
 
-## The Three Core Components of AI Agents
+## 🧩 The Three Core Components of AI Agents
 
 Modern AI agents are built on three foundational technologies:
 
@@ -119,7 +119,7 @@ sequenceDiagram
 
 ---
 
-## The Three Types of Agents in Copilot Studio
+## 🧩 The Three Types of Agents in Copilot Studio
 
 Microsoft Copilot Studio lets you build three distinct types of agents, each suited to different scenarios.
 
@@ -182,7 +182,7 @@ Microsoft Copilot Studio lets you build three distinct types of agents, each sui
 
 ---
 
-## The Agent Autonomy Spectrum
+## 📊 The Agent Autonomy Spectrum
 
 Not all agents need the same level of autonomy. Think of agents on a spectrum:
 
@@ -205,7 +205,7 @@ Chatbot          Assistant          Agent
 
 ---
 
-## Multi-Agent Orchestration (Advanced)
+## 🤝 Multi-Agent Orchestration (Advanced)
 
 As you gain experience, you'll discover that **some problems are best solved by multiple specialized agents working together**, rather than one monolithic agent.
 
@@ -230,7 +230,7 @@ flowchart TD
 
 ---
 
-## Key Concepts to Remember
+## 🧠 Key Concepts to Remember
 
 Before moving forward, make sure you understand these terms:
 
@@ -249,7 +249,7 @@ Before moving forward, make sure you understand these terms:
 
 ---
 
-## Real-World Use Cases
+## 🌍 Real-World Use Cases
 
 To ground these concepts, here are common scenarios where organizations deploy AI agents:
 
@@ -275,7 +275,7 @@ To ground these concepts, here are common scenarios where organizations deploy A
 
 ---
 
-## Why Agents Matter
+## 💡 Why Agents Matter
 
 Agents represent a shift from **apps that wait for commands** to **intelligent systems that understand, reason, and act**.
 
@@ -293,7 +293,7 @@ AI agents:
 
 ---
 
-## Key Takeaways
+## 🧠 Key Takeaways
 
 - **AI agents** combine LLMs, RAG, and orchestration to understand, reason, and act
 - **Three types of agents:** Declarative (M365 extensions), Custom (standalone), Autonomous (event-driven)
@@ -304,7 +304,7 @@ AI agents:
 
 ---
 
-## Next Steps
+## ⏭️ Next Steps
 
 Now that you understand what agents are, it's time to learn how to build them.
 

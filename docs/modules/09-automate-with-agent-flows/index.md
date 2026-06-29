@@ -1,4 +1,4 @@
-# Module 09: Automate Approvals with Workflows
+# 🔁 Module 09: Automate Approvals with Workflows
 
 **Codename:** OPERATION CHAIN REACTION  
 **Time:** 45 minutes  
@@ -6,7 +6,7 @@
 
 ---
 
-## Learning Objectives
+## 🎯 Learning Objectives
 
 By the end of this module, you will be able to:
 - Create a **Workflow** from the **Tools** block using the new workflow designer
@@ -15,7 +15,7 @@ By the end of this module, you will be able to:
 - Run the approval and the "respond to agent" step **in parallel**
 - Call the workflow from the `software-installation-request` skill and test a Visio request
 
-## Overview
+## 🧭 Overview
 
 Some software on the Contoso list needs **manager sign-off**. That's a multi-step process — find the manager, request approval, wait, react — and it can take longer than a single chat turn. The new **Workflows** designer handles it.
 
@@ -23,7 +23,7 @@ You'll build `manager_approval_for_software`, add it to Bit as a **tool**, then 
 
 ---
 
-## Workflows, Briefly
+## 🔁 Workflows, Briefly
 
 A **Workflow** is the new flows format in Copilot Studio, with a revamped visual designer and testing. Attach it to an agent as a **tool**: the agent calls it, passes inputs, and the workflow can **respond back to the agent**.
 
@@ -35,7 +35,7 @@ A **Workflow** is the new flows format in Copilot Studio, with a revamped visual
 
 ---
 
-## Prerequisites
+## 🧰 Prerequisites
 
 - **Bit** with the `software-installation-request` skill from [Module 07](../07-add-topic-with-triggers/).
 - **Approvals** available, and the **Office 365 Users** connector (to look up the manager).
@@ -45,7 +45,7 @@ A **Workflow** is the new flows format in Copilot Studio, with a revamped visual
 
 ---
 
-## Lab 9.1: Create the Workflow
+## 🧪 Lab 9.1: Create the Workflow
 
 1. **Build** → **Tools** → **+ Add a tool** → **Workflows** → **create a new workflow**. This opens the **new workflow designer**.
 2. Name it:
@@ -58,7 +58,7 @@ A **Workflow** is the new flows format in Copilot Studio, with a revamped visual
 
 ---
 
-## Lab 9.2: Define Inputs (What the Agent Passes In)
+## 🧪 Lab 9.2: Define Inputs (What the Agent Passes In)
 
 Add these **input parameters**:
 
@@ -72,7 +72,7 @@ Add these **input parameters**:
 
 ---
 
-## Lab 9.3: Get the Manager
+## 🧪 Lab 9.3: Get the Manager
 
 1. Add a step using the **Office 365 Users** connector → **Get manager (V2)**.
 2. For the input (user/UPN), pass **`requesterEmail`**.
@@ -81,7 +81,7 @@ Add these **input parameters**:
 
 ---
 
-## Lab 9.4: Start and Wait for an Approval
+## 🧪 Lab 9.4: Start and Wait for an Approval
 
 1. Add **Approvals → Start and wait for an approval**.
 2. **Approval type:** *First to respond*.
@@ -93,7 +93,7 @@ Add these **input parameters**:
 
 ---
 
-## Lab 9.5: Branch on the Outcome
+## 🧪 Lab 9.5: Branch on the Outcome
 
 After the approval completes, add an **If/else (Condition)** on the approval **outcome**:
 
@@ -104,7 +104,7 @@ After the approval completes, add an **If/else (Condition)** on the approval **o
 
 ---
 
-## Lab 9.6: Respond to the Agent — in Parallel
+## 🧪 Lab 9.6: Respond to the Agent — in Parallel
 
 Because the approval will **wait**, you must still respond to Bit within ~100 seconds:
 
@@ -121,7 +121,7 @@ So the workflow **simultaneously**: (a) starts the approval and waits for the ma
 
 ---
 
-## Lab 9.7: Publish the Workflow
+## 📢 Lab 9.7: Publish the Workflow
 
 **Publish** the workflow so Bit can call it.
 
@@ -129,7 +129,7 @@ So the workflow **simultaneously**: (a) starts the approval and waits for the ma
 
 ---
 
-## Lab 9.8: Update the Skill to Call the Workflow
+## 🧪 Lab 9.8: Update the Skill to Call the Workflow
 
 1. **Skills** → open **`software-installation-request`** → **edit instructions**. Add:
 
@@ -147,7 +147,7 @@ So the workflow **simultaneously**: (a) starts the approval and waits for the ma
 
 ---
 
-## Lab 9.9: Test the Visio Request
+## 🧪 Lab 9.9: Test the Visio Request
 
 1. **Preview** → new chat:
 
@@ -167,13 +167,13 @@ So the workflow **simultaneously**: (a) starts the approval and waits for the ma
 
 ---
 
-## Fallback: No New Workflow Designer?
+## 🪂 Fallback: No New Workflow Designer?
 
 > ⚠️ **Facilitator note.** If the **new** workflow designer isn't present in your tenant, the same logic builds as an **agent flow**: **Get manager → Start and wait for an approval → If/else**, with the **Respond to the agent** running in a **parallel** branch. The **100-second** constraint still applies. Confirm which is available before the workshop.
 
 ---
 
-## Key Takeaways
+## 🧠 Key Takeaways
 
 - **Workflows** are the new flows format — attach them to Bit as **tools**
 - **The 100-second rule** — respond to the agent fast; run long work (approvals) in **parallel**
@@ -183,7 +183,7 @@ So the workflow **simultaneously**: (a) starts the approval and waits for the ma
 
 ---
 
-## What You've Built
+## 🏗️ What You've Built
 
 Bit can now run a **manager-approval process** for software that needs sign-off:
 - ✅ A `manager_approval_for_software` workflow (get manager → approval → branch, with a parallel respond)
@@ -192,7 +192,7 @@ Bit can now run a **manager-approval process** for software that needs sign-off:
 
 ---
 
-## Next Steps
+## ⏭️ Next Steps
 
 In **Module 10: Autonomous Event Triggers**, you'll make Bit **proactive** — automatically escalating a **high-priority ticket** the moment one is created in the Tickets list, with no one having to ask.
 

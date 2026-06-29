@@ -1,4 +1,4 @@
-# Module 04: Creating a Solution
+# 📦 Module 04: Creating a Solution
 
 **Codename:** OPERATION QUARTERMASTER  
 **Time:** 15 minutes  
@@ -6,7 +6,7 @@
 
 ---
 
-## Learning Objectives
+## 🎯 Learning Objectives
 
 By the end of this module, you will be able to:
 - Explain what a Power Platform solution is and why it matters
@@ -15,7 +15,7 @@ By the end of this module, you will be able to:
 - Set a preferred solution in Copilot Studio
 - Understand how solutions support Application Lifecycle Management (ALM)
 
-## Overview
+## 🧭 Overview
 
 Before you build **Bit** (the Contoso Helpdesk Agent), you need to set up a **solution** — a container that organizes all your agent components (agents, workflows, connections, etc.) for proper lifecycle management.
 
@@ -30,7 +30,7 @@ In this module, you'll create a solution called **Contoso Helpdesk Agent** that 
 
 ---
 
-## Prerequisites
+## 🧰 Prerequisites
 
 - A **Power Apps Developer environment** (created in [Module 00](../00-course-setup/)).
 - Access to the **Power Apps maker portal** ([make.powerapps.com](https://make.powerapps.com)).
@@ -39,7 +39,7 @@ In this module, you'll create a solution called **Contoso Helpdesk Agent** that 
 
 ---
 
-## What Is a Solution?
+## 🧩 What Is a Solution?
 
 A **solution** is a container for Power Platform components. It acts as a packaging and deployment mechanism for:
 - Copilot Studio agents
@@ -64,7 +64,7 @@ A **solution** is a container for Power Platform components. It acts as a packag
 
 ---
 
-## Why Solutions Matter
+## 💡 Why Solutions Matter
 
 Imagine you build 10 agents over the next year without solutions. Here's what happens:
 - ❌ **No organization** — agents and workflows are scattered across the environment
@@ -79,7 +79,7 @@ With solutions:
 
 ---
 
-## Lab 4.1: Create a Solution Publisher
+## 📢 Lab 4.1: Create a Solution Publisher
 
 Every solution has a **publisher** — a namespace that identifies who created the solution. Think of it like a company or team name.
 
@@ -127,7 +127,7 @@ Every solution has a **publisher** — a namespace that identifies who created t
 
 ---
 
-## Lab 4.2: Create a New Solution
+## 🧪 Lab 4.2: Create a New Solution
 
 Now that you have a publisher, create the solution for this course.
 
@@ -167,7 +167,7 @@ Right now, the solution is empty. As you build Bit, workflows, and other compone
 
 ---
 
-## Lab 4.3: Set the Preferred Solution in Copilot Studio
+## 🧪 Lab 4.3: Set the Preferred Solution in Copilot Studio
 
 To ensure Bit and all your future components are automatically added to the **Contoso Helpdesk Agent** solution, set it as the **preferred solution**.
 
@@ -202,7 +202,7 @@ From now on, when you create an agent, workflow, or other component:
 
 ---
 
-## How to Verify Components Are in the Solution
+## ✅ How to Verify Components Are in the Solution
 
 After you create **Bit** in Module 06, come back to the Power Apps maker portal to verify it's in the solution:
 
@@ -218,7 +218,7 @@ After you create **Bit** in Module 06, come back to the Power Apps maker portal 
 
 ---
 
-## Understanding Solution Layers
+## 📚 Understanding Solution Layers
 
 When you edit a solution component (e.g., update Bit's instructions), Power Platform creates a **layer**. Layers track who changed what and when.
 
@@ -236,7 +236,7 @@ You can view layers:
 
 ---
 
-## Exporting and Importing Solutions
+## 📦 Exporting and Importing Solutions
 
 Although you won't do this in the course, here's the high-level process for moving solutions between environments:
 
@@ -258,7 +258,7 @@ This is the foundation of **Application Lifecycle Management (ALM)** for Power P
 
 ---
 
-## Solution Best Practices
+## ⭐ Solution Best Practices
 
 1. **One solution per project** — don't mix unrelated agents into one solution
 2. **Set a preferred solution** — always configure this before building
@@ -269,7 +269,7 @@ This is the foundation of **Application Lifecycle Management (ALM)** for Power P
 
 ---
 
-## Key Takeaways
+## 🧠 Key Takeaways
 
 - **Solutions** are containers for Power Platform components (agents, workflows, etc.)
 - **Publishers** provide a namespace (prefix) for solution components
@@ -279,7 +279,7 @@ This is the foundation of **Application Lifecycle Management (ALM)** for Power P
 
 ---
 
-## What You've Built
+## 🏗️ What You've Built
 
 You now have:
 - ✅ A **publisher** called **Contoso** with prefix `contoso`
@@ -290,7 +290,7 @@ From this point forward, every component you create — starting with Bit — wi
 
 ---
 
-## Next Steps
+## ⏭️ Next Steps
 
 In **Module 05: Using Pre-Built Agents**, you'll explore agent templates that give you a head start on common scenarios.
 

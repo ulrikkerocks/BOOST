@@ -1,4 +1,4 @@
-# Module 02: New Copilot Studio Fundamentals
+# 🧱 Module 02: New Copilot Studio Fundamentals
 
 **Codename:** OPERATION CORE PROTOCOL  
 **Time:** 35 minutes  
@@ -6,7 +6,7 @@
 
 ---
 
-## Learning Objectives
+## 🎯 Learning Objectives
 
 By the end of this module, you will be able to:
 - Navigate the new Copilot Studio **Build page** with confidence
@@ -15,7 +15,7 @@ By the end of this module, you will be able to:
 - Recognize where each building block lives in the new interface
 - Explain how agents use RAG to ground responses, and how Skills replace topics
 
-## Overview
+## 🧭 Overview
 
 Every agent in the new Copilot Studio is built from the same set of building blocks, all visible on a single **Build page**. Understanding these blocks — and where they live in the interface — is the key to becoming an effective agent builder.
 
@@ -30,7 +30,7 @@ By the end, you'll have a mental map of both the concepts **and** the interface.
 
 ---
 
-## The Copilot Studio Build Page
+## 🖥️ The Copilot Studio Build Page
 
 When you open an agent in the new experience, you land on the **Build page** — your main authoring surface. Everything about the agent lives here, in one place.
 
@@ -107,13 +107,13 @@ At the top right of the Build page:
 
 ---
 
-## The Building Blocks
+## 🧱 The Building Blocks
 
 Now that you know **where** everything lives, let's learn **what** these blocks do. We'll go deep on the four you'll use most — **Instructions, Knowledge, Skills, Tools** — then cover **Memory, Connected agents, and Model**.
 
 ---
 
-## Building Block 1: Instructions
+## 🧱 Building Block 1: Instructions
 
 **Instructions** define your agent's identity, personality, role, and the rules that matter most. This is where you tell the agent **who it is** and **how it should act** — in plain language.
 
@@ -142,7 +142,7 @@ help bypass security.
 
 ---
 
-## Building Block 2: Knowledge
+## 🧱 Building Block 2: Knowledge
 
 **Knowledge** is the information your agent can search to ground its responses. This is the foundation of RAG (Retrieval-Augmented Generation).
 
@@ -173,7 +173,7 @@ When a user asks a question:
 
 ---
 
-## Building Block 3: Skills
+## 🧱 Building Block 3: Skills
 
 **Skills are the headline of the new Copilot Studio.** A **skill** is a set of **reusable instructions written in markdown** that defines a specific behavior — *when* it should activate, the *guidelines* to follow, *examples*, and *notes*. The orchestrator loads the right skill at the right moment.
 
@@ -197,7 +197,7 @@ When a user asks a question:
 
 ---
 
-## Building Block 4: Tools
+## 🧱 Building Block 4: Tools
 
 **Tools** are the actions your agent can take. While knowledge is about **knowing** and skills describe **what to do**, tools provide the **muscle** to actually do it.
 
@@ -238,7 +238,7 @@ The orchestrator decides when to call a tool based on the conversation, the agen
 
 ---
 
-## The Remaining Blocks: Memory, Connected Agents, Model
+## 🧱 The Remaining Blocks: Memory, Connected Agents, Model
 
 ### Memory
 
@@ -254,7 +254,7 @@ The **Model** block lets you choose the AI model that powers the agent's reasoni
 
 ---
 
-## How the Building Blocks Work Together
+## 🧱 How the Building Blocks Work Together
 
 Now let's see how these components combine into an intelligent conversation. The **enhanced orchestrator** is the brain that decides, for each message, whether to search knowledge, load a skill, or call a tool.
 
@@ -306,7 +306,7 @@ sequenceDiagram
 
 ---
 
-## New Terminology (If You've Used Classic)
+## 🆕 New Terminology (If You've Used Classic)
 
 | Classic term | New experience |
 |---|---|
@@ -320,7 +320,7 @@ The concepts of *knowing* (Knowledge) and *doing* (Tools) carry over — but how
 
 ---
 
-## Autonomous Triggers
+## ⚡ Autonomous Triggers
 
 Conversational behavior comes from Skills + the orchestrator — there are no phrase triggers to configure. But agents can also act **autonomously**, driven by **event triggers** (a new row in a list, a schedule, a webhook) rather than a user message.
 
@@ -333,7 +333,7 @@ Conversational behavior comes from Skills + the orchestrator — there are no ph
 
 ---
 
-## AI Model Selection
+## 🤖 AI Model Selection
 
 The **Model** block lets you choose the AI model that powers your agent's reasoning.
 
@@ -352,7 +352,7 @@ The **Model** block lets you choose the AI model that powers your agent's reason
 
 ---
 
-## Key Takeaways
+## 🧠 Key Takeaways
 
 - **Build page** = single canvas with all agent components visible at once
 - **Building blocks:**
@@ -368,7 +368,7 @@ The **Model** block lets you choose the AI model that powers your agent's reason
 
 ---
 
-## What You've Learned
+## 🎓 What You've Learned
 
 You now have a mental map of:
 - **Where** everything lives in the new Copilot Studio (the Build page layout)
@@ -378,7 +378,7 @@ You now have a mental map of:
 
 ---
 
-## Next Steps
+## ⏭️ Next Steps
 
 In **Module 03: Create a Declarative Agent for M365 Copilot**, you'll build your first agent — a lightweight extension for Microsoft 365 Copilot users.
 

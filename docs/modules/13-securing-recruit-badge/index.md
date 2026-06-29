@@ -1,4 +1,4 @@
-# Module 13: Securing Your Recruit Badge
+# 🎖️ Module 13: Securing Your Recruit Badge
 
 **Codename:** OPERATION FIELD READY  
 **Time:** 20 minutes  
@@ -18,7 +18,7 @@ This module will:
 
 ---
 
-## Course Completion Checklist
+## ✅ Course Completion Checklist
 
 ### Module 00 — Course Setup ✅
 - [ ] Switched to the **new experience** ("Try it now")
@@ -65,7 +65,7 @@ This module will:
 
 ---
 
-## What You've Built
+## 🏗️ What You've Built
 
 Recap of **Bit**, built entirely in the new experience:
 
@@ -82,7 +82,7 @@ Recap of **Bit**, built entirely in the new experience:
 
 ---
 
-## Claiming Your Recruit Badge
+## 🎖️ Claiming Your Recruit Badge
 
 ### Step 1: Verify Your Solution
 
@@ -116,7 +116,7 @@ Recap of **Bit**, built entirely in the new experience:
 
 ---
 
-## Plan Your First Agent
+## 📝 Plan Your First Agent
 
 Bit was a guided build. Now sketch an agent for a **real problem on your own team**:
 
@@ -130,7 +130,7 @@ Bit was a guided build. Now sketch an agent for a **real problem on your own tea
 
 ---
 
-## Keep Building
+## 🚀 Keep Building
 
 ### From Recruit to Special Ops
 
@@ -148,7 +148,7 @@ The **Special Ops** course goes further:
 
 ---
 
-## Final Thoughts
+## 💭 Final Thoughts
 
 You started with a blank canvas. Now you have **Bit** — grounded, action-taking, ticket-logging, approval-running, self-escalating — plus the skills to build the next one.
 

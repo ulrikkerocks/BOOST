@@ -1,4 +1,4 @@
-# Module 08: Enhance with Adaptive Cards
+# 🎴 Module 08: Enhance with Adaptive Cards
 
 **Codename:** OPERATION SHOWCASE  
 **Time:** 40 minutes  
@@ -6,7 +6,7 @@
 
 ---
 
-## Learning Objectives
+## 🎯 Learning Objectives
 
 By the end of this module, you will be able to:
 - Explain what Adaptive Cards are and when to use them
@@ -15,7 +15,7 @@ By the end of this module, you will be able to:
 - Bind live values (ticket number, priority, etc.) into the card
 - Test the card in the Preview pane
 
-## Overview
+## 🧭 Overview
 
 In Module 07, when Bit logs a ticket he confirms it as **plain text**. That works, but a **rich card** is clearer and more professional — especially once Bit is published to Microsoft Teams.
 
@@ -25,7 +25,7 @@ In this module you'll give Bit an **Adaptive Card** so that, after `smart-triage
 
 ---
 
-## Prerequisites
+## 🧰 Prerequisites
 
 - **Bit** with the `smart-triage` skill and the **Create item** / **Send email** tools from [Module 07](../07-add-topic-with-triggers/).
 
@@ -33,7 +33,7 @@ In this module you'll give Bit an **Adaptive Card** so that, after `smart-triage
 
 ---
 
-## What Are Adaptive Cards?
+## 🧩 What Are Adaptive Cards?
 
 **Adaptive Cards** are a platform-agnostic schema for UI cards. Originally developed by Microsoft, they're now an open standard supported across **Microsoft Teams**, **Outlook**, **Copilot Studio agents**, Windows notifications, and more.
 
@@ -56,7 +56,7 @@ In this module you'll give Bit an **Adaptive Card** so that, after `smart-triage
 
 ---
 
-## Adaptive Cards in the New Experience
+## 🆕 Adaptive Cards in the New Experience
 
 In classic Copilot Studio you added an Adaptive Card **node** inside a topic flow and bound it with Power Fx. There are **no topics** in the new experience — so instead you give Bit a **card template** and instruct the relevant **skill** to present its result as that card. The orchestrator fills the card's placeholders from the values the skill just produced (the ticket it created).
 
@@ -64,7 +64,7 @@ In classic Copilot Studio you added an Adaptive Card **node** inside a topic flo
 
 ---
 
-## Lab 8.1: Design the Ticket Confirmation Card
+## 🧪 Lab 8.1: Design the Ticket Confirmation Card
 
 **Objective:** Author the Adaptive Card JSON for a logged ticket.
 
@@ -125,7 +125,7 @@ Adaptive Cards are defined with **JSON**. Here's the ticket confirmation card �
 
 ---
 
-## Lab 8.2: Have Bit Present the Card
+## 🧪 Lab 8.2: Have Bit Present the Card
 
 **Objective:** Wire the card so Bit shows it after logging a ticket.
 
@@ -148,7 +148,7 @@ Adaptive Cards are defined with **JSON**. Here's the ticket confirmation card �
 
 ---
 
-## Lab 8.3: Test the Card
+## 🧪 Lab 8.3: Test the Card
 
 1. **Preview** → new chat → log a ticket (as in Module 07):
 
@@ -169,7 +169,7 @@ Adaptive Cards are defined with **JSON**. Here's the ticket confirmation card �
 
 ---
 
-## Alternative: A Software-Request Card
+## 🔀 Alternative: A Software-Request Card
 
 The same technique fits the software flow. Instead of a ticket, present a **software-request card** from `software-installation-request`:
 
@@ -196,7 +196,7 @@ This is a great place to practice once you've automated approvals in Module 09 �
 
 ---
 
-## Advanced Adaptive Card Features
+## 🚀 Advanced Adaptive Card Features
 
 ### Input Fields
 Collect data directly in the card:
@@ -218,7 +218,7 @@ Always include `altText` for images and clear, descriptive button labels for scr
 
 ---
 
-## Troubleshooting Adaptive Cards
+## 🛠️ Troubleshooting Adaptive Cards
 
 ### Issue 1: Card doesn't render (blank or error)
 - **JSON syntax** — validate in the [Adaptive Cards Designer](https://adaptivecards.io/designer/)
@@ -234,7 +234,7 @@ Always include `altText` for images and clear, descriptive button labels for scr
 
 ---
 
-## Key Takeaways
+## 🧠 Key Takeaways
 
 - **Adaptive Cards** provide rich, interactive UI for agent responses
 - **JSON-based** — defined with the Adaptive Card schema; validate in the designer
@@ -245,13 +245,13 @@ Always include `altText` for images and clear, descriptive button labels for scr
 
 ---
 
-## What You've Built
+## 🏗️ What You've Built
 
 Bit now confirms a logged ticket with a **rich Adaptive Card** — number, category, priority, status, requestor, and a link to the SharePoint item — instead of plain text.
 
 ---
 
-## Next Steps
+## ⏭️ Next Steps
 
 In **Module 09: Automate Approvals with Workflows**, you'll handle the trickier case — software that needs a **manager's approval** — using the new **Workflows** designer, and call it from the `software-installation-request` skill.
 

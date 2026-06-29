@@ -1,4 +1,4 @@
-# Module 03: Create a Declarative Agent for M365 Copilot
+# 💬 Module 03: Create a Declarative Agent for M365 Copilot
 
 **Codename:** OPERATION SIDE CHANNEL  
 **Time:** 25 minutes  
@@ -6,7 +6,7 @@
 
 ---
 
-## Learning Objectives
+## 🎯 Learning Objectives
 
 By the end of this module, you will be able to:
 - Explain what a declarative agent is and when to use one
@@ -15,7 +15,7 @@ By the end of this module, you will be able to:
 - Publish a declarative agent to the M365 Copilot interface
 - Invoke your agent from within M365 Copilot using `@mention`
 
-## Overview
+## 🧭 Overview
 
 Declarative agents are lightweight extensions for **Microsoft 365 Copilot**. They add domain-specific knowledge to the M365 Copilot chat experience without requiring users to leave their workflow.
 
@@ -25,7 +25,7 @@ In this module, you'll create a simple declarative agent that M365 Copilot users
 
 ---
 
-## Prerequisites
+## 🧰 Prerequisites
 
 - A **Microsoft 365 Copilot license** (for end users to invoke the agent). *If you don't have one, read through to understand the concepts, then continue to [Module 04](../04-creating-a-solution/).*
 - The **IT Help Desk** SharePoint site from [Module 00](../00-course-setup/), with the **Contoso IT FAQ** available in its **Documents** library (upload it there if it isn't already).
@@ -34,7 +34,7 @@ In this module, you'll create a simple declarative agent that M365 Copilot users
 
 ---
 
-## What Is a Declarative Agent?
+## 🧩 What Is a Declarative Agent?
 
 A **declarative agent** is a specialized agent that:
 - **Extends M365 Copilot** — appears as an `@mentionable` entity in the M365 Copilot chat
@@ -68,7 +68,7 @@ Use a declarative agent when:
 
 ---
 
-## Lab 3.1: Create a Declarative Agent
+## 🧪 Lab 3.1: Create a Declarative Agent
 
 **Objective:** Build a declarative agent that extends M365 Copilot with IT support knowledge.
 
@@ -157,7 +157,7 @@ Declarative agents can be grounded in knowledge sources just like custom agents.
 
 ---
 
-## Lab 3.2: Test the Declarative Agent in M365 Copilot
+## 🧪 Lab 3.2: Test the Declarative Agent in M365 Copilot
 
 **Objective:** Invoke the declarative agent from Microsoft 365 Copilot and verify it can answer IT questions.
 
@@ -224,7 +224,7 @@ This demonstrates that the agent:
 
 ---
 
-## Alternative: Create via Teams Admin Center
+## 🔀 Alternative: Create via Teams Admin Center
 
 If the declarative agent option isn't visible in Copilot Studio, you can create it via the **Teams admin center**:
 
@@ -238,7 +238,7 @@ If the declarative agent option isn't visible in Copilot Studio, you can create 
 
 ---
 
-## How Declarative Agents Work
+## ⚙️ How Declarative Agents Work
 
 Under the hood, a declarative agent is defined by a **JSON manifest** that specifies:
 - **Name and description**
@@ -256,7 +256,7 @@ When a user invokes the agent:
 
 ---
 
-## Limitations of Declarative Agents
+## 🚧 Limitations of Declarative Agents
 
 Declarative agents are intentionally simple. They **cannot**:
 - Author **Skills** (no markdown behaviors)
@@ -269,7 +269,7 @@ Declarative agents are intentionally simple. They **cannot**:
 
 ---
 
-## When to Use Declarative vs. Custom Agents
+## 🤔 When to Use Declarative vs. Custom Agents
 
 Use this decision tree:
 
@@ -293,7 +293,7 @@ Do your users have M365 Copilot licenses?
 
 ---
 
-## Key Takeaways
+## 🧠 Key Takeaways
 
 - **Declarative agents** extend M365 Copilot with custom knowledge and instructions
 - **Invoked via `@mention`** — users stay inside the M365 Copilot chat
@@ -304,7 +304,7 @@ Do your users have M365 Copilot licenses?
 
 ---
 
-## Real-World Use Cases
+## 🌍 Real-World Use Cases
 
 Organizations use declarative agents to:
 
@@ -316,7 +316,7 @@ Organizations use declarative agents to:
 
 ---
 
-## Next Steps
+## ⏭️ Next Steps
 
 Now that you've seen the lightweight option, you'll shift focus to **custom agents** — the full-featured agents that give you Skills, Tools, Workflows, and multiple publishing channels.
 

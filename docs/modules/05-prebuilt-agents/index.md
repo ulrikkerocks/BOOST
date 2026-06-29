@@ -1,4 +1,4 @@
-# Module 05: Using Pre-Built Agents
+# 🧩 Module 05: Using Pre-Built Agents
 
 **Codename:** OPERATION HEAD START  
 **Time:** 20 minutes  
@@ -6,7 +6,7 @@
 
 ---
 
-## Learning Objectives
+## 🎯 Learning Objectives
 
 By the end of this module, you will be able to:
 - Browse the Copilot Studio agent template gallery
@@ -15,7 +15,7 @@ By the end of this module, you will be able to:
 - Customize a template-based agent for your organization
 - Decide when to use a template vs. build from scratch
 
-## Overview
+## 🧭 Overview
 
 You don't always need to build an agent from scratch. Copilot Studio provides **pre-built agent templates** that give you a head start on common scenarios like IT helpdesk, HR support, and sales qualification.
 
@@ -25,7 +25,7 @@ In this module — the workshop's **"Your First Agent"** opener — you'll explo
 
 ---
 
-## Prerequisites
+## 🧰 Prerequisites
 
 - A **Copilot Studio** environment in the **new experience** (from [Module 00](../00-course-setup/)).
 - For the customization step: the **IT Help Desk** SharePoint site with the **Contoso IT FAQ** ([Module 00](../00-course-setup/)).
@@ -34,7 +34,7 @@ In this module — the workshop's **"Your First Agent"** opener — you'll explo
 
 ---
 
-## What Are Agent Templates?
+## 🧩 What Are Agent Templates?
 
 **Agent templates** are pre-configured agents built by Microsoft and the community. They typically include:
 - **Pre-written instructions** — identity and guidance optimized for a scenario
@@ -47,7 +47,7 @@ Templates save time by providing a **proven structure** you can adapt to your ne
 
 ---
 
-## Common Agent Templates
+## 📚 Common Agent Templates
 
 As of June 2026, Copilot Studio offers templates for scenarios like:
 
@@ -65,7 +65,7 @@ As of June 2026, Copilot Studio offers templates for scenarios like:
 
 ---
 
-## Lab 5.1: Browse the Template Gallery
+## 🧪 Lab 5.1: Browse the Template Gallery
 
 **Objective:** Explore available agent templates and understand what each one offers.
 
@@ -103,7 +103,7 @@ Explore at least three templates (e.g., **IT Help Desk**, **HR Support**, **Cust
 
 ---
 
-## Lab 5.2: Create an Agent from a Template
+## 🧪 Lab 5.2: Create an Agent from a Template
 
 **Objective:** Create an agent using the **IT Help Desk** template and see what it includes.
 
@@ -159,7 +159,7 @@ In the **Tools** block you may see suggested connectors (e.g., a ticketing syste
 
 ---
 
-## Lab 5.3: Customize the Template Agent
+## 🧪 Lab 5.3: Customize the Template Agent
 
 **Objective:** Adapt the template to Contoso by adding the IT Help Desk SharePoint site as a knowledge source.
 
@@ -212,7 +212,7 @@ In the **Tools** block you may see suggested connectors (e.g., a ticketing syste
 
 ---
 
-## When to Use a Template vs. Build from Scratch
+## 🤔 When to Use a Template vs. Build from Scratch
 
 | Scenario | Recommendation |
 |---|---|
@@ -226,7 +226,7 @@ In the **Tools** block you may see suggested connectors (e.g., a ticketing syste
 
 ---
 
-## Customizing Templates: What to Change
+## 🎨 Customizing Templates: What to Change
 
 | Component | What to Customize |
 |---|---|
@@ -239,7 +239,7 @@ In the **Tools** block you may see suggested connectors (e.g., a ticketing syste
 
 ---
 
-## For This Course: Keep It, but Build Bit Fresh
+## 📌 For This Course: Keep It, but Build Bit Fresh
 
 After creating the **IT Help Desk Template Demo**, you have two paths:
 
@@ -250,7 +250,7 @@ After creating the **IT Help Desk Template Demo**, you have two paths:
 
 ---
 
-## Key Takeaways
+## 🧠 Key Takeaways
 
 - **Templates** provide pre-built agents for common scenarios (IT, HR, sales, etc.)
 - **Included:** instructions, suggested skills, knowledge placeholders, suggested tools, starter prompts
@@ -260,7 +260,7 @@ After creating the **IT Help Desk Template Demo**, you have two paths:
 
 ---
 
-## What You've Learned
+## 🎓 What You've Learned
 
 You now know how to:
 - Browse the Copilot Studio template gallery
@@ -270,7 +270,7 @@ You now know how to:
 
 ---
 
-## Next Steps
+## ⏭️ Next Steps
 
 In **Module 06: Build the Contoso Helpdesk Agent**, you'll create **Bit** from a blank canvas — defining his instructions, grounding him with knowledge, and turning on memory. It's the heart of the course and the foundation for everything that follows.
 
