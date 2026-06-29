@@ -105,15 +105,14 @@ Three diagrams — **done** as Mermaid (no screenshots).
 - [ ] L188 — Skills block (four skills) *(CS)*
 - [ ] L212 — Tools block ("+ Add a tool") *(CS)*
 
-### Module 03 — Declarative Agent (8)
-- [ ] L81 — CS Home description box *(CS)*
-- [ ] L101 — Declarative agent creation dialog *(CS)*
-- [ ] L124 — Instructions field *(CS)*
-- [ ] L141 — Add knowledge (SharePoint URL) *(CS)*
-- [ ] L154 — Publish confirmation *(CS)*
-- [ ] L169 — M365 Copilot chat input *(M365 Copilot)*
-- [ ] L177 — M365 Copilot @mention dropdown *(M365 Copilot)*
-- [ ] L193 — M365 Copilot response + citation *(M365 Copilot)*
+### Module 03 — Declarative Agent (5) ✅ DONE
+Re-pointed to the **M365 Copilot agent builder** (declarative agents are NOT created in Copilot Studio — only New Agent / New classic agent exist there). Module rewritten + 5 real screenshots:
+- [x] Agent Builder start ("Build your own specialist agent") → `01_agent-builder-start.png`
+- [x] Configure form (name/description/instructions/website knowledge) → `02_configure-form.png`
+- [x] "Your agent was created successfully" dialog → `03_agent-created.png`
+- [x] Agent open in M365 Copilot → `04_agent-in-m365-copilot.png`
+- [x] Agent answering (password reset, respecting guardrails) → `05_agent-response.png`
+- Notes: built as Agent Learner1 (M365 Copilot **Basic**); on Basic the knowledge source is **websites** (used support.microsoft.com), not SharePoint — SharePoint/Graph grounding needs the full M365 Copilot license.
 
 ### Module 04 — Solution (9)
 - [ ] L92 — Maker portal, dev environment selected *(Power Apps)*
