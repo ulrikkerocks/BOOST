@@ -102,7 +102,7 @@ Recap of **Bit**, built entirely in the new experience:
 2. Choose **Managed** (for deployment) or **Unmanaged** (for backup) → **Export**
 3. The `.zip` downloads — a portable backup of all your work
 
-[SCREENSHOT: Export solution dialog]
+![Export solution "Before you export" panel with Publish all changes and Next/Cancel](/screenshots/13/01_export.png)
 
 **✅ Checkpoint:** You have a portable copy of Bit.
 
