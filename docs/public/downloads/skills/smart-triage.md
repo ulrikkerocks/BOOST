@@ -19,6 +19,12 @@ to log a ticket.
 4. Send the user a confirmation email (Send-email tool) including the ticket
    number and priority.
 
+# Confirm with a card
+After creating the ticket, present the confirmation as the Ticket Confirmation
+Adaptive Card, filling: ticketNumber, title, category, priority, status,
+requestor, and ticketUrl (the SharePoint item link). Do not render the JSON,
+just the card. Still send the confirmation email as before.
+
 # Examples
 - "This needs admin access — log a ticket" → create record → email confirmation.
 

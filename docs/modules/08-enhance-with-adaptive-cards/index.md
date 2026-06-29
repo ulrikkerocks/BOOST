@@ -56,11 +56,16 @@ In this module you'll give Bit an **Adaptive Card** so that, after `smart-triage
 
 ---
 
-## 🆕 Adaptive Cards in the New Experience
+## 🆕 How Adaptive Cards Work for Bit
 
-In classic Copilot Studio you added an Adaptive Card **node** inside a topic flow and bound it with Power Fx. There are **no topics** in the new experience — so instead you give Bit a **card template** and instruct the relevant **skill** to present its result as that card. The orchestrator fills the card's placeholders from the values the skill just produced (the ticket it created).
+Classic Copilot Studio put an Adaptive Card **node** inside a topic. **Bit is a generative agent built from skills**, so the approach is simpler — and it's the method this module uses:
 
-> ⚠️ **Preview note.** The exact way to attach an Adaptive Card in the new experience is evolving (it may appear as a card capability, a prompt/tool, or a card block referenced from a skill). The transferable skills here — **designing the card JSON** and **deciding what data binds into it** — are identical regardless of where the button lives. Confirm the current authoring path in your tenant before the workshop; the facilitator notes cover fallbacks.
+1. **Give Bit the card as its own skill** (`adaptive-card`). The card JSON lives *inside* the skill, with one firm rule: **render the card, never show the JSON**.
+2. **Tell the skill that logs the ticket** (`smart-triage`) to **present its result as that card**.
+
+Bit's orchestrator does the rest — it renders the card and fills the `${…}` placeholders from the ticket `smart-triage` just created. No topic, no node; it fits how Bit already works.
+
+The transferable ideas are unchanged: **design the card JSON**, and **decide which values bind into it**.
 
 ---
 
@@ -125,26 +130,72 @@ Adaptive Cards are defined with **JSON**. Here's the ticket confirmation card �
 
 ---
 
-## 🧪 Lab 8.2: Have Bit Present the Card
+## 🧪 Lab 8.2: Give Bit the Card as a Skill, Then Have `smart-triage` Use It
 
-**Objective:** Wire the card so Bit shows it after logging a ticket.
+**Objective:** Add the card to Bit as its own skill, then tell `smart-triage` to present the logged ticket as that card. This is the exact method shown in this module's screenshots.
 
-1. Add the card to Bit using your tenant's current Adaptive Card authoring path (a card capability/tool, or a card referenced from the skill).
-2. Edit the **`smart-triage`** skill to present the confirmation as the card. Replace the plain-text confirmation step with:
+### Step 1 — Create the `adaptive-card` skill
+
+1. In **Bit**, open **Skills** → **+ Add a skill** → **Create from blank** (the same place you built your skills in [Module 07](../07-add-topic-with-triggers/)).
+2. Set it up exactly like this — the name, description, the **render-don't-show** rule, **and the card JSON inside the skill**:
 
    ```markdown
-   # Confirm with a card
-   After creating the ticket, present the confirmation as the Ticket Confirmation
-   Adaptive Card, filling: ticketNumber, title, category, priority, status,
-   requestor, and ticketUrl (the SharePoint item link). Still send the
-   confirmation email as before.
+   ---
+   name: adaptive-card
+   description: This is what the adaptive card should look like. Replace the blanks with dynamic values.
+   ---
+   # Instructions
+   Never show the JSON — just render it in the conversation with the dynamic values:
+
+   {
+     "type": "AdaptiveCard",
+     "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+     "version": "1.5",
+     "body": [
+       { "type": "TextBlock", "text": "🎫 Ticket logged", "weight": "Bolder", "size": "Large" },
+       { "type": "TextBlock", "text": "${title}", "wrap": true, "spacing": "None", "isSubtle": true },
+       {
+         "type": "FactSet",
+         "facts": [
+           { "title": "Ticket #", "value": "${ticketNumber}" },
+           { "title": "Category", "value": "${category}" },
+           { "title": "Priority", "value": "${priority}" },
+           { "title": "Status", "value": "${status}" },
+           { "title": "Requestor", "value": "${requestor}" }
+         ]
+       }
+     ],
+     "actions": [
+       { "type": "Action.OpenUrl", "title": "View in SharePoint", "url": "${ticketUrl}" }
+     ]
+   }
    ```
 
 3. **Save** the skill.
 
-<!-- SCREENSHOT: smart-triage skill updated to present the ticket as an Adaptive Card -->
+> 📥 **Prefer to upload?** Grab the ready-made file and use **Upload a skill** instead: [adaptive-card.md](https://raw.githubusercontent.com/ulrikkerocks/BOOST/wip/rig/vitepress-rebuild/docs/public/downloads/skills/adaptive-card.md).
 
-**✅ Checkpoint:** `smart-triage` now confirms tickets with the card.
+<!-- SCREENSHOT: the adaptive-card skill in Bit — the render-don't-show instruction above the card JSON -->
+
+### Step 2 — Tell `smart-triage` to present the card
+
+Open your **`smart-triage`** skill (from [Module 07](../07-add-topic-with-triggers/)) and **add this section** — keep everything the skill already does:
+
+```markdown
+# Confirm with a card
+After creating the ticket, present the confirmation as the Ticket Confirmation
+Adaptive Card, filling: ticketNumber, title, category, priority, status,
+requestor, and ticketUrl (the SharePoint item link). Do not render the JSON,
+just the card. Still send the confirmation email as before.
+```
+
+**Save** the skill.
+
+> 💡 **Why this works:** `smart-triage` produces the ticket values; the `adaptive-card` skill holds the layout. Bit's orchestrator connects the two — it renders the card (not the raw JSON) and drops the live values into the `${…}` placeholders. The line **"Do not render the JSON, just the card"** is what stops Bit from printing the JSON as text.
+
+<!-- SCREENSHOT: smart-triage skill with the "Confirm with a card" section added -->
+
+**✅ Checkpoint:** Bit has an `adaptive-card` skill, and `smart-triage` is told to confirm tickets with the card.
 
 ---
 
