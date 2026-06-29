@@ -54,7 +54,7 @@ A **Workflow** is the new flows format in Copilot Studio, with a revamped visual
    manager_approval_for_software
    ```
 
-![New workflow designer — Start trigger, the Add palette (Agent, Classify, M365 Copilot, Human review, Connector, If/Else, Loop), and the trigger config panel](/screenshots/09/01_workflow-designer.png)
+![Workflow designer — the workflow named manager_approval_for_software, the Start trigger with applicationName, requesterEmail, and businessReason inputs, and the Add palette (Agent, Classify, M365 Copilot, Human review, Connector, If/Else, Loop)](/screenshots/09/01_workflow-designer.png)
 
 ---
 
