@@ -293,7 +293,7 @@ Add 2–3 example tickets so the list isn't empty when you first test.
 
 ## 🧪 Step 7: Prepare the Two Knowledge Documents
 
-Your agent grounds its answers in two documents you'll upload in Module 06. **Download the ready-made copies** — [📄 Contoso_IT_FAQ.docx](/downloads/Contoso_IT_FAQ.docx) and [📄 Contoso_Approved_Software_List.docx](/downloads/Contoso_Approved_Software_List.docx) — and use them as-is, or recreate your own from the outlines below.
+Your agent grounds its answers in two documents you'll upload in Module 06. **Download the ready-made copies** — [📄 Contoso_IT_FAQ.docx](https://raw.githubusercontent.com/ulrikkerocks/BOOST/wip/rig/vitepress-rebuild/docs/public/downloads/Contoso_IT_FAQ.docx) and [📄 Contoso_Approved_Software_List.docx](https://raw.githubusercontent.com/ulrikkerocks/BOOST/wip/rig/vitepress-rebuild/docs/public/downloads/Contoso_Approved_Software_List.docx) — and use them as-is, or recreate your own from the outlines below.
 
 ### 7.1: Contoso IT FAQ
 

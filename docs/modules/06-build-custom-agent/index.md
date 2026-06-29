@@ -187,7 +187,7 @@ and practical.
 
 In the new experience you add knowledge right on the **Build page**, and the orchestrator decides which sources to search per question. For this workshop we **upload** the two documents so everyone's data is identical.
 
-> 📥 Need the files? Download [📄 Contoso_IT_FAQ.docx](/downloads/Contoso_IT_FAQ.docx) and [📄 Contoso_Approved_Software_List.docx](/downloads/Contoso_Approved_Software_List.docx) (also prepared in [Module 00](../00-course-setup/)).
+> 📥 Need the files? Download [📄 Contoso_IT_FAQ.docx](https://raw.githubusercontent.com/ulrikkerocks/BOOST/wip/rig/vitepress-rebuild/docs/public/downloads/Contoso_IT_FAQ.docx) and [📄 Contoso_Approved_Software_List.docx](https://raw.githubusercontent.com/ulrikkerocks/BOOST/wip/rig/vitepress-rebuild/docs/public/downloads/Contoso_Approved_Software_List.docx) (also prepared in [Module 00](../00-course-setup/)).
 
 ### Step 1: Upload the Contoso IT FAQ
 
