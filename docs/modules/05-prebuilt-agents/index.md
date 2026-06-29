@@ -49,19 +49,18 @@ Templates save time by providing a **proven structure** you can adapt to your ne
 
 ## 📚 Common Agent Templates
 
-As of June 2026, Copilot Studio offers templates for scenarios like:
+As of June 2026, Copilot Studio offers templates including:
 
 | Template | Use Case |
 |---|---|
-| **IT Help Desk** | Password resets, troubleshooting, software requests |
-| **HR Support** | Leave policies, benefits, onboarding |
-| **Customer Service** | Order status, returns, FAQs |
-| **Sales Qualification** | Lead capture, product recommendations, demo scheduling |
-| **Facilities Management** | Room bookings, maintenance requests |
-| **Finance & Expense** | Expense approvals, budget queries, invoice lookups |
-| **Onboarding Assistant** | New employee orientation, checklist tracking |
+| **Website Q&A** | Answer questions from a website or knowledge base |
+| **Benefits** | Leave policies, benefits, onboarding |
+| **Citizen Services** | Public-sector citizen information and services |
+| **Financial Insights** | Financial document Q&A for finance teams |
+| **Safe Travels** | Travel FAQs and health/safety guidelines |
+| **Weather** | Weather forecasts and related queries |
 
-> **Note:** Microsoft regularly adds new templates. The gallery you see may include additional templates (and exact names may differ).
+> **Note:** Microsoft regularly adds new templates. The gallery you see may include additional or differently-named templates than those listed here.
 
 ---
 
@@ -73,26 +72,23 @@ As of June 2026, Copilot Studio offers templates for scenarios like:
 
 1. Go to [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com)
 2. Sign in with your M365 account (confirm you're in the **new experience**)
-3. From the **Home page**, look for an entry point to templates:
-   - A **"Start from a template"** section on the Home page
-   - An **"Explore templates"** link or button
-   - **Create agent** → **From a template**
+3. In the left navigation, select **Agents**. Scroll down past "My agents" to find the **"Start with an agent template"** section with template cards.
 
-[SCREENSHOT: Copilot Studio Home page showing a "Start from a template" section with template cards]
+![Copilot Studio Agents page showing the "Start with an agent template" section with template cards](/screenshots/05/01_agents-page-start-from-template.png)
 
 ### Step 2: Explore Template Details
 
 1. Browse the available templates
-2. Select a template card (e.g., **IT Help Desk** or a similar support template)
-3. You'll see a preview with a **description**, **key features**, **sample prompts**, and a **preview image**
+2. Select a template card (e.g., **Website Q&A** or another template that interests you)
+3. You'll see a configuration screen with a **name**, **description**, **instructions**, and **suggested prompts**
 
-[SCREENSHOT: Template preview page showing an IT Help Desk template with description, features, and sample prompts]
+![Template configuration screen showing the Website Q&A template with name, description, and instructions](/screenshots/05/02_template-preview.png)
 
-4. Select **Back** to return to the gallery
+4. Select **Cancel** to return to the gallery
 
 ### Step 3: Compare Templates
 
-Explore at least three templates (e.g., **IT Help Desk**, **HR Support**, **Customer Service**).
+Explore at least two or three templates (e.g., **Website Q&A**, **Benefits**, **Citizen Services**).
 
 **Reflection questions:**
 - How do the **instructions** differ between templates?
@@ -105,57 +101,54 @@ Explore at least three templates (e.g., **IT Help Desk**, **HR Support**, **Cust
 
 ## 🧪 Lab 5.2: Create an Agent from a Template
 
-**Objective:** Create an agent using the **IT Help Desk** template and see what it includes.
+**Objective:** Create an agent using the **Website Q&A** template and see what it includes.
 
-### Step 1: Select the IT Help Desk Template
+### Step 1: Select the Website Q&A Template
 
-1. In the template gallery, locate the **IT Help Desk** (or similar support) template
-2. Select the template card
-3. Select **Create agent** (or **Use this template**)
+1. In the template gallery, locate the **Website Q&A** template
+2. Select the template card — you'll see the configuration screen with a **Create** button at the top
+3. Optionally update the **Agent name** (`Website Q&A Template Demo` or leave the default) and **Language**
 
-[SCREENSHOT: IT Help Desk template preview with a "Create agent" button]
+![Website Q&A template configuration screen with a "Create" button](/screenshots/05/03_template-create-button.png)
 
-### Step 2: Configure the Agent
+### Step 2: Create the Agent
 
-1. You may be prompted to customize:
-   - **Agent name:** `IT Help Desk Template Demo` (or leave the default)
-   - **Language:** select your language
-   - **Environment:** verify you're in your developer environment
-2. Select **Create** and wait while Copilot Studio provisions the agent (~30 seconds)
-3. You land on the **Build page** for the new agent
+1. Select **Create** and wait while Copilot Studio provisions the agent (~30 seconds)
+2. You land on the **Overview** (Build) page for the new agent
 
-[SCREENSHOT: Build page for the IT Help Desk agent created from a template]
+![Build page for the agent created from the Website Q&A template, showing Instructions, Knowledge, and the Test pane](/screenshots/05/04_template-agent-build-page.png)
 
-**✅ Checkpoint:** You've created an agent from the IT Help Desk template.
+**✅ Checkpoint:** You've created an agent from the Website Q&A template.
 
 ### Step 3: Review What the Template Includes
 
 Explore the new agent's **Build page** blocks:
 
-#### 3a. Instructions
+#### a. Instructions
 
 Read the pre-written **Instructions**. Notice:
-- **Clear role definition** — "You are an IT Help Desk assistant…"
-- **Scope boundaries** — what the agent can help with
-- **Escalation path** — what to do when stuck
+
+- **Clear role definition** — "Maintain a polite and professional tone while assisting with questions about the knowledge source…"
+- **Scope** — broad by default; you'll tighten this when customizing
+- **Tone guidance** — professional, helpful, no off-limits topics by default
 
 > **Tip:** Save this pattern — you'll write similar instructions for Bit in Module 06.
 
-#### 3b. Skills and Starter Prompts
+#### b. Topics and Suggested Prompts
 
-In the **Skills** block (and the agent's starter prompts), see what behaviors the template ships with — common helpdesk tasks like password help or software guidance. In the new experience these are **skills** (markdown behaviors), not topic flows.
+Scroll down on the Build page. You'll see a **Topics** section (system topics like Greeting, Goodbye, Start Over) and a **Suggested prompts** section where you can add example questions for users.
 
-[SCREENSHOT: Build page Skills block and starter prompts for the template agent]
+![Build page showing Topics and Suggested prompts sections for the template agent](/screenshots/05/05_topics-and-suggested-prompts.png)
 
-#### 3c. Knowledge (Placeholders)
+#### c. Knowledge
 
-In the **Knowledge** block you may see placeholders for "your IT knowledge base" (not connected yet). Templates don't include **your** organization's knowledge — you add that yourself (next).
+In the **Knowledge** block you'll see a pre-configured Microsoft knowledge source. Templates include a starter knowledge source — you replace it with **your** organization's data (next lab).
 
-#### 3d. Tools
+#### d. Tools
 
-In the **Tools** block you may see suggested connectors (e.g., a ticketing system) as placeholders.
+In the **Tools** block you'll see a **Work IQ** toggle (M365 organizational data) and space to add connectors. Templates leave tools mostly blank — you connect your systems.
 
-**✅ Checkpoint:** You've reviewed the template agent's instructions, skills, knowledge, and tools.
+**✅ Checkpoint:** You've reviewed the template agent's instructions, topics, knowledge, and tools.
 
 ---
 
@@ -165,30 +158,35 @@ In the **Tools** block you may see suggested connectors (e.g., a ticketing syste
 
 ### Step 1: Add the IT Help Desk SharePoint Site
 
-1. On the **Build page**, open the **Knowledge** block
-2. Select **+ Add knowledge** → **SharePoint**
-3. Enter the URL of your **IT Help Desk** site:
+1. On the **Build page**, scroll to the **Knowledge** block
+2. Select **+ Add knowledge** — the Add knowledge dialog opens showing connectors (SharePoint, Public websites, Dataverse, and more)
+3. Select **SharePoint** — you'll see a URL entry field
+4. Enter the URL of your **IT Help Desk** site:
+
    ```text
    https://[yourtenant].sharepoint.com/sites/ITHelpDesk
    ```
-4. Select **Add**
 
-[SCREENSHOT: Add knowledge dialog showing SharePoint URL entry]
+5. Select **Add to agent**
+
+![Add knowledge dialog open to the SharePoint step, showing the URL entry field](/screenshots/05/06_add-knowledge-sharepoint.png)
 
 **✅ Checkpoint:** The agent can now search the IT Help Desk SharePoint site.
 
 ### Step 2: Test the Agent
 
-1. In the **Preview pane** (right side), type:
+1. In the **Test your agent** pane (right side), type:
+
    ```text
    What are the help desk hours?
    ```
+
 2. Press **Enter**
-3. The agent should search the IT Help Desk site, find the **Contoso IT FAQ**, and return the hours with a source citation.
+3. The agent searches its knowledge source and returns an answer with numbered **source citations** (e.g., `1↗ Microsoft Support`). Once you've added the Contoso IT FAQ as knowledge, the citations will point to your SharePoint content instead.
 
-[SCREENSHOT: Preview pane showing the response with help desk hours and a source citation]
+![Preview pane showing a response to "What are the help desk hours?" with numbered source citations](/screenshots/05/07_preview-response-with-citation.png)
 
-**✅ Checkpoint:** The template agent successfully uses your organization's knowledge.
+**✅ Checkpoint:** The template agent responds and cites its knowledge source.
 
 ### Step 3: Customize the Instructions
 
@@ -241,7 +239,7 @@ In the **Tools** block you may see suggested connectors (e.g., a ticketing syste
 
 ## 📌 For This Course: Keep It, but Build Bit Fresh
 
-After creating the **IT Help Desk Template Demo**, you have two paths:
+After creating the **Website Q&A Template Demo**, you have two paths:
 
 - **Keep and customize** the template, or
 - **Use it as a reference and build fresh.**

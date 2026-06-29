@@ -126,14 +126,15 @@ Three diagrams — **done** as Mermaid (no screenshots).
 - [ ] L186 — Preferred solution dropdown *(CS)*
 - [ ] L217 — Solution Objects with components *(Power Apps)*
 
-### Module 05 — Pre-built (7)
-- [ ] L81 — Home, "Start from a template" *(CS)*
-- [ ] L89 — IT Help Desk template preview *(CS)*
-- [ ] L116 — Template preview, "Create agent" *(CS)*
-- [ ] L127 — Build page for the template agent *(CS)*
-- [ ] L148 — Skills block + starter prompts *(CS)*
-- [ ] L176 — Add knowledge (SharePoint URL) *(CS)*
-- [ ] L189 — Preview: help desk hours + citation *(CS)*
+### Module 05 — Pre-built (7) ✅ DONE
+- [x] L77 — Agents page, "Start with an agent template" *(CS)* → `01_agents-page-start-from-template.png`
+- [x] L85 — Website Q&A template config screen *(CS)* → `02_template-preview.png`
+- [x] L112 — Template config with "Create" button *(CS)* → `03_template-create-button.png`
+- [x] L119 — Build page after agent created *(CS)* → `04_template-agent-build-page.png`
+- [x] L141 — Topics + Suggested prompts sections *(CS)* → `05_topics-and-suggested-prompts.png`
+- [x] L172 — Add knowledge → SharePoint URL entry *(CS)* → `06_add-knowledge-sharepoint.png`
+- [x] L187 — Preview response with citations *(CS)* → `07_preview-response-with-citation.png`
+- Note: "IT Help Desk" template not present in this env; used "Website Q&A" instead. Module text updated accordingly.
 
 ### Module 06 — Build Bit (14)
 - [ ] L68 — Home description box *(CS)*
