@@ -86,7 +86,9 @@ All of it happens **automatically**.
 1. Select **+ Add trigger** → choose a **SharePoint** event → **When an item is created** (and optionally **modified**).
 2. Point it at your **IT Help Desk** site and the **Tickets** list.
 
-[SCREENSHOT: Add trigger — SharePoint "When an item is created" targeting the Tickets list]
+![Workflow trigger type picker — Manual, Recurrence (schedule), Connector (external service), and HTTP request](/screenshots/10/01_trigger-types.png)
+
+> 🆕 **Reality check.** In this environment, autonomous behavior is configured through a **Workflow's trigger**, not a separate "Triggers" block on the agent. Use **Connector** to fire from a SharePoint item being created (the Tickets list), or **Recurrence** for a scheduled check.
 
 ### Step 3: Filter for High/Critical
 

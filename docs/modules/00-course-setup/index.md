@@ -59,7 +59,7 @@ If you have an existing M365 account with **admin permissions**, you can skip to
    - Set up your admin credentials
    - Verify your phone number
 
-[SCREENSHOT: M365 trial signup page showing "Try for free" button and email entry]
+![Microsoft 365 Business Basic page showing pricing with "Buy now" and "Try for free"](/screenshots/00/01_m365-trial.png)
 
 5. Complete the trial activation
 6. You'll receive admin access to a new M365 tenant
