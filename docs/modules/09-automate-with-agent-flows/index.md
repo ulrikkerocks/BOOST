@@ -47,28 +47,33 @@ A **Workflow** is the new flows format in Copilot Studio, with a revamped visual
 
 ## 🧪 Lab 9.1: Create the Workflow
 
-1. **Build** → **Tools** → **+ Add a tool** → **Workflows** → **create a new workflow**. This opens the **new workflow designer**.
-2. Name it:
+Create the workflow **from Bit**, so it's wired to be agent-callable from the start:
+
+1. On Bit's **Build** page, find the **Tools** block → **+ Add a tool**.
+2. In the dialog, click the **+ Add** button (top-right) → choose **Workflow**. This opens the **new workflow designer**.
+3. Name it (click **Untitled Workflow**, top-left):
 
    ```text
    manager_approval_for_software
    ```
 
-![Workflow designer — the workflow named manager_approval_for_software, the Start trigger with applicationName, requesterEmail, and businessReason inputs, and the Add palette (Agent, Classify, M365 Copilot, Human review, Connector, If/Else, Loop)](/screenshots/09/01_workflow-designer.png)
+> 🧷 **Why create it from Tools (not the standalone Workflows area)?** Starting here gives you a workflow that already has the **"When an agent calls the flow"** trigger and a **"Respond to the agent"** action — exactly what an agent-called approval needs. (A workflow created from the left-nav **Workflows** area starts with a generic **Manual** trigger instead, which is *not* what we want.)
+
+![Workflow designer — the workflow named manager_approval_for_software, the "When an agent calls the flow" trigger (Trigger type: Connector) wired to "Respond to the agent", the applicationName / requesterEmail / businessReason inputs panel, and the Add palette (Agent, Classify, M365 Copilot, Human review, Connector, Function, Variable, If/Else, Loop, Note)](/screenshots/09/01_workflow-designer.png)
 
 ---
 
 ## 🧪 Lab 9.2: Define Inputs (What the Agent Passes In)
 
-Add these **input parameters**:
+On the **When an agent calls the flow** trigger, use the **Inputs** panel → **+ Add an input** (pick the type, then name it) for each of these:
 
 | Input | Type |
 |---|---|
 | `applicationName` | Text |
-| `requesterEmail` | Text |
+| `requesterEmail` | Email |
 | `businessReason` | Text |
 
-<!-- SCREENSHOT: Workflow input parameters: applicationName, requesterEmail, businessReason -->
+> 💡 These are the **typed inputs the agent passes to the flow** — they show up in the trigger's **Inputs** panel (see the Lab 9.1 screenshot above). Choosing **Email** for `requesterEmail` validates the address Bit hands in.
 
 ---
 
