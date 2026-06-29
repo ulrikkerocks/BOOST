@@ -65,7 +65,7 @@ Everything starts here.
 1. Go to [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com)
 2. Sign in and confirm you're in the **new experience** and the right environment
 
-[SCREENSHOT: Copilot Studio Home page showing the "Describe what you want your agent to do" box]
+<!-- SCREENSHOT: Copilot Studio Home page showing the "Describe what you want your agent to do" box -->
 
 ### Step 2: Describe the Agent
 
@@ -81,7 +81,7 @@ admin access, log a support ticket for the help desk team.
 
 2. Press **Enter** or select **Create**, and wait while the agent is generated (~10 seconds)
 
-[SCREENSHOT: Home page with the IT support description entered]
+<!-- SCREENSHOT: Home page with the IT support description entered -->
 
 ### Step 3: Name and Brand Bit
 
@@ -126,7 +126,7 @@ and practical.
 
 3. Select **Save** (💾)
 
-[SCREENSHOT: Instructions block showing Bit's instructions]
+<!-- SCREENSHOT: Instructions block showing Bit's instructions -->
 
 > You'll add the *how* — password resets, VPN steps, triage, software requests — as **Skills** in [Module 07](../07-add-topic-with-triggers/). Instructions set identity and guardrails; skills carry the detailed playbooks.
 
@@ -144,7 +144,7 @@ and practical.
 4. **Authentication** — for the demo, **Authenticate with Microsoft** so SharePoint/Outlook tools later run as the signed-in user. (Your facilitator may prefer **No authentication** — follow their guidance.)
 5. **Save** and exit Settings.
 
-[SCREENSHOT: Settings panel showing Solution = Contoso Helpdesk Agent, moderation, and authentication]
+<!-- SCREENSHOT: Settings panel showing Solution = Contoso Helpdesk Agent, moderation, and authentication -->
 
 > 🔐 **Auth note:** "Authenticate with Microsoft" means tools can act **as the signed-in user**. In [Module 07](../07-add-topic-with-triggers/) you'll also choose, per tool, whether an action runs as the user or as the maker — keep that distinction in mind.
 
@@ -173,7 +173,7 @@ and practical.
 
 3. **Save.**
 
-[SCREENSHOT: Greeting and four suggested prompts configured]
+<!-- SCREENSHOT: Greeting and four suggested prompts configured -->
 
 > These four map directly to scenarios you'll test and build: knowledge (hours), the software list (Power BI), the password-reset skill, and the VPN skill.
 
@@ -201,7 +201,7 @@ In the new experience you add knowledge right on the **Build page**, and the orc
 1. Upload **`Contoso_Approved_Software_List.docx`** (apps + self-service vs. manager sign-off).
 2. Wait until both documents show as added/ready.
 
-[SCREENSHOT: Knowledge block showing both documents added]
+<!-- SCREENSHOT: Knowledge block showing both documents added -->
 
 > 💡 **Other options:** you could also point Knowledge at the **IT Help Desk SharePoint site**, public **websites**, or **Microsoft IQ**, and enable **general web search** for recent info. For this course, the two uploads are enough — the orchestrator chooses which to search automatically.
 
@@ -216,7 +216,7 @@ In the new experience you add knowledge right on the **Build page**, and the orc
 1. In the **Memory** block, toggle **Memory on** and **Save**.
 2. This lets Bit remember earlier messages (and prior conversations) for better follow-ups — e.g., remembering a user's name or the issue they described a few turns ago.
 
-[SCREENSHOT: Memory block toggled on]
+<!-- SCREENSHOT: Memory block toggled on -->
 
 **✅ Checkpoint:** Memory is enabled.
 
@@ -249,7 +249,7 @@ In the new experience you add knowledge right on the **Build page**, and the orc
 2. Bit explores the **Approved Software List**, sees Power BI Desktop is **self-service**, and replies that no manager approval is needed (plus install guidance).
 3. Flip the **end-user** preview toggle on to see the cleaner, user-facing version — then back off to keep the detailed maker view.
 
-[SCREENSHOT: Preview pane showing the Power BI self-service answer, with the maker/end-user toggle]
+<!-- SCREENSHOT: Preview pane showing the Power BI self-service answer, with the maker/end-user toggle -->
 
 ### Test 3: A graceful "I don't know"
 
@@ -276,7 +276,7 @@ As the **maker**, the Preview pane shows Bit's reasoning for every turn:
 
 Ask the same questions from Lab 6.7 and expand the reasoning/details for each turn. This is how you debug behavior later — if Bit answers from the wrong source or skips a skill, the maker view tells you why.
 
-[SCREENSHOT: Preview pane reasoning expanded — knowledge searched, skill loaded, answer]
+<!-- SCREENSHOT: Preview pane reasoning expanded — knowledge searched, skill loaded, answer -->
 
 > 🧠 In classic Copilot Studio this was a separate "activity map." In the new experience, the reasoning is right in the maker preview — no separate screen.
 
@@ -311,7 +311,7 @@ Confirm Bit was automatically added to the **Contoso Helpdesk Agent** solution (
 2. Select **Solutions** → **Contoso Helpdesk Agent**
 3. In **Objects**, you should see **Copilot → Bit** (and any connection references)
 
-[SCREENSHOT: Contoso Helpdesk Agent solution showing Bit listed under Objects]
+<!-- SCREENSHOT: Contoso Helpdesk Agent solution showing Bit listed under Objects -->
 
 **✅ Checkpoint:** Bit is packaged in the solution.
 

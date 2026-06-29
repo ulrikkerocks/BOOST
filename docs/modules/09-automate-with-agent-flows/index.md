@@ -68,7 +68,7 @@ Add these **input parameters**:
 | `requesterEmail` | Text |
 | `businessReason` | Text |
 
-[SCREENSHOT: Workflow input parameters: applicationName, requesterEmail, businessReason]
+<!-- SCREENSHOT: Workflow input parameters: applicationName, requesterEmail, businessReason -->
 
 ---
 
@@ -77,7 +77,7 @@ Add these **input parameters**:
 1. Add a step using the **Office 365 Users** connector → **Get manager (V2)**.
 2. For the input (user/UPN), pass **`requesterEmail`**.
 
-[SCREENSHOT: Get manager (V2) action with requesterEmail as the input]
+<!-- SCREENSHOT: Get manager (V2) action with requesterEmail as the input -->
 
 ---
 
@@ -89,7 +89,7 @@ Add these **input parameters**:
 4. **Details:** include `requesterEmail`, `businessReason`, and `applicationName`.
 5. **Assigned to:** the **Mail** property from the **Get manager** step.
 
-[SCREENSHOT: Start and wait for an approval configured with the manager's mail as the assignee]
+<!-- SCREENSHOT: Start and wait for an approval configured with the manager's mail as the assignee -->
 
 ---
 
@@ -100,7 +100,7 @@ After the approval completes, add an **If/else (Condition)** on the approval **o
 - **If** outcome **= Approve** → your approved path. For the demo, add a **Compose** action with the static value `approve` (in production: notify the team / provision the license / write to your system of record).
 - **Else** (rejected) → add a **Compose** with `rejected`.
 
-[SCREENSHOT: If/else condition branching on the approval outcome]
+<!-- SCREENSHOT: If/else condition branching on the approval outcome -->
 
 ---
 
@@ -117,7 +117,7 @@ Because the approval will **wait**, you must still respond to Bit within ~100 se
 
 So the workflow **simultaneously**: (a) starts the approval and waits for the manager, and (b) tells Bit the process kicked off.
 
-[SCREENSHOT: Parallel branches — approval+wait on one side, Respond to the agent on the other]
+<!-- SCREENSHOT: Parallel branches — approval+wait on one side, Respond to the agent on the other -->
 
 ---
 
@@ -143,7 +143,7 @@ So the workflow **simultaneously**: (a) starts the approval and waits for the ma
 
 2. **Save** the skill.
 
-[SCREENSHOT: software-installation-request skill updated to call the workflow]
+<!-- SCREENSHOT: software-installation-request skill updated to call the workflow -->
 
 ---
 
@@ -159,7 +159,7 @@ So the workflow **simultaneously**: (a) starts the approval and waits for the ma
 3. **Watch the workflow run:** it triggers, **gets the manager**, and **responds back to Bit**.
 4. **As the manager:** open the manager's mailbox/Approvals, **approve or reject** with comments, and submit. The workflow then continues into your **If/else** branch.
 
-[SCREENSHOT: Preview showing Bit starting the approval, and the manager's Approvals card]
+<!-- SCREENSHOT: Preview showing Bit starting the approval, and the manager's Approvals card -->
 
 > In production the approved branch would notify the team to provision the license; here the **Compose** values prove the branch logic works.
 

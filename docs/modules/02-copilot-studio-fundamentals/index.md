@@ -43,7 +43,7 @@ The Build page is a **single canvas** showing all your agent's components at onc
 **Classic model:** Multiple tabs / an Overview page built around Topics and Actions.  
 **New model:** One **Build** page built around Instructions, Knowledge, **Skills**, Tools, **Memory**, **Connected agents**, and **Model**.
 
-[SCREENSHOT: Full Copilot Studio Build page showing the Instructions, Knowledge, Skills, Tools, Memory, Connected agents and Model blocks, with the Preview pane on the right]
+<!-- SCREENSHOT: Full Copilot Studio Build page showing the Instructions, Knowledge, Skills, Tools, Memory, Connected agents and Model blocks, with the Preview pane on the right -->
 
 ### Build Page Layout
 
@@ -96,7 +96,7 @@ The **Preview pane** is always visible on the right side of the Build page. Use 
 - Watch the orchestrator **search knowledge, load skills, and call tools**
 - Toggle **maker vs. end-user** view — as the maker you see the agent's reasoning (search → skill load → answer); end-user view shows the clean, user-facing experience
 
-[SCREENSHOT: Preview pane showing a conversation, with the maker-vs-end-user toggle highlighted]
+<!-- SCREENSHOT: Preview pane showing a conversation, with the maker-vs-end-user toggle highlighted -->
 
 ### Top Action Bar
 
@@ -124,7 +124,7 @@ Now that you know **where** everything lives, let's learn **what** these blocks 
 - **Core rules** — "If an issue needs admin access, log a ticket and hand it to the help desk."
 - **Guardrails** — "Never ask for passwords or one-time codes. Never help bypass security."
 
-[SCREENSHOT: Build page Instructions block showing the Contoso Helpdesk Agent instructions with the Save button]
+<!-- SCREENSHOT: Build page Instructions block showing the Contoso Helpdesk Agent instructions with the Save button -->
 
 ### Example Instructions
 
@@ -153,7 +153,7 @@ help bypass security.
 - **Public websites** — URLs the agent can search
 - **Microsoft IQ** — organizational M365 data
 
-[SCREENSHOT: Build page Knowledge block showing two uploaded documents (Contoso IT FAQ and Approved Software List)]
+<!-- SCREENSHOT: Build page Knowledge block showing two uploaded documents (Contoso IT FAQ and Approved Software List) -->
 
 ### How Knowledge Works (RAG in Action)
 
@@ -209,7 +209,7 @@ When a user asks a question:
 - **REST APIs** — OpenAPI/Swagger specs for external systems
 - **Prompts** — reusable prompt-based tools
 
-[SCREENSHOT: Build page Tools block showing the "+ Add a tool" button and connector options]
+<!-- SCREENSHOT: Build page Tools block showing the "+ Add a tool" button and connector options -->
 
 ### How Tools Work
 

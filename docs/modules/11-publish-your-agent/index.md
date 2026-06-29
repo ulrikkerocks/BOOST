@@ -63,7 +63,7 @@ You've been testing Bit by hand in **Preview**. **Evaluations** make that repeat
    - improve a **knowledge** source.
 3. Make the change and **re-run** to confirm quality moved in the right direction.
 
-[SCREENSHOT: Evaluation results listing test cases with quality scores]
+<!-- SCREENSHOT: Evaluation results listing test cases with quality scores -->
 
 > 🔁 This is the tightening loop: maintain a test set, run it after every meaningful change, and only ship when the key cases pass.
 
@@ -88,7 +88,7 @@ You've been testing Bit by hand in **Preview**. **Evaluations** make that repeat
 1. Use the provided **link** to add Bit to **Microsoft 365 Copilot**.
 2. Add it, then **interact with Bit directly in M365 Copilot** — try "Help desk hours" or "I need Microsoft Visio" to confirm the full experience works in the channel.
 
-[SCREENSHOT: Bit running inside Microsoft 365 Copilot]
+<!-- SCREENSHOT: Bit running inside Microsoft 365 Copilot -->
 
 **✅ Checkpoint:** Bit works in M365 Copilot.
 
@@ -97,7 +97,7 @@ You've been testing Bit by hand in **Preview**. **Evaluations** make that repeat
 1. From here you can **share the agent with other users** so your colleagues can use Bit.
 2. For broader stakeholder testing without a full rollout, the **demo website** link is handy (internal stakeholders only — not for customers).
 
-[SCREENSHOT: Share dialog for the agent]
+<!-- SCREENSHOT: Share dialog for the agent -->
 
 ## 🧪 Lab 11.6: Monitor
 
@@ -105,7 +105,7 @@ You've been testing Bit by hand in **Preview**. **Evaluations** make that repeat
 2. As users interact with Bit, **traffic appears** here. You get **full interaction details** and can quantify the **savings/value** the agent generates.
 3. Use what you see to feed the improvement loop: spot weak spots → add **evaluation** cases (Part 1) → adjust **instructions / skills / knowledge** → **republish**.
 
-[SCREENSHOT: Monitor tab showing interactions and value]
+<!-- SCREENSHOT: Monitor tab showing interactions and value -->
 
 **✅ Checkpoint:** You can see Bit's usage and value on the Monitor tab.
 

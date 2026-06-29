@@ -209,7 +209,7 @@ Skills tell Bit *what* to do; **Tools** let him actually *do* it. Add tools from
    (Paste your actual **site URL** and confirm the **list name** is `Tickets`.)
 3. **Save / Add.**
 
-[SCREENSHOT: Adding the SharePoint "Create item" tool targeting the IT Help Desk site and Tickets list]
+<!-- SCREENSHOT: Adding the SharePoint "Create item" tool targeting the IT Help Desk site and Tickets list -->
 
 > 🧠 You don't pre-map every column. The `smart-triage` skill tells Bit to read the **list schema** at runtime, and the orchestrator maps fields when it calls **Create item**.
 
@@ -228,7 +228,7 @@ Skills tell Bit *what* to do; **Tools** let him actually *do* it. Add tools from
 2. Following `password-reset`, Bit confirms your **name and email**, then asks to **verify identity** (employee ID). Provide it.
 3. On verification, Bit calls **Send an email** and tells you a reset link was sent. **Check your mailbox** for the email.
 
-[SCREENSHOT: Preview pane showing Bit completing the password-reset flow and sending an email]
+<!-- SCREENSHOT: Preview pane showing Bit completing the password-reset flow and sending an email -->
 
 **✅ Checkpoint:** Bit verified identity and sent a reset email.
 
@@ -254,7 +254,7 @@ Skills tell Bit *what* to do; **Tools** let him actually *do* it. Add tools from
    - call **Send an email** with the **ticket number and priority**.
 4. **Verify in SharePoint:** open the **Tickets** list — the new row is there. **Check your mailbox** for the confirmation email.
 
-[SCREENSHOT: The new ticket row in the SharePoint Tickets list + the confirmation email]
+<!-- SCREENSHOT: The new ticket row in the SharePoint Tickets list + the confirmation email -->
 
 > 🎉 That's an agent answering *and* acting: reading a list schema, writing a record, and emailing a confirmation — all driven by a markdown skill plus two connector tools.
 
@@ -287,7 +287,7 @@ Skills are editable — let's level up `smart-triage` so it also produces a PDF.
 
 4. **Verify:** a new row in the Tickets list, and an email with the **PDF attachment**.
 
-[SCREENSHOT: Confirmation email with the generated one-page PDF ticket report attached]
+<!-- SCREENSHOT: Confirmation email with the generated one-page PDF ticket report attached -->
 
 > ⚠️ **Facilitator note (preview behavior).** Built-in PDF *generation* is a preview capability and may not be lit up in every tenant. If Bit can't produce a PDF attachment, fall back to having the confirmation email include a **formatted text/HTML summary** of the ticket instead — the teaching point (iterating a skill to add a step) is identical. Confirm this works in your tenant before the workshop.
 

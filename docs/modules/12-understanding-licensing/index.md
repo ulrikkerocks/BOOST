@@ -63,7 +63,7 @@ You have three main licensing paths:
 2. Select **Environments** → select your trial environment
 3. If eligible, select **Extend trial** (appears near trial expiration)
 
-[SCREENSHOT: Power Platform Admin Center showing "Extend trial" option]
+<!-- SCREENSHOT: Power Platform Admin Center showing "Extend trial" option -->
 
 ### Option 2: Copilot Studio Standalone Subscription
 
@@ -80,7 +80,7 @@ You have three main licensing paths:
 2. **Billing** → **Purchase services**
 3. Search for **"Copilot Studio"**, select a plan, and complete the purchase
 
-[SCREENSHOT: M365 Admin Center showing Copilot Studio purchase options]
+<!-- SCREENSHOT: M365 Admin Center showing Copilot Studio purchase options -->
 
 ### Option 3: Microsoft 365 Copilot License (Includes Copilot Studio)
 
@@ -178,7 +178,7 @@ You've used the **Power Apps Developer Plan** throughout this course (Module 00)
 ### 1. Monitor Usage
 Use the **Monitor** tab (Module 11) to track message volume — sessions/day × 30, and average messages/session.
 
-[SCREENSHOT: Monitor tab showing session metrics]
+<!-- SCREENSHOT: Monitor tab showing session metrics -->
 
 ### 2. Set Up Billing Alerts
 In Azure Cost Management (if using Azure-based billing), set budget alerts at 50%, 80%, and 100%.

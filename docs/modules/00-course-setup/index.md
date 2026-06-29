@@ -78,12 +78,12 @@ Now that you have an M365 account, you can activate Copilot Studio.
 4. Select your **Country/region** from the dropdown
 5. Select **Get started**
 
-[SCREENSHOT: Copilot Studio trial activation page with country selector and "Get started" button]
+<!-- SCREENSHOT: Copilot Studio trial activation page with country selector and "Get started" button -->
 
 6. Wait while Copilot Studio provisions your environment (~30 seconds)
 7. You'll land on the Copilot Studio **Home page**
 
-[SCREENSHOT: Copilot Studio Home page showing the natural language description box: "Describe what you want your agent to do"]
+<!-- SCREENSHOT: Copilot Studio Home page showing the natural language description box: "Describe what you want your agent to do" -->
 
 **✅ Checkpoint:** You should see the Copilot Studio Home page with a description box prompting you to create an agent.
 
@@ -97,7 +97,7 @@ Microsoft **rebuilt** Copilot Studio. This isn't a UI refresh — it's a new **a
 
 1. On the Copilot Studio **Home page**, look in the **top-right** for **Try it now** and select it — this switches you into the new experience.
 
-[SCREENSHOT: Copilot Studio Home page with the "Try it now" toggle highlighted in the top-right]
+<!-- SCREENSHOT: Copilot Studio Home page with the "Try it now" toggle highlighted in the top-right -->
 
 2. Confirm the environment selector (top-right) points at your **developer / sandbox** environment, not production.
 
@@ -131,7 +131,7 @@ For full testing and publishing capabilities, you'll create a dedicated develope
 3. Sign in with the same M365 account
 4. Accept the terms and select **Get started**
 
-[SCREENSHOT: Power Apps Developer Plan signup page]
+<!-- SCREENSHOT: Power Apps Developer Plan signup page -->
 
 5. A new developer environment will be created (this takes ~2 minutes)
 
@@ -144,7 +144,7 @@ For full testing and publishing capabilities, you'll create a dedicated develope
    - **(default)** or **Contoso (default)**
    - **[Your Name]'s Environment** (the developer environment)
 
-[SCREENSHOT: Power Platform Admin Center showing Environments list with default and developer environments]
+<!-- SCREENSHOT: Power Platform Admin Center showing Environments list with default and developer environments -->
 
 **✅ Checkpoint:** You have a developer environment listed in the Power Platform Admin Center.
 
@@ -165,7 +165,7 @@ To publish agents to Microsoft Teams or other channels, you need the **Copilot S
 3. Select the **Security groups** tab
 4. Select **+ Add a security group**
 
-[SCREENSHOT: M365 Admin Center showing Security groups tab with "Add a security group" button]
+<!-- SCREENSHOT: M365 Admin Center showing Security groups tab with "Add a security group" button -->
 
 5. In the **Set up the basics** step:
    - **Name:** `Copilot Studio Authors`
@@ -184,7 +184,7 @@ To publish agents to Microsoft Teams or other channels, you need the **Copilot S
 5. Search for your account, select it, and select **Add (1)**
 6. Select **Close**
 
-[SCREENSHOT: Security group members page showing "Add members" flow]
+<!-- SCREENSHOT: Security group members page showing "Add members" flow -->
 
 **✅ Checkpoint:** You are listed as a member of the **Copilot Studio Authors** group.
 
@@ -200,7 +200,7 @@ To publish agents to Microsoft Teams or other channels, you need the **Copilot S
 8. In the search box, search for the **Copilot Studio Authors** security group
 9. Select the group and select **Add**
 
-[SCREENSHOT: PPAC Settings > Security roles > Copilot Studio Authors showing group assignment]
+<!-- SCREENSHOT: PPAC Settings > Security roles > Copilot Studio Authors showing group assignment -->
 
 10. Select **Save**
 
@@ -223,7 +223,7 @@ Your agent's ticketing system is simply a **SharePoint list**. When an issue nee
 3. Select **SharePoint**
 4. Select **+ Create site** → **Team site**
 
-[SCREENSHOT: SharePoint home showing "Create site" button and Team site option]
+<!-- SCREENSHOT: SharePoint home showing "Create site" button and Team site option -->
 
 5. In the site creation wizard:
    - **Site name:** `IT Help Desk`
@@ -237,7 +237,7 @@ Your agent's ticketing system is simply a **SharePoint list**. When an issue nee
 
 1. On the **IT Help Desk** site home page, select **+ New** → **List**
 
-[SCREENSHOT: SharePoint site showing "+ New" menu with "List" option]
+<!-- SCREENSHOT: SharePoint site showing "+ New" menu with "List" option -->
 
 2. Select **Blank list**
 3. **Name:** `Tickets`
@@ -262,7 +262,7 @@ The agent reads this list's **schema** at runtime to decide what to fill in, so 
 
 > The default **Title** column is reused as the one-line summary of the issue.
 
-[SCREENSHOT: Add Choice column dialog showing the Priority column setup]
+<!-- SCREENSHOT: Add Choice column dialog showing the Priority column setup -->
 
 **✅ Checkpoint:** Your **Tickets** list has columns: Title, Description, Status, Priority, Category, Requestor.
 
@@ -275,7 +275,7 @@ Add 2–3 example tickets so the list isn't empty when you first test.
 | Cannot access finance drive | User reports no access to the shared finance folder | New | High | Access | jordan@contoso.com |
 | Outlook crashing on launch | Outlook closes immediately after opening | In progress | Normal | Software | priya@contoso.com |
 
-[SCREENSHOT: SharePoint Tickets list showing sample rows in grid view]
+<!-- SCREENSHOT: SharePoint Tickets list showing sample rows in grid view -->
 
 **✅ Checkpoint:** Your **Tickets** list contains at least two sample rows.
 
@@ -320,7 +320,7 @@ Explains the three distribution types — **Self-service**, **Manager sign-off**
 
 > These two documents drive several later scenarios: help-desk hours (Module 06), "Can I install **Power BI Desktop**?" → self-service (Module 06), and the manager-approval workflow for **Microsoft Visio** (Module 09). Keep the app names consistent with this table.
 
-[SCREENSHOT: The two knowledge documents open side by side — IT FAQ and Approved Software List]
+<!-- SCREENSHOT: The two knowledge documents open side by side — IT FAQ and Approved Software List -->
 
 **✅ Checkpoint:** You have both documents ready to upload (`Contoso_IT_FAQ.docx` and `Contoso_Approved_Software_List.docx`).
 

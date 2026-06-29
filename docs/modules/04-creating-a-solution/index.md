@@ -89,7 +89,7 @@ Every solution has a **publisher** — a namespace that identifies who created t
 2. Sign in with your M365 account
 3. Select your **developer environment** from the environment picker (top right)
 
-[SCREENSHOT: Power Apps maker portal with the developer environment selected]
+<!-- SCREENSHOT: Power Apps maker portal with the developer environment selected -->
 
 ### Step 2: Navigate to Solutions
 
@@ -105,7 +105,7 @@ Every solution has a **publisher** — a namespace that identifies who created t
 1. In the **Solutions** page, select **+ New solution** → in the dialog, open the **Publisher** dropdown → select **+ New publisher**
    - (Alternatively, use **Settings ⚙️ → Advanced settings → Customizations → Publishers**.)
 
-[SCREENSHOT: New solution dialog with the "New publisher" option visible]
+<!-- SCREENSHOT: New solution dialog with the "New publisher" option visible -->
 
 2. In the **New publisher** dialog, enter the following:
 
@@ -121,7 +121,7 @@ Every solution has a **publisher** — a namespace that identifies who created t
 
 3. Select **Save** (or **Save and Close**)
 
-[SCREENSHOT: New publisher dialog showing the Contoso publisher configuration]
+<!-- SCREENSHOT: New publisher dialog showing the Contoso publisher configuration -->
 
 **✅ Checkpoint:** You now have a publisher called **Contoso** with the prefix `contoso`.
 
@@ -135,7 +135,7 @@ Now that you have a publisher, create the solution for this course.
 
 1. In the **Solutions** page, select **+ New solution**
 
-[SCREENSHOT: Solutions page with the "+ New solution" button highlighted]
+<!-- SCREENSHOT: Solutions page with the "+ New solution" button highlighted -->
 
 2. In the **New solution** dialog, enter:
 
@@ -147,7 +147,7 @@ Now that you have a publisher, create the solution for this course.
 | **Version** | `1.0.0.0` (default is fine) |
 | **Description** | `Solution for Bit, the Contoso IT Helpdesk Agent, and related components` |
 
-[SCREENSHOT: New solution dialog showing the Contoso Helpdesk Agent solution configuration]
+<!-- SCREENSHOT: New solution dialog showing the Contoso Helpdesk Agent solution configuration -->
 
 3. Select **Create**
 4. The solution is created and you land on the solution details page
@@ -161,7 +161,7 @@ On the solution details page, you'll see:
 - **Objects** — lists all components inside this solution (currently empty)
 - **History** — tracks changes and versions
 
-[SCREENSHOT: Solution details page showing the empty Objects list]
+<!-- SCREENSHOT: Solution details page showing the empty Objects list -->
 
 Right now, the solution is empty. As you build Bit, workflows, and other components, they'll appear here.
 
@@ -183,7 +183,7 @@ You can set the preferred solution in either place:
 - **Environment-wide:** **Settings (⚙️) → Advanced** (or **Environment**) → locate **Preferred solution** → select **Contoso Helpdesk Agent**.
 - **Per agent (up front):** right after you create Bit (Module 06), open the agent's **Settings** and confirm/choose **Contoso Helpdesk Agent** as the solution.
 
-[SCREENSHOT: Preferred solution dropdown showing "Contoso Helpdesk Agent" selected]
+<!-- SCREENSHOT: Preferred solution dropdown showing "Contoso Helpdesk Agent" selected -->
 
 3. Select **Save** or **Apply**
 
@@ -214,7 +214,7 @@ After you create **Bit** in Module 06, come back to the Power Apps maker portal 
    - **Workflows / Cloud flows** → any workflows you create
    - **Connection references** → connectors you use
 
-[SCREENSHOT: Solution Objects page showing the agent and related components]
+<!-- SCREENSHOT: Solution Objects page showing the agent and related components -->
 
 ---
 

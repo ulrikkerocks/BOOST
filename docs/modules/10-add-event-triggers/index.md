@@ -79,7 +79,7 @@ All of it happens **automatically**.
 1. Go to [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com) and open **Bit**.
 2. On the **Build** page, find the **Triggers** area (separate from Skills — this is for **event** triggers, not conversation).
 
-[SCREENSHOT: Build page showing the Triggers area with "+ Add trigger"]
+<!-- SCREENSHOT: Build page showing the Triggers area with "+ Add trigger" -->
 
 ### Step 2: Add the Trigger
 
@@ -98,7 +98,7 @@ All of it happens **automatically**.
 2. **Name the trigger:** `High Priority Ticket Created`
 3. **Save.**
 
-[SCREENSHOT: Trigger filter — Priority is High or Critical]
+<!-- SCREENSHOT: Trigger filter — Priority is High or Critical -->
 
 **✅ Checkpoint:** The trigger fires only when a High/Critical ticket appears in the Tickets list.
 
@@ -137,7 +137,7 @@ Description:
 Auto-escalated by Bit, the Contoso Helpdesk Agent.
 ```
 
-[SCREENSHOT: The escalation email step mapping the ticket fields from the trigger]
+<!-- SCREENSHOT: The escalation email step mapping the ticket fields from the trigger -->
 
 **✅ Checkpoint:** A High/Critical ticket triggers an escalation email to the IT lead.
 
@@ -170,7 +170,7 @@ Auto-escalated by Bit, the Contoso Helpdesk Agent.
 
 1. Check the **IT lead** mailbox (your test address) for the escalation email with the ticket details.
 
-[SCREENSHOT: Inbox showing the auto-escalation email for the Critical ticket]
+<!-- SCREENSHOT: Inbox showing the auto-escalation email for the Critical ticket -->
 
 **✅ Checkpoint:** A High/Critical ticket — whether logged by Bit or added by hand — auto-escalates to the IT lead.
 

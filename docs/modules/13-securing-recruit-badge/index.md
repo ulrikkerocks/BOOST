@@ -92,7 +92,7 @@ Recap of **Bit**, built entirely in the new experience:
    - **Workflows / Cloud flows:** `manager_approval_for_software` (and any escalation flow)
    - **Connection references:** SharePoint, Office 365 Outlook, Office 365 Users
 
-[SCREENSHOT: Contoso Helpdesk Agent solution showing Bit and its components]
+<!-- SCREENSHOT: Contoso Helpdesk Agent solution showing Bit and its components -->
 
 **✅ Checkpoint:** Your solution is complete and packaged.
 

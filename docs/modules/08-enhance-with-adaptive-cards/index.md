@@ -110,7 +110,7 @@ Adaptive Cards are defined with **JSON**. Here's the ticket confirmation card â€
 }
 ```
 
-[SCREENSHOT: Adaptive Card editor showing the ticket confirmation JSON]
+<!-- SCREENSHOT: Adaptive Card editor showing the ticket confirmation JSON -->
 
 **What this card includes:**
 - A **header** and the ticket **summary** (`${title}`)
@@ -142,7 +142,7 @@ Adaptive Cards are defined with **JSON**. Here's the ticket confirmation card â€
 
 3. **Save** the skill.
 
-[SCREENSHOT: smart-triage skill updated to present the ticket as an Adaptive Card]
+<!-- SCREENSHOT: smart-triage skill updated to present the ticket as an Adaptive Card -->
 
 **âœ… Checkpoint:** `smart-triage` now confirms tickets with the card.
 
@@ -158,7 +158,7 @@ Adaptive Cards are defined with **JSON**. Here's the ticket confirmation card â€
 
 2. After `smart-triage` creates the row, Bit presents the **ticket confirmation card** â€” number, category, priority, status, requestor, and the **View in SharePoint** button.
 
-[SCREENSHOT: Preview pane showing the rendered ticket confirmation card]
+<!-- SCREENSHOT: Preview pane showing the rendered ticket confirmation card -->
 
 **Verify:**
 - âœ… The fields show the real ticket values
