@@ -70,50 +70,51 @@ All of it happens **automatically**.
 
 ---
 
-## 🧪 Lab 10.1: Add an Event Trigger on the Tickets List
+## 🧪 Lab 10.1: Build the Autonomous Trigger (a Workflow on the Tickets List)
 
-**Objective:** Configure Bit to watch the Tickets list for new high-priority items.
+**Objective:** A workflow that fires the moment a new item lands in the **Tickets** list.
 
-### Step 1: Open the Triggers Area
+> 🆕 **How autonomy works here.** There's **no separate "Triggers" block on the agent** — Bit's Build page has Instructions, Skills, Tools, Knowledge, Connected agents, and Memory. Autonomous behavior lives in a **Workflow** whose **trigger** is an *event* (a SharePoint item being created) instead of "When an agent calls the flow." You build it just like Module 09 — only the trigger type differs.
 
-1. Go to [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com) and open **Bit**.
-2. On the **Build** page, find the **Triggers** area (separate from Skills — this is for **event** triggers, not conversation).
+### Step 1: Create the Workflow and Pick the Trigger Type
 
-<!-- SCREENSHOT: Build page showing the Triggers area with "+ Add trigger" -->
+1. Go to [https://copilotstudio.microsoft.com](https://copilotstudio.microsoft.com) → **Workflows** (left nav) → **New Workflow**. This opens the workflow designer.
+2. Select the **trigger** node, and for **Trigger type** choose **Connector** (*"Trigger from an external service"*).
 
-### Step 2: Add the Trigger
+![Workflow trigger type picker — Manual (on demand), Recurrence (schedule), Connector (external service), and HTTP request](/screenshots/10/01_trigger-types.png)
 
-1. Select **+ Add trigger** → choose a **SharePoint** event → **When an item is created** (and optionally **modified**).
-2. Point it at your **IT Help Desk** site and the **Tickets** list.
+> The four trigger types: **Manual** (run on demand), **Recurrence** (a schedule), **Connector** (an external service — what we want), and **When a HTTP request is received**.
 
-![Workflow trigger type picker — Manual, Recurrence (schedule), Connector (external service), and HTTP request](/screenshots/10/01_trigger-types.png)
+### Step 2: Point It at the Tickets List
 
-> 🆕 **Reality check.** In this environment, autonomous behavior is configured through a **Workflow's trigger**, not a separate "Triggers" block on the agent. Use **Connector** to fire from a SharePoint item being created (the Tickets list), or **Recurrence** for a scheduled check.
+1. For the connector trigger, choose **SharePoint** → **When an item is created**.
+2. Configure it:
+   - **Connection** *(required)* — sign in / pick your SharePoint connection. **Set this first**: a missing connection shows as **"1 error"** and blocks **Publish**. Once it's green, the dropdowns below populate.
+   - **Site Address** — your **IT Help Desk** site (the recruits site).
+   - **List Name** — **Tickets**.
 
-### Step 3: Filter for High/Critical
+![The "When an item is created" SharePoint trigger configured — Connection set (green check), Trigger type Connector, Site Address = the recruits site, List Name = Tickets](/screenshots/10/02_sharepoint-trigger.png)
 
-1. Add a **condition** so the trigger only fires for urgent tickets:
-   - **Field:** Priority
-   - **Condition:** is **High** or **Critical**
-2. **Name the trigger:** `High Priority Ticket Created`
-3. **Save.**
+### Step 3: Filter for High/Critical (If/Else)
 
-<!-- SCREENSHOT: Trigger filter — Priority is High or Critical -->
+The SharePoint trigger fires for **every** new item, so branch right after it — the same **If/Else** you used in Module 09:
 
-**✅ Checkpoint:** The trigger fires only when a High/Critical ticket appears in the Tickets list.
+1. Add an **If/Else (Condition)** step after the trigger.
+2. Condition: the trigger's **Priority** field **is equal to** `High` **or** `Critical`. Keep the **escalation in the "true" branch**.
+3. **Name the workflow** (top-left): `Escalate High Priority Ticket`, then **Save**.
 
-> 🧠 The trigger provides the **item's data** (Title, Description, Priority, Category, Requestor) for the escalation step to use.
+**✅ Checkpoint:** The workflow runs on every new Tickets item and only proceeds to escalate for **High/Critical**.
+
+> 🧠 The trigger exposes the **item's fields** (Title, Description, Priority, Category, Requestor) — you'll map these into the escalation email next.
 
 ---
 
-## 🧪 Lab 10.2: Define the Escalation
+## 🧪 Lab 10.2: Send the Escalation Email
 
-**Objective:** When the trigger fires, email the IT lead with the ticket details.
+**Objective:** In the **High/Critical** ("true") branch, email the IT lead with the ticket details.
 
-You have two equivalent ways to do this — use whichever your tenant exposes:
-
-- **A short Workflow** (reusing the muscle from Module 09): the trigger calls a workflow that sends the escalation email. Inputs: the ticket's title, description, priority, requestor.
-- **A direct escalation action**: the trigger's autonomous behavior calls **Send an email** directly.
+1. Inside the **If/Else** true branch, **+ Add a step** → **Connector** → **Office 365 Outlook** → **Send an email (V2)**.
+2. Map the values from the trigger's item (Title, Priority, Category, Requestor, Description).
 
 **Escalation email:**
 
@@ -178,11 +179,7 @@ Auto-escalated by Bit, the Contoso Helpdesk Agent.
 
 ## 🪂 Fallback and Notes
 
-> ⚠️ **Facilitator note.** Autonomous triggers and their connectors are evolving in the new experience. If a **SharePoint item-created** trigger isn't available for autonomous agents in your tenant, use one of these instead:
-> - a **Scheduled** trigger that scans the Tickets list for new High/Critical items every few minutes, or
-> - a **Workflow** with a SharePoint "When an item is created" trigger that sends the escalation.
->
-> The teaching point — *the agent acts on an event without a user* — is identical. Confirm the available path before the workshop.
+> ⚠️ **Facilitator note.** If the **SharePoint "When an item is created"** connector trigger isn't available (or you can't make a SharePoint connection) in your tenant, switch the trigger type to **Recurrence** and have the workflow **scan the Tickets list** for new High/Critical items every few minutes instead. The teaching point — *the agent acts on an event without a user* — is identical. Confirm the available path before the workshop.
 
 > 🔁 **Avoid double-sends.** If you trigger on both *created* and *modified*, a later edit to the same ticket can re-fire. Trigger on **created** only, or add a guard (e.g., only escalate when **Status = New**).
 
