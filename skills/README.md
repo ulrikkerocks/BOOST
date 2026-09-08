@@ -36,8 +36,10 @@ uploaded skill with this package in each tool that needs an upload, using that
 tool's supported upload flow. Do not edit a package independently.
 
 Uploaded files are snapshots: they do not automatically synchronize with GitHub.
-Claude's current installed skill and ChatGPT project settings have not been
-changed by adding these repository files.
+Local Cowork skill copies can be refreshed from this source. Cowork may replace
+its local skill cache from the account's uploaded version; replacing the uploaded
+package is still needed for durable account-wide synchronization. ChatGPT project
+settings are not changed by adding these repository files.
 
 ## Scope and provenance
 
@@ -46,8 +48,9 @@ editorial instructions and all three reference files. The additional output
 rules come from the August 2026 Show Notes Creation conversation: retain normal
 notes and Review, add the comma-separated credits, add a YouTube Show Notes code
 block and optional Events code block, and use plain `-` bullets without escapes.
-The explicit requested URL display was `[URL](URL)`; bare URLs remain available
-when requested. Examples are formatting examples, not a current event calendar.
+On September 8, Ulrikke selected raw URLs on the same line for the shared
+YouTube format. The newer installed Cowork rule also keeps normal notes directly
+in chat, while YouTube and Events remain in code blocks. Examples are formatting examples, not a current event calendar.
 
 The old package's `PROGRESS.md` is a historical development checkpoint, not part
 of the maintained skill. It has not been imported as current instructions.

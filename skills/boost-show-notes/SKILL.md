@@ -130,13 +130,13 @@ The Review block is for Ulrikke's eyes only — once she accepts the final versi
 
 ## Output delivery
 
-Return the final show notes as a plain Markdown code block so it copies cleanly into the podcast platform. Follow it with the Review block in normal prose so it doesn't get accidentally pasted into the description.
+Return the final show notes as plain text directly in the chat reply — not inside a Markdown code block. Follow it with the Review block in normal prose so it doesn't get accidentally pasted into the description.
 
 ### Additional delivery formats (agreed August 2026)
 
 These outputs supplement the existing show notes and Review; they do not replace them. For a full show-notes request, deliver in this order:
 
-1. Normal show notes, in the existing Markdown code block.
+1. Normal show notes, directly in chat (preserving the newer Cowork delivery behavior).
 2. Review, in normal prose, with the existing review behavior.
 3. A comma-separated author/credit list, in show-notes order. Reuse the finalized credits without the leading `by`; retain repeated credits when multiple items credit the same author or team. Omit items with no credit. Preserve team and multi-person credits.
 4. A separate YouTube-ready Show Notes code block.
@@ -148,23 +148,23 @@ When Ulrikke requests only one of these outputs (for example, YouTube notes now 
 
 Put the entire copyable section inside a fenced `markdown` code block. Start with literal `## Show Notes`, followed by a blank line. Preserve the finalized section labels (such as News and Podcast) as plain text, section order, item order, titles, credits, and URLs. This is a formatting pass over the same finalized notes, not a second curation/research pass.
 
-Use a plain `- ` bullet, never `\- `. Keep each item on one line and put a blank line between items and around section labels. Use the URL itself as the visible link text, matching the requested copy format:
+Use a plain `- ` bullet, never `\- `. Keep each item on one line and put a blank line between items and around section labels. Use a raw URL on the same line, with no Markdown link wrapper:
 
 ```markdown
 ## Show Notes
 
 News
 
-- Title (by Author): [URL](URL)
+- Title (by Author): https://example.com/item
 
-- Title without an author: [URL](URL)
+- Title without an author: https://example.com/item
 
 Podcast
 
-- Episode title (by Podcast Name — hosts, with guest Guest Name): [URL](URL)
+- Episode title (by Podcast Name — hosts, with guest Guest Name): https://example.com/item
 ```
 
-Omit the entire `(by ...)` portion when no credit exists. Preserve full team/group credits; do not invent hosts or guests. An item finalized without a URL remains plain text without a fabricated link or dangling colon. Keep unresolved checks visible and explained in Review; do not silently invent missing details. Explicitly requested bare URLs may replace `[URL](URL)` without changing their destinations.
+Omit the entire `(by ...)` portion when no credit exists. Preserve full team/group credits; do not invent hosts or guests. An item finalized without a URL remains plain text without a fabricated link or dangling colon. Keep unresolved checks visible and explained in Review; do not silently invent missing details. Do not wrap URLs in Markdown links or put them on a separate line.
 
 ### YouTube Events
 
@@ -173,9 +173,9 @@ When events are supplied, put them in their own fenced `markdown` code block sta
 ```markdown
 # Events
 
-- Event name (City, Country | Dates): [URL](URL)
+- Event name (City, Country | Dates): https://example.com/item
 
-- Event name (City | Dates): [URL](URL)
+- Event name (City | Dates): https://example.com/item
 ```
 
 Use plain `- ` bullets, never `\- `, one line per event, with a blank line between events. Join wrapped location/date text onto that line and use an unescaped `|`. Preserve the supplied names, location detail, date wording/ranges, URLs, and order; omit country when not supplied. Flag missing details rather than guessing. Do not add events from old examples or research a new calendar during this formatting pass. If events are not supplied, omit this block.
